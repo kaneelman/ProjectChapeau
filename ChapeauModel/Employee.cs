@@ -12,5 +12,6 @@ namespace ChapeauModel
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
         public string Password { get; set; }
+        //Text Text Text Text Text xtTETesTEfdfdf TEDFdtesEgeT
     }
 }
