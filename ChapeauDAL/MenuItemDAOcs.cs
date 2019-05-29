@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChapeauDAL
 {
-    class MenuItemDAOcs : Base
+    public class MenuItemDAOcs : Base
     {
     }
 }

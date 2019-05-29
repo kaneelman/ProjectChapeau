@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChapeauDAL
 {
-    class DinningTableDAO : Base
+    public class DinningTableDAO : Base
     {
     }
 }
