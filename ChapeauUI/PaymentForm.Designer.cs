@@ -48,14 +48,14 @@
             // 
             // txtBox_TotalAmount
             // 
-            this.txtBox_TotalAmount.Location = new System.Drawing.Point(648, 186);
+            this.txtBox_TotalAmount.Location = new System.Drawing.Point(647, 260);
             this.txtBox_TotalAmount.Name = "txtBox_TotalAmount";
             this.txtBox_TotalAmount.Size = new System.Drawing.Size(100, 22);
             this.txtBox_TotalAmount.TabIndex = 0;
             // 
             // txtBox_Tip
             // 
-            this.txtBox_Tip.Location = new System.Drawing.Point(648, 239);
+            this.txtBox_Tip.Location = new System.Drawing.Point(647, 231);
             this.txtBox_Tip.Name = "txtBox_Tip";
             this.txtBox_Tip.Size = new System.Drawing.Size(100, 22);
             this.txtBox_Tip.TabIndex = 1;
@@ -63,7 +63,7 @@
             // lbl_totalAmount
             // 
             this.lbl_totalAmount.AutoSize = true;
-            this.lbl_totalAmount.Location = new System.Drawing.Point(504, 189);
+            this.lbl_totalAmount.Location = new System.Drawing.Point(503, 263);
             this.lbl_totalAmount.Name = "lbl_totalAmount";
             this.lbl_totalAmount.Size = new System.Drawing.Size(92, 17);
             this.lbl_totalAmount.TabIndex = 3;
@@ -72,7 +72,7 @@
             // lbl_Tip
             // 
             this.lbl_Tip.AutoSize = true;
-            this.lbl_Tip.Location = new System.Drawing.Point(504, 239);
+            this.lbl_Tip.Location = new System.Drawing.Point(503, 231);
             this.lbl_Tip.Name = "lbl_Tip";
             this.lbl_Tip.Size = new System.Drawing.Size(28, 17);
             this.lbl_Tip.TabIndex = 4;
@@ -98,7 +98,7 @@
             // lbl_serverName
             // 
             this.lbl_serverName.AutoSize = true;
-            this.lbl_serverName.Location = new System.Drawing.Point(504, 136);
+            this.lbl_serverName.Location = new System.Drawing.Point(504, 72);
             this.lbl_serverName.Name = "lbl_serverName";
             this.lbl_serverName.Size = new System.Drawing.Size(91, 17);
             this.lbl_serverName.TabIndex = 7;
@@ -106,7 +106,7 @@
             // 
             // txtBox_ServerName
             // 
-            this.txtBox_ServerName.Location = new System.Drawing.Point(648, 130);
+            this.txtBox_ServerName.Location = new System.Drawing.Point(648, 72);
             this.txtBox_ServerName.Name = "txtBox_ServerName";
             this.txtBox_ServerName.Size = new System.Drawing.Size(100, 22);
             this.txtBox_ServerName.TabIndex = 8;
@@ -162,7 +162,7 @@
             // lbl_OrdNr
             // 
             this.lbl_OrdNr.AutoSize = true;
-            this.lbl_OrdNr.Location = new System.Drawing.Point(300, 31);
+            this.lbl_OrdNr.Location = new System.Drawing.Point(228, 31);
             this.lbl_OrdNr.Name = "lbl_OrdNr";
             this.lbl_OrdNr.Size = new System.Drawing.Size(103, 17);
             this.lbl_OrdNr.TabIndex = 14;
