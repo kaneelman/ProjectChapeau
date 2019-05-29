@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChapeauModel;
-using System.Data;
-using System.Data.SqlClient;
+using ChapeauModel;//added this to use the model library -stephen
+using System.Data;// to use the datable
+using System.Data.SqlClient;// for the query
 
 namespace ChapeauDAL
 {
