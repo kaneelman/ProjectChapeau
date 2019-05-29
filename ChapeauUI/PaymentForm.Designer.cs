@@ -153,7 +153,7 @@
             // lbl_TblNr
             // 
             this.lbl_TblNr.AutoSize = true;
-            this.lbl_TblNr.Location = new System.Drawing.Point(25, 22);
+            this.lbl_TblNr.Location = new System.Drawing.Point(25, 31);
             this.lbl_TblNr.Name = "lbl_TblNr";
             this.lbl_TblNr.Size = new System.Drawing.Size(102, 17);
             this.lbl_TblNr.TabIndex = 13;
@@ -162,7 +162,7 @@
             // lbl_OrdNr
             // 
             this.lbl_OrdNr.AutoSize = true;
-            this.lbl_OrdNr.Location = new System.Drawing.Point(300, 22);
+            this.lbl_OrdNr.Location = new System.Drawing.Point(300, 31);
             this.lbl_OrdNr.Name = "lbl_OrdNr";
             this.lbl_OrdNr.Size = new System.Drawing.Size(103, 17);
             this.lbl_OrdNr.TabIndex = 14;

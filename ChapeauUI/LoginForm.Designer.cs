@@ -31,78 +31,78 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.txtBox_ID = new System.Windows.Forms.TextBox();
             this.txtBox_Password = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btn_Login = new System.Windows.Forms.Button();
+            this.lbl_ID = new System.Windows.Forms.Label();
+            this.lbl_Password = new System.Windows.Forms.Label();
+            this.picBox_Chapeau = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBox_ID
             // 
-            this.txtBox_ID.Location = new System.Drawing.Point(342, 300);
+            this.txtBox_ID.Location = new System.Drawing.Point(359, 301);
             this.txtBox_ID.Name = "txtBox_ID";
             this.txtBox_ID.Size = new System.Drawing.Size(267, 22);
             this.txtBox_ID.TabIndex = 0;
             // 
             // txtBox_Password
             // 
-            this.txtBox_Password.Location = new System.Drawing.Point(342, 351);
+            this.txtBox_Password.Location = new System.Drawing.Point(359, 352);
             this.txtBox_Password.Name = "txtBox_Password";
             this.txtBox_Password.Size = new System.Drawing.Size(267, 22);
             this.txtBox_Password.TabIndex = 1;
             // 
-            // button1
+            // btn_Login
             // 
-            this.button1.Location = new System.Drawing.Point(216, 398);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Login.Location = new System.Drawing.Point(238, 414);
+            this.btn_Login.Name = "btn_Login";
+            this.btn_Login.Size = new System.Drawing.Size(82, 32);
+            this.btn_Login.TabIndex = 2;
+            this.btn_Login.Text = "Login";
+            this.btn_Login.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbl_ID
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(213, 300);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Employee ID";
+            this.lbl_ID.AutoSize = true;
+            this.lbl_ID.Location = new System.Drawing.Point(230, 301);
+            this.lbl_ID.Name = "lbl_ID";
+            this.lbl_ID.Size = new System.Drawing.Size(87, 17);
+            this.lbl_ID.TabIndex = 3;
+            this.lbl_ID.Text = "Employee ID";
             // 
-            // label2
+            // lbl_Password
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 356);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
+            this.lbl_Password.AutoSize = true;
+            this.lbl_Password.Location = new System.Drawing.Point(230, 357);
+            this.lbl_Password.Name = "lbl_Password";
+            this.lbl_Password.Size = new System.Drawing.Size(69, 17);
+            this.lbl_Password.TabIndex = 4;
+            this.lbl_Password.Text = "Password";
             // 
-            // pictureBox1
+            // picBox_Chapeau
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(216, 50);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(388, 208);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.picBox_Chapeau.Image = ((System.Drawing.Image)(resources.GetObject("picBox_Chapeau.Image")));
+            this.picBox_Chapeau.Location = new System.Drawing.Point(238, 61);
+            this.picBox_Chapeau.Name = "picBox_Chapeau";
+            this.picBox_Chapeau.Size = new System.Drawing.Size(388, 208);
+            this.picBox_Chapeau.TabIndex = 5;
+            this.picBox_Chapeau.TabStop = false;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 562);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.picBox_Chapeau);
+            this.Controls.Add(this.lbl_Password);
+            this.Controls.Add(this.lbl_ID);
+            this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.txtBox_Password);
             this.Controls.Add(this.txtBox_ID);
             this.Name = "LoginForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,10 +112,10 @@
 
         private System.Windows.Forms.TextBox txtBox_ID;
         private System.Windows.Forms.TextBox txtBox_Password;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Label lbl_ID;
+        private System.Windows.Forms.Label lbl_Password;
+        private System.Windows.Forms.PictureBox picBox_Chapeau;
     }
 }
 
