@@ -12,7 +12,7 @@ namespace ChapeauModel
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
         public string Password { get; set; }
-        public string TEST;
+        //public string TEST;
         //Text Text Text Text Text xtTETesTEfdfdf TEDFdtesEgeT
         //.......
         //.......////
