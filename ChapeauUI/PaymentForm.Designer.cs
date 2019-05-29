@@ -28,88 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtBox_TotalAmount = new System.Windows.Forms.TextBox();
+            this.txtBox_Tip = new System.Windows.Forms.TextBox();
+            this.lbl_totalAmount = new System.Windows.Forms.Label();
+            this.lbl_Tip = new System.Windows.Forms.Label();
+            this.lbl_Feedbak = new System.Windows.Forms.Label();
+            this.listView_Payment = new System.Windows.Forms.ListView();
+            this.lbl_serverName = new System.Windows.Forms.Label();
+            this.txtBox_ServerName = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_Payment = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lbl_TblNr = new System.Windows.Forms.Label();
+            this.lbl_OrdNr = new System.Windows.Forms.Label();
+            this.richTxtBox_FeedBack = new System.Windows.Forms.RichTextBox();
+            this.btn_Pay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtBox_TotalAmount
             // 
-            this.textBox1.Location = new System.Drawing.Point(648, 186);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 0;
+            this.txtBox_TotalAmount.Location = new System.Drawing.Point(648, 186);
+            this.txtBox_TotalAmount.Name = "txtBox_TotalAmount";
+            this.txtBox_TotalAmount.Size = new System.Drawing.Size(100, 22);
+            this.txtBox_TotalAmount.TabIndex = 0;
             // 
-            // textBox2
+            // txtBox_Tip
             // 
-            this.textBox2.Location = new System.Drawing.Point(648, 239);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 1;
+            this.txtBox_Tip.Location = new System.Drawing.Point(648, 239);
+            this.txtBox_Tip.Name = "txtBox_Tip";
+            this.txtBox_Tip.Size = new System.Drawing.Size(100, 22);
+            this.txtBox_Tip.TabIndex = 1;
             // 
-            // label1
+            // lbl_totalAmount
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(504, 189);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Total Amount";
+            this.lbl_totalAmount.AutoSize = true;
+            this.lbl_totalAmount.Location = new System.Drawing.Point(504, 189);
+            this.lbl_totalAmount.Name = "lbl_totalAmount";
+            this.lbl_totalAmount.Size = new System.Drawing.Size(92, 17);
+            this.lbl_totalAmount.TabIndex = 3;
+            this.lbl_totalAmount.Text = "Total Amount";
             // 
-            // label2
+            // lbl_Tip
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(504, 239);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Tip";
+            this.lbl_Tip.AutoSize = true;
+            this.lbl_Tip.Location = new System.Drawing.Point(504, 239);
+            this.lbl_Tip.Name = "lbl_Tip";
+            this.lbl_Tip.Size = new System.Drawing.Size(28, 17);
+            this.lbl_Tip.TabIndex = 4;
+            this.lbl_Tip.Text = "Tip";
             // 
-            // label3
+            // lbl_Feedbak
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(504, 292);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Feedback";
+            this.lbl_Feedbak.AutoSize = true;
+            this.lbl_Feedbak.Location = new System.Drawing.Point(504, 292);
+            this.lbl_Feedbak.Name = "lbl_Feedbak";
+            this.lbl_Feedbak.Size = new System.Drawing.Size(70, 17);
+            this.lbl_Feedbak.TabIndex = 5;
+            this.lbl_Feedbak.Text = "Feedback";
             // 
-            // listView1
+            // listView_Payment
             // 
-            this.listView1.Location = new System.Drawing.Point(28, 72);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(438, 593);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView_Payment.Location = new System.Drawing.Point(28, 72);
+            this.listView_Payment.Name = "listView_Payment";
+            this.listView_Payment.Size = new System.Drawing.Size(438, 593);
+            this.listView_Payment.TabIndex = 6;
+            this.listView_Payment.UseCompatibleStateImageBehavior = false;
             // 
-            // label4
+            // lbl_serverName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(504, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Server Name";
+            this.lbl_serverName.AutoSize = true;
+            this.lbl_serverName.Location = new System.Drawing.Point(504, 136);
+            this.lbl_serverName.Name = "lbl_serverName";
+            this.lbl_serverName.Size = new System.Drawing.Size(91, 17);
+            this.lbl_serverName.TabIndex = 7;
+            this.lbl_serverName.Text = "Server Name";
             // 
-            // textBox4
+            // txtBox_ServerName
             // 
-            this.textBox4.Location = new System.Drawing.Point(648, 130);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 8;
+            this.txtBox_ServerName.Location = new System.Drawing.Point(648, 130);
+            this.txtBox_ServerName.Name = "txtBox_ServerName";
+            this.txtBox_ServerName.Size = new System.Drawing.Size(100, 22);
+            this.txtBox_ServerName.TabIndex = 8;
             // 
             // checkBox1
             // 
@@ -121,14 +121,14 @@
             this.checkBox1.Text = "Visa/Amex";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // lbl_Payment
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(504, 467);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Payment";
+            this.lbl_Payment.AutoSize = true;
+            this.lbl_Payment.Location = new System.Drawing.Point(504, 467);
+            this.lbl_Payment.Name = "lbl_Payment";
+            this.lbl_Payment.Size = new System.Drawing.Size(63, 17);
+            this.lbl_Payment.TabIndex = 10;
+            this.lbl_Payment.Text = "Payment";
             // 
             // checkBox2
             // 
@@ -150,62 +150,62 @@
             this.checkBox3.Text = "Cash";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // lbl_TblNr
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 17);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Table Number:";
+            this.lbl_TblNr.AutoSize = true;
+            this.lbl_TblNr.Location = new System.Drawing.Point(25, 22);
+            this.lbl_TblNr.Name = "lbl_TblNr";
+            this.lbl_TblNr.Size = new System.Drawing.Size(102, 17);
+            this.lbl_TblNr.TabIndex = 13;
+            this.lbl_TblNr.Text = "Table Number:";
             // 
-            // label7
+            // lbl_OrdNr
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(300, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 17);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Order Number:";
+            this.lbl_OrdNr.AutoSize = true;
+            this.lbl_OrdNr.Location = new System.Drawing.Point(300, 22);
+            this.lbl_OrdNr.Name = "lbl_OrdNr";
+            this.lbl_OrdNr.Size = new System.Drawing.Size(103, 17);
+            this.lbl_OrdNr.TabIndex = 14;
+            this.lbl_OrdNr.Text = "Order Number:";
             // 
-            // richTextBox1
+            // richTxtBox_FeedBack
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(507, 323);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(241, 130);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
+            this.richTxtBox_FeedBack.Location = new System.Drawing.Point(507, 323);
+            this.richTxtBox_FeedBack.Name = "richTxtBox_FeedBack";
+            this.richTxtBox_FeedBack.Size = new System.Drawing.Size(241, 130);
+            this.richTxtBox_FeedBack.TabIndex = 15;
+            this.richTxtBox_FeedBack.Text = "";
             // 
-            // button1
+            // btn_Pay
             // 
-            this.button1.Location = new System.Drawing.Point(507, 627);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 38);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Pay";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Pay.Location = new System.Drawing.Point(507, 627);
+            this.btn_Pay.Name = "btn_Pay";
+            this.btn_Pay.Size = new System.Drawing.Size(162, 38);
+            this.btn_Pay.TabIndex = 16;
+            this.btn_Pay.Text = "Pay";
+            this.btn_Pay.UseVisualStyleBackColor = true;
             // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 707);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btn_Pay);
+            this.Controls.Add(this.richTxtBox_FeedBack);
+            this.Controls.Add(this.lbl_OrdNr);
+            this.Controls.Add(this.lbl_TblNr);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbl_Payment);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBox_ServerName);
+            this.Controls.Add(this.lbl_serverName);
+            this.Controls.Add(this.listView_Payment);
+            this.Controls.Add(this.lbl_Feedbak);
+            this.Controls.Add(this.lbl_Tip);
+            this.Controls.Add(this.lbl_totalAmount);
+            this.Controls.Add(this.txtBox_Tip);
+            this.Controls.Add(this.txtBox_TotalAmount);
             this.Name = "PaymentForm";
             this.Text = "PaymentForm";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
@@ -216,21 +216,21 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtBox_TotalAmount;
+        private System.Windows.Forms.TextBox txtBox_Tip;
+        private System.Windows.Forms.Label lbl_totalAmount;
+        private System.Windows.Forms.Label lbl_Tip;
+        private System.Windows.Forms.Label lbl_Feedbak;
+        private System.Windows.Forms.ListView listView_Payment;
+        private System.Windows.Forms.Label lbl_serverName;
+        private System.Windows.Forms.TextBox txtBox_ServerName;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_Payment;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_TblNr;
+        private System.Windows.Forms.Label lbl_OrdNr;
+        private System.Windows.Forms.RichTextBox richTxtBox_FeedBack;
+        private System.Windows.Forms.Button btn_Pay;
     }
 }
