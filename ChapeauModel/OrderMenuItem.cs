@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    public class OrderMenuItem : MenuItem
+    public class OrderMenuItem
     {
+        private MenuItem item;
+
         public DateTime TimeStamp { get; set; }
         public string Comment { get; set; }
         public OrderStatus Status { get; set; }
 
-        public OrderMenuItem(DateTime timeStamp, string comment, OrderStatus status)
+        public OrderMenuItem(MenuItem item, DateTime timeStamp, string comment, OrderStatus status)
         {
+            this.item = item;
             TimeStamp = timeStamp;
             Comment = comment;
             Status = status;
         }
 
-        public OrderMenuItem(DateTime timeStamp, string comment, string status)
+        public OrderMenuItem(MenuItem item, DateTime timeStamp, string comment, string status)
         {
+            this.item = item;
             TimeStamp = timeStamp;
             Comment = comment;
 

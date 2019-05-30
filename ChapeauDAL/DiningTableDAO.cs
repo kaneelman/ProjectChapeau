@@ -11,14 +11,14 @@ namespace ChapeauDAL
 {
     public class DiningTableDAO : Base
     {
-        public List<DiningTable> GetAllTables()
+        public List<DiningTable> GetAllDiningTablesDB()
         {
             string query = "SELECT id, status FROM DINING_TABLE ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public DiningTable GetTableById(int id)
+        public DiningTable GetDiningTableByIdDB(int id)
         {
             string query = "SELECT id, status FROM DINING_TABLE WHERE id = @id";
             SqlParameter[] sqlParameters = (new[]

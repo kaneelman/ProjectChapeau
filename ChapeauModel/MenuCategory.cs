@@ -11,5 +11,12 @@ namespace ChapeauModel
         public string Id { get; set; }
         public string Name { get; set; }
         public int VAT { get; set; }
+
+        public MenuCategory(string id, string name, int vat)
+        {
+            Id = id;
+            Name = name;
+            VAT = vat;
+        }
     }
 }

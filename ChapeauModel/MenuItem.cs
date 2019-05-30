@@ -14,5 +14,13 @@ namespace ChapeauModel
         public int Stock { get; set; }
         public MenuCategory Category { get; set; }
 
+        public MenuItem(int id, string name, decimal price, int stock, MenuCategory category)
+        {
+            Id = id;
+            Name = name;
+            Price = price;
+            Stock = stock;
+            Category = category;
+        }
     }
 }

@@ -10,19 +10,19 @@ namespace ChapeauLogic
 {
     public class DiningTableService
     {
-        DiningTableDAO diningTableDAO = new DiningTableDAO();
+        DiningTableDAO diningTableDB = new DiningTableDAO();
 
         public List<DiningTable> GetDiningTables()
         {
 
-            List<DiningTable> diningTables = diningTableDAO.GetAllTables();
+            List<DiningTable> diningTables = diningTableDB.GetAllDiningTablesDB();
             return diningTables;
 
         }
 
         public DiningTable GetDiningTable(int id)
         {
-            return diningTableDAO.GetTableById(id);
+            return diningTableDB.GetDiningTableByIdDB(id);
         }
     }
 }
