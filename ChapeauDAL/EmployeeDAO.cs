@@ -11,26 +11,64 @@ namespace ChapeauDAL
 {
     public class EmployeeDAO : Base
     {
-        public List<Employee> GetEmployee()
+        public List<Employee> GetAllEmployeesDB()
         {
-            string query = "SELECT id, name, position, password FROM EMPLOYEE";
+            string query = "SELECT id, name, position FROM EMPLOYEE";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return GetInfoEmployee(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<Employee> GetInfoEmployee(DataTable dataTable)
+
+        public Employee GetEmployeeByIdDB(int id)
+        {
+            string query = "SELECT id, name, position FROM EMPLOYEE WHERE id = @id";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@id", id)
+            });
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+
+        public bool CheckUsernameDB(string id)
+        {
+            string query = "SELECT id FROM EMPLOYEE WHERE id = @id";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@id", id)
+            });
+
+            
+            if(ReadTables(ExecuteSelectQuery(query, sqlParameters)).Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool CheckPasswordDB(string id, string password)
+        {
+            string query = "SELECT id, password FROM EMPLOYEE WHERE id = @id AND password = @password";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@id", id),
+                new SqlParameter("@password", password)
+            });
+
+
+            if (ReadTables(ExecuteSelectQuery(query, sqlParameters)).Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private List<Employee> ReadTables(DataTable dataTable)
         {
             List<Employee> Employees = new List<Employee>();
 
             foreach(DataRow dr in dataTable.Rows)
             {
-                Employee workers = new Employee()
-                {
-                    Id = (int)dr["id"],
-                    Name = (string)dr["name"],
-                    Position = (EmployeePosition)dr["position"]
-                    //Password = (string)dr["password"]
-                };
-                Employees.Add(workers);
+                Employee employee = new Employee((int)dr["id"], (string)dr["name"], (string)dr["position"]);
+                Employees.Add(employee);
             }
             return Employees;
         }

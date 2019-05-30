@@ -15,9 +15,7 @@ namespace ChapeauLogic
         public List<DiningTable> GetDiningTables()
         {
 
-            List<DiningTable> diningTables = diningTableDB.GetAllDiningTablesDB();
-            return diningTables;
-
+            return diningTableDB.GetAllDiningTablesDB();
         }
 
         public DiningTable GetDiningTable(int id)

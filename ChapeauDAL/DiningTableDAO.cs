@@ -22,10 +22,15 @@ namespace ChapeauDAL
         {
             string query = "SELECT id, status FROM DINING_TABLE WHERE id = @id";
             SqlParameter[] sqlParameters = (new[]
-{
+            {
                 new SqlParameter("@id", id)
             });
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+
+        public void ChangeDiningTableStatusDB(DiningTable diningTable)
+        {
+            // SOME CODEE
         }
 
         private List<DiningTable> ReadTables (DataTable dataTable)
