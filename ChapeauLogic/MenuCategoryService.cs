@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChapeauLogic
 {
-    class MenuCategoryService
+    public class MenuCategoryService
     {
     }
 }
