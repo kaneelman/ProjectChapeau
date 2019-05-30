@@ -11,15 +11,5 @@ namespace ChapeauModel
         public int Id { get; set; }
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
-        public string Password { get; set; }
-        //public string TEST;
-        //Text Text Text Text Text xtTETesTEfdfdf TEDFdtesEgeT
-        //.......
-        //.......////
-        //this is Abdikani's comment :)
-        //this is Abdikani's comment :) USING the ONLY VISUAL STUDIO
-        //this is Abdikani's comment :) by only SYNC...
-
-
     }
 }
