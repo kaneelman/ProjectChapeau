@@ -18,7 +18,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public Employee GetEmployeeByIdDB(int id)
+        public Employee GetEmployeeByIdDB(string id)
         {
             string query = "SELECT id, name, position FROM EMPLOYEE WHERE id = @id";
             SqlParameter[] sqlParameters = (new[]
@@ -67,7 +67,7 @@ namespace ChapeauDAL
 
             foreach(DataRow dr in dataTable.Rows)
             {
-                Employee employee = new Employee((int)dr["id"], (string)dr["name"], (string)dr["position"]);
+                Employee employee = new Employee((string)dr["id"], (string)dr["name"], (string)dr["position"]);
                 Employees.Add(employee);
             }
             return Employees;

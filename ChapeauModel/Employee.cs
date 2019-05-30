@@ -8,18 +8,18 @@ namespace ChapeauModel
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
 
-        public Employee(int id, string name, EmployeePosition position)
+        public Employee(string id, string name, EmployeePosition position)
         {
             Id = id;
             Name = name;
             Position = position;
         }
 
-        public Employee(int id, string name, string position)
+        public Employee(string id, string name, string position)
         {
             Id = id;
             Name = name;

@@ -17,9 +17,19 @@ namespace ChapeauLogic
             return EmployeeDB.GetAllEmployeesDB();
         }
 
-        public Employee GetEmployee(int id)
+        public Employee GetEmployee(string id)
         {
             return EmployeeDB.GetEmployeeByIdDB(id);
+        }
+
+        public bool CheckUsername(string id)
+        {
+            return EmployeeDB.CheckUsernameDB(id);
+        }
+
+        public bool CheckPassword(string id, string password)
+        {
+            return EmployeeDB.CheckPasswordDB(id, password);
         }
     }
 }
