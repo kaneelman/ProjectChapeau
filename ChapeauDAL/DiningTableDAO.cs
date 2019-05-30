@@ -24,11 +24,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                DiningTable DiningTable = new DiningTable()
-                {
-                    Id = (int)dr["id"],
-                    Status = (TableStatus)dr["status"]
-                };
+                DiningTable DiningTable = new DiningTable((int)dr["id"], (string)dr["status"]);
                 Tables.Add(DiningTable);
             }
 

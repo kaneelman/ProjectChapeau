@@ -13,7 +13,7 @@ namespace ChapeauDAL
         public Base()
         {
             // Assigning the connection string and creating a new adapter
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChapeauDatabase"].ConnectionString);
             adapter = new SqlDataAdapter();
         }
 
