@@ -15,14 +15,14 @@ namespace ChapeauDAL
 
         public List<Payment> GetAllPaymentsDB()
         {
-            string query = "SELECT order_id, total, tip, paid_amount, method FROM PAYMENT AS P JOIN ORDER AS O ON order_id = O.id";
+            string query = "SELECT order_id, total, tip, paid_amount, method FROM PAYMENT";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public Payment GetPaymentByOrder(Order order)
         {
-            string query = "SELECT order_id, total, tip, paid_amount, method FROM PAYMENT AS P JOIN ORDER AS O ON order_id = O.id WHERE order_id = @id";
+            string query = "SELECT order_id, total, tip, paid_amount, method FROM PAYMENT";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", order.Id)
@@ -36,9 +36,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                // Will continue here when OrderDAO is done
-
-                Payment payment; // = new Payment(new Order());
+                Payment payment = new Payment(orderDB.GetOrderByIdDB((int)dr["order_id"]), (decimal)dr["total"], (decimal)dr["tip"], (decimal)dr["paid_amount"], (string)dr["method"]);
                 payments.Add(payment);
             }
             return payments;

@@ -11,13 +11,15 @@ namespace ChapeauModel
         private MenuItem item;
 
         public DateTime TimeStamp { get; set; }
+        public int Quantity { get; set; }
         public string Comment { get; set; }
         public OrderStatus Status { get; set; }
 
-        public OrderMenuItem(MenuItem item, DateTime timeStamp, string comment, OrderStatus status)
+        public OrderMenuItem(MenuItem item, DateTime timeStamp, int quantity, string comment, OrderStatus status)
         {
             this.item = item;
             TimeStamp = timeStamp;
+            Quantity = quantity;
             Comment = comment;
             Status = status;
         }

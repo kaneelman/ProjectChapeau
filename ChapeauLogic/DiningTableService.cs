@@ -14,13 +14,17 @@ namespace ChapeauLogic
 
         public List<DiningTable> GetDiningTables()
         {
-
             return diningTableDB.GetAllDiningTablesDB();
         }
 
         public DiningTable GetDiningTable(int id)
         {
             return diningTableDB.GetDiningTableByIdDB(id);
+        }
+
+        public void ChangeDiningTableStatus(DiningTable diningTable)
+        {
+            diningTableDB.ChangeDiningTableStatusDB(diningTable);
         }
     }
 }
