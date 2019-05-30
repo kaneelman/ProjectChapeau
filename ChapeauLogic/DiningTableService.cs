@@ -19,5 +19,10 @@ namespace ChapeauLogic
             return diningTables;
 
         }
+
+        public DiningTable GetDiningTable(int id)
+        {
+            return diningTableDAO.GetTableById(id);
+        }
     }
 }

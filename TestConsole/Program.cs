@@ -27,6 +27,11 @@ namespace TestConsole
                 Console.WriteLine($"{table.Id:00} -- {table.Status.ToString()}");
             }
 
+            Console.WriteLine();
+            DiningTable table5 = diningTableService.GetDiningTable(5);
+            Console.WriteLine($"{table5.Id} -- {table5.Status}");
+
+
 
 
             Console.ReadKey();

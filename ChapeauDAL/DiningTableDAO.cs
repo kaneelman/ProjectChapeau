@@ -18,6 +18,16 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public DiningTable GetTableById(int id)
+        {
+            string query = "SELECT id, status FROM DINING_TABLE WHERE id = @id";
+            SqlParameter[] sqlParameters = (new[]
+{
+                new SqlParameter("@id", id)
+            });
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+
         private List<DiningTable> ReadTables (DataTable dataTable)
         {
             List<DiningTable> Tables = new List<DiningTable>();
