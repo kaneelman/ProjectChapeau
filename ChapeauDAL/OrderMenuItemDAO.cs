@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChapeauModel
+namespace ChapeauDAL
 {
-    public enum TableStatus
+    class OrderMenuItemDAO
     {
-        Free, Occupied, Reserve
     }
 }

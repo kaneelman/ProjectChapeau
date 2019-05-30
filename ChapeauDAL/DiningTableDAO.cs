@@ -9,27 +9,27 @@ using System.Data.SqlClient;// for the query
 
 namespace ChapeauDAL
 {
-    public class DinningTableDAO : Base
+    public class DiningTableDAO : Base
     {
-        public List<DiningTable> GetTables()
+        public List<DiningTable> GetAllTables()
         {
             string query = "SELECT id, status FROM DINING_TABLE ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return GetInfoTable(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<DiningTable> GetInfoTable (DataTable dataTable)
+        private List<DiningTable> ReadTables (DataTable dataTable)
         {
             List<DiningTable> Tables = new List<DiningTable>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                DiningTable DinningTable = new DiningTable()
+                DiningTable DiningTable = new DiningTable()
                 {
                     Id = (int)dr["id"],
                     Status = (TableStatus)dr["status"]
                 };
-                Tables.Add(DinningTable);
+                Tables.Add(DiningTable);
             }
 
             return Tables;

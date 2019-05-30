@@ -27,8 +27,8 @@ namespace ChapeauDAL
                 {
                     Id = (int)dr["id"],
                     Name = (string)dr["name"],
-                    Position = (EmployeePosition)dr["position"],
-                    Password = (string)dr["password"]
+                    Position = (EmployeePosition)dr["position"]
+                    //Password = (string)dr["password"]
                 };
                 Employees.Add(workers);
             }

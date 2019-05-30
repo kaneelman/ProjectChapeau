@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChapeauModel
+namespace ChapeauLogic
 {
-    public enum TableStatus
+    public class EmployeeService
     {
-        Free, Occupied, Reserve
     }
 }
