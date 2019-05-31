@@ -11,8 +11,11 @@ namespace ChapeauDAL
 {
     public class OrderMenuItemDAO : Base
     {
+        //Create menuItemDB object
         MenuItemDAO menuItemDB = new MenuItemDAO();
 
+
+        //Get all OrderMenuItems from the database
         public List<OrderMenuItem> GetAllOrderMenuItemsDB()
         {
             string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT";
@@ -20,6 +23,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //Get a list of OrderMenuItems from the database by the order id
         public List<OrderMenuItem> GetOrderMenuItemsByOrderIdDB(int id)
         {
             string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE order_id = @id";
@@ -30,6 +34,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //Convert OrderMenuItem information from the database to OrderMenuItem objects
         private List<OrderMenuItem> ReadTables(DataTable dataTable)
         {
             List<OrderMenuItem> orderMenuItems = new List<OrderMenuItem>();

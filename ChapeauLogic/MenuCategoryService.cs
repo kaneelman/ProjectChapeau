@@ -12,7 +12,7 @@ namespace ChapeauLogic
     {
         MenuCategoryDAO menuCategoryDB = new MenuCategoryDAO();
 
-        public List<MenuCategory> GetMenuCategories()
+        public List<MenuCategory> GetAllMenuCategories()
         {
             return menuCategoryDB.GetAllMenuCategoriesDB();
         }
@@ -21,5 +21,22 @@ namespace ChapeauLogic
         {
             return menuCategoryDB.GetMenuCategoryByIdDB(id);
         }
+
+        public List<MenuCategory> GetDrinkCategories()
+        {
+            return menuCategoryDB.GetDrinkCategoriesDB();
+        }
+
+        public List<MenuCategory> GetLunchCategories()
+        {
+            return menuCategoryDB.GetLunchCategoriesDB();
+        }
+
+        public List<MenuCategory> GetDinnerCategories()
+        {
+            return menuCategoryDB.GetDinnerCategoriesDB();
+        }
+
+
     }
 }

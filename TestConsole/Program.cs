@@ -18,18 +18,16 @@ namespace TestConsole
 
         void Start()
         {
-            DiningTableService diningTableService = new DiningTableService();
+            MenuCategoryService menuCategoryService = new MenuCategoryService();
 
-            List<DiningTable> someList = diningTableService.GetDiningTables();
+            List<MenuCategory> someList = menuCategoryService.GetDinnerCategories();
 
-            foreach (DiningTable table in someList)
+            foreach (MenuCategory menuCategory in someList)
             {
-                Console.WriteLine($"{table.Id:00} -- {table.Status.ToString()}");
+                Console.WriteLine($"{menuCategory.Id} -- {menuCategory.Name} -- {menuCategory.VAT:0.0}%");
             }
 
-            Console.WriteLine();
-            DiningTable table5 = diningTableService.GetDiningTable(5);
-            Console.WriteLine($"{table5.Id} -- {table5.Status}");
+            Console.WriteLine();          
 
 
 

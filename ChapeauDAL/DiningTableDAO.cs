@@ -11,6 +11,7 @@ namespace ChapeauDAL
 {
     public class DiningTableDAO : Base
     {
+        //Get all DiningTables from the database
         public List<DiningTable> GetAllDiningTablesDB()
         {
             string query = "SELECT id, status FROM DINING_TABLE ";
@@ -18,6 +19,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //Get DiningTable from database by id
         public DiningTable GetDiningTableByIdDB(int id)
         {
             string query = "SELECT id, status FROM DINING_TABLE WHERE id = @id";
@@ -28,11 +30,14 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
+        //Change the status of a table
         public void ChangeDiningTableStatusDB(DiningTable diningTable)
         {
             // SOME CODEE
         }
 
+
+        //Convert DiningTable information from the database to DiningTable objects
         private List<DiningTable> ReadTables (DataTable dataTable)
         {
             List<DiningTable> Tables = new List<DiningTable>();

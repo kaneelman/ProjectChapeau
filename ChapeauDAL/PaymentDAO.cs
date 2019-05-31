@@ -11,8 +11,10 @@ namespace ChapeauDAL
 {
     public class PaymentDAO : Base
     {
+        //Create OrderDAO object
         OrderDAO orderDB = new OrderDAO();
 
+        //Get all Payments from the database
         public List<Payment> GetAllPaymentsDB()
         {
             string query = "SELECT order_id, total, tip, paid_amount, method FROM PAYMENT";
@@ -20,6 +22,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //Get a payment from the database by it's order
         public Payment GetPaymentByOrder(Order order)
         {
             string query = "SELECT order_id, total, tip, paid_amount, method FROM PAYMENT";
@@ -30,6 +33,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
+        //Convert Payment information from the database to Payment objects
         private List<Payment> ReadTables(DataTable dataTable)
         {
             List<Payment> payments = new List<Payment>();
