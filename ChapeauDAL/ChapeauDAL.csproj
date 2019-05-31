@@ -58,6 +58,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DALDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
