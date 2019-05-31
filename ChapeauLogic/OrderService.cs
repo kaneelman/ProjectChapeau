@@ -28,5 +28,13 @@ namespace ChapeauLogic
         {
             return orderDB.GetActiveOrderByTableDB(diningTable);
         }
+
+        //add order
+
+        //delete order
+
+        //check orders
+
+
     }
 }
