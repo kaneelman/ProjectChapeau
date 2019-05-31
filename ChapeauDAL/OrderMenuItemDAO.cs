@@ -34,65 +34,6 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-
-
-        //Stuck on this
-
-        ////Get a list of OrderMenuItems from the database by the order id
-        //public List<OrderMenuItem> GetKitchenBeingPreparedItemsDB()
-        //{
-        //    string query = "SELECT order_id, item_id, quantity, date_time, status, comment FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS M ON O.item_id = M.id WHERE status = 'BeingPrepared' AND category LIKE 'Lu%' OR category LIKE 'Di%'";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0]; ;
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
-
-        ////Get a list of OrderMenuItems from the database by the order id
-        //public List<OrderMenuItem> GetKitchenReadyToServeItemsDB()
-        //{
-        //    string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE status = 'ReadyToServe'";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
-
-        ////Get a list of OrderMenuItems from the database by the order id
-        //public List<OrderMenuItem> GetKitchenServedMenuItemsDB()
-        //{
-        //    string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE status = 'Served'";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
-
-
-
-        ////Get a list of OrderMenuItems from the database by the order id
-        //public List<OrderMenuItem> GetBarBeingPreparedItemsDB()
-        //{
-        //    string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE status = 'BeingPrepared'";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
-
-        ////Get a list of OrderMenuItems from the database by the order id
-        //public List<OrderMenuItem> GetBarReadyToServeItemsDB()
-        //{
-        //    string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE status = 'ReadyToServe'";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
-
-        ////Get a list of OrderMenuItems from the database by the order id
-        //public List<OrderMenuItem> GetBarServedItemsDB()
-        //{
-        //    string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE status = 'Served'";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
-
-
-
-
-
-
         //Create OrderMenuItem in the database
         public void InsertOrderMenuItemDB(OrderMenuItem orderMenuItem)
         {

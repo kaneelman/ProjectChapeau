@@ -46,9 +46,56 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
-        public List<Order> GetAllKitchenOrders()
+
+
+        //WORK IN PROGRESS
+        public List<Order> GetKitchenBeingPreparedOrdersDB()
         {
-            string query = "SELECT id, handled_by, comment, [table] FROM [ORDER] WHERE ";
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        public List<Order> GetKitchenReadyToServeOrderDB()
+        {
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        public List<Order> GetKitchenServedOrderDB()
+        {
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+
+
+
+        //WORK IN PROGRESS
+        public List<Order> GetBarBeingPreparedItemsDB()
+        {
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        public List<Order> GetBarReadyToServeItemsDB()
+        {
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        public List<Order> GetBarServedItemsDB()
+        {
+            string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
