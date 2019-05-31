@@ -15,6 +15,7 @@ namespace ChapeauUI
         public LoginForm()
         {
             InitializeComponent();
+            EmployeeService 
         }
 
         private void button1_Click(object sender, EventArgs e)

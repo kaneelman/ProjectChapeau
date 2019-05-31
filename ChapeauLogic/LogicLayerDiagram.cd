@@ -36,14 +36,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ChapeauLogic.OrderService">
-    <Position X="4.25" Y="4.75" Width="1.5" />
+    <Position X="4.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAg=</HashCode>
       <FileName>OrderService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ChapeauLogic.PaymentService">
-    <Position X="8.75" Y="2.5" Width="1.5" />
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PaymentService.cs</FileName>
