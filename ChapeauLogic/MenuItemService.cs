@@ -28,5 +28,9 @@ namespace ChapeauLogic
             return menuItemDB.GetMenuItemsByCategory(category);
         }
 
+        public void ChangeStock(MenuItem MenuItem)
+        {
+            menuItemDB.ChangeStockDB(MenuItem);
+        }
     }
 }

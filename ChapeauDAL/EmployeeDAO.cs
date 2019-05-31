@@ -65,17 +65,6 @@ namespace ChapeauDAL
             return true;
         }
 
-        //No sure if this will be used, no service yet
-        public Employee GetEmployeeByCodeDB(string password)
-        {
-            string query = "SELECT id, name, position FROM EMPLOYEE WHERE password = @password";
-            SqlParameter[] sqlParameters = (new[]
-            {
-                new SqlParameter("@password", password)
-            });
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
-        }
-
         //Convert Employee information from database into Employee objects
         private List<Employee> ReadTables(DataTable dataTable)
         {

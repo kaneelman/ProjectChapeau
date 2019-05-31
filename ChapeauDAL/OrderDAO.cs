@@ -57,7 +57,7 @@ namespace ChapeauDAL
         }
 
 
-        public List<Order> GetKitchenReadyToServeOrderDB()
+        public List<Order> GetKitchenReadyToServeOrdersDB()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -65,7 +65,7 @@ namespace ChapeauDAL
         }
 
 
-        public List<Order> GetKitchenServedOrderDB()
+        public List<Order> GetKitchenServedOrdersDB()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -77,7 +77,7 @@ namespace ChapeauDAL
 
 
         //WORK IN PROGRESS
-        public List<Order> GetBarBeingPreparedItemsDB()
+        public List<Order> GetBarBeingPreparedOrdersDB()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -85,7 +85,7 @@ namespace ChapeauDAL
         }
 
 
-        public List<Order> GetBarReadyToServeItemsDB()
+        public List<Order> GetBarReadyToServeOrdersDB()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -93,7 +93,7 @@ namespace ChapeauDAL
         }
 
 
-        public List<Order> GetBarServedItemsDB()
+        public List<Order> GetBarServedOrdersDB()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];

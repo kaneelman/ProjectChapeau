@@ -23,5 +23,10 @@ namespace ChapeauLogic
         {
             return paymentDB.GetPaymentByOrder(order);
         }
+
+        public void InsertPayment(Payment payment)
+        {
+            paymentDB.InsertPaymentDB(payment);
+        }
     }
 }

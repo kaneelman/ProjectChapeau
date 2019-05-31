@@ -29,11 +29,44 @@ namespace ChapeauLogic
             return orderDB.GetActiveOrderByTableDB(diningTable);
         }
 
-        //add order
 
-        //delete order
 
-        //check orders
+        public List<Order> GetKitchenBeingPreparedOrders()
+        {
+            return orderDB.GetKitchenBeingPreparedOrdersDB();
+        }
+
+        public List<Order> GetKitchenReadyToServeOrders()
+        {
+            return orderDB.GetKitchenReadyToServeOrdersDB();
+        }
+
+        public List<Order> GetKitchenServedOrders()
+        {
+            return orderDB.GetKitchenServedOrdersDB();
+        }
+        
+
+
+        public List<Order> GetBarBeingPreparedOrders()
+        {
+            return orderDB.GetBarBeingPreparedOrdersDB();
+        }
+
+        public List<Order> GetBarReadyToServeOrders()
+        {
+            return orderDB.GetBarReadyToServeOrdersDB();
+        }
+
+        public List<Order> GetBarServedORders()
+        {
+            return orderDB.GetBarServedOrdersDB();
+        }
+
+        public void InsertOrder(Order order)
+        {
+            orderDB.InsertOrderDB(order);
+        }
 
 
     }

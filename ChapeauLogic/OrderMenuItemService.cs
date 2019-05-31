@@ -22,5 +22,20 @@ namespace ChapeauLogic
         {
             return orderMenuItemDB.GetOrderMenuItemsByOrderIdDB(orderId);
         }
+
+        public void InsertOrderMenuItem(OrderMenuItem orderMenuItem)
+        {
+            orderMenuItemDB.InsertOrderMenuItemDB(orderMenuItem);
+        }
+
+        public void ChangeQuantityOrderMenuItem(OrderMenuItem orderMenuItem)
+        {
+            orderMenuItemDB.ChangeQuantityOrderMenuItemDB(orderMenuItem);
+        }
+
+        public void ChangeOrderMenuItemStatus(List<OrderMenuItem> orderMenuItems)
+        {
+            orderMenuItemDB.ChangeOrderMenuItemStatusDB(orderMenuItems);
+        }
     }
 }
