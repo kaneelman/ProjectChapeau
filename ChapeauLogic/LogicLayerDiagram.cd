@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ChapeauLogic.PaymentService">
-    <Position X="0.5" Y="5" Width="1.5" />
+    <Position X="8.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PaymentService.cs</FileName>
