@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.txtBox_ID = new System.Windows.Forms.TextBox();
             this.txtBox_Password = new System.Windows.Forms.TextBox();
             this.btn_Login = new System.Windows.Forms.Button();
             this.lbl_ID = new System.Windows.Forms.Label();
             this.lbl_Password = new System.Windows.Forms.Label();
-            this.picBox_Chapeau = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).BeginInit();
             this.SuspendLayout();
+            // 
+            // picBox_Chapeau
+            // 
+            this.picBox_Chapeau.Location = new System.Drawing.Point(238, 60);
             // 
             // txtBox_ID
             // 
@@ -79,21 +81,11 @@
             this.lbl_Password.TabIndex = 4;
             this.lbl_Password.Text = "Password";
             // 
-            // picBox_Chapeau
-            // 
-            this.picBox_Chapeau.Image = ((System.Drawing.Image)(resources.GetObject("picBox_Chapeau.Image")));
-            this.picBox_Chapeau.Location = new System.Drawing.Point(238, 61);
-            this.picBox_Chapeau.Name = "picBox_Chapeau";
-            this.picBox_Chapeau.Size = new System.Drawing.Size(388, 208);
-            this.picBox_Chapeau.TabIndex = 5;
-            this.picBox_Chapeau.TabStop = false;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 562);
-            this.Controls.Add(this.picBox_Chapeau);
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_ID);
             this.Controls.Add(this.btn_Login);
@@ -102,6 +94,12 @@
             this.Name = "LoginForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.SetChildIndex(this.txtBox_ID, 0);
+            this.Controls.SetChildIndex(this.txtBox_Password, 0);
+            this.Controls.SetChildIndex(this.btn_Login, 0);
+            this.Controls.SetChildIndex(this.lbl_ID, 0);
+            this.Controls.SetChildIndex(this.lbl_Password, 0);
+            this.Controls.SetChildIndex(this.picBox_Chapeau, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -115,7 +113,6 @@
         private System.Windows.Forms.Button btn_Login;
         private System.Windows.Forms.Label lbl_ID;
         private System.Windows.Forms.Label lbl_Password;
-        private System.Windows.Forms.PictureBox picBox_Chapeau;
     }
 }
 

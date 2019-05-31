@@ -16,5 +16,10 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+
+        private void BartenderForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
