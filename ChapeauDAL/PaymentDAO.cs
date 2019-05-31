@@ -33,6 +33,12 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
+        //Create new payment in database
+        public void InsertPaymentDB(Payment payment)
+        {
+            //Somecode
+        }
+
         //Convert Payment information from the database to Payment objects
         private List<Payment> ReadTables(DataTable dataTable)
         {

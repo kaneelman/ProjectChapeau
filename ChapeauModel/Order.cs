@@ -24,6 +24,15 @@ namespace ChapeauModel
             content = new List<OrderMenuItem>();
         }
 
+        //Çonstructor for new orders, because the Id had yet to be generated
+        public Order(Employee employee, string comment, DiningTable table)
+        {
+            HandledBy = employee;
+            Comment = comment;
+            Table = table;
+            content = new List<OrderMenuItem>();
+        }
+
         public void AddOrderItem(OrderMenuItem item)
         {
             content.Add(item);

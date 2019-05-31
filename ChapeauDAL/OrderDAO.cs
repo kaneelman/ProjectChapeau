@@ -46,6 +46,21 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
+        public List<Order> GetAllKitchenOrders()
+        {
+            string query = "SELECT id, handled_by, comment, [table] FROM [ORDER] WHERE ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        //Create new Order in the database
+        public void InsertOrderDB (Order order)
+        {
+
+            //SomeCode
+
+        }
+
         //Convert Order information from database to Order objects
         private List<Order> ReadTables(DataTable dataTable)
         {
@@ -55,9 +70,12 @@ namespace ChapeauDAL
             {
                 Order order = new Order((int)dr["id"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), (string)dr["comment"], diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
                 order.AddOrderItems(orderMenuItemDB.GetOrderMenuItemsByOrderIdDB((int)dr["id"]));
+                orders.Add(order);
             }
             return orders;
         }
+
+
 
 
     }
