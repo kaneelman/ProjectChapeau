@@ -6,6 +6,9 @@
       <HashCode>AAAAIAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DiningTableService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="diningTableDB" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauLogic.EmployeeService">
     <Position X="2.25" Y="0.5" Width="1.5" />
@@ -13,20 +16,29 @@
       <HashCode>AAgAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>EmployeeService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="EmployeeDB" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauLogic.MenuCategoryService">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="1.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAEAAAAEAAAACAAAEAgA=</HashCode>
       <FileName>MenuCategoryService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="menuCategoryDB" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauLogic.MenuItemService">
-    <Position X="0.5" Y="2.75" Width="1.5" />
+    <Position X="9" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAACAAAAAEAAAABAAAA=</HashCode>
       <FileName>MenuItemService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="menuItemDB" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauLogic.OrderMenuItemService">
     <Position X="2.25" Y="3" Width="1.5" />
@@ -34,20 +46,50 @@
       <HashCode>AAAAAAAAACAAAAAAAABAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>OrderMenuItemService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="orderMenuItemDB" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauLogic.OrderService">
-    <Position X="4.25" Y="3" Width="1.5" />
+    <Position X="4" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAg=</HashCode>
       <FileName>OrderService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="orderDB" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauLogic.PaymentService">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="11.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PaymentService.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.MenuCategoryDAO" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAL.OrderDAO" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAL.OrderMenuItemDAO" Collapsed="true">
+    <Position X="5" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAL.MenuItemDAO" Collapsed="true">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAL.DiningTableDAO" Collapsed="true">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAL.EmployeeDAO" Collapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
