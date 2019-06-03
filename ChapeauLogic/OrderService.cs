@@ -14,6 +14,9 @@ namespace ChapeauLogic
     {
         OrderDAO orderDB = new OrderDAO();
 
+        //to get all the items ordered  from for the table
+        MenuItemDAO trial = new MenuItemDAO();
+
         public List<Order> GetAllOrders()
         {
             return orderDB.GetAllOrdersDB();
@@ -28,7 +31,12 @@ namespace ChapeauLogic
         {
             return orderDB.GetActiveOrderByTableDB(diningTable);
         }
-
+        
+        //get all the order for a table selected
+        public Order GetItemsOrderByTable(DiningTable diningTable)
+        {
+            return
+        }
 
 
         public List<Order> GetKitchenBeingPreparedOrders()

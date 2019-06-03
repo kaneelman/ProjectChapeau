@@ -38,10 +38,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // picBox_Chapeau
-            // 
-
-            // 
             // Btn_LogOut
             // 
             this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
@@ -95,7 +91,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(256, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(271, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(417, 234);
