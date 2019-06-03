@@ -10,16 +10,6 @@
       <Property Name="Status" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ChapeauModel.Employee">
-    <Position X="10.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Employee.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Position" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="ChapeauModel.MenuCategory">
     <Position X="0.75" Y="5" Width="2" />
     <TypeIdentifier>
@@ -44,7 +34,6 @@
       <FileName>Order.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="HandledBy" />
       <Property Name="Table" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
@@ -70,6 +59,16 @@
     <ShowAsAssociation>
       <Property Name="Order" />
       <Property Name="Method" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauModel.Employee">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Position" />
     </ShowAsAssociation>
   </Class>
   <Enum Name="ChapeauModel.EmployeePosition">

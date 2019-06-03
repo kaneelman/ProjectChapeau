@@ -32,5 +32,8 @@ namespace ChapeauLogic
         {
             paymentDB.InsertPaymentDB(payment);
         }
+
+        //make a method that collects all the order by table
     }
+    //make a calculation methods..
 }

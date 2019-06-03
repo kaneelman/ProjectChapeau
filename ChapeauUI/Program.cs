@@ -16,10 +16,8 @@ namespace ChapeauUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BartenderForm());
+            Application.Run(new OrderForm());
 
-            //to try the paymentview
-            //Application.Run(new PaymentForm());
 
         }
     }
