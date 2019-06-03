@@ -33,7 +33,7 @@ namespace ChapeauDAL
         //check if user exists
         public bool CheckUsernameDB(string id)
         {
-            string query = "SELECT id FROM EMPLOYEE WHERE id = @id";
+            string query = "SELECT id, name, position FROM EMPLOYEE WHERE id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id)
@@ -50,7 +50,7 @@ namespace ChapeauDAL
         //Check if password fits the user
         public bool CheckPasswordDB(string id, string password)
         {
-            string query = "SELECT id, password FROM EMPLOYEE WHERE id = @id AND password = @password";
+            string query = "SELECT id, name, position, password FROM EMPLOYEE WHERE id = @id AND password = @password";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id),
