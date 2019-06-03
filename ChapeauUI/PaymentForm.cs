@@ -25,6 +25,12 @@ namespace ChapeauUI
         {
             //ListViewItem ListOfOrders = new ListViewItem();
 
+            ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
+            ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
+
+            ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(1, ChapeauModel.TableStatus.Occupied));
+
+
             //the list view design
             lst_Payment.GridLines = true;
             lst_Payment.View = View.Details;
@@ -32,6 +38,12 @@ namespace ChapeauUI
             lst_Payment.Columns.Add("Name");
             lst_Payment.Columns.Add("Quantity");
             lst_Payment.Columns.Add("Price");
+
+            foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
+            {
+                ListViewItem li = new ListViewItem(m.GetMenuItem().Name);
+
+            }
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
