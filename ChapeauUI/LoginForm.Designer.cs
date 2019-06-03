@@ -50,7 +50,7 @@
             this.txtBox_ID.Location = new System.Drawing.Point(284, 280);
             this.txtBox_ID.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtBox_ID.Name = "txtBox_ID";
-            this.txtBox_ID.Size = new System.Drawing.Size(201, 20);
+            this.txtBox_ID.Size = new System.Drawing.Size(201, 26);
             this.txtBox_ID.TabIndex = 0;
             // 
             // txtBox_Password
@@ -58,7 +58,7 @@
             this.txtBox_Password.Location = new System.Drawing.Point(284, 321);
             this.txtBox_Password.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtBox_Password.Name = "txtBox_Password";
-            this.txtBox_Password.Size = new System.Drawing.Size(201, 20);
+            this.txtBox_Password.Size = new System.Drawing.Size(201, 26);
             this.txtBox_Password.TabIndex = 1;
             // 
             // btn_Login
@@ -77,7 +77,7 @@
             this.lbl_ID.Location = new System.Drawing.Point(188, 280);
             this.lbl_ID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_ID.Name = "lbl_ID";
-            this.lbl_ID.Size = new System.Drawing.Size(67, 13);
+            this.lbl_ID.Size = new System.Drawing.Size(100, 20);
             this.lbl_ID.TabIndex = 3;
             this.lbl_ID.Text = "Employee ID";
             // 
@@ -87,15 +87,14 @@
             this.lbl_Password.Location = new System.Drawing.Point(188, 325);
             this.lbl_Password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Password.Name = "lbl_Password";
-            this.lbl_Password.Size = new System.Drawing.Size(53, 13);
+            this.lbl_Password.Size = new System.Drawing.Size(78, 20);
             this.lbl_Password.TabIndex = 4;
             this.lbl_Password.Text = "Password";
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 456);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_ID);
             this.Controls.Add(this.btn_Login);
