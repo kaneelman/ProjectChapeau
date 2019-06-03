@@ -28,20 +28,142 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
+            this.flpnl_MainCatagories = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpnl_SubCatagories = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpnl_SubCatagoryItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.lst_NewOrderItems = new System.Windows.Forms.ListView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_NewOrderClearItems = new System.Windows.Forms.Button();
+            this.btn_NewOrderItemDelete = new System.Windows.Forms.Button();
+            this.btn_NewOrderBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(362, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(239, 39);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "ORDER VIEW";
+            // 
+            // flpnl_MainCatagories
+            // 
+            this.flpnl_MainCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flpnl_MainCatagories.Location = new System.Drawing.Point(471, 116);
+            this.flpnl_MainCatagories.Name = "flpnl_MainCatagories";
+            this.flpnl_MainCatagories.Size = new System.Drawing.Size(111, 283);
+            this.flpnl_MainCatagories.TabIndex = 9;
+            // 
+            // flpnl_SubCatagories
+            // 
+            this.flpnl_SubCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flpnl_SubCatagories.Location = new System.Drawing.Point(599, 116);
+            this.flpnl_SubCatagories.Name = "flpnl_SubCatagories";
+            this.flpnl_SubCatagories.Size = new System.Drawing.Size(119, 283);
+            this.flpnl_SubCatagories.TabIndex = 10;
+            // 
+            // flpnl_SubCatagoryItems
+            // 
+            this.flpnl_SubCatagoryItems.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flpnl_SubCatagoryItems.Location = new System.Drawing.Point(724, 116);
+            this.flpnl_SubCatagoryItems.Name = "flpnl_SubCatagoryItems";
+            this.flpnl_SubCatagoryItems.Size = new System.Drawing.Size(278, 438);
+            this.flpnl_SubCatagoryItems.TabIndex = 11;
+            // 
+            // lst_NewOrderItems
+            // 
+            this.lst_NewOrderItems.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lst_NewOrderItems.Location = new System.Drawing.Point(33, 116);
+            this.lst_NewOrderItems.Name = "lst_NewOrderItems";
+            this.lst_NewOrderItems.Size = new System.Drawing.Size(389, 438);
+            this.lst_NewOrderItems.TabIndex = 12;
+            this.lst_NewOrderItems.UseCompatibleStateImageBehavior = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(42, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 27);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Selected items";
+            // 
+            // btn_NewOrderClearItems
+            // 
+            this.btn_NewOrderClearItems.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(330, 588);
+            this.btn_NewOrderClearItems.Name = "btn_NewOrderClearItems";
+            this.btn_NewOrderClearItems.Size = new System.Drawing.Size(92, 60);
+            this.btn_NewOrderClearItems.TabIndex = 14;
+            this.btn_NewOrderClearItems.Text = "Clear";
+            this.btn_NewOrderClearItems.UseVisualStyleBackColor = true;
+            // 
+            // btn_NewOrderItemDelete
+            // 
+            this.btn_NewOrderItemDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(188, 589);
+            this.btn_NewOrderItemDelete.Name = "btn_NewOrderItemDelete";
+            this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(95, 59);
+            this.btn_NewOrderItemDelete.TabIndex = 15;
+            this.btn_NewOrderItemDelete.Text = "Delete";
+            this.btn_NewOrderItemDelete.UseVisualStyleBackColor = true;
+            // 
+            // btn_NewOrderBack
+            // 
+            this.btn_NewOrderBack.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NewOrderBack.Location = new System.Drawing.Point(33, 589);
+            this.btn_NewOrderBack.Name = "btn_NewOrderBack";
+            this.btn_NewOrderBack.Size = new System.Drawing.Size(100, 59);
+            this.btn_NewOrderBack.TabIndex = 16;
+            this.btn_NewOrderBack.Text = "Back";
+            this.btn_NewOrderBack.UseVisualStyleBackColor = true;
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.btn_NewOrderBack);
+            this.Controls.Add(this.btn_NewOrderItemDelete);
+            this.Controls.Add(this.btn_NewOrderClearItems);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lst_NewOrderItems);
+            this.Controls.Add(this.flpnl_SubCatagoryItems);
+            this.Controls.Add(this.flpnl_SubCatagories);
+            this.Controls.Add(this.flpnl_MainCatagories);
+            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "OrderForm";
             this.Text = "OrderForm";
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.flpnl_MainCatagories, 0);
+            this.Controls.SetChildIndex(this.flpnl_SubCatagories, 0);
+            this.Controls.SetChildIndex(this.flpnl_SubCatagoryItems, 0);
+            this.Controls.SetChildIndex(this.lst_NewOrderItems, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.btn_NewOrderClearItems, 0);
+            this.Controls.SetChildIndex(this.btn_NewOrderItemDelete, 0);
+            this.Controls.SetChildIndex(this.btn_NewOrderBack, 0);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flpnl_MainCatagories;
+        private System.Windows.Forms.FlowLayoutPanel flpnl_SubCatagories;
+        private System.Windows.Forms.FlowLayoutPanel flpnl_SubCatagoryItems;
+        private System.Windows.Forms.ListView lst_NewOrderItems;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_NewOrderClearItems;
+        private System.Windows.Forms.Button btn_NewOrderItemDelete;
+        private System.Windows.Forms.Button btn_NewOrderBack;
     }
 }
