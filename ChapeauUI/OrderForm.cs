@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class OrderForm : Form
+    public partial class OrderForm : BaseForm
     {
         public OrderForm()
         {
