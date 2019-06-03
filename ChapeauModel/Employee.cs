@@ -12,5 +12,36 @@ namespace ChapeauModel
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
 
+        public Employee(string id, string name, EmployeePosition employeePosition)
+        {
+            Id = id;
+            Name = name;
+            Position = employeePosition;
+        }
+
+        public Employee(string id, string name, string employeePosition)
+        {
+            Id = id;
+            Name = name;
+
+            switch (employeePosition)
+            {
+                case "Bartender":
+                    Position = EmployeePosition.Bartender;
+                    break;
+                case "Waiter":
+                    Position = EmployeePosition.Waiter;
+                    break;
+                case "Chef":
+                    Position = EmployeePosition.Chef;
+                    break;
+                case "Manager":
+                    Position = EmployeePosition.Manager;
+                    break;
+                default:
+                    throw new Exception("Wrong string input for employee position");
+            }
+        }
+
     }
 }

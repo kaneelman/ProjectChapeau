@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class LoginForm : BaseForm
+    public partial class TableViewForm : BaseForm
     {
-        public LoginForm()
+        public TableViewForm()
         {
-            this.Btn_LogOut.Hide();
             InitializeComponent();
-            
-        }
-
-        private void btn_Login_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
