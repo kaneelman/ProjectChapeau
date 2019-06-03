@@ -12,6 +12,11 @@ namespace ChapeauModel
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
 
+        public Employee()
+        {
+
+        }
+
         public Employee(string id, string name, EmployeePosition employeePosition)
         {
             Id = id;

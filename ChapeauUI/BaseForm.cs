@@ -14,7 +14,7 @@ namespace ChapeauUI
 {
     public partial class BaseForm : Form
     {
-        Employee LoggedInEmployee;
+        protected Employee LoggedInEmployee;
 
         public BaseForm()
         {

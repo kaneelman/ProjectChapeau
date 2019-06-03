@@ -52,6 +52,9 @@
     <Compile Include="BartenderForm.Designer.cs">
       <DependentUpon>BartenderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
