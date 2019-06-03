@@ -10,6 +10,10 @@ using System.Collections.ObjectModel;
 
 namespace ChapeauLogic
 {
+
+    /// <summary>
+    /// gerwin's idea that its nicer to do the calculations here, so that when the code is changed into a console app, the code is already there
+    /// </summary>
     public class PaymentService
     {
         PaymentDAO paymentDB = new PaymentDAO();
