@@ -47,7 +47,12 @@
             this.RadioBtn_visa = new System.Windows.Forms.RadioButton();
             this.RadioBtn_PIN = new System.Windows.Forms.RadioButton();
             this.RadioBtn_Cash = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).BeginInit();
             this.SuspendLayout();
+            // 
+            // picBox_Chapeau
+            // 
+            this.picBox_Chapeau.Location = new System.Drawing.Point(152, 111);
             // 
             // txtBox_TotalAmount
             // 
@@ -97,6 +102,7 @@
             this.listView_Payment.Size = new System.Drawing.Size(438, 593);
             this.listView_Payment.TabIndex = 6;
             this.listView_Payment.UseCompatibleStateImageBehavior = false;
+            this.listView_Payment.SelectedIndexChanged += new System.EventHandler(this.listView_Payment_SelectedIndexChanged);
             // 
             // lbl_serverName
             // 
@@ -143,11 +149,13 @@
             // 
             // richTxtBox_FeedBack
             // 
+            this.richTxtBox_FeedBack.BackColor = System.Drawing.SystemColors.Window;
+            this.richTxtBox_FeedBack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTxtBox_FeedBack.Location = new System.Drawing.Point(507, 323);
             this.richTxtBox_FeedBack.Name = "richTxtBox_FeedBack";
             this.richTxtBox_FeedBack.Size = new System.Drawing.Size(241, 130);
             this.richTxtBox_FeedBack.TabIndex = 15;
-            this.richTxtBox_FeedBack.Text = "";
+            this.richTxtBox_FeedBack.Text = "Comments...";
             // 
             // btn_Pay
             // 
@@ -157,11 +165,12 @@
             this.btn_Pay.TabIndex = 16;
             this.btn_Pay.Text = "Pay";
             this.btn_Pay.UseVisualStyleBackColor = true;
+            this.btn_Pay.Click += new System.EventHandler(this.btn_Pay_Click);
             // 
             // lbl_TotalVAT9
             // 
             this.lbl_TotalVAT9.AutoSize = true;
-            this.lbl_TotalVAT9.Location = new System.Drawing.Point(504, 105);
+            this.lbl_TotalVAT9.Location = new System.Drawing.Point(503, 124);
             this.lbl_TotalVAT9.Name = "lbl_TotalVAT9";
             this.lbl_TotalVAT9.Size = new System.Drawing.Size(59, 17);
             this.lbl_TotalVAT9.TabIndex = 17;
@@ -170,7 +179,7 @@
             // lbl_TotalVAT21
             // 
             this.lbl_TotalVAT21.AutoSize = true;
-            this.lbl_TotalVAT21.Location = new System.Drawing.Point(504, 138);
+            this.lbl_TotalVAT21.Location = new System.Drawing.Point(503, 157);
             this.lbl_TotalVAT21.Name = "lbl_TotalVAT21";
             this.lbl_TotalVAT21.Size = new System.Drawing.Size(67, 17);
             this.lbl_TotalVAT21.TabIndex = 18;
@@ -179,7 +188,7 @@
             // lbl_TotalVAT
             // 
             this.lbl_TotalVAT.AutoSize = true;
-            this.lbl_TotalVAT.Location = new System.Drawing.Point(504, 168);
+            this.lbl_TotalVAT.Location = new System.Drawing.Point(503, 187);
             this.lbl_TotalVAT.Name = "lbl_TotalVAT";
             this.lbl_TotalVAT.Size = new System.Drawing.Size(71, 17);
             this.lbl_TotalVAT.TabIndex = 19;
@@ -242,6 +251,28 @@
             this.Name = "PaymentForm";
             this.Text = "PaymentForm";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
+            this.Controls.SetChildIndex(this.txtBox_TotalAmount, 0);
+            this.Controls.SetChildIndex(this.txtBox_Tip, 0);
+            this.Controls.SetChildIndex(this.lbl_totalAmount, 0);
+            this.Controls.SetChildIndex(this.lbl_Tip, 0);
+            this.Controls.SetChildIndex(this.lbl_Feedbak, 0);
+            this.Controls.SetChildIndex(this.listView_Payment, 0);
+            this.Controls.SetChildIndex(this.lbl_serverName, 0);
+            this.Controls.SetChildIndex(this.txtBox_ServerName, 0);
+            this.Controls.SetChildIndex(this.lbl_Payment, 0);
+            this.Controls.SetChildIndex(this.lbl_TblNr, 0);
+            this.Controls.SetChildIndex(this.lbl_OrdNr, 0);
+            this.Controls.SetChildIndex(this.richTxtBox_FeedBack, 0);
+            this.Controls.SetChildIndex(this.btn_Pay, 0);
+            this.Controls.SetChildIndex(this.lbl_TotalVAT9, 0);
+            this.Controls.SetChildIndex(this.lbl_TotalVAT21, 0);
+            this.Controls.SetChildIndex(this.lbl_TotalVAT, 0);
+            this.Controls.SetChildIndex(this.RadioBtn_visa, 0);
+            this.Controls.SetChildIndex(this.RadioBtn_PIN, 0);
+            this.Controls.SetChildIndex(this.RadioBtn_Cash, 0);
+            this.Controls.SetChildIndex(this.picBox_Chapeau, 0);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
