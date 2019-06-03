@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
+using ChapeauLogic;
 
 namespace ChapeauUI
 {
@@ -15,10 +17,13 @@ namespace ChapeauUI
     {
         int size = 110;
 
-        public OrderForm()
+        public OrderForm(Employee LoggedUser)
         {
             InitializeComponent();
+            LoggedInEmployee = LoggedUser;
+
             DisplayMainCatagories();
+
        
         }
 
