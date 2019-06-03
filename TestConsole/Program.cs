@@ -13,7 +13,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             Program myProgram = new Program();
-            myProgram.Start();
+            myProgram.Start2();
         }
 
         void Start()
@@ -30,8 +30,22 @@ namespace TestConsole
             Console.WriteLine();          
 
 
+            Console.ReadKey();
 
+        }
+        //to check for payment data...
+        void Start2()
+        {
+            OrderService payment = new OrderService();
+            MenuItemService menuItemDB = new MenuItemService();
 
+            Order order = payment.GetCompleteActiveOrderByTable(new DiningTable(1, TableStatus.Occupied));
+
+            foreach (OrderMenuItem m in order.GetOrderMenuItems())
+            {
+                Console.WriteLine($"{m.GetMenuItem().Name}");
+            }
+            
             Console.ReadKey();
 
         }
