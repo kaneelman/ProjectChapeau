@@ -14,6 +14,7 @@ namespace ChapeauUI
     {
         public PaymentForm()
         {
+            this.picBox_Chapeau.Hide();
             InitializeComponent();
         }
 
