@@ -95,5 +95,10 @@ namespace ChapeauUI
         {
 
         }
+
+        private void btn_ConfirmOrder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
