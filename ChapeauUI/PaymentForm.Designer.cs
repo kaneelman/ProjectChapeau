@@ -36,14 +36,17 @@
             this.listView_Payment = new System.Windows.Forms.ListView();
             this.lbl_serverName = new System.Windows.Forms.Label();
             this.txtBox_ServerName = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lbl_Payment = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.lbl_TblNr = new System.Windows.Forms.Label();
             this.lbl_OrdNr = new System.Windows.Forms.Label();
             this.richTxtBox_FeedBack = new System.Windows.Forms.RichTextBox();
             this.btn_Pay = new System.Windows.Forms.Button();
+            this.lbl_TotalVAT9 = new System.Windows.Forms.Label();
+            this.lbl_TotalVAT21 = new System.Windows.Forms.Label();
+            this.lbl_TotalVAT = new System.Windows.Forms.Label();
+            this.RadioBtn_visa = new System.Windows.Forms.RadioButton();
+            this.RadioBtn_PIN = new System.Windows.Forms.RadioButton();
+            this.RadioBtn_Cash = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // txtBox_TotalAmount
@@ -111,16 +114,6 @@
             this.txtBox_ServerName.Size = new System.Drawing.Size(100, 22);
             this.txtBox_ServerName.TabIndex = 8;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(507, 504);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(95, 21);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Visa/Amex";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // lbl_Payment
             // 
             this.lbl_Payment.AutoSize = true;
@@ -129,26 +122,6 @@
             this.lbl_Payment.Size = new System.Drawing.Size(63, 17);
             this.lbl_Payment.TabIndex = 10;
             this.lbl_Payment.Text = "Payment";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(507, 545);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(52, 21);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "PIN";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(507, 585);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(62, 21);
-            this.checkBox3.TabIndex = 12;
-            this.checkBox3.Text = "Cash";
-            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // lbl_TblNr
             // 
@@ -185,19 +158,79 @@
             this.btn_Pay.Text = "Pay";
             this.btn_Pay.UseVisualStyleBackColor = true;
             // 
+            // lbl_TotalVAT9
+            // 
+            this.lbl_TotalVAT9.AutoSize = true;
+            this.lbl_TotalVAT9.Location = new System.Drawing.Point(504, 105);
+            this.lbl_TotalVAT9.Name = "lbl_TotalVAT9";
+            this.lbl_TotalVAT9.Size = new System.Drawing.Size(59, 17);
+            this.lbl_TotalVAT9.TabIndex = 17;
+            this.lbl_TotalVAT9.Text = "VAT 9%";
+            // 
+            // lbl_TotalVAT21
+            // 
+            this.lbl_TotalVAT21.AutoSize = true;
+            this.lbl_TotalVAT21.Location = new System.Drawing.Point(504, 138);
+            this.lbl_TotalVAT21.Name = "lbl_TotalVAT21";
+            this.lbl_TotalVAT21.Size = new System.Drawing.Size(67, 17);
+            this.lbl_TotalVAT21.TabIndex = 18;
+            this.lbl_TotalVAT21.Text = "VAT 21%";
+            // 
+            // lbl_TotalVAT
+            // 
+            this.lbl_TotalVAT.AutoSize = true;
+            this.lbl_TotalVAT.Location = new System.Drawing.Point(504, 168);
+            this.lbl_TotalVAT.Name = "lbl_TotalVAT";
+            this.lbl_TotalVAT.Size = new System.Drawing.Size(71, 17);
+            this.lbl_TotalVAT.TabIndex = 19;
+            this.lbl_TotalVAT.Text = "Total VAT";
+            // 
+            // RadioBtn_visa
+            // 
+            this.RadioBtn_visa.AutoSize = true;
+            this.RadioBtn_visa.Location = new System.Drawing.Point(507, 504);
+            this.RadioBtn_visa.Name = "RadioBtn_visa";
+            this.RadioBtn_visa.Size = new System.Drawing.Size(94, 21);
+            this.RadioBtn_visa.TabIndex = 20;
+            this.RadioBtn_visa.Text = "Visa/Amex";
+            this.RadioBtn_visa.UseVisualStyleBackColor = true;
+            // 
+            // RadioBtn_PIN
+            // 
+            this.RadioBtn_PIN.AutoSize = true;
+            this.RadioBtn_PIN.Location = new System.Drawing.Point(607, 504);
+            this.RadioBtn_PIN.Name = "RadioBtn_PIN";
+            this.RadioBtn_PIN.Size = new System.Drawing.Size(51, 21);
+            this.RadioBtn_PIN.TabIndex = 21;
+            this.RadioBtn_PIN.Text = "PIN";
+            this.RadioBtn_PIN.UseVisualStyleBackColor = true;
+            // 
+            // RadioBtn_Cash
+            // 
+            this.RadioBtn_Cash.AutoSize = true;
+            this.RadioBtn_Cash.Location = new System.Drawing.Point(686, 504);
+            this.RadioBtn_Cash.Name = "RadioBtn_Cash";
+            this.RadioBtn_Cash.Size = new System.Drawing.Size(61, 21);
+            this.RadioBtn_Cash.TabIndex = 22;
+            this.RadioBtn_Cash.Text = "Cash";
+            this.RadioBtn_Cash.UseVisualStyleBackColor = true;
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 707);
+            this.Controls.Add(this.RadioBtn_Cash);
+            this.Controls.Add(this.RadioBtn_PIN);
+            this.Controls.Add(this.RadioBtn_visa);
+            this.Controls.Add(this.lbl_TotalVAT);
+            this.Controls.Add(this.lbl_TotalVAT21);
+            this.Controls.Add(this.lbl_TotalVAT9);
             this.Controls.Add(this.btn_Pay);
             this.Controls.Add(this.richTxtBox_FeedBack);
             this.Controls.Add(this.lbl_OrdNr);
             this.Controls.Add(this.lbl_TblNr);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.lbl_Payment);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.txtBox_ServerName);
             this.Controls.Add(this.lbl_serverName);
             this.Controls.Add(this.listView_Payment);
@@ -224,13 +257,16 @@
         private System.Windows.Forms.ListView listView_Payment;
         private System.Windows.Forms.Label lbl_serverName;
         private System.Windows.Forms.TextBox txtBox_ServerName;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lbl_Payment;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label lbl_TblNr;
         private System.Windows.Forms.Label lbl_OrdNr;
         private System.Windows.Forms.RichTextBox richTxtBox_FeedBack;
         private System.Windows.Forms.Button btn_Pay;
+        private System.Windows.Forms.Label lbl_TotalVAT9;
+        private System.Windows.Forms.Label lbl_TotalVAT21;
+        private System.Windows.Forms.Label lbl_TotalVAT;
+        private System.Windows.Forms.RadioButton RadioBtn_visa;
+        private System.Windows.Forms.RadioButton RadioBtn_PIN;
+        private System.Windows.Forms.RadioButton RadioBtn_Cash;
     }
 }
