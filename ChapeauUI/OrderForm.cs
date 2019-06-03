@@ -13,7 +13,7 @@ namespace ChapeauUI
 {
     public partial class OrderForm : BaseForm
     {
-        int size = 110;
+        const int SIZE = 110;
 
         public OrderForm()
         {
@@ -57,7 +57,7 @@ namespace ChapeauUI
             {
                 BaseButton button = new BaseButton
                 {
-                    Size = new Size((int)(1.1 * size), (int)(0.6 * size)),
+                    Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
                     Text = catagory,
                     BackColor = Color.FromArgb(157, 105, 163),
                     Tag = catagory
