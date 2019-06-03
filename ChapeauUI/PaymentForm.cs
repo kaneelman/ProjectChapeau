@@ -25,7 +25,7 @@ namespace ChapeauUI
             //the list view design
             listView_Payment.GridLines = true;
             listView_Payment.View = View.Details;
-            listView_Payment.Columns.Add("Menu Number");
+            listView_Payment.Columns.Add("Menu Number", 100, HorizontalAlignment.Left);
             listView_Payment.Columns.Add("Name");
             listView_Payment.Columns.Add("Quantity");
             listView_Payment.Columns.Add("Price");
