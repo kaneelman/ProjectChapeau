@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
+using ChapeauLogic;
 
 namespace ChapeauUI
 {
     public partial class PaymentForm : BaseForm
     {
-        public PaymentForm()
+        public PaymentForm(Employee LoggedUser)
         {
+            LoggedInEmployee = LoggedUser;
+
             InitializeComponent();
         }
 
