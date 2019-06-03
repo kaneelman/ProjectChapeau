@@ -33,6 +33,16 @@ namespace ChapeauUI
 
                     switch (LoggedInEmployee.Position)
                     {
+                        case EmployeePosition.Bartender:
+
+                            break;
+                        case EmployeePosition.Chef:
+                            break;
+                        case EmployeePosition.Waiter:
+                            break;
+                        case EmployeePosition.Manager:
+                            MessageBox.Show("NO MANAGER FUNCTIONS AVAILABLE", "", MessageBoxButtons.OK);
+                            break;
                         default:
                             break;
                     }
