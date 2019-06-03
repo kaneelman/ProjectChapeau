@@ -46,5 +46,10 @@ namespace ChapeauModel
             }
         }
 
+        public List<OrderMenuItem> GetOrderMenuItems()
+        {
+            return this.content;
+        }
+
     }
 }

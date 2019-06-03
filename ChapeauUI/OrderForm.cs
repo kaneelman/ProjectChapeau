@@ -55,11 +55,10 @@ namespace ChapeauUI
 
             foreach (string catagory in mainCatagories)
             {
-                Button button = new Button
+                BaseButton button = new BaseButton
                 {
                     Size = new Size((int)(1.1 * size), (int)(0.6 * size)),
                     Text = catagory,
-                    Font = new Font("Arial", 14, FontStyle.Bold),
                     BackColor = Color.FromArgb(157, 105, 163),
                     Tag = catagory
                 };

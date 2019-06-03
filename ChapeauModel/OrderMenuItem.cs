@@ -45,5 +45,10 @@ namespace ChapeauModel
                     throw new Exception("Wrong string input for order status");
             }
         }
+
+        public MenuItem GetMenuItem()
+        {
+            return item;
+        }
     }
 }
