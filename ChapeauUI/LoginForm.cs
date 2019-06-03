@@ -33,10 +33,5 @@ namespace ChapeauUI
         {
         
         }
-
-        private void picBox_Chapeau_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
