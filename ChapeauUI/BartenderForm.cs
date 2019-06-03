@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauLogic;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
@@ -16,8 +18,9 @@ namespace ChapeauUI
         //constants
         const int SIZE = 100;
 
-        public BartenderForm()
+        public BartenderForm(Employee LoggedUser)
         {
+            LoggedInEmployee = LoggedUser;
             InitializeComponent();
             DisplayOrders();
         }

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
+using ChapeauLogic;
 
 namespace ChapeauUI
 {
@@ -15,10 +17,13 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
-        public OrderForm()
+        public OrderForm(Employee LoggedUser)
         {
             InitializeComponent();
+            LoggedInEmployee = LoggedUser;
+
             DisplayMainCatagories();
+
        
         }
 
@@ -29,10 +34,10 @@ namespace ChapeauUI
 
         private void btn_NewOrderBack_Click(object sender, EventArgs e)
         {
-            OrderForm o1 = new OrderForm();
+            OrderForm o1 = new OrderForm(LoggedInEmployee);
             o1.Close();
 
-            TableViewForm t1 = new TableViewForm();
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee);
             t1.Show();
            
         }
@@ -52,7 +57,7 @@ namespace ChapeauUI
             mainCatagories.Add("Lunch");
             mainCatagories.Add("Diner");
             mainCatagories.Add("Drinks");
-
+ 
             foreach (string catagory in mainCatagories)
             {
                 BaseButton button = new BaseButton
@@ -87,6 +92,16 @@ namespace ChapeauUI
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_ConfirmOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
         {
 
         }

@@ -33,6 +33,19 @@ namespace ChapeauUI
 
                     switch (LoggedInEmployee.Position)
                     {
+                        case EmployeePosition.Bartender:
+                            TableViewForm tableViewForm = new TableViewForm(LoggedInEmployee);
+                            break;
+                        case EmployeePosition.Chef:
+                            ChefForm chefForm = new ChefForm(LoggedInEmployee);
+                            break;
+                        case EmployeePosition.Waiter:
+                            OrderForm orderForm = new OrderForm(LoggedInEmployee);
+                            break;
+                        case EmployeePosition.Manager:
+                            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee);
+                            //MessageBox.Show("NO MANAGER FUNCTIONS AVAILABLE", "", MessageBoxButtons.OK);
+                            break;
                         default:
                             break;
                     }

@@ -57,42 +57,42 @@
             // 
             // txt_TotalAmount
             // 
-            this.txt_TotalAmount.Location = new System.Drawing.Point(731, 261);
+            this.txt_TotalAmount.Location = new System.Drawing.Point(731, 296);
             this.txt_TotalAmount.Name = "txt_TotalAmount";
-            this.txt_TotalAmount.Size = new System.Drawing.Size(100, 22);
+            this.txt_TotalAmount.Size = new System.Drawing.Size(100, 30);
             this.txt_TotalAmount.TabIndex = 0;
             // 
             // txt_Tip
             // 
-            this.txt_Tip.Location = new System.Drawing.Point(731, 232);
+            this.txt_Tip.Location = new System.Drawing.Point(731, 257);
             this.txt_Tip.Name = "txt_Tip";
-            this.txt_Tip.Size = new System.Drawing.Size(100, 22);
+            this.txt_Tip.Size = new System.Drawing.Size(100, 30);
             this.txt_Tip.TabIndex = 1;
             // 
             // lbl_totalAmount
             // 
             this.lbl_totalAmount.AutoSize = true;
-            this.lbl_totalAmount.Location = new System.Drawing.Point(587, 264);
+            this.lbl_totalAmount.Location = new System.Drawing.Point(589, 296);
             this.lbl_totalAmount.Name = "lbl_totalAmount";
-            this.lbl_totalAmount.Size = new System.Drawing.Size(92, 17);
+            this.lbl_totalAmount.Size = new System.Drawing.Size(123, 23);
             this.lbl_totalAmount.TabIndex = 3;
             this.lbl_totalAmount.Text = "Total Amount";
             // 
             // lbl_Tip
             // 
             this.lbl_Tip.AutoSize = true;
-            this.lbl_Tip.Location = new System.Drawing.Point(588, 222);
+            this.lbl_Tip.Location = new System.Drawing.Point(589, 260);
             this.lbl_Tip.Name = "lbl_Tip";
-            this.lbl_Tip.Size = new System.Drawing.Size(28, 17);
+            this.lbl_Tip.Size = new System.Drawing.Size(36, 23);
             this.lbl_Tip.TabIndex = 4;
             this.lbl_Tip.Text = "Tip";
             // 
             // lbl_Feedbak
             // 
             this.lbl_Feedbak.AutoSize = true;
-            this.lbl_Feedbak.Location = new System.Drawing.Point(588, 293);
+            this.lbl_Feedbak.Location = new System.Drawing.Point(588, 337);
             this.lbl_Feedbak.Name = "lbl_Feedbak";
-            this.lbl_Feedbak.Size = new System.Drawing.Size(70, 17);
+            this.lbl_Feedbak.Size = new System.Drawing.Size(97, 23);
             this.lbl_Feedbak.TabIndex = 5;
             this.lbl_Feedbak.Text = "Feedback";
             // 
@@ -110,7 +110,7 @@
             this.lbl_serverName.AutoSize = true;
             this.lbl_serverName.Location = new System.Drawing.Point(587, 78);
             this.lbl_serverName.Name = "lbl_serverName";
-            this.lbl_serverName.Size = new System.Drawing.Size(91, 17);
+            this.lbl_serverName.Size = new System.Drawing.Size(125, 23);
             this.lbl_serverName.TabIndex = 7;
             this.lbl_serverName.Text = "Server Name";
             // 
@@ -118,15 +118,15 @@
             // 
             this.txt_ServerName.Location = new System.Drawing.Point(732, 78);
             this.txt_ServerName.Name = "txt_ServerName";
-            this.txt_ServerName.Size = new System.Drawing.Size(100, 22);
+            this.txt_ServerName.Size = new System.Drawing.Size(100, 30);
             this.txt_ServerName.TabIndex = 8;
             // 
             // lbl_Payment
             // 
             this.lbl_Payment.AutoSize = true;
-            this.lbl_Payment.Location = new System.Drawing.Point(588, 468);
+            this.lbl_Payment.Location = new System.Drawing.Point(588, 507);
             this.lbl_Payment.Name = "lbl_Payment";
-            this.lbl_Payment.Size = new System.Drawing.Size(63, 17);
+            this.lbl_Payment.Size = new System.Drawing.Size(87, 23);
             this.lbl_Payment.TabIndex = 10;
             this.lbl_Payment.Text = "Payment";
             // 
@@ -135,7 +135,7 @@
             this.lbl_TblNr.AutoSize = true;
             this.lbl_TblNr.Location = new System.Drawing.Point(25, 31);
             this.lbl_TblNr.Name = "lbl_TblNr";
-            this.lbl_TblNr.Size = new System.Drawing.Size(102, 17);
+            this.lbl_TblNr.Size = new System.Drawing.Size(137, 23);
             this.lbl_TblNr.TabIndex = 13;
             this.lbl_TblNr.Text = "Table Number:";
             // 
@@ -143,7 +143,7 @@
             // 
             this.rtxt_FeedBack.BackColor = System.Drawing.SystemColors.Window;
             this.rtxt_FeedBack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtxt_FeedBack.Location = new System.Drawing.Point(591, 324);
+            this.rtxt_FeedBack.Location = new System.Drawing.Point(590, 363);
             this.rtxt_FeedBack.Name = "rtxt_FeedBack";
             this.rtxt_FeedBack.Size = new System.Drawing.Size(241, 130);
             this.rtxt_FeedBack.TabIndex = 15;
@@ -164,7 +164,7 @@
             this.lbl_TotalVAT9.AutoSize = true;
             this.lbl_TotalVAT9.Location = new System.Drawing.Point(587, 125);
             this.lbl_TotalVAT9.Name = "lbl_TotalVAT9";
-            this.lbl_TotalVAT9.Size = new System.Drawing.Size(59, 17);
+            this.lbl_TotalVAT9.Size = new System.Drawing.Size(81, 23);
             this.lbl_TotalVAT9.TabIndex = 17;
             this.lbl_TotalVAT9.Text = "VAT 9%";
             // 
@@ -173,25 +173,25 @@
             this.lbl_TotalVAT21.AutoSize = true;
             this.lbl_TotalVAT21.Location = new System.Drawing.Point(587, 158);
             this.lbl_TotalVAT21.Name = "lbl_TotalVAT21";
-            this.lbl_TotalVAT21.Size = new System.Drawing.Size(67, 17);
+            this.lbl_TotalVAT21.Size = new System.Drawing.Size(92, 23);
             this.lbl_TotalVAT21.TabIndex = 18;
             this.lbl_TotalVAT21.Text = "VAT 21%";
             // 
             // lbl_TotalVAT
             // 
             this.lbl_TotalVAT.AutoSize = true;
-            this.lbl_TotalVAT.Location = new System.Drawing.Point(587, 188);
+            this.lbl_TotalVAT.Location = new System.Drawing.Point(587, 194);
             this.lbl_TotalVAT.Name = "lbl_TotalVAT";
-            this.lbl_TotalVAT.Size = new System.Drawing.Size(71, 17);
+            this.lbl_TotalVAT.Size = new System.Drawing.Size(94, 23);
             this.lbl_TotalVAT.TabIndex = 19;
             this.lbl_TotalVAT.Text = "Total VAT";
             // 
             // radBtn_visa
             // 
             this.radBtn_visa.AutoSize = true;
-            this.radBtn_visa.Location = new System.Drawing.Point(591, 505);
+            this.radBtn_visa.Location = new System.Drawing.Point(591, 544);
             this.radBtn_visa.Name = "radBtn_visa";
-            this.radBtn_visa.Size = new System.Drawing.Size(94, 21);
+            this.radBtn_visa.Size = new System.Drawing.Size(124, 27);
             this.radBtn_visa.TabIndex = 20;
             this.radBtn_visa.Text = "Visa/Amex";
             this.radBtn_visa.UseVisualStyleBackColor = true;
@@ -199,9 +199,9 @@
             // radBtn_PIN
             // 
             this.radBtn_PIN.AutoSize = true;
-            this.radBtn_PIN.Location = new System.Drawing.Point(691, 505);
+            this.radBtn_PIN.Location = new System.Drawing.Point(691, 544);
             this.radBtn_PIN.Name = "radBtn_PIN";
-            this.radBtn_PIN.Size = new System.Drawing.Size(51, 21);
+            this.radBtn_PIN.Size = new System.Drawing.Size(63, 27);
             this.radBtn_PIN.TabIndex = 21;
             this.radBtn_PIN.Text = "PIN";
             this.radBtn_PIN.UseVisualStyleBackColor = true;
@@ -209,37 +209,37 @@
             // radBtn_Cash
             // 
             this.radBtn_Cash.AutoSize = true;
-            this.radBtn_Cash.Location = new System.Drawing.Point(770, 505);
+            this.radBtn_Cash.Location = new System.Drawing.Point(770, 544);
             this.radBtn_Cash.Name = "radBtn_Cash";
-            this.radBtn_Cash.Size = new System.Drawing.Size(61, 21);
+            this.radBtn_Cash.Size = new System.Drawing.Size(76, 27);
             this.radBtn_Cash.TabIndex = 22;
             this.radBtn_Cash.Text = "Cash";
             this.radBtn_Cash.UseVisualStyleBackColor = true;
             // 
             // txt_TVAT9
             // 
-            this.txt_TVAT9.Location = new System.Drawing.Point(731, 125);
+            this.txt_TVAT9.Location = new System.Drawing.Point(731, 118);
             this.txt_TVAT9.Name = "txt_TVAT9";
-            this.txt_TVAT9.Size = new System.Drawing.Size(100, 22);
+            this.txt_TVAT9.Size = new System.Drawing.Size(100, 30);
             this.txt_TVAT9.TabIndex = 23;
             // 
             // txt_TVAT21
             // 
             this.txt_TVAT21.Location = new System.Drawing.Point(731, 158);
             this.txt_TVAT21.Name = "txt_TVAT21";
-            this.txt_TVAT21.Size = new System.Drawing.Size(100, 22);
+            this.txt_TVAT21.Size = new System.Drawing.Size(100, 30);
             this.txt_TVAT21.TabIndex = 24;
             // 
             // txt_TVAT
             // 
-            this.txt_TVAT.Location = new System.Drawing.Point(731, 187);
+            this.txt_TVAT.Location = new System.Drawing.Point(731, 194);
             this.txt_TVAT.Name = "txt_TVAT";
-            this.txt_TVAT.Size = new System.Drawing.Size(100, 22);
+            this.txt_TVAT.Size = new System.Drawing.Size(100, 30);
             this.txt_TVAT.TabIndex = 25;
             // 
             // PaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.txt_TVAT);
