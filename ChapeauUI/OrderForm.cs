@@ -34,7 +34,7 @@ namespace ChapeauUI
 
         private void btn_NewOrderBack_Click(object sender, EventArgs e)
         {
-            OrderForm o1 = new OrderForm();
+            OrderForm o1 = new OrderForm(LoggedInEmployee);
             o1.Close();
 
             TableViewForm t1 = new TableViewForm();
