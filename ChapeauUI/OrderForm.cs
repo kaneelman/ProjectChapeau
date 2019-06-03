@@ -95,5 +95,15 @@ namespace ChapeauUI
         {
 
         }
+
+        private void btn_ConfirmOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
