@@ -100,5 +100,10 @@ namespace ChapeauUI
         {
 
         }
+
+        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

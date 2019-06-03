@@ -106,6 +106,7 @@
             this.btn_NewOrderClearItems.TabIndex = 14;
             this.btn_NewOrderClearItems.Text = "Clear";
             this.btn_NewOrderClearItems.UseVisualStyleBackColor = true;
+            this.btn_NewOrderClearItems.Click += new System.EventHandler(this.btn_NewOrderClearItems_Click);
             // 
             // btn_NewOrderItemDelete
             // 
@@ -138,9 +139,9 @@
             // btn_ConfirmOrder
             // 
             this.btn_ConfirmOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_ConfirmOrder.Location = new System.Drawing.Point(827, 589);
+            this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 589);
             this.btn_ConfirmOrder.Name = "btn_ConfirmOrder";
-            this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 58);
+            this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 59);
             this.btn_ConfirmOrder.TabIndex = 17;
             this.btn_ConfirmOrder.Text = "Confirm order";
             this.btn_ConfirmOrder.UseVisualStyleBackColor = false;
