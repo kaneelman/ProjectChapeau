@@ -32,7 +32,8 @@ namespace ChapeauUI
 
         private void DisplayOrders()
         {
-            flpnl_Orders.Controls.Clear();
+            //yo, emmanuel, i commented this things out since its giving error.. *stephen
+            /*flpnl_Orders.Controls.Clear();
 
             List<string> Orders = new List<string>();
 
@@ -52,6 +53,7 @@ namespace ChapeauUI
                 button.Click += new EventHandler(Catagory_Click);
                 flpnl_MainCatagories.Controls.Add(button);
             }
+            */
         }
 
         private void timer1_Tick(object sender, EventArgs e)

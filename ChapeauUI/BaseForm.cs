@@ -15,6 +15,7 @@ namespace ChapeauUI
     public partial class BaseForm : Form
     {
         protected Employee LoggedInEmployee;
+        //public static Employee LoggedInEmployee; //just to check the payment
 
         public BaseForm()
         {

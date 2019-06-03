@@ -34,6 +34,12 @@ namespace ChapeauLogic
         }
 
         //make a method that collects all the order by table
+
+        public void calculateVAT()
+        {
+            
+        }
+
     }
     //make a calculation methods..
 }
