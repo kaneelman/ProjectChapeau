@@ -16,5 +16,10 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+
+        private void TableViewForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

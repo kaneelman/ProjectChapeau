@@ -16,10 +16,14 @@ namespace ChapeauUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
 
             //to try the paymentview
             //Application.Run(new PaymentForm());
+
+            //to try the OrderForm
+            Application.Run(new OrderForm());
+
 
         }
     }

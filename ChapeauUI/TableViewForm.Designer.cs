@@ -36,6 +36,7 @@
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Name = "TableViewForm";
             this.Text = "TableViewForm";
+            this.Load += new System.EventHandler(this.TableViewForm_Load);
             this.ResumeLayout(false);
 
         }
