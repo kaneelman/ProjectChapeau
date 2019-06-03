@@ -37,10 +37,10 @@
             // picBox_Chapeau
             // 
             this.picBox_Chapeau.Image = ((System.Drawing.Image)(resources.GetObject("picBox_Chapeau.Image")));
-            this.picBox_Chapeau.Location = new System.Drawing.Point(196, 120);
+            this.picBox_Chapeau.Location = new System.Drawing.Point(288, 173);
             this.picBox_Chapeau.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.picBox_Chapeau.Name = "picBox_Chapeau";
-            this.picBox_Chapeau.Size = new System.Drawing.Size(597, 345);
+            this.picBox_Chapeau.Size = new System.Drawing.Size(417, 234);
             this.picBox_Chapeau.TabIndex = 6;
             this.picBox_Chapeau.TabStop = false;
             // 
@@ -57,6 +57,7 @@
             // BaseForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.Btn_LogOut);
             this.Controls.Add(this.picBox_Chapeau);
