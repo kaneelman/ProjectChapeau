@@ -26,11 +26,6 @@ namespace ChapeauLogic
         {
             return orderDB.GetOrderByIdDB(id);
         }
-
-        public Order GetActiveOrderByTable(DiningTable diningTable)
-        {
-            return orderDB.GetActiveOrderByTableDB(diningTable);
-        }
         
         //get all the order for a table selected
         public Order GetCompleteActiveOrderByTable(DiningTable diningTable)
