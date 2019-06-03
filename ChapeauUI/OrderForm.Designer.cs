@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.flpnl_MainCatagories = new System.Windows.Forms.FlowLayoutPanel();
             this.flpnl_SubCatagories = new System.Windows.Forms.FlowLayoutPanel();
@@ -37,6 +38,7 @@
             this.btn_NewOrderClearItems = new System.Windows.Forms.Button();
             this.btn_NewOrderItemDelete = new System.Windows.Forms.Button();
             this.btn_NewOrderBack = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -45,7 +47,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(362, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 38);
+            this.label1.Size = new System.Drawing.Size(193, 32);
             this.label1.TabIndex = 8;
             this.label1.Text = "ORDER VIEW";
             // 
@@ -90,7 +92,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(42, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 27);
+            this.label2.Size = new System.Drawing.Size(137, 22);
             this.label2.TabIndex = 13;
             this.label2.Text = "Selected items";
             // 
@@ -125,9 +127,15 @@
             this.btn_NewOrderBack.UseVisualStyleBackColor = true;
             this.btn_NewOrderBack.Click += new System.EventHandler(this.btn_NewOrderBack_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.btn_NewOrderBack);
@@ -142,6 +150,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "OrderForm";
             this.Text = "OrderForm";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.flpnl_MainCatagories, 0);
@@ -168,5 +177,6 @@
         private System.Windows.Forms.Button btn_NewOrderClearItems;
         private System.Windows.Forms.Button btn_NewOrderItemDelete;
         private System.Windows.Forms.Button btn_NewOrderBack;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

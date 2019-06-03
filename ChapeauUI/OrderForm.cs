@@ -80,5 +80,15 @@ namespace ChapeauUI
         {
 
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

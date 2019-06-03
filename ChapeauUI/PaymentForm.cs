@@ -22,12 +22,12 @@ namespace ChapeauUI
             //ListViewItem ListOfOrders = new ListViewItem();
 
             //the list view design
-            listView_Payment.GridLines = true;
-            listView_Payment.View = View.Details;
-            listView_Payment.Columns.Add("Menu Number", 100, HorizontalAlignment.Left);
-            listView_Payment.Columns.Add("Name");
-            listView_Payment.Columns.Add("Quantity");
-            listView_Payment.Columns.Add("Price");
+            lst_Payment.GridLines = true;
+            lst_Payment.View = View.Details;
+            lst_Payment.Columns.Add("Menu Number", 100, HorizontalAlignment.Left);
+            lst_Payment.Columns.Add("Name");
+            lst_Payment.Columns.Add("Quantity");
+            lst_Payment.Columns.Add("Price");
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
