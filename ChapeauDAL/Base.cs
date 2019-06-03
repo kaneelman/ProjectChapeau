@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 
-namespace SomerenDAL
+namespace ChapeauDAL
 {
     public abstract class Base
     {
@@ -13,7 +13,7 @@ namespace SomerenDAL
         public Base()
         {
             // Assigning the connection string and creating a new adapter
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChapeauDatabase"].ConnectionString);
             adapter = new SqlDataAdapter();
         }
 

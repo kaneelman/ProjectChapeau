@@ -8,13 +8,9 @@ namespace ChapeauModel
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public EmployeePosition Position { get; set; }
-        public string Password { get; set; }
-        public string TEST;
-        //Text Text Text Text Text xtTETesTEfdfdf TEDFdtesEgeT
-        //.......
-        //.......////blah
+
     }
 }
