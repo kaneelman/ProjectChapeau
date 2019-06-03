@@ -8,29 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauLogic;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
-    public partial class BartenderForm : Form
+    public partial class BartenderForm : BaseForm
     {
-        public BartenderForm()
+        //constants
+        const int SIZE = 100;
+
+        public BartenderForm(Employee LoggedUser)
         {
+            LoggedInEmployee = LoggedUser;
             InitializeComponent();
-            
         }
 
         private void BartenderForm_Load(object sender, EventArgs e)
         {
-            string[] images = new string[] { "403347_1_1_1.jpg", "SmilingCat 4.2.png", "SmilingCat_=3.jpg", "tumblr_piah3njiRB1xoyw8po1_1280.jpg" };
-            var image = imageList1.Images;
-            foreach (var item in images)
-            {
-                image.Add(Image.FromFile(item));
-            }
-
-            pictureBox1.Image = imageList1.Images[0];
-            pictureBox2.Image = imageList1.Images[1];
-            pictureBox3.Image = imageList1.Images[2];
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)

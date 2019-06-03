@@ -18,7 +18,8 @@ namespace ChapeauUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new OrderForm());
 
-
+            //to try the payment view
+            //Application.Run(new PaymentForm());
         }
     }
 }
