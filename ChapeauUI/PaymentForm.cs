@@ -34,7 +34,7 @@ namespace ChapeauUI
         {
 
         }
-
+        //when things are selected.
         private void listView_Payment_SelectedIndexChanged(object sender, EventArgs e)
         {
 

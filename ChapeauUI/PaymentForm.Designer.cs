@@ -38,7 +38,6 @@
             this.txtBox_ServerName = new System.Windows.Forms.TextBox();
             this.lbl_Payment = new System.Windows.Forms.Label();
             this.lbl_TblNr = new System.Windows.Forms.Label();
-            this.lbl_OrdNr = new System.Windows.Forms.Label();
             this.richTxtBox_FeedBack = new System.Windows.Forms.RichTextBox();
             this.btn_Pay = new System.Windows.Forms.Button();
             this.lbl_TotalVAT9 = new System.Windows.Forms.Label();
@@ -137,15 +136,6 @@
             this.lbl_TblNr.TabIndex = 13;
             this.lbl_TblNr.Text = "Table Number:";
             // 
-            // lbl_OrdNr
-            // 
-            this.lbl_OrdNr.AutoSize = true;
-            this.lbl_OrdNr.Location = new System.Drawing.Point(228, 31);
-            this.lbl_OrdNr.Name = "lbl_OrdNr";
-            this.lbl_OrdNr.Size = new System.Drawing.Size(103, 17);
-            this.lbl_OrdNr.TabIndex = 14;
-            this.lbl_OrdNr.Text = "Order Number:";
-            // 
             // richTxtBox_FeedBack
             // 
             this.richTxtBox_FeedBack.BackColor = System.Drawing.SystemColors.Window;
@@ -236,7 +226,6 @@
             this.Controls.Add(this.lbl_TotalVAT9);
             this.Controls.Add(this.btn_Pay);
             this.Controls.Add(this.richTxtBox_FeedBack);
-            this.Controls.Add(this.lbl_OrdNr);
             this.Controls.Add(this.lbl_TblNr);
             this.Controls.Add(this.lbl_Payment);
             this.Controls.Add(this.txtBox_ServerName);
@@ -260,7 +249,6 @@
             this.Controls.SetChildIndex(this.txtBox_ServerName, 0);
             this.Controls.SetChildIndex(this.lbl_Payment, 0);
             this.Controls.SetChildIndex(this.lbl_TblNr, 0);
-            this.Controls.SetChildIndex(this.lbl_OrdNr, 0);
             this.Controls.SetChildIndex(this.richTxtBox_FeedBack, 0);
             this.Controls.SetChildIndex(this.btn_Pay, 0);
             this.Controls.SetChildIndex(this.lbl_TotalVAT9, 0);
@@ -287,7 +275,6 @@
         private System.Windows.Forms.TextBox txtBox_ServerName;
         private System.Windows.Forms.Label lbl_Payment;
         private System.Windows.Forms.Label lbl_TblNr;
-        private System.Windows.Forms.Label lbl_OrdNr;
         private System.Windows.Forms.RichTextBox richTxtBox_FeedBack;
         private System.Windows.Forms.Button btn_Pay;
         private System.Windows.Forms.Label lbl_TotalVAT9;
