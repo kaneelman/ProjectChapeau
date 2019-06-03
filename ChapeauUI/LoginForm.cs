@@ -18,20 +18,5 @@ namespace ChapeauUI
             InitializeComponent();
             
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Btn_LogOut_Click(object sender, EventArgs e)
-        {
-        
-        }
     }
 }
