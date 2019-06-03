@@ -47,13 +47,7 @@
             this.RadioBtn_visa = new System.Windows.Forms.RadioButton();
             this.RadioBtn_PIN = new System.Windows.Forms.RadioButton();
             this.RadioBtn_Cash = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picBox_Chapeau
-            // 
-            this.picBox_Chapeau.Location = new System.Drawing.Point(28, 146);
-            this.picBox_Chapeau.Size = new System.Drawing.Size(428, 267);
             // 
             // Btn_LogOut
             // 
@@ -256,7 +250,6 @@
             this.Name = "PaymentForm";
             this.Text = "PaymentForm";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
-            this.Controls.SetChildIndex(this.picBox_Chapeau, 0);
             this.Controls.SetChildIndex(this.txtBox_TotalAmount, 0);
             this.Controls.SetChildIndex(this.txtBox_Tip, 0);
             this.Controls.SetChildIndex(this.lbl_totalAmount, 0);
@@ -277,7 +270,6 @@
             this.Controls.SetChildIndex(this.RadioBtn_PIN, 0);
             this.Controls.SetChildIndex(this.RadioBtn_Cash, 0);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
