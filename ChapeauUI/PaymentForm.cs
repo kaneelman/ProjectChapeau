@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class PaymentForm : Form
+    public partial class PaymentForm : BaseForm
     {
         public PaymentForm()
         {
@@ -18,6 +18,16 @@ namespace ChapeauUI
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Pay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView_Payment_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
