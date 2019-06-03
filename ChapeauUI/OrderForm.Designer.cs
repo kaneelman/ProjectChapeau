@@ -105,7 +105,7 @@
             // btn_NewOrderItemDelete
             // 
             this.btn_NewOrderItemDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(188, 589);
+            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(182, 588);
             this.btn_NewOrderItemDelete.Name = "btn_NewOrderItemDelete";
             this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(95, 59);
             this.btn_NewOrderItemDelete.TabIndex = 15;
