@@ -31,7 +31,11 @@ namespace ChapeauUI
                 {
                     LoggedInEmployee = EmployeeDB.GetEmployee(txt_LoginUsername.Text);
 
-                    switch()
+                    switch (LoggedInEmployee.Position)
+                    {
+                        default:
+                            break;
+                    }
                 } else
                 {
                     MessageBox.Show("Incorrect Password", "", MessageBoxButtons.OK);
