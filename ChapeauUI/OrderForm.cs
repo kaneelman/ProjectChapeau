@@ -37,7 +37,7 @@ namespace ChapeauUI
             OrderForm o1 = new OrderForm(LoggedInEmployee);
             o1.Close();
 
-            TableViewForm t1 = new TableViewForm();
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee);
             t1.Show();
            
         }
