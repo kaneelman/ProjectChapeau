@@ -38,27 +38,35 @@
             // 
             // picBox_Chapeau
             // 
-            this.picBox_Chapeau.Location = new System.Drawing.Point(238, 60);
+            this.picBox_Chapeau.Location = new System.Drawing.Point(129, 35);
+            this.picBox_Chapeau.Size = new System.Drawing.Size(403, 208);
+            // 
+            // Btn_LogOut
+            // 
+            this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
             // 
             // txtBox_ID
             // 
-            this.txtBox_ID.Location = new System.Drawing.Point(359, 301);
+            this.txtBox_ID.Location = new System.Drawing.Point(284, 280);
+            this.txtBox_ID.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtBox_ID.Name = "txtBox_ID";
-            this.txtBox_ID.Size = new System.Drawing.Size(267, 22);
+            this.txtBox_ID.Size = new System.Drawing.Size(201, 20);
             this.txtBox_ID.TabIndex = 0;
             // 
             // txtBox_Password
             // 
-            this.txtBox_Password.Location = new System.Drawing.Point(359, 352);
+            this.txtBox_Password.Location = new System.Drawing.Point(284, 321);
+            this.txtBox_Password.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtBox_Password.Name = "txtBox_Password";
-            this.txtBox_Password.Size = new System.Drawing.Size(267, 22);
+            this.txtBox_Password.Size = new System.Drawing.Size(201, 20);
             this.txtBox_Password.TabIndex = 1;
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(238, 414);
+            this.btn_Login.Location = new System.Drawing.Point(194, 372);
+            this.btn_Login.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(82, 32);
+            this.btn_Login.Size = new System.Drawing.Size(61, 26);
             this.btn_Login.TabIndex = 2;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = true;
@@ -66,26 +74,28 @@
             // lbl_ID
             // 
             this.lbl_ID.AutoSize = true;
-            this.lbl_ID.Location = new System.Drawing.Point(230, 301);
+            this.lbl_ID.Location = new System.Drawing.Point(188, 280);
+            this.lbl_ID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_ID.Name = "lbl_ID";
-            this.lbl_ID.Size = new System.Drawing.Size(87, 17);
+            this.lbl_ID.Size = new System.Drawing.Size(67, 13);
             this.lbl_ID.TabIndex = 3;
             this.lbl_ID.Text = "Employee ID";
             // 
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(230, 357);
+            this.lbl_Password.Location = new System.Drawing.Point(188, 325);
+            this.lbl_Password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Password.Name = "lbl_Password";
-            this.lbl_Password.Size = new System.Drawing.Size(69, 17);
+            this.lbl_Password.Size = new System.Drawing.Size(53, 13);
             this.lbl_Password.TabIndex = 4;
             this.lbl_Password.Text = "Password";
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(668, 456);
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_ID);
             this.Controls.Add(this.btn_Login);
@@ -94,6 +104,7 @@
             this.Name = "LoginForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.txtBox_ID, 0);
             this.Controls.SetChildIndex(this.txtBox_Password, 0);
             this.Controls.SetChildIndex(this.btn_Login, 0);

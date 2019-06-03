@@ -30,26 +30,39 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.picBox_Chapeau = new System.Windows.Forms.PictureBox();
+            this.Btn_LogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).BeginInit();
             this.SuspendLayout();
             // 
             // picBox_Chapeau
             // 
             this.picBox_Chapeau.Image = ((System.Drawing.Image)(resources.GetObject("picBox_Chapeau.Image")));
-            this.picBox_Chapeau.Location = new System.Drawing.Point(436, 66);
-            this.picBox_Chapeau.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.picBox_Chapeau.Location = new System.Drawing.Point(131, 78);
+            this.picBox_Chapeau.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.picBox_Chapeau.Name = "picBox_Chapeau";
-            this.picBox_Chapeau.Size = new System.Drawing.Size(436, 260);
+            this.picBox_Chapeau.Size = new System.Drawing.Size(398, 224);
             this.picBox_Chapeau.TabIndex = 6;
             this.picBox_Chapeau.TabStop = false;
             // 
+            // Btn_LogOut
+            // 
+            this.Btn_LogOut.CausesValidation = false;
+            this.Btn_LogOut.Location = new System.Drawing.Point(586, 11);
+            this.Btn_LogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_LogOut.Name = "Btn_LogOut";
+            this.Btn_LogOut.Size = new System.Drawing.Size(71, 40);
+            this.Btn_LogOut.TabIndex = 7;
+            this.Btn_LogOut.Text = "LogOut";
+            this.Btn_LogOut.UseVisualStyleBackColor = true;
+            // 
             // BaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.ClientSize = new System.Drawing.Size(668, 456);
+            this.Controls.Add(this.Btn_LogOut);
             this.Controls.Add(this.picBox_Chapeau);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
@@ -60,6 +73,7 @@
 
         #endregion
 
-        protected System.Windows.Forms.PictureBox picBox_Chapeau;
+        public System.Windows.Forms.PictureBox picBox_Chapeau;
+        protected System.Windows.Forms.Button Btn_LogOut;
     }
 }
