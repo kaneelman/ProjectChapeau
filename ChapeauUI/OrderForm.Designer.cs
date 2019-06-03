@@ -45,7 +45,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(362, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 39);
+            this.label1.Size = new System.Drawing.Size(233, 38);
             this.label1.TabIndex = 8;
             this.label1.Text = "ORDER VIEW";
             // 
@@ -81,6 +81,7 @@
             this.lst_NewOrderItems.Size = new System.Drawing.Size(389, 438);
             this.lst_NewOrderItems.TabIndex = 12;
             this.lst_NewOrderItems.UseCompatibleStateImageBehavior = false;
+            this.lst_NewOrderItems.SelectedIndexChanged += new System.EventHandler(this.lst_NewOrderItems_SelectedIndexChanged);
             // 
             // label2
             // 

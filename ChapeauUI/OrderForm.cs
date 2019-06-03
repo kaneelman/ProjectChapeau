@@ -16,5 +16,10 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+
+        private void lst_NewOrderItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
