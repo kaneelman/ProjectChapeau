@@ -33,10 +33,10 @@
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 701);
-            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "OrderForm";
             this.Text = "OrderForm";
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Chapeau)).EndInit();
