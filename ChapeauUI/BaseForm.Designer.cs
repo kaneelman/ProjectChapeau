@@ -34,12 +34,14 @@
             // Btn_LogOut
             // 
             this.Btn_LogOut.CausesValidation = false;
+            this.Btn_LogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_LogOut.Location = new System.Drawing.Point(879, 17);
             this.Btn_LogOut.Name = "Btn_LogOut";
             this.Btn_LogOut.Size = new System.Drawing.Size(106, 62);
             this.Btn_LogOut.TabIndex = 7;
             this.Btn_LogOut.Text = "LogOut";
             this.Btn_LogOut.UseVisualStyleBackColor = true;
+            this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
             // 
             // BaseForm
             // 
@@ -47,10 +49,12 @@
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.Btn_LogOut);
+            this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
+            this.Load += new System.EventHandler(this.BaseForm_Load);
             this.ResumeLayout(false);
 
         }
