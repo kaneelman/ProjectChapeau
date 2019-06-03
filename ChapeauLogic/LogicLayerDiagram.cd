@@ -33,7 +33,7 @@
   <Class Name="ChapeauLogic.MenuItemService">
     <Position X="3" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAACAAAAAEAAAABAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAAAAgAAAAAAAAACAAAAAEAAAABAAAA=</HashCode>
       <FileName>MenuItemService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -43,32 +43,17 @@
   <Class Name="ChapeauLogic.OrderMenuItemService">
     <Position X="1" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAABAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAEAEABAAAAAAAAAACAAAIAAAAAAAAA=</HashCode>
       <FileName>OrderMenuItemService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="orderMenuItemDB" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ChapeauLogic.OrderService">
-    <Position X="7" Y="7.25" Width="1.5" />
-    <AssociationLine Name="orderDB" Type="ChapeauDAL.OrderDAO">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.089" Y="0.167" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAg=</HashCode>
-      <FileName>OrderService.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="orderDB" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="ChapeauLogic.PaymentService">
     <Position X="13.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAgAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>PaymentService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -106,6 +91,21 @@
   <Class Name="ChapeauDAL.Base">
     <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogic.OrderService">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <AssociationLine Name="orderDB" Type="ChapeauDAL.OrderDAO">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.167" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAAAAAEAAAAAAAAAAAAAQEAAAAAEAIAAQBAgAgAAgAg=</HashCode>
+      <FileName>OrderService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="orderDB" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
