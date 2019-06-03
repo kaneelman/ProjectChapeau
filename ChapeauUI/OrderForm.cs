@@ -57,7 +57,7 @@ namespace ChapeauUI
             mainCatagories.Add("Lunch");
             mainCatagories.Add("Diner");
             mainCatagories.Add("Drinks");
-
+ 
             foreach (string catagory in mainCatagories)
             {
                 BaseButton button = new BaseButton
