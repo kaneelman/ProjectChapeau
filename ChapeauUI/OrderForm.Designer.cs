@@ -52,10 +52,11 @@
             // flpnl_MainCatagories
             // 
             this.flpnl_MainCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpnl_MainCatagories.Location = new System.Drawing.Point(471, 116);
+            this.flpnl_MainCatagories.Location = new System.Drawing.Point(443, 116);
             this.flpnl_MainCatagories.Name = "flpnl_MainCatagories";
-            this.flpnl_MainCatagories.Size = new System.Drawing.Size(111, 283);
+            this.flpnl_MainCatagories.Size = new System.Drawing.Size(141, 283);
             this.flpnl_MainCatagories.TabIndex = 9;
+            this.flpnl_MainCatagories.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_MainCatagories_Paint);
             // 
             // flpnl_SubCatagories
             // 
@@ -122,10 +123,11 @@
             this.btn_NewOrderBack.TabIndex = 16;
             this.btn_NewOrderBack.Text = "Back";
             this.btn_NewOrderBack.UseVisualStyleBackColor = true;
+            this.btn_NewOrderBack.Click += new System.EventHandler(this.btn_NewOrderBack_Click);
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.btn_NewOrderBack);

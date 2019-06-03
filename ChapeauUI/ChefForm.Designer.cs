@@ -1,6 +1,6 @@
 ﻿namespace ChapeauUI
 {
-    partial class TableViewForm
+    partial class ChefForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // TableViewForm
+            // ChefForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1002, 712);
-            this.Name = "TableViewForm";
-            this.Text = "TableViewForm";
-            this.Load += new System.EventHandler(this.TableViewForm_Load);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "ChefForm";
+            this.Text = "ChefForm";
             this.ResumeLayout(false);
 
         }
