@@ -14,13 +14,44 @@ namespace ChapeauUI
 {
     public partial class TableViewForm : BaseForm
     {
+        DiningTableService diningTableDB = new DiningTableService();
+
+        const int SIZE = 150;
+
         public TableViewForm(Employee LoggedUser)
         {
             LoggedInEmployee = LoggedUser;
             InitializeComponent();
+
+            DisplayTables();
         }
 
         private void TableViewForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DisplayTables()
+        {
+            flpnl_DiningTables.Controls.Clear();
+
+            List<DiningTable> diningTables = diningTableDB.GetDiningTables();
+
+            foreach (DiningTable table in diningTables)
+            {
+                BaseButton button = new BaseButton
+                {
+                    Size = new Size(SIZE, SIZE),
+                    Text = table.Id.ToString(),
+                    BackColor = Color.FromArgb(157, 105, 163),
+                    Tag = table
+                };
+                button.Click += new EventHandler(Table_Click);
+                flpnl_DiningTables.Controls.Add(button);
+            }
+        }
+
+        private void Table_Click(object sender, EventArgs e)
         {
 
         }
