@@ -59,7 +59,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                OrderMenuItem orderMenuItem = new OrderMenuItem(menuItemDB.GetMenuItemByIdDB((int)dr["item_id"]), (DateTime)dr["date_time"], (string)dr["comment"], (string)dr["status"]);
+                OrderMenuItem orderMenuItem = new OrderMenuItem(menuItemDB.GetMenuItemByIdDB((int)dr["item_id"]), (DateTime)dr["date_time"], (int)dr["quantity"],(string)dr["comment"], (string)dr["status"]);
                 orderMenuItems.Add(orderMenuItem);
             }
             return orderMenuItems;

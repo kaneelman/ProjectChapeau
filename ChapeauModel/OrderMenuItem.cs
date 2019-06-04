@@ -24,11 +24,12 @@ namespace ChapeauModel
             Status = status;
         }
 
-        public OrderMenuItem(MenuItem item, DateTime timeStamp, string comment, string status)
+        public OrderMenuItem(MenuItem item, DateTime timeStamp, int quantity, string comment, string status)
         {
             this.item = item;
             TimeStamp = timeStamp;
             Comment = comment;
+            Quantity = quantity;
 
             switch (status)
             {
