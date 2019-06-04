@@ -17,9 +17,6 @@ namespace ChapeauUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-
-            //to try the payment view
-            //Application.Run(new PaymentForm(BaseForm.LoggedInEmployee));
         }
     }
 }

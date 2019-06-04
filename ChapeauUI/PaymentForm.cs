@@ -42,12 +42,10 @@ namespace ChapeauUI
             {
                 ListViewItem li = new ListViewItem(m.GetMenuItem().Id.ToString());//needs to fix this because stock quantity is taken rather than order quantity
                 li.SubItems.Add(m.GetMenuItem().Name);
-                li.SubItems.Add(m.GetMenuItem().Stock.ToString());
+                li.SubItems.Add(m.Quantity.ToString());
                 li.SubItems.Add(m.GetMenuItem().Price.ToString("0.00"));
                 lst_Payment.Items.Add(li);
-            }
-
-            
+            }            
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
