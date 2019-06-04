@@ -22,11 +22,38 @@ namespace ChapeauUI
         {
             LoggedInEmployee = LoggedUser;
             InitializeComponent();
+            DisplayOrders();
         }
 
         private void BartenderForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void DisplayOrders()
+        {
+            //yo, emmanuel, i commented this things out since its giving error.. *stephen
+            /*flpnl_Orders.Controls.Clear();
+
+            List<string> Orders = new List<string>();
+
+            Orders.Add("Lunch");
+            mainCatagories.Add("Diner");
+            mainCatagories.Add("Drinks");
+
+            foreach (string catagory in mainCatagories)
+            {
+                BaseButton button = new BaseButton
+                {
+                    Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
+                    Text = catagory,
+                    BackColor = Color.FromArgb(157, 105, 163),
+                    Tag = catagory
+                };
+                button.Click += new EventHandler(Catagory_Click);
+                flpnl_MainCatagories.Controls.Add(button);
+            }
+            */
         }
 
         private void timer1_Tick(object sender, EventArgs e)
