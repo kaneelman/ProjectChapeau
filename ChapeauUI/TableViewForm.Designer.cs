@@ -28,19 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.flpnl_DiningTables = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
+            // 
+            // flpnl_DiningTables
+            // 
+            this.flpnl_DiningTables.Location = new System.Drawing.Point(30, 97);
+            this.flpnl_DiningTables.Name = "flpnl_DiningTables";
+            this.flpnl_DiningTables.Size = new System.Drawing.Size(920, 492);
+            this.flpnl_DiningTables.TabIndex = 8;
             // 
             // TableViewForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.flpnl_DiningTables);
             this.Name = "TableViewForm";
             this.Text = "TableViewForm";
             this.Load += new System.EventHandler(this.TableViewForm_Load);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
+            this.Controls.SetChildIndex(this.flpnl_DiningTables, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel flpnl_DiningTables;
     }
 }
