@@ -70,12 +70,28 @@ namespace ChapeauUI
                 button.Click += new EventHandler(Catagory_Click);
                 flpnl_MainCatagories.Controls.Add(button);
             }
+
+         
         }
 
         private void Catagory_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             string catagory = (string)button.Tag;
+
+            if (catagory == "Lunch")
+            {
+
+            }
+
+            if (catagory == "Diner")
+            {
+
+            }
+            if (catagory == "Drinks")
+            {
+
+            }
 
             //AddOrderItem(catagory);
         }
