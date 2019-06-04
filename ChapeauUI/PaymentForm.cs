@@ -45,9 +45,7 @@ namespace ChapeauUI
                 li.SubItems.Add(m.Quantity.ToString());
                 li.SubItems.Add(m.GetMenuItem().Price.ToString("0.00"));
                 lst_Payment.Items.Add(li);
-            }
-
-            
+            }            
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
