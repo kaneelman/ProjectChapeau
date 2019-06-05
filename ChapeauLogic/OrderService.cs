@@ -31,7 +31,7 @@ namespace ChapeauLogic
         public Order GetCompleteActiveOrderByTable(DiningTable diningTable)
         {
             Order order = orderDB.GetActiveOrderByTableDB(diningTable);
-            order.AddOrderItems(orderMenuItemDB.GetOrderMenuItemsByOrderIdDB(order.Id));
+            //order.AddOrderItems(orderMenuItemDB.GetOrderMenuItemsByOrderIdDB(order.Id));//this is the one making it doubled. becaue this make it add to the list twice
             return order;
         }
 

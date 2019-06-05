@@ -35,7 +35,7 @@ namespace ChapeauUI
             lst_Payment.View = View.Details;
             lst_Payment.Columns.Add("Menu Number", 100, HorizontalAlignment.Left);
             lst_Payment.Columns.Add("Name");
-            lst_Payment.Columns.Add("Quantity"); //need to find this.
+            lst_Payment.Columns.Add("Quantity"); 
             lst_Payment.Columns.Add("Price", 100, HorizontalAlignment.Left);
 
             foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())

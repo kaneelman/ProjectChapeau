@@ -36,16 +36,16 @@ namespace TestConsole
         //to check for payment data...
         void Start2()
         {
-            OrderService payment = new OrderService();
-            MenuItemService menuItemDB = new MenuItemService();
+            OrderService orderService = new OrderService();
+           // MenuItemService menuItemDB = new MenuItemService();
 
-            Order order = payment.GetCompleteActiveOrderByTable(new DiningTable(1, TableStatus.Occupied));
+            Order order = orderService.GetCompleteActiveOrderByTable(new DiningTable(1, TableStatus.Occupied));
 
-            foreach (OrderMenuItem m in order.GetOrderMenuItems())
+            foreach (OrderMenuItem m in order.content)
             {
                 Console.WriteLine($"{m.GetMenuItem().Name}");
             }
-            
+
             Console.ReadKey();
 
         }

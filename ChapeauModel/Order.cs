@@ -13,7 +13,7 @@ namespace ChapeauModel
         public string Comment { get; set; }
         public DiningTable Table { get; set; }
 
-        private List<OrderMenuItem> content;
+        public List<OrderMenuItem> content;
 
         public Order(int id, Employee employee, string comment, DiningTable table)
         {
