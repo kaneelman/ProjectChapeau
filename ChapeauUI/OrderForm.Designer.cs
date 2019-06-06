@@ -157,7 +157,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Cola ...";
+            this.label4.Text = "Pizza...";
             // 
             // OrderForm
             // 

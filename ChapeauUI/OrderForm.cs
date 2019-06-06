@@ -104,7 +104,7 @@ namespace ChapeauUI
                 }
             }
 
-            if (catagory == "Diner")
+            else if (catagory == "Diner")
             {
                 //flpnl_SubCatagories
                 flpnl_SubCatagories.Controls.Clear();
@@ -128,7 +128,7 @@ namespace ChapeauUI
                     flpnl_SubCatagories.Controls.Add(btn_LunchItems);
                 }
             }
-            if (catagory == "Drinks")
+            else if (catagory == "Drinks")
             {
                 //flpnl_SubCatagories
                 flpnl_SubCatagories.Controls.Clear();
@@ -223,24 +223,24 @@ namespace ChapeauUI
                 //flpnl_SubCatagories
                 flpnl_SubCatagoryItems.Controls.Clear();
 
-                List<string> LuchBiteSubCatagoryItems = new List<string>();
+                List<string> LuchSpecialSubCatagoryItems = new List<string>();
 
-                LuchBiteSubCatagoryItems.Add("frits");
-                LuchBiteSubCatagoryItems.Add("patatoes");
-                LuchBiteSubCatagoryItems.Add("Salmon rillete");
-                LuchBiteSubCatagoryItems.Add("Bread");
+                LuchSpecialSubCatagoryItems.Add("salade");
+                LuchSpecialSubCatagoryItems.Add("chicken wings");
+                LuchSpecialSubCatagoryItems.Add("fish");
+                LuchSpecialSubCatagoryItems.Add("Turkey");
 
-                foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
+                foreach (string LuchSpecialSubCatagoryItem in LuchSpecialSubCatagoryItems)
                 {
-                    BaseButton btn_LunchBiteItems = new BaseButton
+                    BaseButton btn_LunchSpecialItems = new BaseButton
                     {
                         Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-                        Text = LuchBiteSubCatagoryItem,
+                        Text = LuchSpecialSubCatagoryItem,
                         BackColor = Color.FromArgb(144, 238, 144),
-                        Tag = LuchBiteSubCatagoryItem
+                        Tag = LuchSpecialSubCatagoryItem
                     };
-                    btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
-                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
+                    btn_LunchSpecialItems.Click += new EventHandler(btn_LunchSpecialItems_Click);
+                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchSpecialItems);
                 }
             }
 
@@ -254,7 +254,9 @@ namespace ChapeauUI
         private void btn_LunchBiteItems_Click(object sender, EventArgs e)
         {   
         }
-
+        private void btn_LunchSpecialItems_Click(object sender, EventArgs e)
+        {
+        }
         private void DisplaySubCatogories()
         {
 
