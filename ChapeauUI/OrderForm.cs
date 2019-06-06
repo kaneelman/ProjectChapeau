@@ -88,7 +88,7 @@ namespace ChapeauUI
 
                 subCatagories.Add("Lunch Main");
                 subCatagories.Add("Lunch Bite");
-                subCatagories.Add("Lunch special");
+                subCatagories.Add("Lunch Special");
 
                 foreach (string subcatagory in subCatagories)
                 {
@@ -161,20 +161,98 @@ namespace ChapeauUI
         private void SubCatagory_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            string subcatagory = (string)button.Tag;
+            string LunchSubcatagoryItem = (string)button.Tag;
 
-            if (subcatagory == "Tenderloin")
+            if (LunchSubcatagoryItem == "Lunch Main")
             {
+                //flpnl_SubCatagories
+                flpnl_SubCatagoryItems.Controls.Clear();
+
+                List<string> LunchMainSubcatagoryItems = new List<string>();
+
+                LunchMainSubcatagoryItems.Add("Lasagne");
+                LunchMainSubcatagoryItems.Add("Pizza");
+                LunchMainSubcatagoryItems.Add("Biryani");
+                LunchMainSubcatagoryItems.Add("Macaroni");
+                
+                foreach (string LuchMainSubCatagoryItem in LunchMainSubcatagoryItems)
+                {
+                    BaseButton btn_LunchMainItems = new BaseButton
+                    {
+                        Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+                        Text = LuchMainSubCatagoryItem,
+                        BackColor = Color.FromArgb(144, 238, 144),
+                        Tag = LuchMainSubCatagoryItem
+                    };
+                    btn_LunchMainItems.Click += new EventHandler(btn_LunchMainItems_Click);
+                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchMainItems);
+                }
+
 
             }
-            if (subcatagory == "Lamb chops")
-            {
 
-            }
-            if (subcatagory == "fish stew")
-            {
 
+            else if (LunchSubcatagoryItem == "Lunch Bite")
+            {
+                //flpnl_SubCatagories
+                flpnl_SubCatagoryItems.Controls.Clear();
+
+                List<string> LuchBiteSubCatagoryItems = new List<string>();
+
+                LuchBiteSubCatagoryItems.Add("frits");
+                LuchBiteSubCatagoryItems.Add("patatoes");
+                LuchBiteSubCatagoryItems.Add("Salmon");
+                LuchBiteSubCatagoryItems.Add("Bread");
+
+                foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
+                {
+                    BaseButton btn_LunchBiteItems = new BaseButton
+                    {
+                        Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+                        Text = LuchBiteSubCatagoryItem,
+                        BackColor = Color.FromArgb(144, 238, 144),
+                        Tag = LuchBiteSubCatagoryItem
+                    };
+                    btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
+                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
+                }
             }
+
+            else if (LunchSubcatagoryItem == "Lunch Special")
+            {
+                //flpnl_SubCatagories
+                flpnl_SubCatagoryItems.Controls.Clear();
+
+                List<string> LuchBiteSubCatagoryItems = new List<string>();
+
+                LuchBiteSubCatagoryItems.Add("frits");
+                LuchBiteSubCatagoryItems.Add("patatoes");
+                LuchBiteSubCatagoryItems.Add("Salmon rillete");
+                LuchBiteSubCatagoryItems.Add("Bread");
+
+                foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
+                {
+                    BaseButton btn_LunchBiteItems = new BaseButton
+                    {
+                        Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+                        Text = LuchBiteSubCatagoryItem,
+                        BackColor = Color.FromArgb(144, 238, 144),
+                        Tag = LuchBiteSubCatagoryItem
+                    };
+                    btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
+                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
+                }
+            }
+
+        }
+
+
+
+        private void btn_LunchMainItems_Click(object sender, EventArgs e)
+        {
+        }
+        private void btn_LunchBiteItems_Click(object sender, EventArgs e)
+        {   
         }
 
         private void DisplaySubCatogories()
