@@ -56,7 +56,7 @@
             // flpnl_MainCatagories
             // 
             this.flpnl_MainCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpnl_MainCatagories.Location = new System.Drawing.Point(443, 116);
+            this.flpnl_MainCatagories.Location = new System.Drawing.Point(428, 116);
             this.flpnl_MainCatagories.Name = "flpnl_MainCatagories";
             this.flpnl_MainCatagories.Size = new System.Drawing.Size(141, 283);
             this.flpnl_MainCatagories.TabIndex = 9;
@@ -65,9 +65,9 @@
             // flpnl_SubCatagories
             // 
             this.flpnl_SubCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpnl_SubCatagories.Location = new System.Drawing.Point(599, 116);
+            this.flpnl_SubCatagories.Location = new System.Drawing.Point(575, 116);
             this.flpnl_SubCatagories.Name = "flpnl_SubCatagories";
-            this.flpnl_SubCatagories.Size = new System.Drawing.Size(119, 283);
+            this.flpnl_SubCatagories.Size = new System.Drawing.Size(133, 283);
             this.flpnl_SubCatagories.TabIndex = 10;
             this.flpnl_SubCatagories.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_SubCatagories_Paint);
             // 
@@ -140,7 +140,7 @@
             // 
             // btn_ConfirmOrder
             // 
-            this.btn_ConfirmOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_ConfirmOrder.BackColor = System.Drawing.SystemColors.Menu;
             this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 589);
             this.btn_ConfirmOrder.Name = "btn_ConfirmOrder";
             this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 59);
@@ -157,13 +157,14 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Cola ...";
+            this.label4.Text = "Pizza...";
             // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.flpnl_SubCatagories);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_ConfirmOrder);
             this.Controls.Add(this.btn_NewOrderBack);
@@ -172,7 +173,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lst_NewOrderItems);
             this.Controls.Add(this.flpnl_SubCatagoryItems);
-            this.Controls.Add(this.flpnl_SubCatagories);
             this.Controls.Add(this.flpnl_MainCatagories);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -181,7 +181,6 @@
             this.Load += new System.EventHandler(this.OrderForm_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.flpnl_MainCatagories, 0);
-            this.Controls.SetChildIndex(this.flpnl_SubCatagories, 0);
             this.Controls.SetChildIndex(this.flpnl_SubCatagoryItems, 0);
             this.Controls.SetChildIndex(this.lst_NewOrderItems, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -189,8 +188,9 @@
             this.Controls.SetChildIndex(this.btn_NewOrderItemDelete, 0);
             this.Controls.SetChildIndex(this.btn_NewOrderBack, 0);
             this.Controls.SetChildIndex(this.btn_ConfirmOrder, 0);
-            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
+            this.Controls.SetChildIndex(this.flpnl_SubCatagories, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
