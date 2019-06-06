@@ -36,5 +36,19 @@ namespace ChapeauUI
             this.Close();
             
         }
+
+        private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Also closing Login form on close
+            if(loginForm != null)
+            {
+                loginForm.Close();
+            }
+        }
+
+        private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Maybe some info on closing?
+        }
     }
 }
