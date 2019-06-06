@@ -51,5 +51,11 @@ namespace ChapeauModel
         {
             return item;
         }
+
+        //calculating price for each item
+        public decimal calcTotalForEachItem
+        {
+            get { return Quantity * item.Price; }
+        }
     }
 }

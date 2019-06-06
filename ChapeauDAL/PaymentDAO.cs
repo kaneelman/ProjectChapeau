@@ -39,6 +39,12 @@ namespace ChapeauDAL
         public void InsertPaymentDB(Payment payment)
         {
             //Somecode
+            string query = "INSERT INTO PAYMENT VALUES (order_id, total, tip, paid_amount, method)";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("order_id",payment.Order.Id)
+            });
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         //Convert Payment information from the database to Payment objects
