@@ -55,5 +55,10 @@ namespace ChapeauUI
         {
 
         }
+
+        private void flpnl_DiningTables_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

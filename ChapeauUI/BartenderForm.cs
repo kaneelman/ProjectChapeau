@@ -65,5 +65,10 @@ namespace ChapeauUI
         {
 
         }
+
+        private void flpnl_Orders_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -46,6 +46,7 @@
             this.flpnl_Orders.Name = "flpnl_Orders";
             this.flpnl_Orders.Size = new System.Drawing.Size(200, 643);
             this.flpnl_Orders.TabIndex = 0;
+            this.flpnl_Orders.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_Orders_Paint);
             // 
             // panel1
             // 
@@ -56,7 +57,7 @@
             // 
             // BartenderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);

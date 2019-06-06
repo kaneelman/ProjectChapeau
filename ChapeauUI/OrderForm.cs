@@ -81,12 +81,33 @@ namespace ChapeauUI
 
             if (catagory == "Lunch")
             {
+               
 
             }
 
             if (catagory == "Diner")
             {
+                //flpnl_SubCatagories
+                flpnl_SubCatagories.Controls.Clear();
 
+                List<string> subCatagories = new List<string>();
+
+                subCatagories.Add("Tenderloin");
+                subCatagories.Add("Lamb chops");
+                subCatagories.Add("Fish stew");
+
+                foreach (string subcatagory in subCatagories)
+                {
+                    BaseButton btn_LunchItems = new BaseButton
+                    {
+                        Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
+                        Text = subcatagory,
+                        BackColor = Color.FromArgb(157, 105, 163),
+                        Tag = subcatagory
+                    };
+                    btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
+                    flpnl_SubCatagories.Controls.Add(btn_LunchItems);
+                }
             }
             if (catagory == "Drinks")
             {
@@ -96,11 +117,34 @@ namespace ChapeauUI
             //AddOrderItem(catagory);
         }
 
+        private void SubCatagory_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string subcatagory = (string)button.Tag;
+
+            if (subcatagory == "Tenderloin")
+            {
+
+            }
+            if (subcatagory == "Lamb chops")
+            {
+
+            }
+            if (subcatagory == "fish stew")
+            {
+
+            }
+        }
 
         private void DisplaySubCatogories()
         {
 
         }
+
+        //private void DisplaySubCatogories()
+        //{
+
+        //}
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
@@ -118,6 +162,11 @@ namespace ChapeauUI
         }
 
         private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flpnl_SubCatagories_Paint(object sender, PaintEventArgs e)
         {
 
         }

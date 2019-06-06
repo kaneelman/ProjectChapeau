@@ -37,6 +37,7 @@
             this.flpnl_DiningTables.Name = "flpnl_DiningTables";
             this.flpnl_DiningTables.Size = new System.Drawing.Size(920, 492);
             this.flpnl_DiningTables.TabIndex = 8;
+            this.flpnl_DiningTables.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_DiningTables_Paint);
             // 
             // TableViewForm
             // 

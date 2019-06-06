@@ -40,6 +40,7 @@
             this.btn_NewOrderBack = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btn_ConfirmOrder = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -68,6 +69,7 @@
             this.flpnl_SubCatagories.Name = "flpnl_SubCatagories";
             this.flpnl_SubCatagories.Size = new System.Drawing.Size(119, 283);
             this.flpnl_SubCatagories.TabIndex = 10;
+            this.flpnl_SubCatagories.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_SubCatagories_Paint);
             // 
             // flpnl_SubCatagoryItems
             // 
@@ -147,11 +149,22 @@
             this.btn_ConfirmOrder.UseVisualStyleBackColor = false;
             this.btn_ConfirmOrder.Click += new System.EventHandler(this.btn_ConfirmOrder_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(43, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 23);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Cola ...";
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_ConfirmOrder);
             this.Controls.Add(this.btn_NewOrderBack);
             this.Controls.Add(this.btn_NewOrderItemDelete);
@@ -166,7 +179,6 @@
             this.Name = "OrderForm";
             this.Text = "OrderForm";
             this.Load += new System.EventHandler(this.OrderForm_Load);
-            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.flpnl_MainCatagories, 0);
             this.Controls.SetChildIndex(this.flpnl_SubCatagories, 0);
@@ -177,6 +189,8 @@
             this.Controls.SetChildIndex(this.btn_NewOrderItemDelete, 0);
             this.Controls.SetChildIndex(this.btn_NewOrderBack, 0);
             this.Controls.SetChildIndex(this.btn_ConfirmOrder, 0);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +209,6 @@
         private System.Windows.Forms.Button btn_NewOrderBack;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btn_ConfirmOrder;
+        private System.Windows.Forms.Label label4;
     }
 }
