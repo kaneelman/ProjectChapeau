@@ -158,7 +158,7 @@ namespace ChapeauUI
                 }
             }
 
-            //AddOrderItem(catagory);
+            ///AddOrderItem(catagory);
         }
 
         private void SubCatagory_Click(object sender, EventArgs e)
