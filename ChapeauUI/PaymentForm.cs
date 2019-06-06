@@ -14,11 +14,14 @@ namespace ChapeauUI
 {
     public partial class PaymentForm : BaseForm
     {
-        public PaymentForm(Employee LoggedUser)
+        public PaymentForm(Employee LoggedUser, LoginForm loginForm)
         {
-            LoggedInEmployee = LoggedUser;
-
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;
+            
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)

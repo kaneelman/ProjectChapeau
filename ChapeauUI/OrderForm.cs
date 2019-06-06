@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +17,13 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
-        public OrderForm(Employee LoggedUser)
+        public OrderForm(Employee LoggedUser, LoginForm loginForm)
         {
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
             LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;
 
             DisplayMainCatagories();
 
@@ -34,10 +37,10 @@ namespace ChapeauUI
 
         private void btn_NewOrderBack_Click(object sender, EventArgs e)
         {
-            OrderForm o1 = new OrderForm(LoggedInEmployee);
+            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
             o1.Close();
 
-            TableViewForm t1 = new TableViewForm(LoggedInEmployee);
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
             t1.Show();
            
         }

@@ -14,10 +14,13 @@ namespace ChapeauUI
 {
     public partial class ChefForm : BaseForm
     {
-        public ChefForm(Employee LoggedUser)
+        public ChefForm(Employee LoggedUser, LoginForm loginForm)
         {
-            LoggedInEmployee = LoggedUser;
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;
         }
     }
 }

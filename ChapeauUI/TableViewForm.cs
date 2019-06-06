@@ -18,10 +18,13 @@ namespace ChapeauUI
 
         const int SIZE = 150;
 
-        public TableViewForm(Employee LoggedUser)
+        public TableViewForm(Employee LoggedUser, LoginForm loginForm)
         {
-            LoggedInEmployee = LoggedUser;
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;            
 
             DisplayTables();
         }

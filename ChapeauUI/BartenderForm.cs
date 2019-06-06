@@ -18,10 +18,14 @@ namespace ChapeauUI
         //constants
         const int SIZE = 100;
 
-        public BartenderForm(Employee LoggedUser)
+        public BartenderForm(Employee LoggedUser, LoginForm loginForm)
         {
-            LoggedInEmployee = LoggedUser;
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;
+
             DisplayOrders();
         }
 
