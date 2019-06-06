@@ -14,6 +14,7 @@ namespace ChapeauUI
 {
     public partial class BaseForm : Form
     {
+        public LoginForm loginForm;
         protected Employee LoggedInEmployee;
         //public static Employee LoggedInEmployee; //just to check the payment
 
@@ -29,6 +30,7 @@ namespace ChapeauUI
 
         private void Btn_LogOut_Click(object sender, EventArgs e)
         {
+            this.Close();
 
         }
     }

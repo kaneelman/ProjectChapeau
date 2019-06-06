@@ -53,6 +53,9 @@ namespace ChapeauUI
                         default:
                             break;
                     }
+
+                    //Hide this form
+                    Hide();
                 } else
                 {
                     MessageBox.Show("Incorrect Password", "", MessageBoxButtons.OK);
