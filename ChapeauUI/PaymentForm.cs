@@ -14,6 +14,9 @@ namespace ChapeauUI
 {
     public partial class PaymentForm : BaseForm
     {
+        ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
+        ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
+
         public PaymentForm(Employee LoggedUser, LoginForm loginForm)
         {
             InitializeComponent();
@@ -28,8 +31,7 @@ namespace ChapeauUI
         {
             //ListViewItem ListOfOrders = new ListViewItem();
 
-            ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
-            ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
+            
 
             ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(1, ChapeauModel.TableStatus.Occupied));
 
