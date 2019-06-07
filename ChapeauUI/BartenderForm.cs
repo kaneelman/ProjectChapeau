@@ -17,6 +17,8 @@ namespace ChapeauUI
     {
         //constants
         const int SIZE = 100;
+        List<string> Categories = new List<string>() { "Breakfast", "Lunch", "Dinner"};
+        List<string> OrderDetails = new List<string>() { "two number nines", "a number nine large", "a number 6 with extra dip", "two number forty fives", "one with cheese", "and a large soda"};
 
         public BartenderForm(Employee LoggedUser, LoginForm loginForm)
         {
@@ -78,10 +80,24 @@ namespace ChapeauUI
         private void Order_Click(object sender, EventArgs e)
         {
             //button stuff
-            Button button = (Button)sender;
-            Image table = (Image)button.Tag;
-            table = new Bitmap(table, new Size(100, 90));
+            Image table = (Image)((Button)sender).Tag;
+
+            PicBox_TableNumber.SizeMode = PictureBoxSizeMode.StretchImage;
             PicBox_TableNumber.Image = table;
+
+            tlp_Orders.ColumnCount = 3;
+            tlp_Orders.RowCount = 1;
+
+            tlp_Orders.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+
+            tlp_Orders.Controls.Add(new Label() { Text = $"{Categories[0]}" }, 1, 1);
+
+            foreach (string order in OrderDetails)
+            {
+                tlp_Orders.RowCount = tlp_Orders.RowCount + 1;
+                tlp_Orders.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                tlp_Orders.Controls.Add(new Label() { Text = order }, 1, tlp_Orders.RowCount - 1 );
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
