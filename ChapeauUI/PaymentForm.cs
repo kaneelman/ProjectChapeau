@@ -68,15 +68,5 @@ namespace ChapeauUI
         {
 
         }
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            //TableViewForm tableViewForm = new TableViewForm(LoggedInEmployee);
-            //tableViewForm.Show();
-
-
-        }
     }
 }
