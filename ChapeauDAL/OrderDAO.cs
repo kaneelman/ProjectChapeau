@@ -100,14 +100,48 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+
+
+
+
+
+
         //Create new Order in the database
         public void InsertOrderDB (Order order)
         {
             //SomeCode
-            string query = "SELECT name, handled_by, comment, [table] FROM [ORDER]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = "INSERT INTO [ORDER] VALUES (@handled_by, '', @table)" +
+                "SELECT SCOPE_IDENTITY();";
 
+            SqlParameter[] sqlParameters = (new[]
+{
+                new SqlParameter("@handled_by", order.HandledBy),
+                new SqlParameter("@table", order.Table)
+            });
+
+            //Execute query and store the ID
+            int identityId = ExecuteIdentityEditQuery(query, sqlParameters);
+
+            string query2 = "";
+
+            foreach(OrderMenuItem item in order.GetOrderMenuItems())
+            {
+                query2 += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status}, {item.Comment})";
+
+            }
+
+            SqlParameter[] sqlParameters2 = (new[]
+            {
+                    new SqlParameter("@order_id", identityId ),
+                    new SqlParameter("@date_time", DateTime.Now),
+            });
+
+            ExecuteEditQuery(query2, sqlParameters2);
         }
+
+
+
+
 
         //Convert Order information from database to Order objects
         private List<Order> ReadTables(DataTable dataTable)
