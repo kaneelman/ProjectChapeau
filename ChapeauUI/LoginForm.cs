@@ -47,8 +47,8 @@ namespace ChapeauUI
                             orderForm.Show();
                             break;
                         case EmployeePosition.Manager:
-                            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, this);
-                            paymentForm.Show();
+                            //PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, this);
+                            //paymentForm.Show();
                             //MessageBox.Show("NO MANAGER FUNCTIONS AVAILABLE", "", MessageBoxButtons.OK);
                             break;
                         default:
