@@ -217,8 +217,6 @@ namespace ChapeauUI
             MenuCategory Subcatagory = (MenuCategory)button.Tag;
 
             DisplaySubCatogoriesItems(Subcatagory);
-
-            DisplaySubCatogoriesItems(Subcatagory);
             //if (LunchSubcatagoryItem == "Lunch Main")
             //{
             //    //flpnl_SubCatagories
