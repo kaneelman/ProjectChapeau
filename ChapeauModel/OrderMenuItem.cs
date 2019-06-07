@@ -52,10 +52,15 @@ namespace ChapeauModel
             return item;
         }
 
-        //calculating price for each item
+        //calculating price for each item **stephen part
         public decimal calcTotalForEachItem
         {
             get { return Quantity * item.Price; }
         }
+        public decimal calcTotalVATForEachItem
+        {            
+            get { return calcTotalForEachItem * 21/100; }
+        }
+
     }
 }
