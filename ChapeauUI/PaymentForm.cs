@@ -55,7 +55,20 @@ namespace ChapeauUI
                 li.SubItems.Add(m.Quantity.ToString());
                 li.SubItems.Add(m.GetMenuItem().Price.ToString("0.00"));
                 lst_Payment.Items.Add(li);
-            } 
+            }
+
+
+            decimal value = 0;
+            decimal vat =0;
+            foreach (OrderMenuItem m in order.content)
+            {
+                value += m.calcTotalForEachItem;
+                vat += m.calcTotalVATForEachItem;
+            }
+
+            txt_TotalAmount.Text = value.ToString("0.00");
+
+            txt_TVAT.Text = vat.ToString("0.00");
             
         }
 
@@ -72,7 +85,7 @@ namespace ChapeauUI
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //TableViewForm tableViewForm1 = new TableViewForm(LoggedInEmployee);// or make a new tableview.
+            //TableViewForm tableViewForm1 = new TableViewForm(LoggedInEmployee,);// or make a new tableview.
             //tableViewForm1.Show();
         }
     }

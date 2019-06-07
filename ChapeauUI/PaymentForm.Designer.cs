@@ -93,7 +93,7 @@
             // lbl_Feedbak
             // 
             this.lbl_Feedbak.AutoSize = true;
-            this.lbl_Feedbak.Location = new System.Drawing.Point(588, 299);
+            this.lbl_Feedbak.Location = new System.Drawing.Point(25, 359);
             this.lbl_Feedbak.Name = "lbl_Feedbak";
             this.lbl_Feedbak.Size = new System.Drawing.Size(97, 23);
             this.lbl_Feedbak.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             this.lst_Payment.Location = new System.Drawing.Point(29, 73);
             this.lst_Payment.Name = "lst_Payment";
-            this.lst_Payment.Size = new System.Drawing.Size(461, 593);
+            this.lst_Payment.Size = new System.Drawing.Size(461, 249);
             this.lst_Payment.TabIndex = 6;
             this.lst_Payment.UseCompatibleStateImageBehavior = false;
             this.lst_Payment.SelectedIndexChanged += new System.EventHandler(this.listView_Payment_SelectedIndexChanged);
@@ -127,7 +127,7 @@
             // lbl_Payment
             // 
             this.lbl_Payment.AutoSize = true;
-            this.lbl_Payment.Location = new System.Drawing.Point(585, 481);
+            this.lbl_Payment.Location = new System.Drawing.Point(585, 398);
             this.lbl_Payment.Name = "lbl_Payment";
             this.lbl_Payment.Size = new System.Drawing.Size(87, 23);
             this.lbl_Payment.TabIndex = 10;
@@ -146,15 +146,15 @@
             // 
             this.rtxt_FeedBack.BackColor = System.Drawing.SystemColors.Window;
             this.rtxt_FeedBack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtxt_FeedBack.Location = new System.Drawing.Point(589, 325);
+            this.rtxt_FeedBack.Location = new System.Drawing.Point(26, 385);
             this.rtxt_FeedBack.Name = "rtxt_FeedBack";
-            this.rtxt_FeedBack.Size = new System.Drawing.Size(241, 130);
+            this.rtxt_FeedBack.Size = new System.Drawing.Size(464, 252);
             this.rtxt_FeedBack.TabIndex = 15;
             this.rtxt_FeedBack.Text = "";
             // 
             // btn_Pay
             // 
-            this.btn_Pay.Location = new System.Drawing.Point(743, 680);
+            this.btn_Pay.Location = new System.Drawing.Point(697, 671);
             this.btn_Pay.Name = "btn_Pay";
             this.btn_Pay.Size = new System.Drawing.Size(162, 38);
             this.btn_Pay.TabIndex = 16;
@@ -174,7 +174,7 @@
             // radBtn_visa
             // 
             this.radBtn_visa.AutoSize = true;
-            this.radBtn_visa.Location = new System.Drawing.Point(587, 507);
+            this.radBtn_visa.Location = new System.Drawing.Point(589, 457);
             this.radBtn_visa.Name = "radBtn_visa";
             this.radBtn_visa.Size = new System.Drawing.Size(124, 27);
             this.radBtn_visa.TabIndex = 20;
@@ -184,7 +184,7 @@
             // radBtn_PIN
             // 
             this.radBtn_PIN.AutoSize = true;
-            this.radBtn_PIN.Location = new System.Drawing.Point(587, 563);
+            this.radBtn_PIN.Location = new System.Drawing.Point(587, 518);
             this.radBtn_PIN.Name = "radBtn_PIN";
             this.radBtn_PIN.Size = new System.Drawing.Size(63, 27);
             this.radBtn_PIN.TabIndex = 21;
@@ -194,7 +194,7 @@
             // radBtn_Cash
             // 
             this.radBtn_Cash.AutoSize = true;
-            this.radBtn_Cash.Location = new System.Drawing.Point(587, 628);
+            this.radBtn_Cash.Location = new System.Drawing.Point(587, 580);
             this.radBtn_Cash.Name = "radBtn_Cash";
             this.radBtn_Cash.Size = new System.Drawing.Size(76, 27);
             this.radBtn_Cash.TabIndex = 22;
@@ -211,7 +211,7 @@
             // picBox_Cash
             // 
             this.picBox_Cash.BackgroundImage = global::ChapeauUI.Properties.Resources.CashLogo;
-            this.picBox_Cash.Location = new System.Drawing.Point(730, 616);
+            this.picBox_Cash.Location = new System.Drawing.Point(730, 580);
             this.picBox_Cash.Name = "picBox_Cash";
             this.picBox_Cash.Size = new System.Drawing.Size(78, 50);
             this.picBox_Cash.TabIndex = 28;
@@ -220,7 +220,7 @@
             // picBox_PIN
             // 
             this.picBox_PIN.BackgroundImage = global::ChapeauUI.Properties.Resources.PinLogo;
-            this.picBox_PIN.Location = new System.Drawing.Point(733, 545);
+            this.picBox_PIN.Location = new System.Drawing.Point(730, 518);
             this.picBox_PIN.Name = "picBox_PIN";
             this.picBox_PIN.Size = new System.Drawing.Size(75, 45);
             this.picBox_PIN.TabIndex = 27;
@@ -229,7 +229,7 @@
             // picBox_Visa
             // 
             this.picBox_Visa.BackgroundImage = global::ChapeauUI.Properties.Resources.VisaLogo1;
-            this.picBox_Visa.Location = new System.Drawing.Point(733, 486);
+            this.picBox_Visa.Location = new System.Drawing.Point(733, 445);
             this.picBox_Visa.Name = "picBox_Visa";
             this.picBox_Visa.Size = new System.Drawing.Size(75, 48);
             this.picBox_Visa.TabIndex = 26;
@@ -237,7 +237,7 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(29, 680);
+            this.btn_Cancel.Location = new System.Drawing.Point(26, 671);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(133, 38);
             this.btn_Cancel.TabIndex = 29;
