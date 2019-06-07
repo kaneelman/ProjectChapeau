@@ -17,6 +17,8 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
+        ChapeauLogic.OrderService Order1 = new ChapeauLogic.OrderService();
+
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
         MenuItemService menuItemDB = new MenuItemService();
 
@@ -29,35 +31,22 @@ namespace ChapeauUI
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
 
-            lst_NewOrderItems.Clear();
 
             DisplayMainCatagories();
         }
 
 
-        //private void OrdertForm_Load(object sender, EventArgs e)
-        //{
-
-        //    //ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(1, ChapeauModel.TableStatus.Occupied));
-
-        //    //the list view design
-        //    lst_NewOrderItems.GridLines = true;
-        //    lst_NewOrderItems.View = View.Details;
-        //    lst_NewOrderItems.Columns.Add("Menu Number", 100, HorizontalAlignment.Left);
-        //    lst_NewOrderItems.Columns.Add("Name");
-        //    lst_NewOrderItems.Columns.Add("Quantity");
-        //    lst_NewOrderItems.Columns.Add("Price", 100, HorizontalAlignment.Left);
-
-        //    foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
-        //    {
-        //        ListViewItem li = new ListViewItem(m.GetMenuItem().Id.ToString());//needs to fix this because stock quantity is taken rather than order quantity
-        //        li.SubItems.Add(m.GetMenuItem().Name);
-        //        li.SubItems.Add(m.Quantity.ToString());
-        //        li.SubItems.Add(m.GetMenuItem().Price.ToString("0.00"));
-        //        lst_Payment.Items.Add(li);
-        //    }
-
-        //}
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            lst_NewOrderItems.Clear();
+            //the list view design
+            lst_NewOrderItems.GridLines = true;
+            lst_NewOrderItems.View = View.Details;
+            lst_NewOrderItems.Columns.Add("name");
+            lst_NewOrderItems.Columns.Add("price");
+            lst_NewOrderItems.Columns.Add("stock", 100, HorizontalAlignment.Left);
+          
+        }
 
         private void lst_NewOrderItems_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -232,7 +221,6 @@ namespace ChapeauUI
 
             //GetMenuItemsByCategory
 
-
         }
 
         private void SubCatagory_Click(object sender, EventArgs e)
@@ -353,6 +341,25 @@ namespace ChapeauUI
             Button button = (Button)sender;
             ChapeauModel.MenuItem menuItem = (ChapeauModel.MenuItem)button.Tag;
 
+
+            ListViewItem li = new ListViewItem(menuItem.Name);//needs to fix this because stock quantity is taken rather than order quantity
+
+            li.Tag = menuItem;  //linking menuItem to the entry of the list
+
+            li.SubItems.Add(menuItem.Price.ToString("0.00"));
+            li.SubItems.Add(menuItem.Stock.ToString());
+            li.SubItems.Add(menuItem.Category .ToString());
+
+            lst_NewOrderItems.Items.Add(li);
+         
+            /*
+             *   Id = id;
+            Name = name;
+            Price = price;
+            Stock = stock;
+            Category = category;
+             * 
+            */
             //menuItem.Id;  //lst_NewOrderItems
 
             //ChapeauModel.MenuItem menuItem;
@@ -382,10 +389,10 @@ namespace ChapeauUI
 
         }
 
-        private void OrderForm_Load(object sender, EventArgs e)
-        {
+        //private void OrderForm_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {

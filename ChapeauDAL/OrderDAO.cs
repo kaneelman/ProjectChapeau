@@ -103,8 +103,9 @@ namespace ChapeauDAL
         //Create new Order in the database
         public void InsertOrderDB (Order order)
         {
-
             //SomeCode
+            string query = "SELECT name, handled_by, comment, [table] FROM [ORDER]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
 
         }
 
