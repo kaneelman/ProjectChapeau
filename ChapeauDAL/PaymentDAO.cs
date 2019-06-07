@@ -42,7 +42,8 @@ namespace ChapeauDAL
             string query = "INSERT INTO PAYMENT VALUES (order_id, total, tip, paid_amount, method)";
             SqlParameter[] sqlParameters = (new[]
             {
-                new SqlParameter("order_id",payment.Order.Id)
+                new SqlParameter("order_id",payment.Order.Id),
+                new SqlParameter()
                 //add the other stuff here tomorrow
             });
             ExecuteEditQuery(query, sqlParameters);
