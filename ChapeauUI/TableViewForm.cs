@@ -89,6 +89,7 @@ namespace ChapeauUI
         private void Table_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+
             DiningTable table = (DiningTable)button.Tag;
 
             switch (table.Status)
