@@ -17,13 +17,18 @@ namespace ChapeauUI
         ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
         ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
 
-        public PaymentForm(Employee LoggedUser, LoginForm loginForm)
+        Order order;
+
+        public PaymentForm(Employee LoggedUser, LoginForm loginForm, Order order)
         {
             InitializeComponent();
 
             //Saving the user that is logged in and passing the login form, have it's reference
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
+
+            //Passing the order along that will be payed
+            this.order = order;
             
         }
 
