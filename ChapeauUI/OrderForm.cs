@@ -17,6 +17,8 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
+        MenuCategoryService menuCategoryDB = new MenuCategoryService();
+
         public OrderForm(Employee LoggedUser, LoginForm loginForm)
         {
             InitializeComponent();
@@ -73,90 +75,130 @@ namespace ChapeauUI
                 button.Click += new EventHandler(Catagory_Click);
                 flpnl_MainCatagories.Controls.Add(button);
             }
-
          
         }
+
+        private void DisplaySubCategories(string mainCategory)
+        {
+            flpnl_SubCatagories.Controls.Clear();
+
+            List<MenuCategory> menuCategories = new List<MenuCategory>();
+
+            switch (mainCategory)
+            {
+                case "Lunch":
+                    menuCategories = menuCategoryDB.GetLunchCategories();
+                    break;
+
+                case "Diner":
+                    menuCategories = menuCategoryDB.GetDinnerCategories();
+                    break;
+
+                case "Drinks":
+                    menuCategories = menuCategoryDB.GetDrinkCategories();
+                    break;
+                default:
+                    break;
+
+            }
+
+            foreach (MenuCategory menuCategory in menuCategories)
+            {
+                BaseButton btn_LunchItems = new BaseButton
+                {
+                    Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
+                    Text = menuCategory.Name,
+                    BackColor = Color.FromArgb(157, 105, 163),
+                    Tag = menuCategory
+                };
+                btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
+                flpnl_SubCatagories.Controls.Add(btn_LunchItems);
+            }
+        }
+
 
         private void Catagory_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             string catagory = (string)button.Tag;
 
-            if (catagory == "Lunch")
-            {
-                //flpnl_SubCatagories
-                flpnl_SubCatagories.Controls.Clear();
+            DisplaySubCategories(catagory);
 
-                List<string> subCatagories = new List<string>();
+            //if (catagory == "Lunch")
+            //{
+            //    //flpnl_SubCatagories
+            //    flpnl_SubCatagories.Controls.Clear();
 
-                subCatagories.Add("Lunch Main");
-                subCatagories.Add("Lunch Bite");
-                subCatagories.Add("Lunch Special");
+            //    List<string> subCatagories = new List<string>();
 
-                foreach (string subcatagory in subCatagories)
-                {
-                    BaseButton btn_LunchItems = new BaseButton
-                    {
-                        Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-                        Text = subcatagory,
-                        BackColor = Color.FromArgb(157, 105, 163),
-                        Tag = subcatagory
-                    };
-                    btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-                    flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-                }
-            }
+            //    subCatagories.Add("Lunch Main");
+            //    subCatagories.Add("Lunch Bite");
+            //    subCatagories.Add("Lunch Special");
 
-            else if (catagory == "Diner")
-            {
-                //flpnl_SubCatagories
-                flpnl_SubCatagories.Controls.Clear();
+            //    foreach (string subcatagory in subCatagories)
+            //    {
+            //        BaseButton btn_LunchItems = new BaseButton
+            //        {
+            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
+            //            Text = subcatagory,
+            //            BackColor = Color.FromArgb(157, 105, 163),
+            //            Tag = subcatagory
+            //        };
+            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
+            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
+            //    }
+            //}
 
-                List<string> subCatagories = new List<string>();
+            //else if (catagory == "Diner")
+            //{
+            //    //flpnl_SubCatagories
+            //    flpnl_SubCatagories.Controls.Clear();
 
-                subCatagories.Add("Dinner Main");
-                subCatagories.Add("Dinner Dessert");
-                subCatagories.Add("Dinner Starter");
+            //    List<string> subCatagories = new List<string>();
 
-                foreach (string subcatagory in subCatagories)
-                {
-                    BaseButton btn_LunchItems = new BaseButton
-                    {
-                        Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-                        Text = subcatagory,
-                        BackColor = Color.FromArgb(157, 105, 163),
-                        Tag = subcatagory
-                    };
-                    btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-                    flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-                }
-            }
-            else if (catagory == "Drinks")
-            {
-                //flpnl_SubCatagories
-                flpnl_SubCatagories.Controls.Clear();
+            //    subCatagories.Add("Dinner Main");
+            //    subCatagories.Add("Dinner Dessert");
+            //    subCatagories.Add("Dinner Starter");
 
-                List<string> subCatagories = new List<string>();
+            //    foreach (string subcatagory in subCatagories)
+            //    {
+            //        BaseButton btn_LunchItems = new BaseButton
+            //        {
+            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
+            //            Text = subcatagory,
+            //            BackColor = Color.FromArgb(157, 105, 163),
+            //            Tag = subcatagory
+            //        };
+            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
+            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
+            //    }
+            //}
+            //else if (catagory == "Drinks")
+            //{
+            //    //flpnl_SubCatagories
+            //    flpnl_SubCatagories.Controls.Clear();
 
-                subCatagories.Add("Beers");
-                subCatagories.Add("Hot drinks");
-                subCatagories.Add("Soft drinks");
-                subCatagories.Add("Wines");
+            //    List<string> subCatagories = new List<string>();
+
+            //    subCatagories.Add("Beers");
+            //    subCatagories.Add("Hot drinks");
+            //    subCatagories.Add("Soft drinks");
+            //    subCatagories.Add("Wines");
 
 
-                foreach (string subcatagory in subCatagories)
-                {
-                    BaseButton btn_LunchItems = new BaseButton
-                    {
-                        Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-                        Text = subcatagory,
-                        BackColor = Color.FromArgb(157, 105, 163),
-                        Tag = subcatagory
-                    };
-                    btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-                    flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-                }
-            }
+            //    foreach (string subcatagory in subCatagories)
+            //    {
+            //        BaseButton btn_LunchItems = new BaseButton
+            //        {
+            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
+            //            Text = subcatagory,
+            //            BackColor = Color.FromArgb(157, 105, 163),
+            //            Tag = subcatagory
+            //        };
+            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
+            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
+            //    }
+            //}
 
             ///AddOrderItem(catagory);
         }
@@ -177,7 +219,7 @@ namespace ChapeauUI
                 LunchMainSubcatagoryItems.Add("Pizza");
                 LunchMainSubcatagoryItems.Add("Biryani");
                 LunchMainSubcatagoryItems.Add("Macaroni");
-                
+
                 foreach (string LuchMainSubCatagoryItem in LunchMainSubcatagoryItems)
                 {
                     BaseButton btn_LunchMainItems = new BaseButton
@@ -250,12 +292,11 @@ namespace ChapeauUI
         }
 
 
-
         private void btn_LunchMainItems_Click(object sender, EventArgs e)
         {
         }
         private void btn_LunchBiteItems_Click(object sender, EventArgs e)
-        {   
+        {
         }
         private void btn_LunchSpecialItems_Click(object sender, EventArgs e)
         {
