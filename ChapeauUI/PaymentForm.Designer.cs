@@ -45,6 +45,12 @@
             this.radBtn_PIN = new System.Windows.Forms.RadioButton();
             this.radBtn_Cash = new System.Windows.Forms.RadioButton();
             this.txt_TVAT = new System.Windows.Forms.TextBox();
+            this.picBox_Cash = new System.Windows.Forms.PictureBox();
+            this.picBox_PIN = new System.Windows.Forms.PictureBox();
+            this.picBox_Visa = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_LogOut
@@ -147,7 +153,7 @@
             // 
             // btn_Pay
             // 
-            this.btn_Pay.Location = new System.Drawing.Point(589, 628);
+            this.btn_Pay.Location = new System.Drawing.Point(743, 680);
             this.btn_Pay.Name = "btn_Pay";
             this.btn_Pay.Size = new System.Drawing.Size(162, 38);
             this.btn_Pay.TabIndex = 16;
@@ -177,7 +183,7 @@
             // radBtn_PIN
             // 
             this.radBtn_PIN.AutoSize = true;
-            this.radBtn_PIN.Location = new System.Drawing.Point(587, 540);
+            this.radBtn_PIN.Location = new System.Drawing.Point(587, 563);
             this.radBtn_PIN.Name = "radBtn_PIN";
             this.radBtn_PIN.Size = new System.Drawing.Size(63, 27);
             this.radBtn_PIN.TabIndex = 21;
@@ -187,7 +193,7 @@
             // radBtn_Cash
             // 
             this.radBtn_Cash.AutoSize = true;
-            this.radBtn_Cash.Location = new System.Drawing.Point(587, 573);
+            this.radBtn_Cash.Location = new System.Drawing.Point(587, 628);
             this.radBtn_Cash.Name = "radBtn_Cash";
             this.radBtn_Cash.Size = new System.Drawing.Size(76, 27);
             this.radBtn_Cash.TabIndex = 22;
@@ -201,11 +207,41 @@
             this.txt_TVAT.Size = new System.Drawing.Size(100, 30);
             this.txt_TVAT.TabIndex = 25;
             // 
+            // picBox_Cash
+            // 
+            this.picBox_Cash.BackgroundImage = global::ChapeauUI.Properties.Resources.CashLogo;
+            this.picBox_Cash.Location = new System.Drawing.Point(730, 616);
+            this.picBox_Cash.Name = "picBox_Cash";
+            this.picBox_Cash.Size = new System.Drawing.Size(78, 50);
+            this.picBox_Cash.TabIndex = 28;
+            this.picBox_Cash.TabStop = false;
+            // 
+            // picBox_PIN
+            // 
+            this.picBox_PIN.BackgroundImage = global::ChapeauUI.Properties.Resources.PinLogo;
+            this.picBox_PIN.Location = new System.Drawing.Point(733, 545);
+            this.picBox_PIN.Name = "picBox_PIN";
+            this.picBox_PIN.Size = new System.Drawing.Size(75, 45);
+            this.picBox_PIN.TabIndex = 27;
+            this.picBox_PIN.TabStop = false;
+            // 
+            // picBox_Visa
+            // 
+            this.picBox_Visa.BackgroundImage = global::ChapeauUI.Properties.Resources.VisaLogo1;
+            this.picBox_Visa.Location = new System.Drawing.Point(733, 486);
+            this.picBox_Visa.Name = "picBox_Visa";
+            this.picBox_Visa.Size = new System.Drawing.Size(75, 48);
+            this.picBox_Visa.TabIndex = 26;
+            this.picBox_Visa.TabStop = false;
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.picBox_Cash);
+            this.Controls.Add(this.picBox_PIN);
+            this.Controls.Add(this.picBox_Visa);
             this.Controls.Add(this.txt_TVAT);
             this.Controls.Add(this.radBtn_Cash);
             this.Controls.Add(this.radBtn_PIN);
@@ -244,6 +280,12 @@
             this.Controls.SetChildIndex(this.radBtn_Cash, 0);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.txt_TVAT, 0);
+            this.Controls.SetChildIndex(this.picBox_Visa, 0);
+            this.Controls.SetChildIndex(this.picBox_PIN, 0);
+            this.Controls.SetChildIndex(this.picBox_Cash, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +310,8 @@
         private System.Windows.Forms.RadioButton radBtn_PIN;
         private System.Windows.Forms.RadioButton radBtn_Cash;
         private System.Windows.Forms.TextBox txt_TVAT;
+        private System.Windows.Forms.PictureBox picBox_Visa;
+        private System.Windows.Forms.PictureBox picBox_PIN;
+        private System.Windows.Forms.PictureBox picBox_Cash;
     }
 }

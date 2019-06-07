@@ -36,6 +36,7 @@ namespace ChapeauUI
 
         private void DisplayOrders()
         {
+            //temporary clear
             flpnl_Orders.Controls.Clear();
 
             List<Image> Tables = CreateTableList();
@@ -98,18 +99,23 @@ namespace ChapeauUI
         {
             List<Image> images = new List<Image>();
 
-            images.Add(Image.FromFile("Table_1.PNG"));
-            images.Add(Image.FromFile("Table_2.PNG"));
-            images.Add(Image.FromFile("Table_3.PNG"));
-            images.Add(Image.FromFile("Table_4.PNG"));
-            images.Add(Image.FromFile("Table_5.PNG"));
-            images.Add(Image.FromFile("Table_6.PNG"));
-            images.Add(Image.FromFile("Table_7.PNG"));
-            images.Add(Image.FromFile("Table_8.PNG"));
-            images.Add(Image.FromFile("Table_9.PNG"));
-            images.Add(Image.FromFile("Table_10.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_1.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_2.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_3.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_4.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_5.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_6.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_7.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_8.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_9.PNG"));
+            images.Add(Image.FromFile(".\\..\\..\\TableNumImages\\Table_10.PNG"));
 
             return images;
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
