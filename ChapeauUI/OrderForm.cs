@@ -216,6 +216,7 @@ namespace ChapeauUI
             Button button = (Button)sender;
             MenuCategory Subcatagory = (MenuCategory)button.Tag;
 
+            DisplaySubCatogoriesItems(Subcatagory);
 
             //if (LunchSubcatagoryItem == "Lunch Main")
             //{
