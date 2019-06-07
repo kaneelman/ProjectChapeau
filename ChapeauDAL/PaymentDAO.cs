@@ -43,8 +43,10 @@ namespace ChapeauDAL
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("order_id",payment.Order.Id),
-                new SqlParameter()
-                //add the other stuff here tomorrow
+                new SqlParameter("total",payment.Total),
+                new SqlParameter("tip", payment.Tip),
+                new SqlParameter("paid_amount", payment.AmountPaid),
+                new SqlParameter("method",payment.Method)
             });
             ExecuteEditQuery(query, sqlParameters);
         }
