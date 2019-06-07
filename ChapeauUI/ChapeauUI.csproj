@@ -120,6 +120,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TableViewForm.resx">
       <DependentUpon>TableViewForm.cs</DependentUpon>
@@ -146,6 +147,15 @@
       <Project>{1e55a688-ad42-4c8c-8d20-7f86ac95df9b}</Project>
       <Name>ChapeauModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PaymentLogo\VisaLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PaymentLogo\PinLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PaymentLogo\CashLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
