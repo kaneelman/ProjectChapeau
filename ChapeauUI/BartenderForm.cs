@@ -78,9 +78,9 @@ namespace ChapeauUI
         private void Order_Click(object sender, EventArgs e)
         {
             //button stuff
-            Button button = (Button)sender;
-            Image table = (Image)button.Tag;
-            table = new Bitmap(table, new Size(100, 90));
+            Image table = (Image)((Button)sender).Tag;
+
+            PicBox_TableNumber.SizeMode = PictureBoxSizeMode.StretchImage;
             PicBox_TableNumber.Image = table;
         }
 
