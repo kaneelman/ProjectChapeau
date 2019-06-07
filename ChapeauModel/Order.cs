@@ -51,5 +51,14 @@ namespace ChapeauModel
             return this.content;
         }
 
+        public decimal CalculateTotalPrice()
+        {
+            decimal totalprice=0;
+            foreach (OrderMenuItem item in this.content)
+            {
+                totalprice += item.calcTotalForEachItem;
+            }
+            return totalprice;
+        }
     }
 }

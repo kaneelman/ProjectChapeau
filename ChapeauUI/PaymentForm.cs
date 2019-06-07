@@ -14,19 +14,29 @@ namespace ChapeauUI
 {
     public partial class PaymentForm : BaseForm
     {
-        public PaymentForm(Employee LoggedUser)
-        {
-            LoggedInEmployee = LoggedUser;
+        ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
+        ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
 
+        Order order;
+
+        public PaymentForm(Employee LoggedUser, LoginForm loginForm, Order order)
+        {
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;
+
+            //Passing the order along that will be payed
+            this.order = order;
+            
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             //ListViewItem ListOfOrders = new ListViewItem();
 
-            ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
-            ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
+            
 
             ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(1, ChapeauModel.TableStatus.Occupied));
 
@@ -45,7 +55,8 @@ namespace ChapeauUI
                 li.SubItems.Add(m.Quantity.ToString());
                 li.SubItems.Add(m.GetMenuItem().Price.ToString("0.00"));
                 lst_Payment.Items.Add(li);
-            }            
+            } 
+            
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)

@@ -37,14 +37,19 @@ namespace TestConsole
         void Start2()
         {
             OrderService orderService = new OrderService();
-           // MenuItemService menuItemDB = new MenuItemService();
+            // MenuItemService menuItemDB = new MenuItemService();
 
             Order order = orderService.GetCompleteActiveOrderByTable(new DiningTable(1, TableStatus.Occupied));
 
             foreach (OrderMenuItem m in order.content)
             {
                 Console.WriteLine($"{m.GetMenuItem().Name}");
+                Console.WriteLine(m.calcTotalForEachItem.ToString("0.0"));
+                
             }
+            Console.WriteLine(order.CalculateTotalPrice().ToString("0.00"));
+            
+            //Console.WriteLine(order.content[0].calcTotalForEachItem.ToString("0.0"));
 
             Console.ReadKey();
 

@@ -10,10 +10,6 @@ using System.Collections.ObjectModel;
 
 namespace ChapeauLogic
 {
-
-    /// <summary>
-    /// gerwin's idea that its nicer to do the calculations here, so that when the code is changed into a console app, the code is already there
-    /// </summary>
     public class PaymentService
     {
         PaymentDAO paymentDB = new PaymentDAO();
@@ -33,13 +29,5 @@ namespace ChapeauLogic
             paymentDB.InsertPaymentDB(payment);
         }
 
-        //make a method that collects all the order by table
-
-        public void calculateVAT()
-        {
-            
-        }
-
     }
-    //make a calculation methods..
 }

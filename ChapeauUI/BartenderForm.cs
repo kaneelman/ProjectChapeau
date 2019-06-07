@@ -18,10 +18,14 @@ namespace ChapeauUI
         //constants
         const int SIZE = 100;
 
-        public BartenderForm(Employee LoggedUser)
+        public BartenderForm(Employee LoggedUser, LoginForm loginForm)
         {
-            LoggedInEmployee = LoggedUser;
             InitializeComponent();
+
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;
+
             DisplayOrders();
         }
 
@@ -32,28 +36,47 @@ namespace ChapeauUI
 
         private void DisplayOrders()
         {
-            //yo, emmanuel, i commented this things out since its giving error.. *stephen
-            /*flpnl_Orders.Controls.Clear();
+            flpnl_Orders.Controls.Clear();
 
-            List<string> Orders = new List<string>();
+            List<Image> Tables = CreateTableList();
+            List<string> DateAndStatus = new List<string>();
+            int ListCounter = 0;
 
-            Orders.Add("Lunch");
-            mainCatagories.Add("Diner");
-            mainCatagories.Add("Drinks");
+            DateAndStatus.Add("00:01:24\nRunning");
+            DateAndStatus.Add("00:01:25\nRunning");
+            DateAndStatus.Add("00:01:26\nRunning");
+            DateAndStatus.Add("00:01:27\nRunning");
+            DateAndStatus.Add("00:01:28\nFinished");
+            DateAndStatus.Add("00:01:29\nFinished");
+            DateAndStatus.Add("00:01:30\nFinished");
+            DateAndStatus.Add("00:01:31\nFinished");
+            DateAndStatus.Add("00:01:32\nFinished");
+            DateAndStatus.Add("00:01:33\nFinished");
 
-            foreach (string catagory in mainCatagories)
+            foreach (Image table in Tables  )
             {
                 BaseButton button = new BaseButton
                 {
-                    Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-                    Text = catagory,
-                    BackColor = Color.FromArgb(157, 105, 163),
-                    Tag = catagory
+                    Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
+                    Image = new Bitmap(table, new Size(100, 100)),
+                    ImageAlign = ContentAlignment.MiddleLeft,
+                    BackColor = Color.Cyan,
+                    Tag = table.ToString(),
+                    Padding = new Padding(0, 0, 25, 0),
+                    Text = DateAndStatus[ListCounter],
+                    TextAlign = ContentAlignment.MiddleRight,
                 };
-                button.Click += new EventHandler(Catagory_Click);
-                flpnl_MainCatagories.Controls.Add(button);
+                button.Click += new EventHandler(Order_Click);
+                flpnl_Orders.Controls.Add(button);
+
+                ListCounter++;
             }
-            */
+
+        }
+
+        private void Order_Click(object sender, EventArgs e)
+        {
+            //button stuff
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -69,6 +92,24 @@ namespace ChapeauUI
         private void flpnl_Orders_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public List<Image> CreateTableList()
+        {
+            List<Image> images = new List<Image>();
+
+            images.Add(Image.FromFile("Table_1.PNG"));
+            images.Add(Image.FromFile("Table_2.PNG"));
+            images.Add(Image.FromFile("Table_3.PNG"));
+            images.Add(Image.FromFile("Table_4.PNG"));
+            images.Add(Image.FromFile("Table_5.PNG"));
+            images.Add(Image.FromFile("Table_6.PNG"));
+            images.Add(Image.FromFile("Table_7.PNG"));
+            images.Add(Image.FromFile("Table_8.PNG"));
+            images.Add(Image.FromFile("Table_9.PNG"));
+            images.Add(Image.FromFile("Table_10.PNG"));
+
+            return images;
         }
     }
 }

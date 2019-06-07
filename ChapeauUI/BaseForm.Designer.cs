@@ -54,6 +54,8 @@
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BaseForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.Load += new System.EventHandler(this.BaseForm_Load);
             this.ResumeLayout(false);
 

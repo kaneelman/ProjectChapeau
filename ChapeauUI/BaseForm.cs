@@ -30,8 +30,25 @@ namespace ChapeauUI
 
         private void Btn_LogOut_Click(object sender, EventArgs e)
         {
+            //Showing the loginForm again and hiding current form
+            loginForm.Show();
+            LoggedInEmployee = null;
             this.Close();
+            
+        }
 
+        private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Also closing Login form on close
+            if(loginForm != null)
+            {
+                loginForm.Close();
+            }
+        }
+
+        private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Maybe some info on closing?
         }
     }
 }

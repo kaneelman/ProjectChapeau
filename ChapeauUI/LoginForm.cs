@@ -18,6 +18,7 @@ namespace ChapeauUI
 
         public LoginForm()
         {
+            //Hiding log out button on login page
             this.Btn_LogOut.Hide();
             InitializeComponent();
             
@@ -34,19 +35,19 @@ namespace ChapeauUI
                     switch (LoggedInEmployee.Position)
                     {
                         case EmployeePosition.Bartender:
-                            TableViewForm tableViewForm = new TableViewForm(LoggedInEmployee);
+                            TableViewForm tableViewForm = new TableViewForm(LoggedInEmployee, this);
                             tableViewForm.Show();
                             break;
                         case EmployeePosition.Chef:
-                            ChefForm chefForm = new ChefForm(LoggedInEmployee);
+                            BartenderForm chefForm = new BartenderForm(LoggedInEmployee, this);
                             chefForm.Show();
                             break;
                         case EmployeePosition.Waiter:
-                            OrderForm orderForm = new OrderForm(LoggedInEmployee);
+                            OrderForm orderForm = new OrderForm(LoggedInEmployee, this);
                             orderForm.Show();
                             break;
                         case EmployeePosition.Manager:
-                            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee);
+                            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, this);
                             paymentForm.Show();
                             //MessageBox.Show("NO MANAGER FUNCTIONS AVAILABLE", "", MessageBoxButtons.OK);
                             break;
@@ -64,6 +65,11 @@ namespace ChapeauUI
             {
                 MessageBox.Show($"User {txt_LoginUsername.Text} does not exist.", "", MessageBoxButtons.OK);
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
