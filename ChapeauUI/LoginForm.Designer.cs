@@ -44,7 +44,7 @@
             this.txt_LoginUsername.Location = new System.Drawing.Point(486, 357);
             this.txt_LoginUsername.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_LoginUsername.Name = "txt_LoginUsername";
-            this.txt_LoginUsername.Size = new System.Drawing.Size(242, 30);
+            this.txt_LoginUsername.Size = new System.Drawing.Size(242, 26);
             this.txt_LoginUsername.TabIndex = 0;
             // 
             // txt_LoginPassword
@@ -54,7 +54,7 @@
             this.txt_LoginPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_LoginPassword.Name = "txt_LoginPassword";
             this.txt_LoginPassword.PasswordChar = '*';
-            this.txt_LoginPassword.Size = new System.Drawing.Size(242, 30);
+            this.txt_LoginPassword.Size = new System.Drawing.Size(242, 26);
             this.txt_LoginPassword.TabIndex = 1;
             // 
             // btn_Login
@@ -75,7 +75,7 @@
             this.lbl_LoginUsername.Location = new System.Drawing.Point(323, 365);
             this.lbl_LoginUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_LoginUsername.Name = "lbl_LoginUsername";
-            this.lbl_LoginUsername.Size = new System.Drawing.Size(123, 23);
+            this.lbl_LoginUsername.Size = new System.Drawing.Size(97, 18);
             this.lbl_LoginUsername.TabIndex = 3;
             this.lbl_LoginUsername.Text = "Employee ID";
             // 
@@ -86,7 +86,7 @@
             this.lbl_LoginPassword.Location = new System.Drawing.Point(323, 415);
             this.lbl_LoginPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_LoginPassword.Name = "lbl_LoginPassword";
-            this.lbl_LoginPassword.Size = new System.Drawing.Size(98, 23);
+            this.lbl_LoginPassword.Size = new System.Drawing.Size(78, 18);
             this.lbl_LoginPassword.TabIndex = 4;
             this.lbl_LoginPassword.Text = "Password";
             // 
@@ -102,6 +102,7 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btn_Login;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.img_ChapeauLogo);
