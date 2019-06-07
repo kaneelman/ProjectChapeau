@@ -17,6 +17,8 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
+        MenuCategoryService menuCategoryDB = new MenuCategoryService();
+
         public OrderForm(Employee LoggedUser, LoginForm loginForm)
         {
             InitializeComponent();
@@ -73,9 +75,25 @@ namespace ChapeauUI
                 button.Click += new EventHandler(Catagory_Click);
                 flpnl_MainCatagories.Controls.Add(button);
             }
-
          
         }
+
+        private void DisplaySubCategories(string mainCategory)
+        {
+            flpnl_SubCatagories.Controls.Clear();
+
+            List<MenuCategory> menuCategories;
+
+            switch (mainCategory)
+            {
+                case "Lunch":
+                    menuCategories = menuCategoryDB.GetLunchCategories();
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
         private void Catagory_Click(object sender, EventArgs e)
         {
