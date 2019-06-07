@@ -34,6 +34,8 @@
             this.btn_SortByFinished = new System.Windows.Forms.Button();
             this.btn_SortByRunning = new System.Windows.Forms.Button();
             this.lbl_SortBy = new System.Windows.Forms.Label();
+            this.PicBox_TableNumber = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // flpnl_Orders
@@ -93,12 +95,21 @@
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
+            // PicBox_TableNumber
+            // 
+            this.PicBox_TableNumber.Location = new System.Drawing.Point(391, 10);
+            this.PicBox_TableNumber.Name = "PicBox_TableNumber";
+            this.PicBox_TableNumber.Size = new System.Drawing.Size(100, 90);
+            this.PicBox_TableNumber.TabIndex = 12;
+            this.PicBox_TableNumber.TabStop = false;
+            // 
             // BartenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.PicBox_TableNumber);
             this.Controls.Add(this.btn_MarkFinished);
             this.Controls.Add(this.lbl_SortBy);
             this.Controls.Add(this.btn_SortByRunning);
@@ -116,6 +127,8 @@
             this.Controls.SetChildIndex(this.btn_SortByRunning, 0);
             this.Controls.SetChildIndex(this.lbl_SortBy, 0);
             this.Controls.SetChildIndex(this.btn_MarkFinished, 0);
+            this.Controls.SetChildIndex(this.PicBox_TableNumber, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +141,6 @@
         private System.Windows.Forms.Button btn_SortByRunning;
         private System.Windows.Forms.Label lbl_SortBy;
         private System.Windows.Forms.Button btn_MarkFinished;
+        private System.Windows.Forms.PictureBox PicBox_TableNumber;
     }
 }

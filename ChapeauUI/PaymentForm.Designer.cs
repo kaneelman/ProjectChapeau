@@ -48,6 +48,7 @@
             this.picBox_Cash = new System.Windows.Forms.PictureBox();
             this.picBox_PIN = new System.Windows.Forms.PictureBox();
             this.picBox_Visa = new System.Windows.Forms.PictureBox();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).BeginInit();
@@ -234,11 +235,22 @@
             this.picBox_Visa.TabIndex = 26;
             this.picBox_Visa.TabStop = false;
             // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Location = new System.Drawing.Point(29, 680);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(133, 38);
+            this.btn_Cancel.TabIndex = 29;
+            this.btn_Cancel.Text = "cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.picBox_Cash);
             this.Controls.Add(this.picBox_PIN);
             this.Controls.Add(this.picBox_Visa);
@@ -283,6 +295,7 @@
             this.Controls.SetChildIndex(this.picBox_Visa, 0);
             this.Controls.SetChildIndex(this.picBox_PIN, 0);
             this.Controls.SetChildIndex(this.picBox_Cash, 0);
+            this.Controls.SetChildIndex(this.btn_Cancel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).EndInit();
@@ -313,5 +326,6 @@
         private System.Windows.Forms.PictureBox picBox_Visa;
         private System.Windows.Forms.PictureBox picBox_PIN;
         private System.Windows.Forms.PictureBox picBox_Cash;
+        private System.Windows.Forms.Button btn_Cancel;
     }
 }
