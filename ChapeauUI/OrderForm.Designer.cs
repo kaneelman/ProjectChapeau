@@ -40,6 +40,8 @@
             this.btn_NewOrderBack = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btn_ConfirmOrder = new System.Windows.Forms.Button();
+            this.pnl_commentOrder = new System.Windows.Forms.Panel();
+            this.btn_CommentOrder = new ChapeauUI.BaseButton();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +83,7 @@
             // lst_NewOrderItems
             // 
             this.lst_NewOrderItems.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lst_NewOrderItems.Location = new System.Drawing.Point(33, 116);
+            this.lst_NewOrderItems.Location = new System.Drawing.Point(33, 117);
             this.lst_NewOrderItems.Name = "lst_NewOrderItems";
             this.lst_NewOrderItems.Size = new System.Drawing.Size(389, 438);
             this.lst_NewOrderItems.TabIndex = 12;
@@ -101,7 +103,7 @@
             // btn_NewOrderClearItems
             // 
             this.btn_NewOrderClearItems.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(330, 588);
+            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(240, 589);
             this.btn_NewOrderClearItems.Name = "btn_NewOrderClearItems";
             this.btn_NewOrderClearItems.Size = new System.Drawing.Size(92, 60);
             this.btn_NewOrderClearItems.TabIndex = 14;
@@ -112,7 +114,7 @@
             // btn_NewOrderItemDelete
             // 
             this.btn_NewOrderItemDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(182, 588);
+            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(139, 589);
             this.btn_NewOrderItemDelete.Name = "btn_NewOrderItemDelete";
             this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(95, 59);
             this.btn_NewOrderItemDelete.TabIndex = 15;
@@ -148,11 +150,32 @@
             this.btn_ConfirmOrder.UseVisualStyleBackColor = false;
             this.btn_ConfirmOrder.Click += new System.EventHandler(this.btn_ConfirmOrder_Click);
             // 
+            // pnl_commentOrder
+            // 
+            this.pnl_commentOrder.BackColor = System.Drawing.SystemColors.Info;
+            this.pnl_commentOrder.Location = new System.Drawing.Point(442, 416);
+            this.pnl_commentOrder.Name = "pnl_commentOrder";
+            this.pnl_commentOrder.Size = new System.Drawing.Size(234, 139);
+            this.pnl_commentOrder.TabIndex = 18;
+            // 
+            // btn_CommentOrder
+            // 
+            this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 10F);
+            this.btn_CommentOrder.Location = new System.Drawing.Point(338, 588);
+            this.btn_CommentOrder.Name = "btn_CommentOrder";
+            this.btn_CommentOrder.Size = new System.Drawing.Size(91, 60);
+            this.btn_CommentOrder.TabIndex = 19;
+            this.btn_CommentOrder.Text = "Add Comment";
+            this.btn_CommentOrder.UseVisualStyleBackColor = true;
+            this.btn_CommentOrder.Click += new System.EventHandler(this.btn_CommentOrder_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.btn_CommentOrder);
+            this.Controls.Add(this.pnl_commentOrder);
             this.Controls.Add(this.flpnl_SubCatagories);
             this.Controls.Add(this.btn_ConfirmOrder);
             this.Controls.Add(this.btn_NewOrderBack);
@@ -178,6 +201,8 @@
             this.Controls.SetChildIndex(this.btn_ConfirmOrder, 0);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.flpnl_SubCatagories, 0);
+            this.Controls.SetChildIndex(this.pnl_commentOrder, 0);
+            this.Controls.SetChildIndex(this.btn_CommentOrder, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +221,7 @@
         private System.Windows.Forms.Button btn_NewOrderBack;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btn_ConfirmOrder;
+        private System.Windows.Forms.Panel pnl_commentOrder;
+        private BaseButton btn_CommentOrder;
     }
 }

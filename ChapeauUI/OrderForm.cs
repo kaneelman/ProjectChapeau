@@ -38,6 +38,8 @@ namespace ChapeauUI
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
+            pnl_commentOrder.Hide();
+
             lst_NewOrderItems.Clear();
             //the list view design
             lst_NewOrderItems.GridLines = true;
@@ -407,6 +409,11 @@ namespace ChapeauUI
         private void flpnl_SubCatagories_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_CommentOrder_Click(object sender, EventArgs e)
+        {
+            pnl_commentOrder.Show();
         }
     }
 }

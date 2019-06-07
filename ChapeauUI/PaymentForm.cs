@@ -29,16 +29,15 @@ namespace ChapeauUI
 
             //Passing the order along that will be payed
             this.order = order;
-            
+
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             //ListViewItem ListOfOrders = new ListViewItem();
 
-            
 
-            ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(1, ChapeauModel.TableStatus.Occupied));
+            //ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(9, ChapeauModel.TableStatus.Occupied));
 
             //the list view design
             lst_Payment.GridLines = true;
