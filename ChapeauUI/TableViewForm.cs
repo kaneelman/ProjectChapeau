@@ -23,6 +23,7 @@ namespace ChapeauUI
         const int SIZE = 150;
 
         DiningTableService diningTableDB = new DiningTableService();
+        OrderService orderDB = new OrderService();
 
         public TableViewForm(Employee LoggedUser, LoginForm loginForm)
         {
@@ -88,6 +89,7 @@ namespace ChapeauUI
         private void Table_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+
             DiningTable table = (DiningTable)button.Tag;
 
             switch (table.Status)
@@ -96,7 +98,9 @@ namespace ChapeauUI
                     //SOME CODE
                     break;
                 case TableStatus.Occupied:
-                    //SOME CODE
+                    //Will change to current order overview eventually
+                    PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table));
+                    paymentForm.Show();
                     break;
                 case TableStatus.Reserved:
                     //SOME CODE

@@ -18,6 +18,8 @@ namespace ChapeauUI
         const int SIZE = 110;
 
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
+        MenuItemService menuItemDB = new MenuItemService();
+
 
         public OrderForm(Employee LoggedUser, LoginForm loginForm)
         {
@@ -201,99 +203,131 @@ namespace ChapeauUI
             //}
 
             ///AddOrderItem(catagory);
+            ///
+
+            //GetMenuItemsByCategory
+
+
+
         }
 
         private void SubCatagory_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            string LunchSubcatagoryItem = (string)button.Tag;
+            MenuCategory Subcatagory = (MenuCategory)button.Tag;
 
-            if (LunchSubcatagoryItem == "Lunch Main")
+            DisplaySubCatogoriesItems(Subcatagory);
+
+            //if (LunchSubcatagoryItem == "Lunch Main")
+            //{
+            //    //flpnl_SubCatagories
+            //    flpnl_SubCatagoryItems.Controls.Clear();
+
+            //    List<string> LunchMainSubcatagoryItems = new List<string>();
+
+            //    LunchMainSubcatagoryItems.Add("Lasagne");
+            //    LunchMainSubcatagoryItems.Add("Pizza");
+            //    LunchMainSubcatagoryItems.Add("Biryani");
+            //    LunchMainSubcatagoryItems.Add("Macaroni");
+
+            //    foreach (string LuchMainSubCatagoryItem in LunchMainSubcatagoryItems)
+            //    {
+            //        BaseButton btn_LunchMainItems = new BaseButton
+            //        {
+            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+            //            Text = LuchMainSubCatagoryItem,
+            //            BackColor = Color.FromArgb(144, 238, 144),
+            //            Tag = LuchMainSubCatagoryItem
+            //        };
+            //        btn_LunchMainItems.Click += new EventHandler(btn_LunchMainItems_Click);
+            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchMainItems);
+            //    }
+
+
+            //}
+
+
+            //else if (LunchSubcatagoryItem == "Lunch Bite")
+            //{
+            //    //flpnl_SubCatagories
+            //    flpnl_SubCatagoryItems.Controls.Clear();
+
+            //    List<string> LuchBiteSubCatagoryItems = new List<string>();
+
+            //    LuchBiteSubCatagoryItems.Add("frits");
+            //    LuchBiteSubCatagoryItems.Add("patatoes");
+            //    LuchBiteSubCatagoryItems.Add("Salmon");
+            //    LuchBiteSubCatagoryItems.Add("Bread");
+
+            //    foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
+            //    {
+            //        BaseButton btn_LunchBiteItems = new BaseButton
+            //        {
+            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+            //            Text = LuchBiteSubCatagoryItem,
+            //            BackColor = Color.FromArgb(144, 238, 144),
+            //            Tag = LuchBiteSubCatagoryItem
+            //        };
+            //        btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
+            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
+            //    }
+            //}
+
+            //else if (LunchSubcatagoryItem == "Lunch Special")
+            //{
+            //    //flpnl_SubCatagories
+            //    flpnl_SubCatagoryItems.Controls.Clear();
+
+            //    List<string> LuchSpecialSubCatagoryItems = new List<string>();
+
+            //    LuchSpecialSubCatagoryItems.Add("salade");
+            //    LuchSpecialSubCatagoryItems.Add("chicken wings");
+            //    LuchSpecialSubCatagoryItems.Add("fish");
+            //    LuchSpecialSubCatagoryItems.Add("Turkey");
+
+            //    foreach (string LuchSpecialSubCatagoryItem in LuchSpecialSubCatagoryItems)
+            //    {
+            //        BaseButton btn_LunchSpecialItems = new BaseButton
+            //        {
+            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+            //            Text = LuchSpecialSubCatagoryItem,
+            //            BackColor = Color.FromArgb(144, 238, 144),
+            //            Tag = LuchSpecialSubCatagoryItem
+            //        };
+            //        btn_LunchSpecialItems.Click += new EventHandler(btn_LunchSpecialItems_Click);
+            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchSpecialItems);
+            //    }
+            //}
+
+        }
+
+        private void DisplaySubCatogoriesItems(MenuCategory menuCategory)
+        {
+            flpnl_SubCatagoryItems.Controls.Clear();
+            List<ChapeauModel.MenuItem> menuItems = new List<ChapeauModel.MenuItem>();
+
+            //....
+            menuItems = menuItemDB.GetMenuItemsByCategory(menuCategory);
+
+            foreach (ChapeauModel.MenuItem menuItem in menuItems)
             {
-                //flpnl_SubCatagories
-                flpnl_SubCatagoryItems.Controls.Clear();
-
-                List<string> LunchMainSubcatagoryItems = new List<string>();
-
-                LunchMainSubcatagoryItems.Add("Lasagne");
-                LunchMainSubcatagoryItems.Add("Pizza");
-                LunchMainSubcatagoryItems.Add("Biryani");
-                LunchMainSubcatagoryItems.Add("Macaroni");
-
-                foreach (string LuchMainSubCatagoryItem in LunchMainSubcatagoryItems)
+                BaseButton btn_menuItems = new BaseButton
                 {
-                    BaseButton btn_LunchMainItems = new BaseButton
-                    {
-                        Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-                        Text = LuchMainSubCatagoryItem,
-                        BackColor = Color.FromArgb(144, 238, 144),
-                        Tag = LuchMainSubCatagoryItem
-                    };
-                    btn_LunchMainItems.Click += new EventHandler(btn_LunchMainItems_Click);
-                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchMainItems);
-                }
-
-
-            }
-
-
-            else if (LunchSubcatagoryItem == "Lunch Bite")
-            {
-                //flpnl_SubCatagories
-                flpnl_SubCatagoryItems.Controls.Clear();
-
-                List<string> LuchBiteSubCatagoryItems = new List<string>();
-
-                LuchBiteSubCatagoryItems.Add("frits");
-                LuchBiteSubCatagoryItems.Add("patatoes");
-                LuchBiteSubCatagoryItems.Add("Salmon");
-                LuchBiteSubCatagoryItems.Add("Bread");
-
-                foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
-                {
-                    BaseButton btn_LunchBiteItems = new BaseButton
-                    {
-                        Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-                        Text = LuchBiteSubCatagoryItem,
-                        BackColor = Color.FromArgb(144, 238, 144),
-                        Tag = LuchBiteSubCatagoryItem
-                    };
-                    btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
-                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
-                }
-            }
-
-            else if (LunchSubcatagoryItem == "Lunch Special")
-            {
-                //flpnl_SubCatagories
-                flpnl_SubCatagoryItems.Controls.Clear();
-
-                List<string> LuchSpecialSubCatagoryItems = new List<string>();
-
-                LuchSpecialSubCatagoryItems.Add("salade");
-                LuchSpecialSubCatagoryItems.Add("chicken wings");
-                LuchSpecialSubCatagoryItems.Add("fish");
-                LuchSpecialSubCatagoryItems.Add("Turkey");
-
-                foreach (string LuchSpecialSubCatagoryItem in LuchSpecialSubCatagoryItems)
-                {
-                    BaseButton btn_LunchSpecialItems = new BaseButton
-                    {
-                        Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-                        Text = LuchSpecialSubCatagoryItem,
-                        BackColor = Color.FromArgb(144, 238, 144),
-                        Tag = LuchSpecialSubCatagoryItem
-                    };
-                    btn_LunchSpecialItems.Click += new EventHandler(btn_LunchSpecialItems_Click);
-                    flpnl_SubCatagoryItems.Controls.Add(btn_LunchSpecialItems);
-                }
+                    Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
+                    Text = menuItem.Name,
+                    BackColor = Color.FromArgb(144, 238, 144),
+                    Tag = menuItem
+                };
+                btn_menuItems.Click += new EventHandler(btn_menuItem_Click);
+                flpnl_SubCatagoryItems.Controls.Add(btn_menuItems);
             }
 
         }
 
 
-        private void btn_LunchMainItems_Click(object sender, EventArgs e)
+        private void btn_menuItem_Click(object sender, EventArgs e)
         {
+            //... add it to the ListView and Database
         }
         private void btn_LunchBiteItems_Click(object sender, EventArgs e)
         {
@@ -301,10 +335,7 @@ namespace ChapeauUI
         private void btn_LunchSpecialItems_Click(object sender, EventArgs e)
         {
         }
-        private void DisplaySubCatogories()
-        {
-
-        }
+     
 
         //private void DisplaySubCatogories()
         //{

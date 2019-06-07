@@ -62,7 +62,7 @@ namespace ChapeauUI
                     Image = new Bitmap(table, new Size(100, 100)),
                     ImageAlign = ContentAlignment.MiddleLeft,
                     BackColor = Color.Cyan,
-                    Tag = table.ToString(),
+                    Tag = table,
                     Padding = new Padding(0, 0, 25, 0),
                     Text = DateAndStatus[ListCounter],
                     TextAlign = ContentAlignment.MiddleRight,
@@ -78,6 +78,10 @@ namespace ChapeauUI
         private void Order_Click(object sender, EventArgs e)
         {
             //button stuff
+            Button button = (Button)sender;
+            Image table = (Image)button.Tag;
+            table = new Bitmap(table, new Size(100, 90));
+            PicBox_TableNumber.Image = table;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
