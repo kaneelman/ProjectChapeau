@@ -305,6 +305,7 @@ namespace ChapeauUI
             flpnl_SubCatagoryItems.Controls.Clear();
             List<ChapeauModel.MenuItem> menuItems = new List<ChapeauModel.MenuItem>();
 
+            //....
             menuItems = menuItemDB.GetMenuItemsByCategory(menuCategory);
 
             foreach (ChapeauModel.MenuItem menuItem in menuItems)
