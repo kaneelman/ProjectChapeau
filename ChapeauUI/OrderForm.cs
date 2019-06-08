@@ -49,8 +49,6 @@ namespace ChapeauUI
             lst_NewOrderItems.Columns.Add("name");
             lst_NewOrderItems.Columns.Add("price");
             lst_NewOrderItems.Columns.Add("stock", 100, HorizontalAlignment.Left);
-       
-
 
         }
 
