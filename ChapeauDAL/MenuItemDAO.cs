@@ -48,6 +48,11 @@ namespace ChapeauDAL
         public void ChangeStockDB(MenuItem menuItem)
         {
             //Somecode
+
+            //////int reducedStock;
+
+            //////string query = "UPDATE MENU_ITEM SET id = {id}, WHERE id = @id";
+
         }
 
         //Convert MenuItem information to MenuItem Objects
