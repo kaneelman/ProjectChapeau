@@ -52,6 +52,7 @@
             this.btn_AddTip = new System.Windows.Forms.Button();
             this.lbl_Price = new System.Windows.Forms.Label();
             this.txt_Price = new System.Windows.Forms.TextBox();
+            this.lbl_InfoOrder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).BeginInit();
@@ -104,7 +105,7 @@
             // 
             // lst_Payment
             // 
-            this.lst_Payment.Location = new System.Drawing.Point(29, 73);
+            this.lst_Payment.Location = new System.Drawing.Point(29, 96);
             this.lst_Payment.Name = "lst_Payment";
             this.lst_Payment.Size = new System.Drawing.Size(461, 249);
             this.lst_Payment.TabIndex = 6;
@@ -177,7 +178,7 @@
             // radBtn_visa
             // 
             this.radBtn_visa.AutoSize = true;
-            this.radBtn_visa.Location = new System.Drawing.Point(578, 132);
+            this.radBtn_visa.Location = new System.Drawing.Point(578, 134);
             this.radBtn_visa.Name = "radBtn_visa";
             this.radBtn_visa.Size = new System.Drawing.Size(124, 27);
             this.radBtn_visa.TabIndex = 20;
@@ -188,7 +189,7 @@
             // radBtn_PIN
             // 
             this.radBtn_PIN.AutoSize = true;
-            this.radBtn_PIN.Location = new System.Drawing.Point(578, 176);
+            this.radBtn_PIN.Location = new System.Drawing.Point(578, 194);
             this.radBtn_PIN.Name = "radBtn_PIN";
             this.radBtn_PIN.Size = new System.Drawing.Size(63, 27);
             this.radBtn_PIN.TabIndex = 21;
@@ -199,7 +200,7 @@
             // radBtn_Cash
             // 
             this.radBtn_Cash.AutoSize = true;
-            this.radBtn_Cash.Location = new System.Drawing.Point(578, 244);
+            this.radBtn_Cash.Location = new System.Drawing.Point(580, 255);
             this.radBtn_Cash.Name = "radBtn_Cash";
             this.radBtn_Cash.Size = new System.Drawing.Size(76, 27);
             this.radBtn_Cash.TabIndex = 22;
@@ -277,11 +278,21 @@
             this.txt_Price.Size = new System.Drawing.Size(100, 30);
             this.txt_Price.TabIndex = 32;
             // 
+            // lbl_InfoOrder
+            // 
+            this.lbl_InfoOrder.AutoSize = true;
+            this.lbl_InfoOrder.Location = new System.Drawing.Point(25, 70);
+            this.lbl_InfoOrder.Name = "lbl_InfoOrder";
+            this.lbl_InfoOrder.Size = new System.Drawing.Size(117, 23);
+            this.lbl_InfoOrder.TabIndex = 33;
+            this.lbl_InfoOrder.Text = "Items Order";
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.lbl_InfoOrder);
             this.Controls.Add(this.txt_Price);
             this.Controls.Add(this.lbl_Price);
             this.Controls.Add(this.btn_AddTip);
@@ -334,6 +345,7 @@
             this.Controls.SetChildIndex(this.btn_AddTip, 0);
             this.Controls.SetChildIndex(this.lbl_Price, 0);
             this.Controls.SetChildIndex(this.txt_Price, 0);
+            this.Controls.SetChildIndex(this.lbl_InfoOrder, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).EndInit();
@@ -368,5 +380,6 @@
         private System.Windows.Forms.Button btn_AddTip;
         private System.Windows.Forms.Label lbl_Price;
         private System.Windows.Forms.TextBox txt_Price;
+        private System.Windows.Forms.Label lbl_InfoOrder;
     }
 }

@@ -44,9 +44,9 @@ namespace ChapeauUI
             //the list view design
             lst_Payment.GridLines = true;
             lst_Payment.View = View.Details;
-            lst_Payment.Columns.Add("Menu Number", 100, HorizontalAlignment.Left);
-            lst_Payment.Columns.Add("Name");
-            lst_Payment.Columns.Add("Quantity"); 
+            lst_Payment.Columns.Add("Menu Number", 150, HorizontalAlignment.Left);
+            lst_Payment.Columns.Add("Name",150,HorizontalAlignment.Left);
+            lst_Payment.Columns.Add("Quantity",100,HorizontalAlignment.Left); 
             lst_Payment.Columns.Add("Price", 100, HorizontalAlignment.Left);
 
             foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
@@ -104,9 +104,18 @@ namespace ChapeauUI
 
         private void btn_AddTip_Click(object sender, EventArgs e)
         {
-            decimal tip = int.Parse(txt_Tip.Text)+0;//converting input tip to value to add to total amount
+            int i;
+            if(!int.TryParse(txt_Tip.Text, out i))
+            {
+                DialogResult errorTip = MessageBox.Show("Wrong input");
+            }
+            else
+            {
+                //converting input tip to value to add to total amount
+                decimal tip = int.Parse(txt_Tip.Text) + 0;
 
-            txt_TotalAmount.Text = (price + vat + tip).ToString("0.00");
+                txt_TotalAmount.Text = (price + vat + tip).ToString("0.00");
+            }            
         }
 
         private void radBtn_visa_CheckedChanged(object sender, EventArgs e)
