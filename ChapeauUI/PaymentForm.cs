@@ -19,6 +19,13 @@ namespace ChapeauUI
 
         Order order;
 
+        //values of counter
+        decimal price = 0;
+        decimal vat = 0;
+
+        //for the type of payment
+        string paymentType;
+
         public PaymentForm(Employee LoggedUser, LoginForm loginForm, Order order)
         {
             InitializeComponent();
@@ -34,11 +41,6 @@ namespace ChapeauUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            //ListViewItem ListOfOrders = new ListViewItem();
-
-
-            //ChapeauModel.Order order = payment.GetCompleteActiveOrderByTable(new ChapeauModel.DiningTable(9, ChapeauModel.TableStatus.Occupied));
-
             //the list view design
             lst_Payment.GridLines = true;
             lst_Payment.View = View.Details;
@@ -56,24 +58,36 @@ namespace ChapeauUI
                 lst_Payment.Items.Add(li);
             }
 
-
-            decimal value = 0;
-            decimal vat =0;
+            //the calculation being called
             foreach (OrderMenuItem m in order.content)
             {
-                value += m.calcTotalForEachItem;
+                price += m.calcTotalForEachItem;
                 vat += m.calcTotalVATForEachItem;
             }
 
-            txt_TotalAmount.Text = value.ToString("0.00");
-
+            //information for the textboxes
+            txt_Price.Text = price.ToString("0.00");
             txt_TVAT.Text = vat.ToString("0.00");
+
+            //this is for the total amount witout added tip
+            txt_TotalAmount.Text = (price + vat).ToString("0.00");            
             
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
         {
+            ChapeauLogic.PaymentService AddPayment = new ChapeauLogic.PaymentService();
+            AddPayment.InsertPayment(new Payment(order,decimal.Parse(txt_Price.Text),decimal.Parse(txt_Tip.Text),decimal.Parse(txt_TotalAmount.Text),paymentType));
+            DialogResult dialogBox = MessageBox.Show("Payment complete");
 
+            resetTextBox();
+        }
+        private void resetTextBox()
+        {
+            txt_Price.ResetText();
+            txt_Tip.ResetText();
+            txt_TotalAmount.ResetText();
+            txt_TVAT.ResetText();
         }
         //when things are selected.
         private void listView_Payment_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,6 +100,43 @@ namespace ChapeauUI
             this.Hide();
             //TableViewForm tableViewForm1 = new TableViewForm(LoggedInEmployee,);// or make a new tableview.
             //tableViewForm1.Show();
+        }
+
+        private void btn_AddTip_Click(object sender, EventArgs e)
+        {
+            decimal tip = int.Parse(txt_Tip.Text)+0;//converting input tip to value to add to total amount
+
+            txt_TotalAmount.Text = (price + vat + tip).ToString("0.00");
+        }
+
+        private void radBtn_visa_CheckedChanged(object sender, EventArgs e)
+        {
+            paymentType = "CreditCard";
+
+            //to show the txt and lbl when after clicking cash
+            txt_Tip.Show();
+            lbl_Tip.Show();
+            btn_AddTip.Show();
+        }
+
+        private void radBtn_Cash_CheckedChanged(object sender, EventArgs e)
+        {
+            paymentType = "Cash";
+
+            //hide the tip info when cash is clicked
+            txt_Tip.Hide();
+            lbl_Tip.Hide();
+            btn_AddTip.Hide();
+        }
+
+        private void radBtn_PIN_CheckedChanged(object sender, EventArgs e)
+        {
+            paymentType = "Pin";
+
+            //to show the txt and lbl when after clicking cash
+            txt_Tip.Show();
+            lbl_Tip.Show();
+            btn_AddTip.Show();
         }
     }
 }

@@ -39,14 +39,14 @@ namespace ChapeauDAL
         public void InsertPaymentDB(Payment payment)
         {
             //Somecode
-            string query = "INSERT INTO PAYMENT VALUES (order_id, total, tip, paid_amount, method)";
+            string query = "INSERT INTO PAYMENT VALUES (@order_id, @total, @tip, @paid_amount, @method)";
             SqlParameter[] sqlParameters = (new[]
             {
-                new SqlParameter("order_id",payment.Order.Id),
-                new SqlParameter("total",payment.Total),
-                new SqlParameter("tip", payment.Tip),
-                new SqlParameter("paid_amount", payment.AmountPaid),
-                new SqlParameter("method",payment.Method)
+                new SqlParameter("@order_id",payment.Order.Id),
+                new SqlParameter("@total",payment.Total),
+                new SqlParameter("@tip", payment.Tip),
+                new SqlParameter("@paid_amount", payment.AmountPaid),
+                new SqlParameter("@method",payment.Method)
             });
             ExecuteEditQuery(query, sqlParameters);
         }
