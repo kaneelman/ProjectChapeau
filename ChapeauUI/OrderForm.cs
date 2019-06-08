@@ -42,12 +42,16 @@ namespace ChapeauUI
 
             lst_NewOrderItems.Clear();
             //the list view design
+
             lst_NewOrderItems.GridLines = true;
+
             lst_NewOrderItems.View = View.Details;
             lst_NewOrderItems.Columns.Add("name");
             lst_NewOrderItems.Columns.Add("price");
             lst_NewOrderItems.Columns.Add("stock", 100, HorizontalAlignment.Left);
-          
+       
+
+
         }
 
         private void lst_NewOrderItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +124,7 @@ namespace ChapeauUI
 
             }
 
+            //Button for Lunch SubCatagories
             foreach (MenuCategory menuCategory in menuCategories)
             {
                 BaseButton btn_LunchItems = new BaseButton
@@ -132,6 +137,9 @@ namespace ChapeauUI
                 btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
                 flpnl_SubCatagories.Controls.Add(btn_LunchItems);
             }
+
+
+
         }
 
 
@@ -343,7 +351,6 @@ namespace ChapeauUI
             Button button = (Button)sender;
             ChapeauModel.MenuItem menuItem = (ChapeauModel.MenuItem)button.Tag;
 
-
             ListViewItem li = new ListViewItem(menuItem.Name);//needs to fix this because stock quantity is taken rather than order quantity
 
             li.Tag = menuItem;  //linking menuItem to the entry of the list
@@ -351,7 +358,6 @@ namespace ChapeauUI
             li.SubItems.Add(menuItem.Price.ToString("0.00"));
             li.SubItems.Add(menuItem.Stock.ToString());
             li.SubItems.Add(menuItem.Category .ToString());
-
             lst_NewOrderItems.Items.Add(li);
          
             /*
