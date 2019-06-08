@@ -355,12 +355,11 @@ namespace ChapeauUI
             lst_NewOrderItems.Items.Add(li);
          
             /*
-             *   Id = id;
+            Id = id;
             Name = name;
             Price = price;
             Stock = stock;
             Category = category;
-             * 
             */
             //menuItem.Id;  //lst_NewOrderItems
 
