@@ -49,7 +49,6 @@
             this.picBox_PIN = new System.Windows.Forms.PictureBox();
             this.picBox_Visa = new System.Windows.Forms.PictureBox();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_AddTip = new System.Windows.Forms.Button();
             this.lbl_Price = new System.Windows.Forms.Label();
             this.txt_Price = new System.Windows.Forms.TextBox();
             this.lbl_InfoOrder = new System.Windows.Forms.Label();
@@ -64,7 +63,7 @@
             // 
             // txt_TotalAmount
             // 
-            this.txt_TotalAmount.Location = new System.Drawing.Point(767, 616);
+            this.txt_TotalAmount.Location = new System.Drawing.Point(766, 582);
             this.txt_TotalAmount.Name = "txt_TotalAmount";
             this.txt_TotalAmount.Size = new System.Drawing.Size(100, 30);
             this.txt_TotalAmount.TabIndex = 0;
@@ -80,7 +79,7 @@
             // lbl_totalAmount
             // 
             this.lbl_totalAmount.AutoSize = true;
-            this.lbl_totalAmount.Location = new System.Drawing.Point(619, 623);
+            this.lbl_totalAmount.Location = new System.Drawing.Point(618, 589);
             this.lbl_totalAmount.Name = "lbl_totalAmount";
             this.lbl_totalAmount.Size = new System.Drawing.Size(123, 23);
             this.lbl_totalAmount.TabIndex = 3;
@@ -159,7 +158,7 @@
             // 
             // btn_Pay
             // 
-            this.btn_Pay.Location = new System.Drawing.Point(623, 671);
+            this.btn_Pay.Location = new System.Drawing.Point(623, 658);
             this.btn_Pay.Name = "btn_Pay";
             this.btn_Pay.Size = new System.Drawing.Size(245, 38);
             this.btn_Pay.TabIndex = 16;
@@ -253,16 +252,6 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // btn_AddTip
-            // 
-            this.btn_AddTip.Location = new System.Drawing.Point(622, 562);
-            this.btn_AddTip.Name = "btn_AddTip";
-            this.btn_AddTip.Size = new System.Drawing.Size(245, 39);
-            this.btn_AddTip.TabIndex = 30;
-            this.btn_AddTip.Text = "Add Tip";
-            this.btn_AddTip.UseVisualStyleBackColor = true;
-            this.btn_AddTip.Click += new System.EventHandler(this.btn_AddTip_Click);
-            // 
             // lbl_Price
             // 
             this.lbl_Price.AutoSize = true;
@@ -296,7 +285,6 @@
             this.Controls.Add(this.lbl_InfoOrder);
             this.Controls.Add(this.txt_Price);
             this.Controls.Add(this.lbl_Price);
-            this.Controls.Add(this.btn_AddTip);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.picBox_Cash);
             this.Controls.Add(this.picBox_PIN);
@@ -343,7 +331,6 @@
             this.Controls.SetChildIndex(this.picBox_PIN, 0);
             this.Controls.SetChildIndex(this.picBox_Cash, 0);
             this.Controls.SetChildIndex(this.btn_Cancel, 0);
-            this.Controls.SetChildIndex(this.btn_AddTip, 0);
             this.Controls.SetChildIndex(this.lbl_Price, 0);
             this.Controls.SetChildIndex(this.txt_Price, 0);
             this.Controls.SetChildIndex(this.lbl_InfoOrder, 0);
@@ -378,7 +365,6 @@
         private System.Windows.Forms.PictureBox picBox_PIN;
         private System.Windows.Forms.PictureBox picBox_Cash;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_AddTip;
         private System.Windows.Forms.Label lbl_Price;
         private System.Windows.Forms.TextBox txt_Price;
         private System.Windows.Forms.Label lbl_InfoOrder;

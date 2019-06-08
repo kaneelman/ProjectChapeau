@@ -16,13 +16,10 @@ namespace ChapeauUI
     {
         ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
         ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
-        
 
         Order order;
 
         //values of counter
-        //decimal price = 0;
-        //decimal vat = 0;
         decimal tip = 0;
 
         //for the type of payment
@@ -53,14 +50,13 @@ namespace ChapeauUI
 
             foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
             {
-                ListViewItem li = new ListViewItem(m.GetMenuItem().Id.ToString());//needs to fix this because stock quantity is taken rather than order quantity
+                ListViewItem li = new ListViewItem(m.GetMenuItem().Id.ToString());
                 li.SubItems.Add(m.GetMenuItem().Name);
                 li.SubItems.Add(m.Quantity.ToString());
                 li.SubItems.Add(m.GetMenuItem().Price.ToString("0.00"));
                 lst_Payment.Items.Add(li);
             }
 
-            //the calculation being called
 
             //information for the textboxes
             txt_Price.Text = order.CalculateTotalPrice().ToString("0.00");
@@ -100,30 +96,11 @@ namespace ChapeauUI
             //tableViewForm1.Show();
         }
 
-        private void btn_AddTip_Click(object sender, EventArgs e)
-        {
-            //int i;
-            //if(!int.TryParse(txt_Tip.Text, out i))
-            //{
-            //    DialogResult errorTip = MessageBox.Show("Wrong input");
-            //}
-            //else
-            //{
-            //    //converting input tip to value to add to total amount
-            //    decimal tip = int.Parse(txt_Tip.Text) + 0;
-
-            //    txt_TotalAmount.Text = (price + vat + tip).ToString("0.00");
-            //}            
-        }
 
         private void radBtn_visa_CheckedChanged(object sender, EventArgs e)
         {
             paymentType = "CreditCard";
-
-            //to show the txt and lbl when after clicking cash
-            txt_Tip.Show();
-            lbl_Tip.Show();
-            btn_AddTip.Show();
+            Show_TipInfo();
         }
 
         private void radBtn_Cash_CheckedChanged(object sender, EventArgs e)
@@ -133,17 +110,19 @@ namespace ChapeauUI
             //hide the tip info when cash is clicked
             txt_Tip.Hide();
             lbl_Tip.Hide();
-            btn_AddTip.Hide();
         }
 
         private void radBtn_PIN_CheckedChanged(object sender, EventArgs e)
         {
             paymentType = "Pin";
+            Show_TipInfo();
+        }
 
-            //to show the txt and lbl when after clicking cash
+        //to show the tip info
+        private void Show_TipInfo()
+        {
             txt_Tip.Show();
             lbl_Tip.Show();
-            btn_AddTip.Show();
         }
 
         private void txt_Tip_TextChanged(object sender, EventArgs e)
