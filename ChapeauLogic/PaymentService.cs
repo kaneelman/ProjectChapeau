@@ -13,6 +13,7 @@ namespace ChapeauLogic
     public class PaymentService
     {
         PaymentDAO paymentDB = new PaymentDAO();
+        DiningTableDAO tableDB = new DiningTableDAO();
 
         public List<Payment> GetAllPayments()
         {
@@ -27,6 +28,7 @@ namespace ChapeauLogic
         public void InsertPayment(Payment payment)
         {
             paymentDB.InsertPaymentDB(payment);
+            tableDB.ChangeDiningTableStatusDB(payment.Order.Table);//changing the table from occupied to free.//japheth gotta see this..
         }
 
     }

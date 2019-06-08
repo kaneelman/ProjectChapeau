@@ -20,7 +20,8 @@ namespace ChapeauModel
             Total = total;
             Tip = tip;
             AmountPaid = amountPaid;
-            Method = method;           
+            Method = method;
+            Order.Table.Status = TableStatus.Free;
         }
 
         public Payment(Order order, decimal total, decimal tip, decimal amountPaid, string method)
@@ -29,6 +30,7 @@ namespace ChapeauModel
             Total = total;
             Tip = tip;
             AmountPaid = amountPaid;
+            Order.Table.Status = TableStatus.Free;
 
             switch (method)
             {

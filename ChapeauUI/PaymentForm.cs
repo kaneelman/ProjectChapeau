@@ -78,6 +78,7 @@ namespace ChapeauUI
             DialogResult dialogBox = MessageBox.Show("Payment complete");
 
             resetTextBox();
+            
         }
         private void resetTextBox()
         {
