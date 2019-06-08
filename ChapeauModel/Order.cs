@@ -60,5 +60,19 @@ namespace ChapeauModel
             }
             return totalprice;
         }
+
+        public decimal CalculateTotalVAT()
+        {
+            decimal totalVAT = 0;
+            foreach (OrderMenuItem VAT in this.content)
+            {
+                totalVAT += VAT.calcTotalVATForEachItem;
+            }
+            return totalVAT;
+        }
+        public decimal CalculateTotalAmount()
+        {
+            return CalculateTotalPrice() + CalculateTotalVAT();
+        }
     }
 }

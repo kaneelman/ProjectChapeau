@@ -61,6 +61,9 @@ namespace ChapeauModel
         {            
             get { return calcTotalForEachItem * 21/100; }
         }
-
+        public decimal calcTotalAmount
+        {
+            get { return calcTotalForEachItem + calcTotalVATForEachItem; }
+        }
     }
 }

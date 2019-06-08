@@ -45,9 +45,5 @@ namespace ChapeauModel
                     throw new Exception("Wrong string input for payment method");
             }
         }
-        public void AddPayment()
-        {
-
-        }
     }
 }

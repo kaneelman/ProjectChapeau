@@ -16,12 +16,14 @@ namespace ChapeauUI
     {
         ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
         ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
+        
 
         Order order;
 
         //values of counter
         decimal price = 0;
         decimal vat = 0;
+        decimal tip = 0;
 
         //for the type of payment
         string paymentType;
@@ -59,18 +61,13 @@ namespace ChapeauUI
             }
 
             //the calculation being called
-            foreach (OrderMenuItem m in order.content)
-            {
-                price += m.calcTotalForEachItem;
-                vat += m.calcTotalVATForEachItem;
-            }
 
             //information for the textboxes
-            txt_Price.Text = price.ToString("0.00");
-            txt_TVAT.Text = vat.ToString("0.00");
+            txt_Price.Text = order.CalculateTotalPrice().ToString("0.00");
+            txt_TVAT.Text = order.CalculateTotalVAT().ToString("0.00");
 
             //this is for the total amount witout added tip
-            txt_TotalAmount.Text = (price + vat).ToString("0.00");            
+            txt_TotalAmount.Text = order.CalculateTotalAmount().ToString("0.00");
             
         }
 
@@ -104,18 +101,18 @@ namespace ChapeauUI
 
         private void btn_AddTip_Click(object sender, EventArgs e)
         {
-            int i;
-            if(!int.TryParse(txt_Tip.Text, out i))
-            {
-                DialogResult errorTip = MessageBox.Show("Wrong input");
-            }
-            else
-            {
-                //converting input tip to value to add to total amount
-                decimal tip = int.Parse(txt_Tip.Text) + 0;
+            //int i;
+            //if(!int.TryParse(txt_Tip.Text, out i))
+            //{
+            //    DialogResult errorTip = MessageBox.Show("Wrong input");
+            //}
+            //else
+            //{
+            //    //converting input tip to value to add to total amount
+            //    decimal tip = int.Parse(txt_Tip.Text) + 0;
 
-                txt_TotalAmount.Text = (price + vat + tip).ToString("0.00");
-            }            
+            //    txt_TotalAmount.Text = (price + vat + tip).ToString("0.00");
+            //}            
         }
 
         private void radBtn_visa_CheckedChanged(object sender, EventArgs e)
@@ -146,6 +143,30 @@ namespace ChapeauUI
             txt_Tip.Show();
             lbl_Tip.Show();
             btn_AddTip.Show();
+        }
+
+        private void txt_Tip_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_Tip.Text == "")
+            {
+                //still need to fix this.
+            }
+            else
+            {
+                int i;
+
+                if (!int.TryParse(txt_Tip.Text, out i))
+                {
+                    DialogResult errorTip = MessageBox.Show("Wrong input");
+                }
+                else
+                {
+                    //converting input tip to value to add to total amount
+                    tip = int.Parse(txt_Tip.Text);
+
+                    txt_TotalAmount.Text = (order.CalculateTotalAmount()+tip).ToString("0.00");
+                }
+            }          
         }
     }
 }
