@@ -180,9 +180,9 @@
             this.radBtn_visa.AutoSize = true;
             this.radBtn_visa.Location = new System.Drawing.Point(622, 132);
             this.radBtn_visa.Name = "radBtn_visa";
-            this.radBtn_visa.Size = new System.Drawing.Size(124, 27);
+            this.radBtn_visa.Size = new System.Drawing.Size(127, 27);
             this.radBtn_visa.TabIndex = 20;
-            this.radBtn_visa.Text = "Visa/Amex";
+            this.radBtn_visa.Text = "CreditCard";
             this.radBtn_visa.UseVisualStyleBackColor = true;
             this.radBtn_visa.CheckedChanged += new System.EventHandler(this.radBtn_visa_CheckedChanged);
             // 
