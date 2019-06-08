@@ -22,6 +22,10 @@ namespace ChapeauUI
         //constant tablebutton size
         const int SIZE = 150;
 
+        //a List variable that stores the "current list of tables", used to check if the tables have changed in anyway
+        List<DiningTable> currentTables = new List<DiningTable>();
+
+        //Creation of service objects used to communicated with the database
         DiningTableService diningTableDB = new DiningTableService();
         OrderService orderDB = new OrderService();
 
@@ -49,10 +53,11 @@ namespace ChapeauUI
 
         private void DisplayTables()
         {
-            flpnl_DiningTables.Controls.Clear();
-
             // Get list of all tables from the database
             List<DiningTable> diningTables = diningTableDB.GetDiningTables();
+            currentTables = diningTables;
+
+            flpnl_DiningTables.Controls.Clear();
 
             // Used loop to fill the flow panel with buttons for all the tables
             foreach (DiningTable table in diningTables)
@@ -67,7 +72,23 @@ namespace ChapeauUI
                 };
                 button.Click += new EventHandler(Table_Click);
                 flpnl_DiningTables.Controls.Add(button);
+            }         
+        }
+
+        //Method to check if tables have changed (separated for better readability)
+        private bool AreTablesChanged()
+        {
+            List<DiningTable> tablesInDatabase = diningTableDB.GetDiningTables();
+
+            foreach(DiningTable table in currentTables)
+            {
+                if(table.Status != tablesInDatabase[currentTables.IndexOf(table)].Status)
+                {
+                    return true;
+                }
             }
+
+            return false;
         }
 
         // Method do determing the color of the table, fitting the table status
@@ -86,6 +107,7 @@ namespace ChapeauUI
             }
         }
 
+        //Method that is called when a table is clicked
         private void Table_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -118,7 +140,10 @@ namespace ChapeauUI
         // Reload TableView flow panel on every tick
         private void tableViewRefresher_Tick(object sender, EventArgs e)
         {
-            DisplayTables();
+            if (AreTablesChanged())
+            {
+                DisplayTables();
+            }
         }
     }
 }

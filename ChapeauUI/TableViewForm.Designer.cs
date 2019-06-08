@@ -74,7 +74,7 @@
             // tableViewRefresher
             // 
             this.tableViewRefresher.Enabled = true;
-            this.tableViewRefresher.Interval = 5000;
+            this.tableViewRefresher.Interval = 2000;
             this.tableViewRefresher.Tick += new System.EventHandler(this.tableViewRefresher_Tick);
             // 
             // TableViewForm
