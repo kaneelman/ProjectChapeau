@@ -34,6 +34,13 @@ namespace ChapeauDAL
         public void ChangeDiningTableStatusDB(DiningTable diningTable)
         {
             // SOME CODEE
+            string query = "UPDATE DINING_TABLE SET [status] = @status WHERE id = @id ";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@status", diningTable.Status.ToString()),
+                new SqlParameter("@id", diningTable.Id)
+            });
+            ExecuteEditQuery(query, sqlParameters);
         }
 
 

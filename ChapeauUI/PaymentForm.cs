@@ -21,8 +21,8 @@ namespace ChapeauUI
         Order order;
 
         //values of counter
-        decimal price = 0;
-        decimal vat = 0;
+        //decimal price = 0;
+        //decimal vat = 0;
         decimal tip = 0;
 
         //for the type of payment
