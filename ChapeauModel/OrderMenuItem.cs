@@ -10,23 +10,28 @@ namespace ChapeauModel
     {
         private MenuItem item;
 
+        public int Id { get; set; }
         public DateTime TimeStamp { get; set; }
         public int Quantity { get; set; }
         public string Comment { get; set; }
         public OrderStatus Status { get; set; }
 
-        public OrderMenuItem(MenuItem item, DateTime timeStamp, int quantity, string comment, OrderStatus status)
-        {
+        public OrderMenuItem(MenuItem item, int id, DateTime timeStamp, int quantity, string comment, OrderStatus status)
+        {                          
             this.item = item;
+
+            Id = id;
             TimeStamp = timeStamp;
             Quantity = quantity;
             Comment = comment;
             Status = status;
         }
 
-        public OrderMenuItem(MenuItem item, DateTime timeStamp, int quantity, string comment, string status)
+        public OrderMenuItem(MenuItem item, int id, DateTime timeStamp, int quantity, string comment, string status)
         {
             this.item = item;
+
+            Id = id;
             TimeStamp = timeStamp;
             Comment = comment;
             Quantity = quantity;
@@ -52,10 +57,18 @@ namespace ChapeauModel
             return item;
         }
 
-        //calculating price for each item
+        //calculating price for each item **stephen part
         public decimal calcTotalForEachItem
         {
             get { return Quantity * item.Price; }
+        }
+        public decimal calcTotalVATForEachItem
+        {            
+            get { return calcTotalForEachItem * 21/100; }
+        }
+        public decimal calcTotalAmount
+        {
+            get { return calcTotalForEachItem + calcTotalVATForEachItem; }
         }
     }
 }

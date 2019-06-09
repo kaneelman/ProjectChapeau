@@ -20,6 +20,7 @@ namespace ChapeauUI
         {
             //Hiding log out button on login page
             this.Btn_LogOut.Hide();
+            
             InitializeComponent();
             
         }

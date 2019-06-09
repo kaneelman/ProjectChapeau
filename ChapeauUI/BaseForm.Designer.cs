@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Btn_LogOut = new System.Windows.Forms.Button();
+            this.lbl_LoggedUser = new System.Windows.Forms.Label();
+            this.lbl_User = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Btn_LogOut
@@ -43,11 +45,34 @@
             this.Btn_LogOut.UseVisualStyleBackColor = true;
             this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
             // 
+            // lbl_LoggedUser
+            // 
+            this.lbl_LoggedUser.AutoSize = true;
+            this.lbl_LoggedUser.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbl_LoggedUser.Location = new System.Drawing.Point(783, 49);
+            this.lbl_LoggedUser.Name = "lbl_LoggedUser";
+            this.lbl_LoggedUser.Size = new System.Drawing.Size(42, 32);
+            this.lbl_LoggedUser.TabIndex = 8;
+            this.lbl_LoggedUser.Text = "---";
+            this.lbl_LoggedUser.Click += new System.EventHandler(this.lbl_LoggedUser_Click);
+            // 
+            // lbl_User
+            // 
+            this.lbl_User.AutoSize = true;
+            this.lbl_User.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbl_User.Location = new System.Drawing.Point(783, 30);
+            this.lbl_User.Name = "lbl_User";
+            this.lbl_User.Size = new System.Drawing.Size(81, 32);
+            this.lbl_User.TabIndex = 9;
+            this.lbl_User.Text = "User:";
+            // 
             // BaseForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.lbl_User);
+            this.Controls.Add(this.lbl_LoggedUser);
             this.Controls.Add(this.Btn_LogOut);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -58,10 +83,13 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.Load += new System.EventHandler(this.BaseForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         protected System.Windows.Forms.Button Btn_LogOut;
+        private System.Windows.Forms.Label lbl_LoggedUser;
+        private System.Windows.Forms.Label lbl_User;
     }
 }

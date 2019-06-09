@@ -17,6 +17,8 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
+        ChapeauLogic.OrderService Order1 = new ChapeauLogic.OrderService();
+
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
         MenuItemService menuItemDB = new MenuItemService();
 
@@ -29,9 +31,26 @@ namespace ChapeauUI
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
 
-            DisplayMainCatagories();
 
-       
+            DisplayMainCatagories();
+        }
+
+
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            lbl_Comment.Hide();
+            rtxt_CommentOrder.Hide();
+
+            lst_NewOrderItems.Clear();
+            //the list view design
+
+            lst_NewOrderItems.GridLines = true;
+
+            lst_NewOrderItems.View = View.Details;
+            lst_NewOrderItems.Columns.Add("name", 240, HorizontalAlignment.Left);
+            lst_NewOrderItems.Columns.Add("price", 72, HorizontalAlignment.Left);
+            lst_NewOrderItems.Columns.Add("stock", 72, HorizontalAlignment.Left);
+
         }
 
         private void lst_NewOrderItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,18 +123,23 @@ namespace ChapeauUI
 
             }
 
+            //Button for Lunch SubCatagories
             foreach (MenuCategory menuCategory in menuCategories)
             {
                 BaseButton btn_LunchItems = new BaseButton
                 {
                     Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
                     Text = menuCategory.Name,
-                    BackColor = Color.FromArgb(157, 105, 163),
+                    //BackColor = Color.FromArgb(157, 105, 163),
+                    BackColor = Color.FromArgb(255, 127, 0),
                     Tag = menuCategory
                 };
                 btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
                 flpnl_SubCatagories.Controls.Add(btn_LunchItems);
             }
+
+
+
         }
 
 
@@ -206,8 +230,6 @@ namespace ChapeauUI
             ///
 
             //GetMenuItemsByCategory
-
-
 
         }
 
@@ -326,8 +348,36 @@ namespace ChapeauUI
 
         private void btn_menuItem_Click(object sender, EventArgs e)
         {
-            //... add it to the ListView and Database
+            Button button = (Button)sender;
+            ChapeauModel.MenuItem menuItem = (ChapeauModel.MenuItem)button.Tag;
+
+            ListViewItem li = new ListViewItem(menuItem.Name);//needs to fix this because stock quantity is taken rather than order quantity
+
+            li.Tag = menuItem;  //linking menuItem to the entry of the list
+
+            li.SubItems.Add(menuItem.Price.ToString("0.00"));
+            li.SubItems.Add(menuItem.Stock.ToString());
+            li.SubItems.Add(menuItem.Category .ToString());
+            lst_NewOrderItems.Items.Add(li);
+         
+            /*
+            Id = id;
+            Name = name;
+            Price = price;
+            Stock = stock;
+            Category = category;
+            */
+            //menuItem.Id;  //lst_NewOrderItems
+
+            //ChapeauModel.MenuItem menuItem;
+
+            ////... add it to the ListView and Database
+            ////GetMenuItemById
+            ////menuItemDB.GetMenuItemByIdDB(id)
         }
+
+
+
         private void btn_LunchBiteItems_Click(object sender, EventArgs e)
         {
         }
@@ -346,10 +396,10 @@ namespace ChapeauUI
 
         }
 
-        private void OrderForm_Load(object sender, EventArgs e)
-        {
+        //private void OrderForm_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
@@ -364,6 +414,12 @@ namespace ChapeauUI
         private void flpnl_SubCatagories_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_CommentOrder_Click(object sender, EventArgs e)
+        {
+            lbl_Comment.Show();
+            rtxt_CommentOrder.Show();
         }
     }
 }

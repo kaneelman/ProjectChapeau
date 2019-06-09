@@ -23,19 +23,14 @@ namespace ChapeauLogic
             return orderMenuItemDB.GetOrderMenuItemsByOrderIdDB(orderId);
         }
 
-        public void InsertOrderMenuItem(OrderMenuItem orderMenuItem)
+        public void InsertOrderMenuItem(List<OrderMenuItem> orderMenuItem, Order order)
         {
-            orderMenuItemDB.InsertOrderMenuItemDB(orderMenuItem);
+            orderMenuItemDB.InsertOrderMenuItemsForOrderDB(orderMenuItem, order);
         }
 
-        public void ChangeQuantityOrderMenuItem(OrderMenuItem orderMenuItem)
+        public void ChangeOrderMenuItemStatus(List<OrderMenuItem> orderMenuItems, OrderStatus status)
         {
-            orderMenuItemDB.ChangeQuantityOrderMenuItemDB(orderMenuItem);
-        }
-
-        public void ChangeOrderMenuItemStatus(List<OrderMenuItem> orderMenuItems)
-        {
-            orderMenuItemDB.ChangeOrderMenuItemStatusDB(orderMenuItems);
+            orderMenuItemDB.ChangeOrderMenuItemStatusDB(orderMenuItems, status);
         }
 
     }

@@ -34,6 +34,13 @@ namespace ChapeauDAL
         public void ChangeDiningTableStatusDB(DiningTable diningTable)
         {
             // SOME CODEE
+            string query = "UPDATE DINING_TABLE SET [status] = @status WHERE id = @id ";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@status", diningTable.Status.ToString()),//the ToString is to convert the enum to a word and store as a word not number.
+                new SqlParameter("@id", diningTable.Id)
+            });
+            ExecuteEditQuery(query, sqlParameters);
         }
 
 
