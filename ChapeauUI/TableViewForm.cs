@@ -19,6 +19,11 @@ namespace ChapeauUI
         Color OCCUPIED_COLOR = Color.FromArgb(0, 102, 153); // Blue
         Color RESERVED_COLOR = Color.FromArgb(255, 102, 102); // Red
 
+        //"constant" colors of the notification buttons
+        Color NOTIFICATION_COLOR = Color.FromArgb(255, 102, 102);
+        Color NO_NOTIFICATION_COLOR = Color.LightGray;
+
+
         //constant tablebutton size
         const int SIZE = 150;
 
@@ -31,6 +36,7 @@ namespace ChapeauUI
         //Creation of service objects used to communicated with the database
         DiningTableService diningTableDB = new DiningTableService();
         OrderService orderDB = new OrderService();
+        OrderMenuItemService orderMenuItemDB = new OrderMenuItemService();
 
         public TableViewForm(Employee LoggedUser, LoginForm loginForm)
         {
@@ -54,6 +60,12 @@ namespace ChapeauUI
             //Hide and disable features in notifications panel
             pnl_Notifications.Hide();
             lst_OrderContentWaiter.Enabled = false;
+            pic_NotificationBar.Hide();
+            pic_NotificationKitchen.Hide();
+
+            CheckBarNotification();
+            CheckKitchenNotification();
+
 
             //
         }
@@ -277,6 +289,7 @@ namespace ChapeauUI
             }
         }
 
+        //Method that checks the order status with every tick
         private void ordersWaiterRefresher_Tick(object sender, EventArgs e)
         {
             if (AreBarOrdersChanged())
@@ -288,8 +301,13 @@ namespace ChapeauUI
             {
                 DisplayKitchenOrders();
             }
+
+            CheckBarNotification();
+
+            CheckKitchenNotification();
         }
 
+        //Checks if the bar has something that is ready to serve
         private void CheckBarNotification()
         {
             bool checker = false;
@@ -298,14 +316,33 @@ namespace ChapeauUI
             {
                 if(order.content[0].Status == OrderStatus.ReadyToServe)
                 {
-
+                    checker = true;
+                    pic_NotificationBar.Show();
                 }
+            }
+            if (!checker)
+            {
+                pic_NotificationBar.Hide();
             }
         }
 
+        //Checks if the kitchen has something that is ready to serve
         private void CheckKitchenNotification()
         {
+            bool checker = false;
 
+            foreach (Order order in currentKitchenOrders)
+            {
+                if (order.content[0].Status == OrderStatus.ReadyToServe)
+                {
+                    checker = true;
+                    pic_NotificationKitchen.Show();
+                }
+            }
+            if (!checker)
+            {
+                pic_NotificationKitchen.Hide();
+            }
         }
 
         private void btn_hidePanel_Click(object sender, EventArgs e)
@@ -335,6 +372,14 @@ namespace ChapeauUI
 
             Order order = (Order)lst_OrdersWaiter.SelectedItems[0].Tag;
             DisplayOrderContent(order);
+        }
+
+        private void btn_Served_Click(object sender, EventArgs e)
+        {
+            orderMenuItemDB.ChangeOrderMenuItemStatus(((Order)lst_OrdersWaiter.SelectedItems[0].Tag).content, OrderStatus.Served);
+
+            CheckBarNotification();
+            CheckKitchenNotification();
         }
     }
 }

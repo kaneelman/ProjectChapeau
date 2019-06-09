@@ -74,7 +74,7 @@ namespace ChapeauDAL
 
             foreach (OrderMenuItem item in orderMenuItems)
             {
-                query += $"UPDATE ORDER_CONTENT SET status = @status WHERE id = '{item.Id}'"; // not sure if this works without the  ' ' around @status
+                query += $"UPDATE ORDER_CONTENT SET status = @status WHERE id = {item.Id}"; // not sure if this works without the  ' ' around @status
             }
 
             SqlParameter[] sqlParameters = (new[]

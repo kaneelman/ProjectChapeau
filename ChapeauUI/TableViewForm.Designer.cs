@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableViewForm));
             this.flpnl_DiningTables = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_FreeColor = new System.Windows.Forms.Label();
             this.lbl_ReservedColor = new System.Windows.Forms.Label();
@@ -36,16 +37,20 @@
             this.tableViewRefresher = new System.Windows.Forms.Timer(this.components);
             this.btn_KitchenNotifications = new ChapeauUI.BaseButton();
             this.btn_BarNotifications = new ChapeauUI.BaseButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_NotificationButtons = new System.Windows.Forms.Panel();
+            this.pic_NotificationKitchen = new System.Windows.Forms.PictureBox();
+            this.pic_NotificationBar = new System.Windows.Forms.PictureBox();
             this.lbl_Notifications = new System.Windows.Forms.Label();
             this.pnl_Notifications = new System.Windows.Forms.Panel();
             this.btn_hidePanel = new System.Windows.Forms.Button();
             this.lbl_OrderContentWaiter = new System.Windows.Forms.Label();
             this.lst_OrderContentWaiter = new System.Windows.Forms.ListView();
-            this.baseButton1 = new ChapeauUI.BaseButton();
+            this.btn_Served = new ChapeauUI.BaseButton();
             this.lst_OrdersWaiter = new System.Windows.Forms.ListView();
             this.ordersWaiterRefresher = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
+            this.pnl_NotificationButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_NotificationKitchen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_NotificationBar)).BeginInit();
             this.pnl_Notifications.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,16 +117,38 @@
             this.btn_BarNotifications.UseVisualStyleBackColor = true;
             this.btn_BarNotifications.Click += new System.EventHandler(this.btn_BarNotifications_Click);
             // 
-            // panel1
+            // pnl_NotificationButtons
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.lbl_Notifications);
-            this.panel1.Controls.Add(this.btn_KitchenNotifications);
-            this.panel1.Controls.Add(this.btn_BarNotifications);
-            this.panel1.Location = new System.Drawing.Point(107, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(582, 141);
-            this.panel1.TabIndex = 14;
+            this.pnl_NotificationButtons.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnl_NotificationButtons.Controls.Add(this.pic_NotificationKitchen);
+            this.pnl_NotificationButtons.Controls.Add(this.pic_NotificationBar);
+            this.pnl_NotificationButtons.Controls.Add(this.lbl_Notifications);
+            this.pnl_NotificationButtons.Controls.Add(this.btn_KitchenNotifications);
+            this.pnl_NotificationButtons.Controls.Add(this.btn_BarNotifications);
+            this.pnl_NotificationButtons.Location = new System.Drawing.Point(107, 12);
+            this.pnl_NotificationButtons.Name = "pnl_NotificationButtons";
+            this.pnl_NotificationButtons.Size = new System.Drawing.Size(582, 141);
+            this.pnl_NotificationButtons.TabIndex = 14;
+            // 
+            // pic_NotificationKitchen
+            // 
+            this.pic_NotificationKitchen.BackColor = System.Drawing.Color.Gainsboro;
+            this.pic_NotificationKitchen.Image = ((System.Drawing.Image)(resources.GetObject("pic_NotificationKitchen.Image")));
+            this.pic_NotificationKitchen.Location = new System.Drawing.Point(492, 53);
+            this.pic_NotificationKitchen.Name = "pic_NotificationKitchen";
+            this.pic_NotificationKitchen.Size = new System.Drawing.Size(57, 50);
+            this.pic_NotificationKitchen.TabIndex = 16;
+            this.pic_NotificationKitchen.TabStop = false;
+            // 
+            // pic_NotificationBar
+            // 
+            this.pic_NotificationBar.BackColor = System.Drawing.Color.Gainsboro;
+            this.pic_NotificationBar.Image = ((System.Drawing.Image)(resources.GetObject("pic_NotificationBar.Image")));
+            this.pic_NotificationBar.Location = new System.Drawing.Point(206, 54);
+            this.pic_NotificationBar.Name = "pic_NotificationBar";
+            this.pic_NotificationBar.Size = new System.Drawing.Size(57, 50);
+            this.pic_NotificationBar.TabIndex = 15;
+            this.pic_NotificationBar.TabStop = false;
             // 
             // lbl_Notifications
             // 
@@ -138,7 +165,7 @@
             this.pnl_Notifications.Controls.Add(this.btn_hidePanel);
             this.pnl_Notifications.Controls.Add(this.lbl_OrderContentWaiter);
             this.pnl_Notifications.Controls.Add(this.lst_OrderContentWaiter);
-            this.pnl_Notifications.Controls.Add(this.baseButton1);
+            this.pnl_Notifications.Controls.Add(this.btn_Served);
             this.pnl_Notifications.Controls.Add(this.lst_OrdersWaiter);
             this.pnl_Notifications.Location = new System.Drawing.Point(21, 166);
             this.pnl_Notifications.Name = "pnl_Notifications";
@@ -173,15 +200,16 @@
             this.lst_OrderContentWaiter.TabIndex = 2;
             this.lst_OrderContentWaiter.UseCompatibleStateImageBehavior = false;
             // 
-            // baseButton1
+            // btn_Served
             // 
-            this.baseButton1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.baseButton1.Location = new System.Drawing.Point(673, 424);
-            this.baseButton1.Name = "baseButton1";
-            this.baseButton1.Size = new System.Drawing.Size(269, 78);
-            this.baseButton1.TabIndex = 1;
-            this.baseButton1.Text = "Ready To Serve";
-            this.baseButton1.UseVisualStyleBackColor = true;
+            this.btn_Served.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.btn_Served.Location = new System.Drawing.Point(673, 424);
+            this.btn_Served.Name = "btn_Served";
+            this.btn_Served.Size = new System.Drawing.Size(269, 78);
+            this.btn_Served.TabIndex = 1;
+            this.btn_Served.Text = "Served";
+            this.btn_Served.UseVisualStyleBackColor = true;
+            this.btn_Served.Click += new System.EventHandler(this.btn_Served_Click);
             // 
             // lst_OrdersWaiter
             // 
@@ -194,7 +222,8 @@
             // 
             // ordersWaiterRefresher
             // 
-            this.ordersWaiterRefresher.Interval = 2000;
+            this.ordersWaiterRefresher.Enabled = true;
+            this.ordersWaiterRefresher.Interval = 30000;
             this.ordersWaiterRefresher.Tick += new System.EventHandler(this.ordersWaiterRefresher_Tick);
             // 
             // TableViewForm
@@ -202,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.pnl_Notifications);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnl_NotificationButtons);
             this.Controls.Add(this.lbl_OccupiedColor);
             this.Controls.Add(this.lbl_ReservedColor);
             this.Controls.Add(this.lbl_FreeColor);
@@ -216,10 +245,12 @@
             this.Controls.SetChildIndex(this.lbl_FreeColor, 0);
             this.Controls.SetChildIndex(this.lbl_ReservedColor, 0);
             this.Controls.SetChildIndex(this.lbl_OccupiedColor, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.pnl_NotificationButtons, 0);
             this.Controls.SetChildIndex(this.pnl_Notifications, 0);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnl_NotificationButtons.ResumeLayout(false);
+            this.pnl_NotificationButtons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_NotificationKitchen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_NotificationBar)).EndInit();
             this.pnl_Notifications.ResumeLayout(false);
             this.pnl_Notifications.PerformLayout();
             this.ResumeLayout(false);
@@ -236,14 +267,16 @@
         private System.Windows.Forms.Timer tableViewRefresher;
         private BaseButton btn_KitchenNotifications;
         private BaseButton btn_BarNotifications;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnl_NotificationButtons;
         private System.Windows.Forms.Label lbl_Notifications;
         private System.Windows.Forms.Panel pnl_Notifications;
         private System.Windows.Forms.Label lbl_OrderContentWaiter;
         private System.Windows.Forms.ListView lst_OrderContentWaiter;
-        private BaseButton baseButton1;
+        private BaseButton btn_Served;
         private System.Windows.Forms.ListView lst_OrdersWaiter;
         private System.Windows.Forms.Timer ordersWaiterRefresher;
         private System.Windows.Forms.Button btn_hidePanel;
+        private System.Windows.Forms.PictureBox pic_NotificationKitchen;
+        private System.Windows.Forms.PictureBox pic_NotificationBar;
     }
 }
