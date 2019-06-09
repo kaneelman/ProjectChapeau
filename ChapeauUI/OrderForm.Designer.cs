@@ -40,10 +40,9 @@
             this.btn_NewOrderBack = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btn_ConfirmOrder = new System.Windows.Forms.Button();
-            this.pnl_commentOrder = new System.Windows.Forms.Panel();
             this.btn_CommentOrder = new ChapeauUI.BaseButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pnl_commentOrder.SuspendLayout();
+            this.lbl_Comment = new System.Windows.Forms.Label();
+            this.rtxt_CommentOrder = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +51,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(362, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 45);
+            this.label1.Size = new System.Drawing.Size(233, 38);
             this.label1.TabIndex = 8;
             this.label1.Text = "ORDER VIEW";
             // 
@@ -84,10 +83,10 @@
             // 
             // lst_NewOrderItems
             // 
-            this.lst_NewOrderItems.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lst_NewOrderItems.Font = new System.Drawing.Font("Arial", 12F);
             this.lst_NewOrderItems.Location = new System.Drawing.Point(33, 117);
             this.lst_NewOrderItems.Name = "lst_NewOrderItems";
-            this.lst_NewOrderItems.Size = new System.Drawing.Size(389, 438);
+            this.lst_NewOrderItems.Size = new System.Drawing.Size(389, 483);
             this.lst_NewOrderItems.TabIndex = 12;
             this.lst_NewOrderItems.UseCompatibleStateImageBehavior = false;
             this.lst_NewOrderItems.SelectedIndexChanged += new System.EventHandler(this.lst_NewOrderItems_SelectedIndexChanged);
@@ -98,14 +97,14 @@
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(42, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 32);
+            this.label2.Size = new System.Drawing.Size(170, 27);
             this.label2.TabIndex = 13;
             this.label2.Text = "Selected items";
             // 
             // btn_NewOrderClearItems
             // 
             this.btn_NewOrderClearItems.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(240, 589);
+            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(240, 607);
             this.btn_NewOrderClearItems.Name = "btn_NewOrderClearItems";
             this.btn_NewOrderClearItems.Size = new System.Drawing.Size(92, 60);
             this.btn_NewOrderClearItems.TabIndex = 14;
@@ -116,7 +115,7 @@
             // btn_NewOrderItemDelete
             // 
             this.btn_NewOrderItemDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(139, 589);
+            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(139, 607);
             this.btn_NewOrderItemDelete.Name = "btn_NewOrderItemDelete";
             this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(95, 59);
             this.btn_NewOrderItemDelete.TabIndex = 15;
@@ -126,7 +125,7 @@
             // btn_NewOrderBack
             // 
             this.btn_NewOrderBack.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderBack.Location = new System.Drawing.Point(33, 589);
+            this.btn_NewOrderBack.Location = new System.Drawing.Point(33, 607);
             this.btn_NewOrderBack.Name = "btn_NewOrderBack";
             this.btn_NewOrderBack.Size = new System.Drawing.Size(100, 59);
             this.btn_NewOrderBack.TabIndex = 16;
@@ -144,27 +143,18 @@
             // btn_ConfirmOrder
             // 
             this.btn_ConfirmOrder.BackColor = System.Drawing.SystemColors.Menu;
-            this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 589);
+            this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 607);
             this.btn_ConfirmOrder.Name = "btn_ConfirmOrder";
-            this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 59);
+            this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 60);
             this.btn_ConfirmOrder.TabIndex = 17;
             this.btn_ConfirmOrder.Text = "Confirm order";
             this.btn_ConfirmOrder.UseVisualStyleBackColor = false;
             this.btn_ConfirmOrder.Click += new System.EventHandler(this.btn_ConfirmOrder_Click);
             // 
-            // pnl_commentOrder
-            // 
-            this.pnl_commentOrder.BackColor = System.Drawing.SystemColors.Info;
-            this.pnl_commentOrder.Controls.Add(this.textBox1);
-            this.pnl_commentOrder.Location = new System.Drawing.Point(442, 416);
-            this.pnl_commentOrder.Name = "pnl_commentOrder";
-            this.pnl_commentOrder.Size = new System.Drawing.Size(234, 139);
-            this.pnl_commentOrder.TabIndex = 18;
-            // 
             // btn_CommentOrder
             // 
             this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 10F);
-            this.btn_CommentOrder.Location = new System.Drawing.Point(338, 588);
+            this.btn_CommentOrder.Location = new System.Drawing.Point(338, 606);
             this.btn_CommentOrder.Name = "btn_CommentOrder";
             this.btn_CommentOrder.Size = new System.Drawing.Size(91, 60);
             this.btn_CommentOrder.TabIndex = 19;
@@ -172,20 +162,32 @@
             this.btn_CommentOrder.UseVisualStyleBackColor = true;
             this.btn_CommentOrder.Click += new System.EventHandler(this.btn_CommentOrder_Click);
             // 
-            // textBox1
+            // lbl_Comment
             // 
-            this.textBox1.Location = new System.Drawing.Point(0, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 35);
-            this.textBox1.TabIndex = 0;
+            this.lbl_Comment.AutoSize = true;
+            this.lbl_Comment.Location = new System.Drawing.Point(447, 430);
+            this.lbl_Comment.Name = "lbl_Comment";
+            this.lbl_Comment.Size = new System.Drawing.Size(139, 23);
+            this.lbl_Comment.TabIndex = 20;
+            this.lbl_Comment.Text = "Type comment";
+            // 
+            // rtxt_CommentOrder
+            // 
+            this.rtxt_CommentOrder.BackColor = System.Drawing.SystemColors.Info;
+            this.rtxt_CommentOrder.Location = new System.Drawing.Point(451, 456);
+            this.rtxt_CommentOrder.Name = "rtxt_CommentOrder";
+            this.rtxt_CommentOrder.Size = new System.Drawing.Size(334, 210);
+            this.rtxt_CommentOrder.TabIndex = 21;
+            this.rtxt_CommentOrder.Text = "";
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.rtxt_CommentOrder);
+            this.Controls.Add(this.lbl_Comment);
             this.Controls.Add(this.btn_CommentOrder);
-            this.Controls.Add(this.pnl_commentOrder);
             this.Controls.Add(this.flpnl_SubCatagories);
             this.Controls.Add(this.btn_ConfirmOrder);
             this.Controls.Add(this.btn_NewOrderBack);
@@ -211,10 +213,9 @@
             this.Controls.SetChildIndex(this.btn_ConfirmOrder, 0);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.flpnl_SubCatagories, 0);
-            this.Controls.SetChildIndex(this.pnl_commentOrder, 0);
             this.Controls.SetChildIndex(this.btn_CommentOrder, 0);
-            this.pnl_commentOrder.ResumeLayout(false);
-            this.pnl_commentOrder.PerformLayout();
+            this.Controls.SetChildIndex(this.lbl_Comment, 0);
+            this.Controls.SetChildIndex(this.rtxt_CommentOrder, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,8 +234,8 @@
         private System.Windows.Forms.Button btn_NewOrderBack;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btn_ConfirmOrder;
-        private System.Windows.Forms.Panel pnl_commentOrder;
         private BaseButton btn_CommentOrder;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbl_Comment;
+        private System.Windows.Forms.RichTextBox rtxt_CommentOrder;
     }
 }

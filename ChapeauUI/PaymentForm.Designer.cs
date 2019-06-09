@@ -53,9 +53,11 @@
             this.lbl_InfoOrder = new System.Windows.Forms.Label();
             this.lbl_numberofT = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_LogOut
@@ -289,6 +291,11 @@
             this.lbl_name.TabIndex = 35;
             this.lbl_name.Text = "...";
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -351,6 +358,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,5 +391,6 @@
         private System.Windows.Forms.Label lbl_InfoOrder;
         private System.Windows.Forms.Label lbl_numberofT;
         private System.Windows.Forms.Label lbl_name;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }

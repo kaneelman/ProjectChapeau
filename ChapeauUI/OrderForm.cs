@@ -38,7 +38,8 @@ namespace ChapeauUI
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            pnl_commentOrder.Hide();
+            lbl_Comment.Hide();
+            rtxt_CommentOrder.Hide();
 
             lst_NewOrderItems.Clear();
             //the list view design
@@ -46,9 +47,9 @@ namespace ChapeauUI
             lst_NewOrderItems.GridLines = true;
 
             lst_NewOrderItems.View = View.Details;
-            lst_NewOrderItems.Columns.Add("name", 150, HorizontalAlignment.Left);
-            lst_NewOrderItems.Columns.Add("price");
-            lst_NewOrderItems.Columns.Add("stock");
+            lst_NewOrderItems.Columns.Add("name", 240, HorizontalAlignment.Left);
+            lst_NewOrderItems.Columns.Add("price", 72, HorizontalAlignment.Left);
+            lst_NewOrderItems.Columns.Add("stock", 72, HorizontalAlignment.Left);
 
         }
 
@@ -416,7 +417,8 @@ namespace ChapeauUI
 
         private void btn_CommentOrder_Click(object sender, EventArgs e)
         {
-            pnl_commentOrder.Show();
+            lbl_Comment.Show();
+            rtxt_CommentOrder.Show();
         }
     }
 }
