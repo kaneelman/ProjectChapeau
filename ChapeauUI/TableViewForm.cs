@@ -70,6 +70,7 @@ namespace ChapeauUI
                     BackColor = DetermineTableColor(table),
                     Tag = table
                 };
+
                 button.Click += new EventHandler(Table_Click);
                 flpnl_DiningTables.Controls.Add(button);
             }         

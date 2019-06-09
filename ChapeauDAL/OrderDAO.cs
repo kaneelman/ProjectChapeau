@@ -44,7 +44,7 @@ namespace ChapeauDAL
                 new SqlParameter("@table", table.Id)
             });
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
-        }
+        } 
 
 
 

@@ -34,12 +34,6 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        //Create OrderMenuItem in the database
-        public void InsertOrderMenuItemDB(OrderMenuItem orderMenuItem)
-        {
-            //SOME CODE
-        }
-
         //Change quantity of an item if it already exists on the order
         public void ChangeQuantityOrderMenuItemDB(OrderMenuItem orderMenuItem)
         {

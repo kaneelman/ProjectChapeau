@@ -18,6 +18,8 @@ namespace ChapeauUI
         protected Employee LoggedInEmployee;
         //public static Employee LoggedInEmployee; //just to check the payment
 
+        
+
         public BaseForm()
         {
             InitializeComponent();
@@ -25,6 +27,14 @@ namespace ChapeauUI
 
         private void BaseForm_Load(object sender, EventArgs e)
         {
+            if(LoggedInEmployee != null)
+            {
+                lbl_LoggedUser.Text = LoggedInEmployee.Name;
+            } else
+            {
+                lbl_LoggedUser.Hide();
+                lbl_User.Hide();
+            }
 
         }
 
@@ -49,6 +59,11 @@ namespace ChapeauUI
         private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Maybe some info on closing?
+        }
+
+        private void lbl_LoggedUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
