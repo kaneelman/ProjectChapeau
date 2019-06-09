@@ -35,9 +35,10 @@
             this.btn_SortByRunning = new System.Windows.Forms.Button();
             this.lbl_SortBy = new System.Windows.Forms.Label();
             this.PicBox_TableNumber = new System.Windows.Forms.PictureBox();
-            this.tlp_Orders = new System.Windows.Forms.TableLayoutPanel();
+            this.dgv_Orders = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).BeginInit();
             this.SuspendLayout();
             // 
             // flpnl_Orders
@@ -52,7 +53,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.tlp_Orders);
+            this.panel1.Controls.Add(this.dgv_Orders);
             this.panel1.Location = new System.Drawing.Point(391, 106);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(561, 529);
@@ -107,24 +108,13 @@
             this.PicBox_TableNumber.TabIndex = 12;
             this.PicBox_TableNumber.TabStop = false;
             // 
-            // tlp_Orders
+            // dgv_Orders
             // 
-            this.tlp_Orders.ColumnCount = 1;
-            this.tlp_Orders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_Orders.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Orders.Name = "tlp_Orders";
-            this.tlp_Orders.RowCount = 1;
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Orders.Size = new System.Drawing.Size(561, 530);
-            this.tlp_Orders.TabIndex = 0;
+            this.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Orders.Location = new System.Drawing.Point(0, 0);
+            this.dgv_Orders.Name = "dgv_Orders";
+            this.dgv_Orders.Size = new System.Drawing.Size(561, 529);
+            this.dgv_Orders.TabIndex = 0;
             // 
             // BartenderForm
             // 
@@ -153,6 +143,7 @@
             this.Controls.SetChildIndex(this.PicBox_TableNumber, 0);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,6 +157,6 @@
         private System.Windows.Forms.Label lbl_SortBy;
         private System.Windows.Forms.Button btn_MarkFinished;
         private System.Windows.Forms.PictureBox PicBox_TableNumber;
-        private System.Windows.Forms.TableLayoutPanel tlp_Orders;
+        private System.Windows.Forms.DataGridView dgv_Orders;
     }
 }

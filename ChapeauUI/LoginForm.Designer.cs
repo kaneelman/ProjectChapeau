@@ -112,7 +112,7 @@
             this.Controls.Add(this.txt_LoginPassword);
             this.Controls.Add(this.txt_LoginUsername);
             this.Name = "LoginForm";
-            this.Text = "Login";
+            this.Text = "6350";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.txt_LoginUsername, 0);
