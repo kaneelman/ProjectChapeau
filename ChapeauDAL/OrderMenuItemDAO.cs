@@ -34,11 +34,35 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public OrderMenuItem GetOrderMenuItemByIdentityDB(int id)
+        {
+            string query = "SELECT id, item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE id = @id";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@id", id)
+            });
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+
 
         //Create OrderMenuItem in the database
         public void InsertOrderMenuItemsForOrderDB(List<OrderMenuItem> orderMenuItems, Order order)
         {
-            //SOME CODE
+            string query = "";
+
+            foreach (OrderMenuItem item in orderMenuItems)
+            {
+                query += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status}, {item.Comment}) ";
+
+            }
+
+            SqlParameter[] sqlParameters = (new[]
+            {
+                    new SqlParameter("@order_id", order.Id),
+                    new SqlParameter("@date_time", DateTime.Now),
+            });
+
+            ExecuteEditQuery(query, sqlParameters);
         }
 
 

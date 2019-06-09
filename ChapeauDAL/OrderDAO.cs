@@ -51,25 +51,25 @@ namespace ChapeauDAL
         //WORK IN PROGRESS
         public List<Order> GetKitchenBeingPreparedOrdersDB()
         {
-            string query = "";
+            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = 'Prepared'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
         public List<Order> GetKitchenReadyToServeOrdersDB()
         {
-            string query = "";
+            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = 'ReadyToServe'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
         public List<Order> GetKitchenServedOrdersDB()
         {
-            string query = "";
+            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = 'Served'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
@@ -79,25 +79,25 @@ namespace ChapeauDAL
         //WORK IN PROGRESS
         public List<Order> GetBarBeingPreparedOrdersDB()
         {
-            string query = "";
+            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = 'Prepared'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
         public List<Order> GetBarReadyToServeOrdersDB()
         {
-            string query = "";
+            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = 'ReadyToServe'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
         public List<Order> GetBarServedOrdersDB()
         {
-            string query = "";
+            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = 'Served'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
@@ -126,7 +126,7 @@ namespace ChapeauDAL
 
             foreach(OrderMenuItem item in order.GetOrderMenuItems())
             {
-                query2 += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status}, {item.Comment})";
+                query2 += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status}, {item.Comment}) ";
 
             }
 
@@ -157,8 +157,30 @@ namespace ChapeauDAL
             return orders;
         }
 
+        private List<Order> ReadTablesByOrderStatus(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+            List<int> orderTracker = new List<int>();
 
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                if (!orderTracker.Contains((int)dr["O.id"]))
+                {
+                    orderTracker.Add((int)dr["O.id"]);
+                    Order order = new Order((int)dr["O.id"], employeeDB.GetEmployeeByIdDB((string)dr["O.handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["O.[table]"]));
+                    orders.Add(order);
+                }
 
-
+                foreach (Order order in orders)
+                {
+                    if(order.Id == (int)dr["O.id"])
+                    {
+                        order.AddOrderItem(orderMenuItemDB.GetOrderMenuItemByIdentityDB((int)dr["C.id"]));
+                        break;
+                    }
+                }              
+            }
+            return orders;
+        }
     }
 }
