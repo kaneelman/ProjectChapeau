@@ -35,18 +35,22 @@ namespace ChapeauDAL
         }
 
         //Change status of OrderMenuItems for an order
-        public void ChangeOrderMenuItemStatusDB(List<OrderMenuItem> orderMenuItems)
+        public void ChangeOrderMenuItemStatusDB(List<OrderMenuItem> orderMenuItems, OrderStatus status)
         {
-            //string query = "UPDATE ORDER_CONTENT SET ";
+            string query = "";
 
-            //SqlParameter[] sqlParameters = (new[]
-            //{
-            //    new SqlParameter("", ),
-            //    new SqlParameter("",)
-            //});
+            foreach (OrderMenuItem item in orderMenuItems)
+            {
+                query += $"UPDATE ORDER_CONTENT SET status = @status WHERE id = '{item.Id}'"; // not sure if this works without the  ' ' around @status
+            }
 
-            ////Execute query and store the ID
-            //ExecuteEditQuery(query, sqlParameters);
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@status",  nameof(status) ),
+            });
+
+            //Execute query and store the ID
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         //Convert OrderMenuItem information from the database to OrderMenuItem objects
