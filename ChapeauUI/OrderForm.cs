@@ -130,7 +130,8 @@ namespace ChapeauUI
                 {
                     Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
                     Text = menuCategory.Name,
-                    BackColor = Color.FromArgb(157, 105, 163),
+                    //BackColor = Color.FromArgb(157, 105, 163),
+                    BackColor = Color.FromArgb(255, 127, 0),
                     Tag = menuCategory
                 };
                 btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
