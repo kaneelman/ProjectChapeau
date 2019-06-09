@@ -35,7 +35,6 @@
             this.lbl_Feedbak = new System.Windows.Forms.Label();
             this.lst_Payment = new System.Windows.Forms.ListView();
             this.lbl_serverName = new System.Windows.Forms.Label();
-            this.txt_ServerName = new System.Windows.Forms.TextBox();
             this.lbl_Payment = new System.Windows.Forms.Label();
             this.lbl_TblNr = new System.Windows.Forms.Label();
             this.rtxt_FeedBack = new System.Windows.Forms.RichTextBox();
@@ -52,6 +51,8 @@
             this.lbl_Price = new System.Windows.Forms.Label();
             this.txt_Price = new System.Windows.Forms.TextBox();
             this.lbl_InfoOrder = new System.Windows.Forms.Label();
+            this.lbl_numberofT = new System.Windows.Forms.Label();
+            this.lbl_name = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).BeginInit();
@@ -117,16 +118,9 @@
             this.lbl_serverName.AutoSize = true;
             this.lbl_serverName.Location = new System.Drawing.Point(317, 35);
             this.lbl_serverName.Name = "lbl_serverName";
-            this.lbl_serverName.Size = new System.Drawing.Size(125, 23);
+            this.lbl_serverName.Size = new System.Drawing.Size(131, 23);
             this.lbl_serverName.TabIndex = 7;
-            this.lbl_serverName.Text = "Server Name";
-            // 
-            // txt_ServerName
-            // 
-            this.txt_ServerName.Location = new System.Drawing.Point(452, 35);
-            this.txt_ServerName.Name = "txt_ServerName";
-            this.txt_ServerName.Size = new System.Drawing.Size(100, 30);
-            this.txt_ServerName.TabIndex = 8;
+            this.lbl_serverName.Text = "Server Name:";
             // 
             // lbl_Payment
             // 
@@ -277,11 +271,31 @@
             this.lbl_InfoOrder.TabIndex = 33;
             this.lbl_InfoOrder.Text = "Items Order";
             // 
+            // lbl_numberofT
+            // 
+            this.lbl_numberofT.AutoSize = true;
+            this.lbl_numberofT.Location = new System.Drawing.Point(218, 35);
+            this.lbl_numberofT.Name = "lbl_numberofT";
+            this.lbl_numberofT.Size = new System.Drawing.Size(28, 23);
+            this.lbl_numberofT.TabIndex = 34;
+            this.lbl_numberofT.Text = "...";
+            // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Location = new System.Drawing.Point(463, 35);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(28, 23);
+            this.lbl_name.TabIndex = 35;
+            this.lbl_name.Text = "...";
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.lbl_name);
+            this.Controls.Add(this.lbl_numberofT);
             this.Controls.Add(this.lbl_InfoOrder);
             this.Controls.Add(this.txt_Price);
             this.Controls.Add(this.lbl_Price);
@@ -298,7 +312,6 @@
             this.Controls.Add(this.rtxt_FeedBack);
             this.Controls.Add(this.lbl_TblNr);
             this.Controls.Add(this.lbl_Payment);
-            this.Controls.Add(this.txt_ServerName);
             this.Controls.Add(this.lbl_serverName);
             this.Controls.Add(this.lst_Payment);
             this.Controls.Add(this.lbl_Feedbak);
@@ -316,7 +329,6 @@
             this.Controls.SetChildIndex(this.lbl_Feedbak, 0);
             this.Controls.SetChildIndex(this.lst_Payment, 0);
             this.Controls.SetChildIndex(this.lbl_serverName, 0);
-            this.Controls.SetChildIndex(this.txt_ServerName, 0);
             this.Controls.SetChildIndex(this.lbl_Payment, 0);
             this.Controls.SetChildIndex(this.lbl_TblNr, 0);
             this.Controls.SetChildIndex(this.rtxt_FeedBack, 0);
@@ -334,6 +346,8 @@
             this.Controls.SetChildIndex(this.lbl_Price, 0);
             this.Controls.SetChildIndex(this.txt_Price, 0);
             this.Controls.SetChildIndex(this.lbl_InfoOrder, 0);
+            this.Controls.SetChildIndex(this.lbl_numberofT, 0);
+            this.Controls.SetChildIndex(this.lbl_name, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Cash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_PIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Visa)).EndInit();
@@ -351,7 +365,6 @@
         private System.Windows.Forms.Label lbl_Feedbak;
         private System.Windows.Forms.ListView lst_Payment;
         private System.Windows.Forms.Label lbl_serverName;
-        private System.Windows.Forms.TextBox txt_ServerName;
         private System.Windows.Forms.Label lbl_Payment;
         private System.Windows.Forms.Label lbl_TblNr;
         private System.Windows.Forms.RichTextBox rtxt_FeedBack;
@@ -368,5 +381,7 @@
         private System.Windows.Forms.Label lbl_Price;
         private System.Windows.Forms.TextBox txt_Price;
         private System.Windows.Forms.Label lbl_InfoOrder;
+        private System.Windows.Forms.Label lbl_numberofT;
+        private System.Windows.Forms.Label lbl_name;
     }
 }
