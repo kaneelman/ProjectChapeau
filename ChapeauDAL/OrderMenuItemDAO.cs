@@ -18,32 +18,35 @@ namespace ChapeauDAL
         //Get all OrderMenuItems from the database
         public List<OrderMenuItem> GetAllOrderMenuItemsDB()
         {
-            string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT";
+            string query = "SELECT id, item_id, quantity, date_time, status, comment FROM ORDER_CONTENT";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         //Get a list of OrderMenuItems from the database by the order id
-        public List<OrderMenuItem> GetOrderMenuItemsByOrderIdDB(int id)
+        public List<OrderMenuItem> GetOrderMenuItemsByOrderIdDB(int itemId)
         {
-            string query = "SELECT item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE order_id = @id";
+            string query = "SELECT id, item_id, quantity, date_time, status, comment FROM ORDER_CONTENT WHERE order_id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
-                new SqlParameter("@id", id)
+                new SqlParameter("@id", itemId)
             });
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        //Change quantity of an item if it already exists on the order
-        public void ChangeQuantityOrderMenuItemDB(OrderMenuItem orderMenuItem)
-        {
-            //some code
         }
 
         //Change status of OrderMenuItems for an order
         public void ChangeOrderMenuItemStatusDB(List<OrderMenuItem> orderMenuItems)
         {
-            //Some code
+            //string query = "UPDATE ORDER_CONTENT SET ";
+
+            //SqlParameter[] sqlParameters = (new[]
+            //{
+            //    new SqlParameter("", ),
+            //    new SqlParameter("",)
+            //});
+
+            ////Execute query and store the ID
+            //ExecuteEditQuery(query, sqlParameters);
         }
 
         //Convert OrderMenuItem information from the database to OrderMenuItem objects
@@ -53,7 +56,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                OrderMenuItem orderMenuItem = new OrderMenuItem(menuItemDB.GetMenuItemByIdDB((int)dr["item_id"]), (DateTime)dr["date_time"], (int)dr["quantity"],(string)dr["comment"], (string)dr["status"]);
+                OrderMenuItem orderMenuItem = new OrderMenuItem(menuItemDB.GetMenuItemByIdDB((int)dr["item_id"]), (int)dr["id"],(DateTime)dr["date_time"], (int)dr["quantity"],(string)dr["comment"], (string)dr["status"]);
                 orderMenuItems.Add(orderMenuItem);
             }
             return orderMenuItems;

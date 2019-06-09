@@ -19,7 +19,7 @@ namespace ChapeauDAL
         //Get all Orders from the database
         public List<Order> GetAllOrdersDB()
         {
-            string query = "SELECT id, handled_by, comment, [table] FROM [ORDER]";
+            string query = "SELECT id, handled_by, [table] FROM [ORDER]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -27,7 +27,7 @@ namespace ChapeauDAL
         //Get an Order from database by id
         public Order GetOrderByIdDB(int id)
         {
-            string query = "SELECT id, handled_by, comment, [table] FROM [ORDER] WHERE id = @id";
+            string query = "SELECT id, handled_by, [table] FROM [ORDER] WHERE id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id)
@@ -38,7 +38,7 @@ namespace ChapeauDAL
         //Get active Order from the database by table
         public Order GetActiveOrderByTableDB(DiningTable table)
         {
-            string query = "SELECT id, handled_by, comment, [table] FROM [ORDER] WHERE [table] = @table AND id NOT IN (SELECT order_id FROM PAYMENT)";
+            string query = "SELECT id, handled_by, [table] FROM [ORDER] WHERE [table] = @table AND id NOT IN (SELECT order_id FROM PAYMENT)";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@table", table.Id)
@@ -110,11 +110,11 @@ namespace ChapeauDAL
         public void InsertOrderDB (Order order)
         {
             //SomeCode
-            string query = "INSERT INTO [ORDER] VALUES (@handled_by, '', @table)" +
+            string query = "INSERT INTO [ORDER] VALUES (@handled_by, @table)" +
                 "SELECT SCOPE_IDENTITY();";
 
             SqlParameter[] sqlParameters = (new[]
-{
+            {
                 new SqlParameter("@handled_by", order.HandledBy),
                 new SqlParameter("@table", order.Table)
             });
@@ -150,7 +150,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["id"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), (string)dr["comment"], diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
+                Order order = new Order((int)dr["id"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
                 order.AddOrderItems(orderMenuItemDB.GetOrderMenuItemsByOrderIdDB((int)dr["id"]));
                 orders.Add(order);
             }

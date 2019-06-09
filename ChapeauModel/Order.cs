@@ -10,25 +10,22 @@ namespace ChapeauModel
     {
         public int Id { get; set; }
         public Employee HandledBy { get; set; }
-        public string Comment { get; set; }
         public DiningTable Table { get; set; }
 
         public List<OrderMenuItem> content;
 
-        public Order(int id, Employee employee, string comment, DiningTable table)
+        public Order(int id, Employee employee, DiningTable table)
         {
             Id = id;
             HandledBy = employee;
-            Comment = comment;
             Table = table;
             content = new List<OrderMenuItem>();
         }
 
         //Çonstructor for new orders, because the Id had yet to be generated
-        public Order(Employee employee, string comment, DiningTable table)
+        public Order(Employee employee, DiningTable table)
         {
             HandledBy = employee;
-            Comment = comment;
             Table = table;
             content = new List<OrderMenuItem>();
         }
