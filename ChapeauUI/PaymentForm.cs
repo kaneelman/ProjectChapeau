@@ -57,6 +57,9 @@ namespace ChapeauUI
                 lst_Payment.Items.Add(li);
             }
 
+            //the display of the table number
+            lbl_numberofT.Text = order.Table.Id.ToString();
+            lbl_name.Text = order.HandledBy.ToString();
 
             //information for the textboxes
             txt_Price.Text = order.CalculateTotalPrice().ToString("0.00");
