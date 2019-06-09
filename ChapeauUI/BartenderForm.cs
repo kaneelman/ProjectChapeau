@@ -137,5 +137,10 @@ namespace ChapeauUI
         {
 
         }
+
+        private void tlp_Orders_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
