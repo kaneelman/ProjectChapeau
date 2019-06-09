@@ -58,7 +58,7 @@
             // flpnl_MainCatagories
             // 
             this.flpnl_MainCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpnl_MainCatagories.Location = new System.Drawing.Point(428, 116);
+            this.flpnl_MainCatagories.Location = new System.Drawing.Point(445, 116);
             this.flpnl_MainCatagories.Name = "flpnl_MainCatagories";
             this.flpnl_MainCatagories.Size = new System.Drawing.Size(141, 283);
             this.flpnl_MainCatagories.TabIndex = 9;
@@ -67,7 +67,7 @@
             // flpnl_SubCatagories
             // 
             this.flpnl_SubCatagories.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpnl_SubCatagories.Location = new System.Drawing.Point(575, 116);
+            this.flpnl_SubCatagories.Location = new System.Drawing.Point(585, 116);
             this.flpnl_SubCatagories.Name = "flpnl_SubCatagories";
             this.flpnl_SubCatagories.Size = new System.Drawing.Size(133, 283);
             this.flpnl_SubCatagories.TabIndex = 10;
@@ -76,7 +76,7 @@
             // flpnl_SubCatagoryItems
             // 
             this.flpnl_SubCatagoryItems.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpnl_SubCatagoryItems.Location = new System.Drawing.Point(724, 116);
+            this.flpnl_SubCatagoryItems.Location = new System.Drawing.Point(735, 116);
             this.flpnl_SubCatagoryItems.Name = "flpnl_SubCatagoryItems";
             this.flpnl_SubCatagoryItems.Size = new System.Drawing.Size(278, 438);
             this.flpnl_SubCatagoryItems.TabIndex = 11;
@@ -143,9 +143,9 @@
             // btn_ConfirmOrder
             // 
             this.btn_ConfirmOrder.BackColor = System.Drawing.SystemColors.Menu;
-            this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 619);
+            this.btn_ConfirmOrder.Location = new System.Drawing.Point(833, 622);
             this.btn_ConfirmOrder.Name = "btn_ConfirmOrder";
-            this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 60);
+            this.btn_ConfirmOrder.Size = new System.Drawing.Size(157, 60);
             this.btn_ConfirmOrder.TabIndex = 17;
             this.btn_ConfirmOrder.Text = "Confirm order";
             this.btn_ConfirmOrder.UseVisualStyleBackColor = false;
@@ -176,7 +176,7 @@
             this.rtxt_CommentOrder.BackColor = System.Drawing.SystemColors.Info;
             this.rtxt_CommentOrder.Location = new System.Drawing.Point(451, 456);
             this.rtxt_CommentOrder.Name = "rtxt_CommentOrder";
-            this.rtxt_CommentOrder.Size = new System.Drawing.Size(334, 225);
+            this.rtxt_CommentOrder.Size = new System.Drawing.Size(361, 225);
             this.rtxt_CommentOrder.TabIndex = 21;
             this.rtxt_CommentOrder.Text = "";
             // 
