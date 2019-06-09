@@ -13,22 +13,39 @@ namespace TestConsole
         static void Main(string[] args)
         {
             Program myProgram = new Program();
-            myProgram.Start2();
+            myProgram.Start();
         }
 
         void Start()
         {
-            MenuCategoryService menuCategoryService = new MenuCategoryService();
+            OrderService orderService = new OrderService();
 
-            List<MenuCategory> someList = menuCategoryService.GetDinnerCategories();
-
-            foreach (MenuCategory menuCategory in someList)
+            List<Order> bar = orderService.GetBarBeingPreparedOrders();
+            Console.WriteLine("Orders for Bar Being prepared");
+            foreach(Order order in bar)
             {
-                Console.WriteLine($"{menuCategory.Id} -- {menuCategory.Name} -- {menuCategory.VAT:0.0}%");
+                Console.WriteLine($"ID:{order.Id}, Table {order.Table}");
+                foreach(OrderMenuItem item in order.content)
+                {
+                    Console.WriteLine($"{item.GetMenuItem().Name}, {item.Quantity}, {nameof(item.Status)}, {item.TimeStamp}");
+                }
+                Console.WriteLine();
+
             }
 
-            Console.WriteLine();          
+            List<Order> kitchen = orderService.GetKitchenServedOrders();
+            Console.WriteLine("Orders for Kitchen Served");
+            Console.WriteLine($"");
+            foreach (Order order in kitchen)
+            {
+                Console.WriteLine($"ID:{order.Id}, Table {order.Table}");
+                foreach (OrderMenuItem item in order.content)
+                {
+                    Console.WriteLine($"{item.GetMenuItem().Name}, {item.Quantity}, {nameof(item.Status)}, {item.TimeStamp}");
+                }
+                Console.WriteLine();
 
+            }
 
             Console.ReadKey();
 

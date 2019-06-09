@@ -25,6 +25,11 @@ namespace ChapeauUI
         //a List variable that stores the "current list of tables", used to check if the tables have changed in anyway
         List<DiningTable> currentTables = new List<DiningTable>();
 
+        List<Order> barBeingPrepared = new List<Order>();
+        List<Order> kitchenBeingPrepared = new List<Order>();
+        List<Order> barReadyToServe = new List<Order>();
+        List<Order> kitchenReadyToServe = new List<Order>();
+
         //Creation of service objects used to communicated with the database
         DiningTableService diningTableDB = new DiningTableService();
         OrderService orderDB = new OrderService();
@@ -33,22 +38,26 @@ namespace ChapeauUI
         {
             InitializeComponent();
 
+            //Saving the user that is logged in and passing the login form, have it's reference
+            LoggedInEmployee = LoggedUser;
+            this.loginForm = loginForm;            
+        }
+
+        private void TableViewForm_Load(object sender, EventArgs e)
+        {
             // Assign the right colors to the table legend
             lbl_FreeColor.BackColor = FREE_COLOR;
             lbl_OccupiedColor.BackColor = OCCUPIED_COLOR;
             lbl_ReservedColor.BackColor = RESERVED_COLOR;
 
-            //Saving the user that is logged in and passing the login form, have it's reference
-            LoggedInEmployee = LoggedUser;
-            this.loginForm = loginForm;            
-
             //Run code to display tables
             DisplayTables();
-        }
 
-        private void TableViewForm_Load(object sender, EventArgs e)
-        {
+            //Hide and disable features in notifications panel
+            pnl_Notifications.Hide();
+            lst_OrderContentWaiter.Enabled = false;
 
+            //
         }
 
         private void DisplayTables()
@@ -74,6 +83,35 @@ namespace ChapeauUI
                 button.Click += new EventHandler(Table_Click);
                 flpnl_DiningTables.Controls.Add(button);
             }         
+        }
+
+        //Method for filling the Orders listview
+        private void DisplayOrders()
+        {
+            lst_OrdersWaiter.Clear();
+
+            lst_OrdersWaiter.GridLines = true;
+            lst_OrdersWaiter.View = View.Details;
+            lst_OrdersWaiter.FullRowSelect = true;
+
+            lst_OrdersWaiter.Columns.Add("Table");
+            lst_OrdersWaiter.Columns.Add("Status");
+            lst_OrdersWaiter.Columns.Add("Number Of Items");
+            lst_OrdersWaiter.Columns.Add("Time");
+
+
+        }
+
+        private void DisplayOrderContent()
+        {
+            lst_OrderContentWaiter.Clear();
+
+            lst_OrderContentWaiter.GridLines = true;
+            lst_OrderContentWaiter.View = View.Details;
+            lst_OrderContentWaiter.FullRowSelect = true;
+
+            lst_OrderContentWaiter.Columns.Add("Name");
+            lst_OrderContentWaiter.Columns.Add("Quantity");
         }
 
         //Method to check if tables have changed (separated for better readability)
@@ -145,6 +183,14 @@ namespace ChapeauUI
             {
                 DisplayTables();
             }
+        }
+
+        private void ordersWaiterRefresher_Tick(object sender, EventArgs e)
+        {
+            barBeingPrepared = orderDB.GetBarBeingPreparedOrders();
+            barReadyToServe = orderDB.GetBarReadyToServeOrders();
+            kitchenBeingPrepared = orderDB.GetKitchenBeingPreparedOrders();
+            kitchenReadyToServe = orderDB.GetKitchenReadyToServeOrders();
         }
     }
 }

@@ -48,56 +48,73 @@ namespace ChapeauDAL
 
 
 
-        //WORK IN PROGRESS
+
+        // Generic method to get orders from the database depending on the status
+        public List<Order> BaseGetOrderByStatus(string type, string status)
+        {
+            string query;
+
+            switch (type)
+            {
+                case "bar":
+                    query = "SELECT O.id AS OrderId, handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status";
+                    break;
+                case "kitchen":
+                    query = "SELECT O.id AS OrderId, handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status";
+                    break;
+                default:
+                    throw new Exception("incorrect input for type");
+            }
+
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@status", status)
+            });
+
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+        }
+    
+
+
+
+        // methods to get kitchen orders from the database depending on status
         public List<Order> GetKitchenBeingPreparedOrdersDB()
         {
-            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = 'Prepared'";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return BaseGetOrderByStatus("kitchen", "BeingPrepared");
         }
 
 
         public List<Order> GetKitchenReadyToServeOrdersDB()
         {
-            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = 'ReadyToServe'";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return BaseGetOrderByStatus("kitchen", "ReadyToServe");
         }
 
 
         public List<Order> GetKitchenServedOrdersDB()
         {
-            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = 'Served'";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return BaseGetOrderByStatus("kitchen", "Served");
         }
 
 
 
 
 
-        //WORK IN PROGRESS
+        // methods to get bar orders from the database depending on status
         public List<Order> GetBarBeingPreparedOrdersDB()
         {
-            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = 'Prepared'";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return BaseGetOrderByStatus("bar", "BeingPrepared");
         }
 
 
         public List<Order> GetBarReadyToServeOrdersDB()
         {
-            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = 'ReadyToServe'";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return BaseGetOrderByStatus("bar", "ReadyToServe");
         }
 
 
         public List<Order> GetBarServedOrdersDB()
         {
-            string query = "SELECT O.id, O.handled_by, O.[table], C.id FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = 'Served'";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return BaseGetOrderByStatus("bar", "Served");
         }
 
 
@@ -164,18 +181,18 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                if (!orderTracker.Contains((int)dr["O.id"]))
+                if (!orderTracker.Contains((int)dr["OrderId"]))
                 {
-                    orderTracker.Add((int)dr["O.id"]);
-                    Order order = new Order((int)dr["O.id"], employeeDB.GetEmployeeByIdDB((string)dr["O.handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["O.[table]"]));
+                    orderTracker.Add((int)dr["OrderId"]);
+                    Order order = new Order((int)dr["OrderId"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
                     orders.Add(order);
                 }
 
                 foreach (Order order in orders)
                 {
-                    if(order.Id == (int)dr["O.id"])
+                    if(order.Id == (int)dr["OrderId"])
                     {
-                        order.AddOrderItem(orderMenuItemDB.GetOrderMenuItemByIdentityDB((int)dr["C.id"]));
+                        order.AddOrderItem(orderMenuItemDB.GetOrderMenuItemByIdentityDB((int)dr["ContentId"]));
                         break;
                     }
                 }              

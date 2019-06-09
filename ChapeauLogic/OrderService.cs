@@ -63,7 +63,7 @@ namespace ChapeauLogic
             return orderDB.GetBarReadyToServeOrdersDB();
         }
 
-        public List<Order> GetBarServedORders()
+        public List<Order> GetBarServedOrders()
         {
             return orderDB.GetBarServedOrdersDB();
         }
