@@ -79,7 +79,7 @@ namespace ChapeauDAL
 
             SqlParameter[] sqlParameters = (new[]
             {
-                new SqlParameter("@status",  nameof(status) ),
+                new SqlParameter("@status",  status.ToString()),
             });
 
             //Execute query and store the ID

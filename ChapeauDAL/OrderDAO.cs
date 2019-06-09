@@ -143,7 +143,7 @@ namespace ChapeauDAL
 
             foreach(OrderMenuItem item in order.GetOrderMenuItems())
             {
-                query2 += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status}, {item.Comment}) ";
+                query2 += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status.ToString()}, {item.Comment}) ";
 
             }
 

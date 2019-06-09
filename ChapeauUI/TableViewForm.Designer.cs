@@ -39,10 +39,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Notifications = new System.Windows.Forms.Label();
             this.pnl_Notifications = new System.Windows.Forms.Panel();
-            this.lst_OrdersWaiter = new System.Windows.Forms.ListView();
-            this.baseButton1 = new ChapeauUI.BaseButton();
-            this.lst_OrderContentWaiter = new System.Windows.Forms.ListView();
+            this.btn_hidePanel = new System.Windows.Forms.Button();
             this.lbl_OrderContentWaiter = new System.Windows.Forms.Label();
+            this.lst_OrderContentWaiter = new System.Windows.Forms.ListView();
+            this.baseButton1 = new ChapeauUI.BaseButton();
+            this.lst_OrdersWaiter = new System.Windows.Forms.ListView();
             this.ordersWaiterRefresher = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.pnl_Notifications.SuspendLayout();
@@ -98,6 +99,7 @@
             this.btn_KitchenNotifications.TabIndex = 12;
             this.btn_KitchenNotifications.Text = "Kitchen";
             this.btn_KitchenNotifications.UseVisualStyleBackColor = true;
+            this.btn_KitchenNotifications.Click += new System.EventHandler(this.btn_KitchenNotifications_Click);
             // 
             // btn_BarNotifications
             // 
@@ -108,6 +110,7 @@
             this.btn_BarNotifications.TabIndex = 13;
             this.btn_BarNotifications.Text = "Bar";
             this.btn_BarNotifications.UseVisualStyleBackColor = true;
+            this.btn_BarNotifications.Click += new System.EventHandler(this.btn_BarNotifications_Click);
             // 
             // panel1
             // 
@@ -132,6 +135,7 @@
             // pnl_Notifications
             // 
             this.pnl_Notifications.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnl_Notifications.Controls.Add(this.btn_hidePanel);
             this.pnl_Notifications.Controls.Add(this.lbl_OrderContentWaiter);
             this.pnl_Notifications.Controls.Add(this.lst_OrderContentWaiter);
             this.pnl_Notifications.Controls.Add(this.baseButton1);
@@ -141,13 +145,33 @@
             this.pnl_Notifications.Size = new System.Drawing.Size(964, 534);
             this.pnl_Notifications.TabIndex = 15;
             // 
-            // lst_OrdersWaiter
+            // btn_hidePanel
             // 
-            this.lst_OrdersWaiter.Location = new System.Drawing.Point(26, 28);
-            this.lst_OrdersWaiter.Name = "lst_OrdersWaiter";
-            this.lst_OrdersWaiter.Size = new System.Drawing.Size(365, 474);
-            this.lst_OrdersWaiter.TabIndex = 0;
-            this.lst_OrdersWaiter.UseCompatibleStateImageBehavior = false;
+            this.btn_hidePanel.Font = new System.Drawing.Font("Arial", 18F);
+            this.btn_hidePanel.Location = new System.Drawing.Point(867, 15);
+            this.btn_hidePanel.Name = "btn_hidePanel";
+            this.btn_hidePanel.Size = new System.Drawing.Size(75, 56);
+            this.btn_hidePanel.TabIndex = 4;
+            this.btn_hidePanel.Text = "X";
+            this.btn_hidePanel.UseVisualStyleBackColor = true;
+            this.btn_hidePanel.Click += new System.EventHandler(this.btn_hidePanel_Click);
+            // 
+            // lbl_OrderContentWaiter
+            // 
+            this.lbl_OrderContentWaiter.AutoSize = true;
+            this.lbl_OrderContentWaiter.Location = new System.Drawing.Point(624, 72);
+            this.lbl_OrderContentWaiter.Name = "lbl_OrderContentWaiter";
+            this.lbl_OrderContentWaiter.Size = new System.Drawing.Size(216, 36);
+            this.lbl_OrderContentWaiter.TabIndex = 3;
+            this.lbl_OrderContentWaiter.Text = "Order Content";
+            // 
+            // lst_OrderContentWaiter
+            // 
+            this.lst_OrderContentWaiter.Location = new System.Drawing.Point(630, 111);
+            this.lst_OrderContentWaiter.Name = "lst_OrderContentWaiter";
+            this.lst_OrderContentWaiter.Size = new System.Drawing.Size(311, 291);
+            this.lst_OrderContentWaiter.TabIndex = 2;
+            this.lst_OrderContentWaiter.UseCompatibleStateImageBehavior = false;
             // 
             // baseButton1
             // 
@@ -159,22 +183,14 @@
             this.baseButton1.Text = "Ready To Serve";
             this.baseButton1.UseVisualStyleBackColor = true;
             // 
-            // lst_OrderContentWaiter
+            // lst_OrdersWaiter
             // 
-            this.lst_OrderContentWaiter.Location = new System.Drawing.Point(631, 67);
-            this.lst_OrderContentWaiter.Name = "lst_OrderContentWaiter";
-            this.lst_OrderContentWaiter.Size = new System.Drawing.Size(311, 291);
-            this.lst_OrderContentWaiter.TabIndex = 2;
-            this.lst_OrderContentWaiter.UseCompatibleStateImageBehavior = false;
-            // 
-            // lbl_OrderContentWaiter
-            // 
-            this.lbl_OrderContentWaiter.AutoSize = true;
-            this.lbl_OrderContentWaiter.Location = new System.Drawing.Point(625, 28);
-            this.lbl_OrderContentWaiter.Name = "lbl_OrderContentWaiter";
-            this.lbl_OrderContentWaiter.Size = new System.Drawing.Size(216, 36);
-            this.lbl_OrderContentWaiter.TabIndex = 3;
-            this.lbl_OrderContentWaiter.Text = "Order Content";
+            this.lst_OrdersWaiter.Location = new System.Drawing.Point(26, 28);
+            this.lst_OrdersWaiter.Name = "lst_OrdersWaiter";
+            this.lst_OrdersWaiter.Size = new System.Drawing.Size(532, 474);
+            this.lst_OrdersWaiter.TabIndex = 0;
+            this.lst_OrdersWaiter.UseCompatibleStateImageBehavior = false;
+            this.lst_OrdersWaiter.SelectedIndexChanged += new System.EventHandler(this.lst_OrdersWaiter_SelectedIndexChanged);
             // 
             // ordersWaiterRefresher
             // 
@@ -228,5 +244,6 @@
         private BaseButton baseButton1;
         private System.Windows.Forms.ListView lst_OrdersWaiter;
         private System.Windows.Forms.Timer ordersWaiterRefresher;
+        private System.Windows.Forms.Button btn_hidePanel;
     }
 }

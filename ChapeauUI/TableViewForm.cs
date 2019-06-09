@@ -25,10 +25,8 @@ namespace ChapeauUI
         //a List variable that stores the "current list of tables", used to check if the tables have changed in anyway
         List<DiningTable> currentTables = new List<DiningTable>();
 
-        List<Order> barBeingPrepared = new List<Order>();
-        List<Order> kitchenBeingPrepared = new List<Order>();
-        List<Order> barReadyToServe = new List<Order>();
-        List<Order> kitchenReadyToServe = new List<Order>();
+        List<Order> currentBarOrders = new List<Order>();
+        List<Order> currentKitchenOrders = new List<Order>();
 
         //Creation of service objects used to communicated with the database
         DiningTableService diningTableDB = new DiningTableService();
@@ -86,23 +84,58 @@ namespace ChapeauUI
         }
 
         //Method for filling the Orders listview
-        private void DisplayOrders()
+        private void DisplayOrders(List<Order> orders)
         {
             lst_OrdersWaiter.Clear();
+            lst_OrderContentWaiter.Clear();
 
             lst_OrdersWaiter.GridLines = true;
             lst_OrdersWaiter.View = View.Details;
             lst_OrdersWaiter.FullRowSelect = true;
 
-            lst_OrdersWaiter.Columns.Add("Table");
-            lst_OrdersWaiter.Columns.Add("Status");
-            lst_OrdersWaiter.Columns.Add("Number Of Items");
-            lst_OrdersWaiter.Columns.Add("Time");
+            lst_OrdersWaiter.Columns.Add("Table", 80);
+            lst_OrdersWaiter.Columns.Add("Status",200);
+            lst_OrdersWaiter.Columns.Add("# Items", 100);
+            lst_OrdersWaiter.Columns.Add("Time",120);
 
+            foreach (Order order in orders)
+            {
+                ListViewItem li = new ListViewItem(order.Table.Id.ToString());
+                li.Tag = order;
 
+                //Getting first item in the list to get extra information
+                OrderMenuItem item = order.content[0];
+
+                li.SubItems.Add(item.Status.ToString());
+                li.SubItems.Add(order.content.Count().ToString());
+                li.SubItems.Add(item.TimeStamp.ToString("HH:mm:ss"));
+
+                lst_OrdersWaiter.Items.Add(li);
+            }
         }
 
-        private void DisplayOrderContent()
+        //Show bar orders in the listview
+        private void DisplayBarOrders()
+        {
+            List<Order> barInDatabase = orderDB.GetBarReadyToServeOrders();
+            barInDatabase.AddRange(orderDB.GetBarBeingPreparedOrders());
+            currentBarOrders = barInDatabase;
+
+            DisplayOrders(barInDatabase);
+        }
+
+        //show kitchen orders in the listview
+        private void DisplayKitchenOrders()
+        {
+            List<Order> kitchenInDatabase = orderDB.GetKitchenReadyToServeOrders();
+            kitchenInDatabase.AddRange(orderDB.GetKitchenBeingPreparedOrders());
+            currentKitchenOrders = kitchenInDatabase;
+
+            DisplayOrders(kitchenInDatabase);
+        }
+
+        //Display content of selected order
+        private void DisplayOrderContent(Order order)
         {
             lst_OrderContentWaiter.Clear();
 
@@ -110,8 +143,17 @@ namespace ChapeauUI
             lst_OrderContentWaiter.View = View.Details;
             lst_OrderContentWaiter.FullRowSelect = true;
 
-            lst_OrderContentWaiter.Columns.Add("Name");
-            lst_OrderContentWaiter.Columns.Add("Quantity");
+            lst_OrderContentWaiter.Columns.Add("Name", 200);
+            lst_OrderContentWaiter.Columns.Add("Quantity", 110);
+
+            foreach (OrderMenuItem menuItem in order.content)
+            {
+                ListViewItem li = new ListViewItem(menuItem.GetMenuItem().Name);
+                li.Tag = menuItem;
+
+                li.SubItems.Add(menuItem.Quantity.ToString());
+                lst_OrderContentWaiter.Items.Add(li);
+            }
         }
 
         //Method to check if tables have changed (separated for better readability)
@@ -129,6 +171,56 @@ namespace ChapeauUI
 
             return false;
         }
+
+        //Checking if bar order status has changed
+        private bool AreBarOrdersChanged()
+        {
+            List<Order> barInDatabase = orderDB.GetBarReadyToServeOrders();
+            barInDatabase.AddRange(orderDB.GetBarReadyToServeOrders());
+
+            foreach (Order order in currentBarOrders)
+            {
+                if (order.content[0].Status != barInDatabase[currentBarOrders.IndexOf(order)].content[0].Status)
+                {
+                    currentBarOrders = barInDatabase;
+                    return true;
+                }
+            }
+
+            if(barInDatabase.Count != currentBarOrders.Count)
+            {
+                currentBarOrders = barInDatabase;;
+                return true;
+            }
+
+            return false;
+        }
+
+        //Checking if kitchenorder status has changed
+        private bool AreKitchenOrdersChanged()
+        {
+            List<Order> kitchenInDatabase = orderDB.GetKitchenReadyToServeOrders();
+            kitchenInDatabase.AddRange(orderDB.GetBarBeingPreparedOrders());
+
+            foreach (Order order in currentKitchenOrders)
+            {
+                if (order.content[0].Status != kitchenInDatabase[currentKitchenOrders.IndexOf(order)].content[0].Status)
+                {
+                    currentKitchenOrders = kitchenInDatabase;
+                    return true;
+                }
+            }
+
+            if (kitchenInDatabase != currentKitchenOrders)
+            {
+                currentKitchenOrders = kitchenInDatabase; 
+                return true;
+            }
+
+            return false;
+        }
+
+
 
         // Method do determing the color of the table, fitting the table status
         private Color DetermineTableColor(DiningTable table)
@@ -187,10 +279,62 @@ namespace ChapeauUI
 
         private void ordersWaiterRefresher_Tick(object sender, EventArgs e)
         {
-            barBeingPrepared = orderDB.GetBarBeingPreparedOrders();
-            barReadyToServe = orderDB.GetBarReadyToServeOrders();
-            kitchenBeingPrepared = orderDB.GetKitchenBeingPreparedOrders();
-            kitchenReadyToServe = orderDB.GetKitchenReadyToServeOrders();
+            if (AreBarOrdersChanged())
+            {
+                DisplayBarOrders();
+            }
+
+            if (AreKitchenOrdersChanged())
+            {
+                DisplayKitchenOrders();
+            }
+        }
+
+        private void CheckBarNotification()
+        {
+            bool checker = false;
+
+            foreach (Order order in currentBarOrders)
+            {
+                if(order.content[0].Status == OrderStatus.ReadyToServe)
+                {
+
+                }
+            }
+        }
+
+        private void CheckKitchenNotification()
+        {
+
+        }
+
+        private void btn_hidePanel_Click(object sender, EventArgs e)
+        {
+            pnl_Notifications.Hide();
+            lst_OrderContentWaiter.Clear();
+        }
+
+        private void btn_BarNotifications_Click(object sender, EventArgs e)
+        {
+            DisplayBarOrders();
+            pnl_Notifications.Show();
+        }
+
+        private void btn_KitchenNotifications_Click(object sender, EventArgs e)
+        {
+            DisplayKitchenOrders();
+            pnl_Notifications.Show();
+        }
+
+        private void lst_OrdersWaiter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lst_OrdersWaiter.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            Order order = (Order)lst_OrdersWaiter.SelectedItems[0].Tag;
+            DisplayOrderContent(order);
         }
     }
 }
