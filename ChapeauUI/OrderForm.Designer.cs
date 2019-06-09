@@ -48,10 +48,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(362, 22);
+            this.label1.Font = new System.Drawing.Font("Arial", 21.8F);
+            this.label1.Location = new System.Drawing.Point(348, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 38);
+            this.label1.Size = new System.Drawing.Size(260, 42);
             this.label1.TabIndex = 8;
             this.label1.Text = "ORDER VIEW";
             // 
@@ -95,7 +95,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(42, 72);
+            this.label2.Location = new System.Drawing.Point(28, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 27);
             this.label2.TabIndex = 13;
@@ -104,7 +104,7 @@
             // btn_NewOrderClearItems
             // 
             this.btn_NewOrderClearItems.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(240, 607);
+            this.btn_NewOrderClearItems.Location = new System.Drawing.Point(240, 621);
             this.btn_NewOrderClearItems.Name = "btn_NewOrderClearItems";
             this.btn_NewOrderClearItems.Size = new System.Drawing.Size(92, 60);
             this.btn_NewOrderClearItems.TabIndex = 14;
@@ -115,7 +115,7 @@
             // btn_NewOrderItemDelete
             // 
             this.btn_NewOrderItemDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(139, 607);
+            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(139, 622);
             this.btn_NewOrderItemDelete.Name = "btn_NewOrderItemDelete";
             this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(95, 59);
             this.btn_NewOrderItemDelete.TabIndex = 15;
@@ -125,7 +125,7 @@
             // btn_NewOrderBack
             // 
             this.btn_NewOrderBack.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderBack.Location = new System.Drawing.Point(33, 607);
+            this.btn_NewOrderBack.Location = new System.Drawing.Point(33, 622);
             this.btn_NewOrderBack.Name = "btn_NewOrderBack";
             this.btn_NewOrderBack.Size = new System.Drawing.Size(100, 59);
             this.btn_NewOrderBack.TabIndex = 16;
@@ -143,7 +143,7 @@
             // btn_ConfirmOrder
             // 
             this.btn_ConfirmOrder.BackColor = System.Drawing.SystemColors.Menu;
-            this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 607);
+            this.btn_ConfirmOrder.Location = new System.Drawing.Point(815, 619);
             this.btn_ConfirmOrder.Name = "btn_ConfirmOrder";
             this.btn_ConfirmOrder.Size = new System.Drawing.Size(175, 60);
             this.btn_ConfirmOrder.TabIndex = 17;
@@ -154,7 +154,7 @@
             // btn_CommentOrder
             // 
             this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 10F);
-            this.btn_CommentOrder.Location = new System.Drawing.Point(338, 606);
+            this.btn_CommentOrder.Location = new System.Drawing.Point(338, 621);
             this.btn_CommentOrder.Name = "btn_CommentOrder";
             this.btn_CommentOrder.Size = new System.Drawing.Size(91, 60);
             this.btn_CommentOrder.TabIndex = 19;
@@ -176,7 +176,7 @@
             this.rtxt_CommentOrder.BackColor = System.Drawing.SystemColors.Info;
             this.rtxt_CommentOrder.Location = new System.Drawing.Point(451, 456);
             this.rtxt_CommentOrder.Name = "rtxt_CommentOrder";
-            this.rtxt_CommentOrder.Size = new System.Drawing.Size(334, 210);
+            this.rtxt_CommentOrder.Size = new System.Drawing.Size(334, 225);
             this.rtxt_CommentOrder.TabIndex = 21;
             this.rtxt_CommentOrder.Text = "";
             // 
