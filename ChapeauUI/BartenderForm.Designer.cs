@@ -30,19 +30,14 @@
         {
             this.flpnl_Orders = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tlp_Orders = new System.Windows.Forms.TableLayoutPanel();
             this.btn_MarkFinished = new System.Windows.Forms.Button();
             this.btn_SortByFinished = new System.Windows.Forms.Button();
             this.btn_SortByRunning = new System.Windows.Forms.Button();
             this.lbl_SortBy = new System.Windows.Forms.Label();
             this.PicBox_TableNumber = new System.Windows.Forms.PictureBox();
-<<<<<<< HEAD
-            this.dgv_Orders = new System.Windows.Forms.DataGridView();
-=======
->>>>>>> 30b0aeecb01df94438dead6456be97c8bb1d919d
+            this.lst_Orders = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).BeginInit();
             this.SuspendLayout();
             // 
             // flpnl_Orders
@@ -57,32 +52,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.dgv_Orders);
+            this.panel1.Controls.Add(this.lst_Orders);
             this.panel1.Location = new System.Drawing.Point(391, 106);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(561, 529);
             this.panel1.TabIndex = 8;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
-            // 
-            // tlp_Orders
-            // 
-            this.tlp_Orders.ColumnCount = 1;
-            this.tlp_Orders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_Orders.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Orders.Name = "tlp_Orders";
-            this.tlp_Orders.RowCount = 1;
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 530F));
-            this.tlp_Orders.Size = new System.Drawing.Size(561, 530);
-            this.tlp_Orders.TabIndex = 0;
-            this.tlp_Orders.Paint += new System.Windows.Forms.PaintEventHandler(this.tlp_Orders_Paint);
             // 
             // btn_MarkFinished
             // 
@@ -120,7 +95,7 @@
             this.lbl_SortBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.Location = new System.Drawing.Point(51, 664);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(96, 27);
+            this.lbl_SortBy.Size = new System.Drawing.Size(75, 22);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -132,20 +107,17 @@
             this.PicBox_TableNumber.TabIndex = 12;
             this.PicBox_TableNumber.TabStop = false;
             // 
-<<<<<<< HEAD
-            // dgv_Orders
+            // lst_Orders
             // 
-            this.dgv_Orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Orders.Location = new System.Drawing.Point(0, 0);
-            this.dgv_Orders.Name = "dgv_Orders";
-            this.dgv_Orders.Size = new System.Drawing.Size(561, 529);
-            this.dgv_Orders.TabIndex = 0;
+            this.lst_Orders.Location = new System.Drawing.Point(0, 0);
+            this.lst_Orders.Name = "lst_Orders";
+            this.lst_Orders.Size = new System.Drawing.Size(561, 529);
+            this.lst_Orders.TabIndex = 0;
+            this.lst_Orders.UseCompatibleStateImageBehavior = false;
             // 
-=======
->>>>>>> 30b0aeecb01df94438dead6456be97c8bb1d919d
             // BartenderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
@@ -170,7 +142,6 @@
             this.Controls.SetChildIndex(this.PicBox_TableNumber, 0);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Orders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +155,6 @@
         private System.Windows.Forms.Label lbl_SortBy;
         private System.Windows.Forms.Button btn_MarkFinished;
         private System.Windows.Forms.PictureBox PicBox_TableNumber;
-        private System.Windows.Forms.DataGridView dgv_Orders;
+        private System.Windows.Forms.ListView lst_Orders;
     }
 }

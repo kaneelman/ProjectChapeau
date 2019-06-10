@@ -68,6 +68,11 @@ namespace ChapeauLogic
             return orderDB.GetBarServedOrdersDB();
         }
 
+        public List<Order> GetKitchenBeingPreparedSpecialOrders(DateTime time, int orderid)
+        {
+            return orderDB.GetKitchenBeingPreparedSpecialOrdersDB(time, orderid);
+        }
+
         public void InsertOrder(Order order)
         {
             orderDB.InsertOrderDB(order);
