@@ -67,7 +67,7 @@
             this.lbl_FreeColor.AutoSize = true;
             this.lbl_FreeColor.Location = new System.Drawing.Point(102, 543);
             this.lbl_FreeColor.Name = "lbl_FreeColor";
-            this.lbl_FreeColor.Size = new System.Drawing.Size(71, 32);
+            this.lbl_FreeColor.Size = new System.Drawing.Size(80, 36);
             this.lbl_FreeColor.TabIndex = 9;
             this.lbl_FreeColor.Text = "Free";
             // 
@@ -76,7 +76,7 @@
             this.lbl_ReservedColor.AutoSize = true;
             this.lbl_ReservedColor.Location = new System.Drawing.Point(102, 620);
             this.lbl_ReservedColor.Name = "lbl_ReservedColor";
-            this.lbl_ReservedColor.Size = new System.Drawing.Size(131, 32);
+            this.lbl_ReservedColor.Size = new System.Drawing.Size(148, 36);
             this.lbl_ReservedColor.TabIndex = 10;
             this.lbl_ReservedColor.Text = "Reserved";
             // 
@@ -85,7 +85,7 @@
             this.lbl_OccupiedColor.AutoSize = true;
             this.lbl_OccupiedColor.Location = new System.Drawing.Point(102, 581);
             this.lbl_OccupiedColor.Name = "lbl_OccupiedColor";
-            this.lbl_OccupiedColor.Size = new System.Drawing.Size(130, 32);
+            this.lbl_OccupiedColor.Size = new System.Drawing.Size(148, 36);
             this.lbl_OccupiedColor.TabIndex = 11;
             this.lbl_OccupiedColor.Text = "Occupied";
             // 
@@ -155,7 +155,7 @@
             this.lbl_Notifications.AutoSize = true;
             this.lbl_Notifications.Location = new System.Drawing.Point(31, 9);
             this.lbl_Notifications.Name = "lbl_Notifications";
-            this.lbl_Notifications.Size = new System.Drawing.Size(163, 32);
+            this.lbl_Notifications.Size = new System.Drawing.Size(188, 36);
             this.lbl_Notifications.TabIndex = 14;
             this.lbl_Notifications.Text = "Notifications";
             // 
@@ -188,7 +188,7 @@
             this.lbl_OrderContentWaiter.AutoSize = true;
             this.lbl_OrderContentWaiter.Location = new System.Drawing.Point(624, 72);
             this.lbl_OrderContentWaiter.Name = "lbl_OrderContentWaiter";
-            this.lbl_OrderContentWaiter.Size = new System.Drawing.Size(188, 32);
+            this.lbl_OrderContentWaiter.Size = new System.Drawing.Size(216, 36);
             this.lbl_OrderContentWaiter.TabIndex = 3;
             this.lbl_OrderContentWaiter.Text = "Order Content";
             // 
