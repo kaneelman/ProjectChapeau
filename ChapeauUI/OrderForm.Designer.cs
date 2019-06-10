@@ -121,6 +121,7 @@
             this.btn_NewOrderItemDelete.TabIndex = 15;
             this.btn_NewOrderItemDelete.Text = "Delete";
             this.btn_NewOrderItemDelete.UseVisualStyleBackColor = true;
+            this.btn_NewOrderItemDelete.Click += new System.EventHandler(this.btn_NewOrderItemDelete_Click);
             // 
             // btn_NewOrderBack
             // 
@@ -179,6 +180,7 @@
             this.rtxt_CommentOrder.Size = new System.Drawing.Size(361, 225);
             this.rtxt_CommentOrder.TabIndex = 21;
             this.rtxt_CommentOrder.Text = "";
+            this.rtxt_CommentOrder.TextChanged += new System.EventHandler(this.rtxt_CommentOrder_TextChanged);
             // 
             // OrderForm
             // 

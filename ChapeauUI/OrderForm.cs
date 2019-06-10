@@ -17,6 +17,11 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
+        int Id;
+        Employee HandledBy;
+        DiningTable Table;
+        Order order;
+
         ChapeauLogic.OrderService Order1 = new ChapeauLogic.OrderService();
 
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
@@ -58,15 +63,7 @@ namespace ChapeauUI
 
         }
 
-        private void btn_NewOrderBack_Click(object sender, EventArgs e)
-        {
-            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
-            o1.Close();
-
-            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
-            t1.Show();
-           
-        }
+      
 
 
         private void flpnl_MainCatagories_Paint(object sender, PaintEventArgs e)
@@ -359,24 +356,7 @@ namespace ChapeauUI
             li.SubItems.Add(menuItem.Stock.ToString());
             li.SubItems.Add(menuItem.Category .ToString());
             lst_NewOrderItems.Items.Add(li);
-         
-            /*
-            Id = id;
-            Name = name;
-            Price = price;
-            Stock = stock;
-            Category = category;
-            */
-            //menuItem.Id;  //lst_NewOrderItems
-
-            //ChapeauModel.MenuItem menuItem;
-
-            ////... add it to the ListView and Database
-            ////GetMenuItemById
-            ////menuItemDB.GetMenuItemByIdDB(id)
         }
-
-
 
         private void btn_LunchBiteItems_Click(object sender, EventArgs e)
         {
@@ -403,13 +383,48 @@ namespace ChapeauUI
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
+            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
+            o1.Close();
+
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
+            t1.Show();
+
+
+            try
+            {
+                string comment;
+                if (rtxt_CommentOrder.Text == "")
+                {
+                    comment = "NULL";
+                }
+                else
+                {
+                    comment = rtxt_CommentOrder.Text;
+                }
+                ChapeauLogic.OrderService AddOrder = new ChapeauLogic.OrderService();
+                //AddOrder.InsertOrder(new Payment(order, decimal.Parse(txt_Price.Text), tip, decimal.Parse(txt_TotalAmount.Text), paymentType,rtxt_FeedBack.Text));
+                AddOrder.InsertOrder(new Order(order));
+
+                DialogResult dialogBox = MessageBox.Show("Order not complete!");
+
+
+
+                /*      public int Id { get; set; }
+        public Employee HandledBy { get; set; }
+        public DiningTable Table { get; set; }*/
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.Message);
+            }
+
+            
+
+
 
         }
 
-        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void flpnl_SubCatagories_Paint(object sender, PaintEventArgs e)
         {
@@ -420,6 +435,33 @@ namespace ChapeauUI
         {
             lbl_Comment.Show();
             rtxt_CommentOrder.Show();
+        }
+
+        private void btn_NewOrderItemDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
+        {
+            rtxt_CommentOrder.ResetText();
+
+            lst_NewOrderItems.Clear();
+
+        }
+
+        private void btn_NewOrderBack_Click(object sender, EventArgs e)
+        {
+            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
+            o1.Close();
+
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
+            t1.Show();
+        }
+
+        private void rtxt_CommentOrder_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
