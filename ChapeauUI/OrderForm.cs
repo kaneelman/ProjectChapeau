@@ -418,10 +418,6 @@ namespace ChapeauUI
                 MessageBox.Show(msg.Message);
             }
 
-            
-
-
-
         }
 
 
