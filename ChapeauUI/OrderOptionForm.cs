@@ -53,7 +53,10 @@ namespace ChapeauUI
                 li.SubItems.Add(m.Quantity.ToString());
                 lst_CurrentOrder.Items.Add(li);
             }
-
+            
+            //to the show some information such as price and table number
+            lbl_CurrentPrice.Text= order.CalculateTotalPrice().ToString("0.00");
+            lbl_TableNr.Text = order.Table.Id.ToString();
         }
     }
 }
