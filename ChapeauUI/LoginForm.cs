@@ -40,7 +40,7 @@ namespace ChapeauUI
                             tableViewForm.Show();
                             break;
                         case EmployeePosition.Chef:
-                            BartenderForm chefForm = new BartenderForm(LoggedInEmployee, this);
+                            ChefForm chefForm = new ChefForm(LoggedInEmployee, this);
                             chefForm.Show();
                             break;
                         case EmployeePosition.Waiter:

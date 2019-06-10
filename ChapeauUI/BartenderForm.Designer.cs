@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.flpnl_Orders = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_MarkFinished = new System.Windows.Forms.Button();
             this.btn_SortByFinished = new System.Windows.Forms.Button();
             this.btn_SortByRunning = new System.Windows.Forms.Button();
             this.lbl_SortBy = new System.Windows.Forms.Label();
             this.PicBox_TableNumber = new System.Windows.Forms.PictureBox();
             this.lst_Orders = new System.Windows.Forms.ListView();
-            this.panel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpnl_Orders
@@ -48,16 +48,6 @@
             this.flpnl_Orders.Size = new System.Drawing.Size(290, 618);
             this.flpnl_Orders.TabIndex = 0;
             this.flpnl_Orders.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_Orders_Paint);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lst_Orders);
-            this.panel1.Location = new System.Drawing.Point(391, 106);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(561, 529);
-            this.panel1.TabIndex = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // btn_MarkFinished
             // 
@@ -115,6 +105,16 @@
             this.lst_Orders.TabIndex = 0;
             this.lst_Orders.UseCompatibleStateImageBehavior = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lst_Orders);
+            this.panel1.Location = new System.Drawing.Point(391, 106);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(561, 529);
+            this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            // 
             // BartenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -134,14 +134,14 @@
             this.Load += new System.EventHandler(this.BartenderForm_Load);
             this.Controls.SetChildIndex(this.flpnl_Orders, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.btn_SortByFinished, 0);
             this.Controls.SetChildIndex(this.btn_SortByRunning, 0);
             this.Controls.SetChildIndex(this.lbl_SortBy, 0);
             this.Controls.SetChildIndex(this.btn_MarkFinished, 0);
             this.Controls.SetChildIndex(this.PicBox_TableNumber, 0);
-            this.panel1.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,12 +149,12 @@
 
         #endregion
         private System.Windows.Forms.FlowLayoutPanel flpnl_Orders;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_SortByFinished;
         private System.Windows.Forms.Button btn_SortByRunning;
         private System.Windows.Forms.Label lbl_SortBy;
         private System.Windows.Forms.Button btn_MarkFinished;
         private System.Windows.Forms.PictureBox PicBox_TableNumber;
         private System.Windows.Forms.ListView lst_Orders;
+        private System.Windows.Forms.Panel panel1;
     }
 }
