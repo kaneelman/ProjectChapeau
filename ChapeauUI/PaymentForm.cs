@@ -59,7 +59,7 @@ namespace ChapeauUI
 
             //the display of the table number
             lbl_numberofT.Text = order.Table.Id.ToString();
-            lbl_name.Text = order.HandledBy.ToString();
+            lbl_name.Text = order.HandledBy.Name.ToString();
 
             //information for the textboxes
             txt_Price.Text = order.CalculateTotalPrice().ToString("0.00");
@@ -67,17 +67,35 @@ namespace ChapeauUI
 
             //this is for the total amount witout added tip
             txt_TotalAmount.Text = order.CalculateTotalAmount().ToString("0.00");
-            
+
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
         {
-            ChapeauLogic.PaymentService AddPayment = new ChapeauLogic.PaymentService();
-            AddPayment.InsertPayment(new Payment(order,decimal.Parse(txt_Price.Text),decimal.Parse(txt_Tip.Text),decimal.Parse(txt_TotalAmount.Text),paymentType));
-            DialogResult dialogBox = MessageBox.Show("Payment complete");
+            try
+            {
+                if (!radBtn_visa.Checked && !radBtn_PIN.Checked && !radBtn_Cash.Checked)
+                    throw new Exception("please selecte a payment method");
+                decimal tip;
+                if (txt_Tip.Text == "")
+                {
+                    tip = 0;
+                }
+                else
+                {
+                    tip = decimal.Parse(txt_Tip.Text);
+                }
+                ChapeauLogic.PaymentService AddPayment = new ChapeauLogic.PaymentService();
+                AddPayment.InsertPayment(new Payment(order, decimal.Parse(txt_Price.Text), tip, decimal.Parse(txt_TotalAmount.Text), paymentType,rtxt_FeedBack.Text));
+                DialogResult dialogBox = MessageBox.Show("Payment complete");
 
-            resetTextBox();
-            
+                resetTextBox();
+            }
+            catch(Exception msg)
+            {
+                MessageBox.Show(msg.Message);
+            }
+
         }
         private void resetTextBox()
         {
@@ -98,7 +116,6 @@ namespace ChapeauUI
             //TableViewForm tableViewForm1 = new TableViewForm(LoggedInEmployee,);// or make a new tableview.
             //tableViewForm1.Show();
         }
-
 
         private void radBtn_visa_CheckedChanged(object sender, EventArgs e)
         {
@@ -130,26 +147,19 @@ namespace ChapeauUI
 
         private void txt_Tip_TextChanged(object sender, EventArgs e)
         {
-            if (txt_Tip.Text == "")
+            int i;
+
+            if (!int.TryParse(txt_Tip.Text, out i))
             {
-                //still need to fix this.
+                DialogResult errorTip = MessageBox.Show("Wrong input");
             }
             else
             {
-                int i;
+                //converting input tip to value to add to total amount
+                tip = int.Parse(txt_Tip.Text);
 
-                if (!int.TryParse(txt_Tip.Text, out i))
-                {
-                    DialogResult errorTip = MessageBox.Show("Wrong input");
-                }
-                else
-                {
-                    //converting input tip to value to add to total amount
-                    tip = int.Parse(txt_Tip.Text);
-
-                    txt_TotalAmount.Text = (order.CalculateTotalAmount()+tip).ToString("0.00");
-                }
-            }          
+                txt_TotalAmount.Text = (order.CalculateTotalAmount() + tip).ToString("0.00");
+            }
         }
     }
 }

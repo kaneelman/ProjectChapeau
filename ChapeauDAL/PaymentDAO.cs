@@ -39,14 +39,15 @@ namespace ChapeauDAL
         public void InsertPaymentDB(Payment payment)
         {
             //Somecode
-            string query = "INSERT INTO PAYMENT VALUES (@order_id, @total, @tip, @paid_amount, @method)";
+            string query = "INSERT INTO PAYMENT VALUES (@order_id, @total, @tip, @paid_amount, @method, @feedback)";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@order_id",payment.Order.Id),
                 new SqlParameter("@total",payment.Total),
                 new SqlParameter("@tip", payment.Tip),
                 new SqlParameter("@paid_amount", payment.AmountPaid),
-                new SqlParameter("@method",payment.Method)
+                new SqlParameter("@method",payment.Method),
+                new SqlParameter("@feedback",payment.Feedback)
             });
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -58,7 +59,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Payment payment = new Payment(orderDB.GetOrderByIdDB((int)dr["order_id"]), (decimal)dr["total"], (decimal)dr["tip"], (decimal)dr["paid_amount"], (string)dr["method"]);
+                Payment payment = new Payment(orderDB.GetOrderByIdDB((int)dr["order_id"]), (decimal)dr["total"], (decimal)dr["tip"], (decimal)dr["paid_amount"], (string)dr["method"], (string)dr["comment"]);
                 payments.Add(payment);
             }
             return payments;
