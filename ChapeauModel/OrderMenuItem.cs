@@ -17,7 +17,7 @@ namespace ChapeauModel
         public OrderStatus Status { get; set; }
 
         public OrderMenuItem(MenuItem item, int id, DateTime timeStamp, int quantity, string comment, OrderStatus status)
-        {                          
+        {
             this.item = item;
 
             Id = id;
@@ -63,8 +63,8 @@ namespace ChapeauModel
             get { return Quantity * item.Price; }
         }
         public decimal calcTotalVATForEachItem
-        {            
-            get { return calcTotalForEachItem * 21/100; }
+        {
+            get { return calcTotalForEachItem * item.Category.VAT / 100; }
         }
         public decimal calcTotalAmount
         {
