@@ -58,5 +58,10 @@ namespace ChapeauUI
             lbl_CurrentPrice.Text= order.CalculateTotalPrice().ToString("0.00");
             lbl_TableNr.Text = order.Table.Id.ToString();
         }
+        //make a code thhat allows us to select an item from the list view.
+        //code the buttons
+        //new order buttons goes to order interface 
+        //payment button goes to payment interace.
+        //delete buttons delete the item selected from the list view ask japheth about this how are we going to choose what gets deleted.
     }
 }
