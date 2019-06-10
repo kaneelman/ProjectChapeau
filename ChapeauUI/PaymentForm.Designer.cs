@@ -151,6 +151,7 @@
             this.rtxt_FeedBack.Size = new System.Drawing.Size(482, 252);
             this.rtxt_FeedBack.TabIndex = 15;
             this.rtxt_FeedBack.Text = "";
+            this.rtxt_FeedBack.TextChanged += new System.EventHandler(this.rtxt_FeedBack_TextChanged);
             // 
             // btn_Pay
             // 

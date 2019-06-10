@@ -161,5 +161,10 @@ namespace ChapeauUI
                 txt_TotalAmount.Text = (order.CalculateTotalAmount() + tip).ToString("0.00");
             }
         }
+
+        private void rtxt_FeedBack_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
