@@ -58,15 +58,7 @@ namespace ChapeauUI
 
         }
 
-        private void btn_NewOrderBack_Click(object sender, EventArgs e)
-        {
-            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
-            o1.Close();
-
-            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
-            t1.Show();
-           
-        }
+      
 
 
         private void flpnl_MainCatagories_Paint(object sender, PaintEventArgs e)
@@ -403,13 +395,47 @@ namespace ChapeauUI
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
+            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
+            o1.Close();
+
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
+            t1.Show();
+
+
+
+            /*
+             
+            try
+            {
+                if (!radBtn_visa.Checked && !radBtn_PIN.Checked && !radBtn_Cash.Checked)
+                    throw new Exception("please selecte a payment method");
+                decimal tip;
+                if (txt_Tip.Text == "")
+                {
+                    tip = 0;
+                }
+                else
+                {
+                    tip = decimal.Parse(txt_Tip.Text);
+                }
+                ChapeauLogic.PaymentService AddPayment = new ChapeauLogic.PaymentService();
+                AddPayment.InsertPayment(new Payment(order, decimal.Parse(txt_Price.Text), tip, decimal.Parse(txt_TotalAmount.Text), paymentType,rtxt_FeedBack.Text));
+                DialogResult dialogBox = MessageBox.Show("Payment complete");
+
+                resetTextBox();
+            }
+            catch(Exception msg)
+            {
+                MessageBox.Show(msg.Message);
+            }
+
+            */
+
+
 
         }
 
-        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void flpnl_SubCatagories_Paint(object sender, PaintEventArgs e)
         {
@@ -420,6 +446,25 @@ namespace ChapeauUI
         {
             lbl_Comment.Show();
             rtxt_CommentOrder.Show();
+        }
+
+        private void btn_NewOrderItemDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NewOrderBack_Click(object sender, EventArgs e)
+        {
+            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
+            o1.Close();
+
+            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
+            t1.Show();
         }
     }
 }
