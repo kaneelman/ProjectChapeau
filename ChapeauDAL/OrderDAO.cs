@@ -119,7 +119,7 @@ namespace ChapeauDAL
 
 
 
-        //method to create a special search request from the database based on datetime and ordernumber
+        //methosd to create a special search request from the database based on datetime and ordernumber
         public List<Order> GetKitchenBeingPreparedSpecialOrdersDB(DateTime time, int orderid)
         {
             string query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE(M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.order_id = @orderid AND C.date_time = @datetime";
@@ -132,11 +132,22 @@ namespace ChapeauDAL
             return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public List<Order> GetBarBeingPreparedSpecialOrdersDB(DateTime time, int orderid)
+        {
+            string query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.order_id = @orderid AND C.date_time = @datetime";
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@orderid", orderid),
+                new SqlParameter("@datetime", time)
+            });
+
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+        }
 
 
 
-        //Create new Order in the database
-        public void InsertOrderDB (Order order)
+            //Create new Order in the database
+            public void InsertOrderDB (Order order)
         {
             //SomeCode
             string query = "INSERT INTO [ORDER] VALUES (@handled_by, @table)" +

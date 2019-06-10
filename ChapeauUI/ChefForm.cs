@@ -48,8 +48,19 @@ namespace ChapeauUI
 
             List<Order> orders = Orders.GetKitchenBeingPreparedOrders();
             List<string> DateAndStatus = new List<string>();
+            DateAndStatus.Add("00:01:24\nRunning");
+            DateAndStatus.Add("00:01:25\nRunning");
+            DateAndStatus.Add("00:01:26\nRunning");
+            DateAndStatus.Add("00:01:27\nRunning");
+            DateAndStatus.Add("00:01:28\nFinished");
+            DateAndStatus.Add("00:01:29\nFinished");
+            DateAndStatus.Add("00:01:30\nFinished");
+            DateAndStatus.Add("00:01:31\nFinished");
+            DateAndStatus.Add("00:01:32\nFinished");
+            DateAndStatus.Add("00:01:33\nFinished");
             int ListCounter = 0;
 
+            //adding orders to the order listview with beingprepared as condition
             foreach (ChapeauModel.Order order in orders)
             {
                 foreach (OrderMenuItem item in order.content)
@@ -61,17 +72,7 @@ namespace ChapeauUI
                 }
             }
 
-            DateAndStatus.Add("00:01:24\nRunning");
-            DateAndStatus.Add("00:01:25\nRunning");
-            DateAndStatus.Add("00:01:26\nRunning");
-            DateAndStatus.Add("00:01:27\nRunning");
-            DateAndStatus.Add("00:01:28\nFinished");
-            DateAndStatus.Add("00:01:29\nFinished");
-            DateAndStatus.Add("00:01:30\nFinished");
-            DateAndStatus.Add("00:01:31\nFinished");
-            DateAndStatus.Add("00:01:32\nFinished");
-            DateAndStatus.Add("00:01:33\nFinished");
-
+            //creating the buttons
             foreach (DateTime time in OrderTimeList)
             {
                 BaseButton button = new BaseButton
