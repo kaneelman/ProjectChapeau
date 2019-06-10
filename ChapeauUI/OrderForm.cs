@@ -446,17 +446,15 @@ namespace ChapeauUI
         {
             rtxt_CommentOrder.ResetText();
 
-            lst_NewOrderItems.Clear();
+            lst_NewOrderItems.Items.Clear();
 
         }
 
         private void btn_NewOrderBack_Click(object sender, EventArgs e)
         {
-            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
-            o1.Close();
-
-            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
-            t1.Show();
+            //this.Hide();
+            //this.Close();
+            this.Dispose();
         }
 
         private void rtxt_CommentOrder_TextChanged(object sender, EventArgs e)
