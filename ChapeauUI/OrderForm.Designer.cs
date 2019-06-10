@@ -180,6 +180,7 @@
             this.rtxt_CommentOrder.Size = new System.Drawing.Size(361, 225);
             this.rtxt_CommentOrder.TabIndex = 21;
             this.rtxt_CommentOrder.Text = "";
+            this.rtxt_CommentOrder.TextChanged += new System.EventHandler(this.rtxt_CommentOrder_TextChanged);
             // 
             // OrderForm
             // 
