@@ -408,18 +408,25 @@ namespace ChapeauUI
 
 
                 ChapeauLogic.OrderService AddOrder = new ChapeauLogic.OrderService();
-                AddOrder.InsertOrder(new Order(order.Id, order.HandledBy, order.Table));
-
-
-
+                //AddOrder.InsertOrder(new Order(order.Id, order.HandledBy, order.Table));
+                AddOrder.InsertOrder(new Order(order.Id , order.HandledBy, order.Table));
                 AddOrder.InsertOrder(order);
-
-
-
 
                 DialogResult dialogBox = MessageBox.Show("Order not complete!");
 
+                while (true)
+                {
+                    if (lst_NewOrderItems.SelectedItems.Count == 0)
+                        return;
 
+                    ListViewItem item = lst_NewOrderItems.SelectedItems[0];
+                    //fill the text boxes
+                    lst_NewOrderItems.Text = item.Text;
+                    lst_NewOrderItems.Text = item.SubItems[0].Text;
+                    lst_NewOrderItems.Text = item.SubItems[1].Text;
+                    lst_NewOrderItems.Text = item.SubItems[2].Text;
+
+                }
 
                 /*      public int Id { get; set; }
         public Employee HandledBy { get; set; }
