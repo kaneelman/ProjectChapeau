@@ -401,13 +401,32 @@ namespace ChapeauUI
                 {
                     comment = rtxt_CommentOrder.Text;
                 }
+
+                //////add menuItems to the inserOrderMenuItem
+                ////ChapeauLogic.OrderMenuItemService AddOrderMenuItemService = new OrderMenuItemService();
+                ////AddOrderMenuItemService.InsertOrderMenuItem(new List<OrderMenuItem> orderMenuItem, ChapeauModel.Order order);
+
+
                 ChapeauLogic.OrderService AddOrder = new ChapeauLogic.OrderService();
-                //AddOrder.InsertOrder(new Payment(order, decimal.Parse(txt_Price.Text), tip, decimal.Parse(txt_TotalAmount.Text), paymentType,rtxt_FeedBack.Text));
+                //AddOrder.InsertOrder(new Order(order.Id, order.HandledBy, order.Table));
+                AddOrder.InsertOrder(new Order(order.Id , order.HandledBy, order.Table));
                 AddOrder.InsertOrder(order);
 
                 DialogResult dialogBox = MessageBox.Show("Order not complete!");
 
+                while (true)
+                {
+                    if (lst_NewOrderItems.SelectedItems.Count == 0)
+                        return;
 
+                    ListViewItem item = lst_NewOrderItems.SelectedItems[0];
+                    //fill the text boxes
+                    lst_NewOrderItems.Text = item.Text;
+                    lst_NewOrderItems.Text = item.SubItems[0].Text;
+                    lst_NewOrderItems.Text = item.SubItems[1].Text;
+                    lst_NewOrderItems.Text = item.SubItems[2].Text;
+
+                }
 
                 /*      public int Id { get; set; }
         public Employee HandledBy { get; set; }
