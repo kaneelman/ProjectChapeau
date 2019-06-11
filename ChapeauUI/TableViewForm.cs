@@ -260,7 +260,9 @@ namespace ChapeauUI
             switch (table.Status)
             {
                 case TableStatus.Free:
-                    //SOME CODE
+                    //Brings waiter to the table view
+                    OrderForm orderForm = new OrderForm(LoggedInEmployee, loginForm);
+                    orderForm.Show();
                     break;
                 case TableStatus.Occupied:
                     //Will change to current order overview eventually
