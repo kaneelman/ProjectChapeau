@@ -157,8 +157,8 @@ namespace ChapeauDAL
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", order.Id ),
-                new SqlParameter("@handled_by", order.HandledBy),
-                new SqlParameter("@table", order.Table)
+                new SqlParameter("@handled_by", order.HandledBy.Id),
+                new SqlParameter("@table", order.Table.Id)
             });
 
             //Execute query and store the ID
