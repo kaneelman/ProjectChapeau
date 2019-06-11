@@ -147,13 +147,13 @@ namespace ChapeauDAL
             //Create new Order in the database
             public void InsertOrderDB (Order order)
         {
-            //SomeCode
-            //string query = "INSERT INTO [ORDER] VALUES (@handled_by, @table)" +
-            //    "SELECT SCOPE_IDENTITY();";
+            string query = "INSERT INTO [ORDER] VALUES (@handled_by, @table)" +     // Don't touch this please
+                "SELECT SCOPE_IDENTITY();";
 
-            string query = "INSERT INTO [ORDER] VALUES (@id, @handled_by, @table)" +
-             "SELECT SCOPE_IDENTITY();";                                                   //This is the exact sequence of the order colunms  
-
+            //string query = "INSERT INTO [ORDER] VALUES (@id, @handled_by, @table)" +
+            // "SELECT SCOPE_IDENTITY();";                                                   //This is the exact sequence of the order colunms  
+                                                                                            
+                                                                        
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", order.Id ),
@@ -235,6 +235,7 @@ namespace ChapeauDAL
             return orders;
         }
 
+        //To check order status, a very different query is used, and thus a different read table
         private List<Order> ReadTablesByOrderStatus(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
