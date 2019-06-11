@@ -20,8 +20,8 @@ namespace ChapeauUI
         Color RESERVED_COLOR = Color.FromArgb(255, 102, 102); // Red
 
         //"constant" colors of the notification buttons
-        Color NOTIFICATION_COLOR = Color.FromArgb(255, 102, 102);
-        Color NO_NOTIFICATION_COLOR = Color.LightGray;
+        //Color NOTIFICATION_COLOR = Color.FromArgb(255, 102, 102);
+        //Color NO_NOTIFICATION_COLOR = Color.LightGray;
 
 
         //constant tablebutton size
@@ -37,6 +37,9 @@ namespace ChapeauUI
         DiningTableService diningTableDB = new DiningTableService();
         OrderService orderDB = new OrderService();
         OrderMenuItemService orderMenuItemDB = new OrderMenuItemService();
+
+        //Save what notification panel is active, so only that panel gets displayed
+        string activePanel = "";
 
         public TableViewForm(Employee LoggedUser, LoginForm loginForm)
         {
@@ -54,15 +57,25 @@ namespace ChapeauUI
             lbl_OccupiedColor.BackColor = OCCUPIED_COLOR;
             lbl_ReservedColor.BackColor = RESERVED_COLOR;
 
-            //Run code to display tables
-            DisplayTables();
-
             //Hide and disable features in notifications panel
             pnl_Notifications.Hide();
             lst_OrderContentWaiter.Enabled = false;
             pic_NotificationBar.Hide();
             pic_NotificationKitchen.Hide();
 
+            //Get the current tables and orders
+            currentTables = diningTableDB.GetDiningTables();
+
+            currentBarOrders = orderDB.GetBarReadyToServeOrders();
+            currentBarOrders.AddRange(orderDB.GetBarReadyToServeOrders());
+
+            currentKitchenOrders = orderDB.GetKitchenReadyToServeOrders();
+            currentKitchenOrders.AddRange(orderDB.GetBarBeingPreparedOrders());
+
+            //Run code to display tables
+            DisplayTables();
+
+            //Check notifications
             CheckBarNotification();
             CheckKitchenNotification();
 
@@ -72,14 +85,11 @@ namespace ChapeauUI
 
         private void DisplayTables()
         {
-            // Get list of all tables from the database
-            List<DiningTable> diningTables = diningTableDB.GetDiningTables();
-            currentTables = diningTables;
 
             flpnl_DiningTables.Controls.Clear();
 
             // Used loop to fill the flow panel with buttons for all the tables
-            foreach (DiningTable table in diningTables)
+            foreach (DiningTable table in currentTables)
             {
                 BaseButton button = new BaseButton
                 {
@@ -129,21 +139,13 @@ namespace ChapeauUI
         //Show bar orders in the listview
         private void DisplayBarOrders()
         {
-            List<Order> barInDatabase = orderDB.GetBarReadyToServeOrders();
-            barInDatabase.AddRange(orderDB.GetBarBeingPreparedOrders());
-            currentBarOrders = barInDatabase;
-
-            DisplayOrders(barInDatabase);
+            DisplayOrders(currentBarOrders);
         }
 
         //show kitchen orders in the listview
         private void DisplayKitchenOrders()
         {
-            List<Order> kitchenInDatabase = orderDB.GetKitchenReadyToServeOrders();
-            kitchenInDatabase.AddRange(orderDB.GetKitchenBeingPreparedOrders());
-            currentKitchenOrders = kitchenInDatabase;
-
-            DisplayOrders(kitchenInDatabase);
+            DisplayOrders(currentKitchenOrders);
         }
 
         //Display content of selected order
@@ -177,6 +179,7 @@ namespace ChapeauUI
             {
                 if(table.Status != tablesInDatabase[currentTables.IndexOf(table)].Status)
                 {
+                    currentTables = tablesInDatabase;
                     return true;
                 }
             }
@@ -190,6 +193,12 @@ namespace ChapeauUI
             List<Order> barInDatabase = orderDB.GetBarReadyToServeOrders();
             barInDatabase.AddRange(orderDB.GetBarReadyToServeOrders());
 
+            if (barInDatabase.Count != currentBarOrders.Count)
+            {
+                currentBarOrders = barInDatabase;
+                return true;
+            }
+
             foreach (Order order in currentBarOrders)
             {
                 if (order.content[0].Status != barInDatabase[currentBarOrders.IndexOf(order)].content[0].Status)
@@ -197,12 +206,6 @@ namespace ChapeauUI
                     currentBarOrders = barInDatabase;
                     return true;
                 }
-            }
-
-            if(barInDatabase.Count != currentBarOrders.Count)
-            {
-                currentBarOrders = barInDatabase;;
-                return true;
             }
 
             return false;
@@ -214,6 +217,12 @@ namespace ChapeauUI
             List<Order> kitchenInDatabase = orderDB.GetKitchenReadyToServeOrders();
             kitchenInDatabase.AddRange(orderDB.GetBarBeingPreparedOrders());
 
+            if (kitchenInDatabase.Count != currentKitchenOrders.Count)
+            {
+                currentKitchenOrders = kitchenInDatabase;
+                return true;
+            }
+
             foreach (Order order in currentKitchenOrders)
             {
                 if (order.content[0].Status != kitchenInDatabase[currentKitchenOrders.IndexOf(order)].content[0].Status)
@@ -222,13 +231,6 @@ namespace ChapeauUI
                     return true;
                 }
             }
-
-            if (kitchenInDatabase != currentKitchenOrders)
-            {
-                currentKitchenOrders = kitchenInDatabase; 
-                return true;
-            }
-
             return false;
         }
 
@@ -294,18 +296,17 @@ namespace ChapeauUI
         //Method that checks the order status with every tick
         private void ordersWaiterRefresher_Tick(object sender, EventArgs e)
         {
-            if (AreBarOrdersChanged())
-            {
+
+            if (AreBarOrdersChanged() && activePanel == "Bar"){
                 DisplayBarOrders();
             }
 
-            if (AreKitchenOrdersChanged())
+            if (AreKitchenOrdersChanged() && activePanel == "Kitchen")
             {
                 DisplayKitchenOrders();
             }
 
             CheckBarNotification();
-
             CheckKitchenNotification();
         }
 
@@ -350,21 +351,28 @@ namespace ChapeauUI
         private void btn_hidePanel_Click(object sender, EventArgs e)
         {
             pnl_Notifications.Hide();
+            activePanel = "";
             lst_OrderContentWaiter.Clear();
         }
 
+
+        //Clicking bar button show the panel and fills the list view
         private void btn_BarNotifications_Click(object sender, EventArgs e)
         {
             DisplayBarOrders();
+            activePanel = "Bar";
             pnl_Notifications.Show();
         }
-
+        
+        //Clicking kitchen button show the panel and fills the list view
         private void btn_KitchenNotifications_Click(object sender, EventArgs e)
         {
             DisplayKitchenOrders();
+            activePanel = "Kitchen";
             pnl_Notifications.Show();
         }
 
+        //Event handler for selecting and order, the order content will be visable
         private void lst_OrdersWaiter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lst_OrdersWaiter.SelectedItems.Count == 0)
