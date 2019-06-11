@@ -403,7 +403,7 @@ namespace ChapeauUI
                 }
                 ChapeauLogic.OrderService AddOrder = new ChapeauLogic.OrderService();
                 //AddOrder.InsertOrder(new Payment(order, decimal.Parse(txt_Price.Text), tip, decimal.Parse(txt_TotalAmount.Text), paymentType,rtxt_FeedBack.Text));
-                AddOrder.InsertOrder(new Order(order));
+                AddOrder.InsertOrder(order);
 
                 DialogResult dialogBox = MessageBox.Show("Order not complete!");
 
