@@ -78,6 +78,16 @@ namespace ChapeauLogic
             return orderDB.GetBarBeingPreparedSpecialOrdersDB(time, orderid);
         }
 
+        public void UpdateBarStatus(DateTime time)
+        {
+            orderDB.UpdateBarStatusDB(time);
+        }
+
+        public void UpdateKitchenStatus(DateTime time)
+        {
+            orderDB.UpdateKitchenStatusDB(time);
+        }
+
         public void InsertOrder(Order order)
         {
             orderDB.InsertOrderDB(order);

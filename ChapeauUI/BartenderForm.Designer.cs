@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_OrderTime = new System.Windows.Forms.Label();
             this.lbl_OrderStatus = new System.Windows.Forms.Label();
+            this.dtp_OrderDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.btn_MarkFinished.TabIndex = 0;
             this.btn_MarkFinished.Text = "Mark as Ready";
             this.btn_MarkFinished.UseVisualStyleBackColor = true;
+            this.btn_MarkFinished.Click += new System.EventHandler(this.Btn_MarkFinished_Click);
             // 
             // btn_SortByFinished
             // 
@@ -70,6 +72,7 @@
             this.btn_SortByFinished.TabIndex = 9;
             this.btn_SortByFinished.Text = "Ready";
             this.btn_SortByFinished.UseVisualStyleBackColor = true;
+            this.btn_SortByFinished.Click += new System.EventHandler(this.Btn_SortByFinished_Click);
             // 
             // btn_SortByRunning
             // 
@@ -80,6 +83,7 @@
             this.btn_SortByRunning.TabIndex = 10;
             this.btn_SortByRunning.Text = "Running";
             this.btn_SortByRunning.UseVisualStyleBackColor = true;
+            this.btn_SortByRunning.Click += new System.EventHandler(this.Btn_SortByRunning_Click);
             // 
             // lbl_SortBy
             // 
@@ -122,18 +126,25 @@
             this.lbl_OrderTime.AutoSize = true;
             this.lbl_OrderTime.Location = new System.Drawing.Point(526, 29);
             this.lbl_OrderTime.Name = "lbl_OrderTime";
-            this.lbl_OrderTime.Size = new System.Drawing.Size(173, 18);
+            this.lbl_OrderTime.Size = new System.Drawing.Size(108, 18);
             this.lbl_OrderTime.TabIndex = 13;
-            this.lbl_OrderTime.Text = "Time Ordered: 11:24:12";
+            this.lbl_OrderTime.Text = "Time Ordered:";
             // 
             // lbl_OrderStatus
             // 
             this.lbl_OrderStatus.AutoSize = true;
             this.lbl_OrderStatus.Location = new System.Drawing.Point(526, 61);
             this.lbl_OrderStatus.Name = "lbl_OrderStatus";
-            this.lbl_OrderStatus.Size = new System.Drawing.Size(116, 18);
+            this.lbl_OrderStatus.Size = new System.Drawing.Size(56, 18);
             this.lbl_OrderStatus.TabIndex = 14;
-            this.lbl_OrderStatus.Text = "Status: Running";
+            this.lbl_OrderStatus.Text = "Status:";
+            // 
+            // dtp_OrderDate
+            // 
+            this.dtp_OrderDate.Location = new System.Drawing.Point(426, 698);
+            this.dtp_OrderDate.Name = "dtp_OrderDate";
+            this.dtp_OrderDate.Size = new System.Drawing.Size(526, 26);
+            this.dtp_OrderDate.TabIndex = 15;
             // 
             // BartenderForm
             // 
@@ -141,6 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.dtp_OrderDate);
             this.Controls.Add(this.lbl_OrderStatus);
             this.Controls.Add(this.lbl_OrderTime);
             this.Controls.Add(this.PicBox_TableNumber);
@@ -164,6 +176,7 @@
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.lbl_OrderTime, 0);
             this.Controls.SetChildIndex(this.lbl_OrderStatus, 0);
+            this.Controls.SetChildIndex(this.dtp_OrderDate, 0);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -182,5 +195,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_OrderTime;
         private System.Windows.Forms.Label lbl_OrderStatus;
+        private System.Windows.Forms.DateTimePicker dtp_OrderDate;
     }
 }

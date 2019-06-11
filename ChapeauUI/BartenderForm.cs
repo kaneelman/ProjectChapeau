@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Timers;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace ChapeauUI
         //calling required services
         ChapeauLogic.OrderService Orders = new ChapeauLogic.OrderService();
 
+        //creating lists
         List<DateTime> OrdersTimeList = new List<DateTime>();
         List<DateTime> ReadyToServeOrdersTimeList = new List<DateTime>();
         List<DateTime> BeingPreparedOrdersTimeList = new List<DateTime>();
@@ -35,7 +37,11 @@ namespace ChapeauUI
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
 
+            //prep
             TableImages = CreateTableImagesList();
+            lbl_OrderStatus.Hide();
+            lbl_OrderTime.Hide();
+            dtp_OrderDate.Hide();
 
             DisplayOrders();
         }
@@ -47,24 +53,15 @@ namespace ChapeauUI
 
         private void DisplayOrders()
         {
+            //removing old data for new data
             flpnl_Orders.Controls.Clear();
-            ClearOrdersTimeList();
+            ClearAllOrdersTimeList();
             
+            //grabbing lists of running, ready, and served orders
             List<Order> beingpreparedorders = Orders.GetBarBeingPreparedOrders();
             List<Order> readytoserveorders = Orders.GetBarReadyToServeOrders();
             List<Order> servedorders = Orders.GetBarServedOrders();
-            List<string> DateAndStatus = new List<string>();
-            DateAndStatus.Add("00:04:12\nRunning");
-            DateAndStatus.Add("00:07:07\nRunning");
-            DateAndStatus.Add("00:08:53\nRunning");
-            DateAndStatus.Add("00:17:02\nReady");
-            DateAndStatus.Add("00:18:22\nServed");
-            DateAndStatus.Add("00:09:37\nServed");
-            DateAndStatus.Add("00:20:49\nServed");
-            DateAndStatus.Add("00:01:31\nFinished");
-            DateAndStatus.Add("00:01:32\nFinished");
-            DateAndStatus.Add("00:01:33\nFinished");
-            int ListCounter = 0;
+            string status = null, ordertext = null;
 
             //adding orders to the order listview with beingprepared as condition
             foreach (ChapeauModel.Order order in beingpreparedorders)
@@ -108,6 +105,17 @@ namespace ChapeauUI
             //adding buttons based on datetime ordering
             foreach (DateTime time in OrdersTimeList)
             {
+                status = GetStatus(time);
+
+                if (status == "Served" | status == "ReadyToServe")
+                {
+                    ordertext = StatusConverter(status);
+                }
+                else
+                {
+                    ordertext = OrderTextProcessor(time);
+                }
+
                 BaseButton button = new BaseButton
                 {
                     Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
@@ -116,24 +124,32 @@ namespace ChapeauUI
                     BackColor = ButtonColorProcessor(time),
                     Tag = time,
                     Padding = new Padding(0, 0, 25, 0),
-                    Text = DateAndStatus[ListCounter],
+                    Text = ordertext,
                     TextAlign = ContentAlignment.MiddleRight,
                 };
                 button.Click += new EventHandler(Order_Click);
                 flpnl_Orders.Controls.Add(button);
-                ListCounter++;
             }
         }
 
         private void Order_Click(object sender, EventArgs e)
         {
+            //grabbing the object tag
             DateTime time = (DateTime)((Button)sender).Tag;
 
+            //inputting and displaying additional info
             PicBox_TableNumber.SizeMode = PictureBoxSizeMode.StretchImage;
             PicBox_TableNumber.Image = TableImages[TableNumProcessor(time)];
+            lbl_OrderTime.Show();
+            lbl_OrderTime.Text = "Time Ordered: " + time.ToString("HH:mm:ss");
+            lbl_OrderStatus.Show();
+            lbl_OrderStatus.Text = "Status: " + StatusConverter(GetStatus(time));
+            dtp_OrderDate.Value = time;
 
+            //clearing list view
             lst_Orders.Clear();
 
+            //adding columns and items to the list view
             lst_Orders.GridLines = true;
             lst_Orders.View = View.Details;
             lst_Orders.Columns.Add("Amount", 70, HorizontalAlignment.Left);
@@ -152,22 +168,180 @@ namespace ChapeauUI
             }
         }
 
-
-        private void timer1_Tick(object sender, EventArgs e)
+        ////sorting stuff
+        //sort by running
+        private void Btn_SortByRunning_Click(object sender, EventArgs e)
         {
+            //removing old data for new data
+            flpnl_Orders.Controls.Clear();
+            ClearAllOrdersTimeList();
 
+            //grabbing lists of running, ready, and served orders
+            List<Order> beingpreparedorders = Orders.GetBarBeingPreparedOrders();
+            List<Order> readytoserveorders = Orders.GetBarReadyToServeOrders();
+            List<Order> servedorders = Orders.GetBarServedOrders();
+            string status = null, ordertext = null;
+
+            //adding orders to the order listview with beingprepared as condition
+            foreach (ChapeauModel.Order order in beingpreparedorders)
+            {
+                foreach (OrderMenuItem item in order.content)
+                {
+                    if (!BeingPreparedOrdersTimeList.Contains(item.TimeStamp))
+                    {
+                        BeingPreparedOrdersTimeList.Add(item.TimeStamp);
+                        OrdersTimeList.Add(item.TimeStamp);
+                    }
+                }
+            }
+
+            //adding orders to the order listview with readytoserve as condition
+            foreach (ChapeauModel.Order order in readytoserveorders)
+            {
+                foreach (OrderMenuItem item in order.content)
+                {
+                    if (!ReadyToServeOrdersTimeList.Contains(item.TimeStamp))
+                    {
+                        ReadyToServeOrdersTimeList.Add(item.TimeStamp);
+                        OrdersTimeList.Add(item.TimeStamp);
+                    }
+                }
+            }
+
+            //adding orders to the order listview with served as condition
+            foreach (ChapeauModel.Order order in servedorders)
+            {
+                foreach (OrderMenuItem item in order.content)
+                {
+                    if (!ServedOrdersTimeList.Contains(item.TimeStamp))
+                    {
+                        ServedOrdersTimeList.Add(item.TimeStamp);
+                        OrdersTimeList.Add(item.TimeStamp);
+                    }
+                }
+            }
+
+            //adding buttons based on datetime ordering
+            foreach (DateTime time in OrdersTimeList)
+            {
+                status = GetStatus(time);
+
+                if (status == "Served" | status == "ReadyToServe")
+                {
+                    ordertext = StatusConverter(status);
+                }
+                else
+                {
+                    ordertext = OrderTextProcessor(time);
+                }
+
+                BaseButton button = new BaseButton
+                {
+                    Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
+                    Image = new Bitmap(TableImages[TableNumProcessor(time)], new Size(100, 100)),
+                    ImageAlign = ContentAlignment.MiddleLeft,
+                    BackColor = ButtonColorProcessor(time),
+                    Tag = time,
+                    Padding = new Padding(0, 0, 25, 0),
+                    Text = ordertext,
+                    TextAlign = ContentAlignment.MiddleRight,
+                };
+                button.Click += new EventHandler(Order_Click);
+                flpnl_Orders.Controls.Add(button);
+            }
         }
 
-        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        ////sorting stuff
+        //sort by ready
+        private void Btn_SortByFinished_Click(object sender, EventArgs e)
         {
+            //removing old data for new data
+            flpnl_Orders.Controls.Clear();
+            ClearAllOrdersTimeList();
 
+            //grabbing lists of running, ready, and served orders
+            List<Order> beingpreparedorders = Orders.GetBarBeingPreparedOrders();
+            List<Order> readytoserveorders = Orders.GetBarReadyToServeOrders();
+            List<Order> servedorders = Orders.GetBarServedOrders();
+            string status = null, ordertext = null;
+
+            //adding orders to the order listview with readytoserve as condition
+            foreach (ChapeauModel.Order order in readytoserveorders)
+            {
+                foreach (OrderMenuItem item in order.content)
+                {
+                    if (!ReadyToServeOrdersTimeList.Contains(item.TimeStamp))
+                    {
+                        ReadyToServeOrdersTimeList.Add(item.TimeStamp);
+                        OrdersTimeList.Add(item.TimeStamp);
+                    }
+                }
+            }
+
+            //adding orders to the order listview with beingprepared as condition
+            foreach (ChapeauModel.Order order in beingpreparedorders)
+            {
+                foreach (OrderMenuItem item in order.content)
+                {
+                    if (!BeingPreparedOrdersTimeList.Contains(item.TimeStamp))
+                    {
+                        BeingPreparedOrdersTimeList.Add(item.TimeStamp);
+                        OrdersTimeList.Add(item.TimeStamp);
+                    }
+                }
+            }
+
+            //adding orders to the order listview with served as condition
+            foreach (ChapeauModel.Order order in servedorders)
+            {
+                foreach (OrderMenuItem item in order.content)
+                {
+                    if (!ServedOrdersTimeList.Contains(item.TimeStamp))
+                    {
+                        ServedOrdersTimeList.Add(item.TimeStamp);
+                        OrdersTimeList.Add(item.TimeStamp);
+                    }
+                }
+            }
+
+            //adding buttons based on datetime ordering
+            foreach (DateTime time in OrdersTimeList)
+            {
+                status = GetStatus(time);
+
+                if (status == "Served" | status == "ReadyToServe")
+                {
+                    ordertext = StatusConverter(status);
+                }
+                else
+                {
+                    ordertext = OrderTextProcessor(time);
+                }
+
+                BaseButton button = new BaseButton
+                {
+                    Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
+                    Image = new Bitmap(TableImages[TableNumProcessor(time)], new Size(100, 100)),
+                    ImageAlign = ContentAlignment.MiddleLeft,
+                    BackColor = ButtonColorProcessor(time),
+                    Tag = time,
+                    Padding = new Padding(0, 0, 25, 0),
+                    Text = ordertext,
+                    TextAlign = ContentAlignment.MiddleRight,
+                };
+                button.Click += new EventHandler(Order_Click);
+                flpnl_Orders.Controls.Add(button);
+            }
         }
 
-        private void flpnl_Orders_Paint(object sender, PaintEventArgs e)
+        //updating order as ready
+        private void Btn_MarkFinished_Click(object sender, EventArgs e)
         {
-
+            DateTime time = dtp_OrderDate.Value;
+            Orders.UpdateBarStatus(time);
         }
 
+        //creates a list of images
         public List<Image> CreateTableImagesList()
         {
             List<Image> images = new List<Image>();
@@ -187,6 +361,7 @@ namespace ChapeauUI
             return images;
         }
 
+        //returns the table number of an order
         public int TableNumProcessor(DateTime time)
         {
             int tablenum = 0;
@@ -206,6 +381,7 @@ namespace ChapeauUI
             return tablenum;
         }
 
+        //returns the orderid number of an order
         public int OrderIDProcessor(DateTime time)
         {
             List<Order> allorders = Orders.GetAllOrders();
@@ -225,10 +401,51 @@ namespace ChapeauUI
             return orderid;
         }
 
+        //returns a color based on the status of an order
         public Color ButtonColorProcessor(DateTime time)
         {
-            List<Order> allorders = Orders.GetAllOrders();
             Color color = Color.White;
+            string status = null;
+
+            status = GetStatus(time);
+
+            switch (status)
+            {
+                case "BeingPrepared": color = Color.LightGreen; break;
+                case "ReadyToServe": color = Color.Cyan; break;
+                case "Served": color = Color.LightGray; break;
+                default: color = Color.Red; break;
+            }
+
+            return color;
+        }
+
+        //returns additional info text for the order list view
+        public string OrderTextProcessor(DateTime time)
+        {
+            DateTime currenttime = DateTime.Now;
+            string status = null, text = null;
+
+            status = GetStatus(time);
+
+            TimeSpan timedifference = (currenttime - time);
+            text = ($"{timedifference.Hours:00}:{timedifference.Minutes:00}:{timedifference.Seconds:00}\n{StatusConverter(status)}");
+            return text;
+        }
+
+        //refreshes info for receiving up to date data
+        public void ClearAllOrdersTimeList()
+        {
+            OrdersTimeList.Clear();
+            ReadyToServeOrdersTimeList.Clear();
+            BeingPreparedOrdersTimeList.Clear();
+            ServedOrdersTimeList.Clear();
+        }
+
+        //returns the status of an order
+        public string GetStatus(DateTime time)
+        {
+            List<Order> allorders = Orders.GetAllOrders();
             string status = null;
 
             foreach (ChapeauModel.Order order in allorders)
@@ -242,21 +459,34 @@ namespace ChapeauUI
                     }
                 }
             }
-
-            switch (status)
-            {
-                case "BeingPrepared": color = Color.LightGreen; break;
-                case "ReadyToServe": color = Color.Cyan; break;
-                case "Served": color = Color.LightGray; break;
-                default: color = Color.Red; break;
-            }
-
-            return color;
+            return status;
         }
 
-        public void ClearOrdersTimeList()
+        //converts the status for the order list view
+        public string StatusConverter(string status)
         {
-            OrdersTimeList.Clear();
+            switch (status)
+            {
+                case "ReadyToServe": return "Ready"; break;
+                case "BeingPrepared": return "Running"; break;
+                case "Served": return "Finished"; break;
+                default: return "Oopsie"; break;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void flpnl_Orders_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void Panel1_Paint(object sender, PaintEventArgs e)
@@ -268,5 +498,7 @@ namespace ChapeauUI
         {
 
         }
+
+
     }
 }

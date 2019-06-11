@@ -31,6 +31,12 @@
             this.flpnl_Orders = new System.Windows.Forms.FlowLayoutPanel();
             this.PicBox_TableNumber = new System.Windows.Forms.PictureBox();
             this.lst_Orders = new System.Windows.Forms.ListView();
+            this.lbl_OrderTime = new System.Windows.Forms.Label();
+            this.lbl_OrderStatus = new System.Windows.Forms.Label();
+            this.lbl_SortBy = new System.Windows.Forms.Label();
+            this.btn_SortByRunning = new System.Windows.Forms.Button();
+            this.btn_SortByFinished = new System.Windows.Forms.Button();
+            this.btn_MarkFinished = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,12 +64,79 @@
             this.lst_Orders.TabIndex = 14;
             this.lst_Orders.UseCompatibleStateImageBehavior = false;
             // 
+            // lbl_OrderTime
+            // 
+            this.lbl_OrderTime.AutoSize = true;
+            this.lbl_OrderTime.Location = new System.Drawing.Point(526, 29);
+            this.lbl_OrderTime.Name = "lbl_OrderTime";
+            this.lbl_OrderTime.Size = new System.Drawing.Size(108, 18);
+            this.lbl_OrderTime.TabIndex = 15;
+            this.lbl_OrderTime.Text = "Time Ordered:";
+            // 
+            // lbl_OrderStatus
+            // 
+            this.lbl_OrderStatus.AutoSize = true;
+            this.lbl_OrderStatus.Location = new System.Drawing.Point(526, 61);
+            this.lbl_OrderStatus.Name = "lbl_OrderStatus";
+            this.lbl_OrderStatus.Size = new System.Drawing.Size(56, 18);
+            this.lbl_OrderStatus.TabIndex = 16;
+            this.lbl_OrderStatus.Text = "Status:";
+            // 
+            // lbl_SortBy
+            // 
+            this.lbl_SortBy.AutoSize = true;
+            this.lbl_SortBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SortBy.Location = new System.Drawing.Point(51, 664);
+            this.lbl_SortBy.Name = "lbl_SortBy";
+            this.lbl_SortBy.Size = new System.Drawing.Size(75, 22);
+            this.lbl_SortBy.TabIndex = 17;
+            this.lbl_SortBy.Text = "Sort by:";
+            // 
+            // btn_SortByRunning
+            // 
+            this.btn_SortByRunning.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SortByRunning.Location = new System.Drawing.Point(132, 652);
+            this.btn_SortByRunning.Name = "btn_SortByRunning";
+            this.btn_SortByRunning.Size = new System.Drawing.Size(100, 40);
+            this.btn_SortByRunning.TabIndex = 18;
+            this.btn_SortByRunning.Text = "Running";
+            this.btn_SortByRunning.UseVisualStyleBackColor = true;
+            this.btn_SortByRunning.Click += new System.EventHandler(this.Btn_SortByRunning_Click);
+            // 
+            // btn_SortByFinished
+            // 
+            this.btn_SortByFinished.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SortByFinished.Location = new System.Drawing.Point(238, 652);
+            this.btn_SortByFinished.Name = "btn_SortByFinished";
+            this.btn_SortByFinished.Size = new System.Drawing.Size(100, 40);
+            this.btn_SortByFinished.TabIndex = 19;
+            this.btn_SortByFinished.Text = "Ready";
+            this.btn_SortByFinished.UseVisualStyleBackColor = true;
+            this.btn_SortByFinished.Click += new System.EventHandler(this.Btn_SortByFinished_Click);
+            // 
+            // btn_MarkFinished
+            // 
+            this.btn_MarkFinished.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_MarkFinished.Location = new System.Drawing.Point(767, 642);
+            this.btn_MarkFinished.Name = "btn_MarkFinished";
+            this.btn_MarkFinished.Size = new System.Drawing.Size(175, 50);
+            this.btn_MarkFinished.TabIndex = 20;
+            this.btn_MarkFinished.Text = "Mark as Ready";
+            this.btn_MarkFinished.UseVisualStyleBackColor = true;
+            this.btn_MarkFinished.Click += new System.EventHandler(this.Btn_MarkFinished_Click);
+            // 
             // ChefForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btn_MarkFinished);
+            this.Controls.Add(this.btn_SortByFinished);
+            this.Controls.Add(this.btn_SortByRunning);
+            this.Controls.Add(this.lbl_SortBy);
+            this.Controls.Add(this.lbl_OrderStatus);
+            this.Controls.Add(this.lbl_OrderTime);
             this.Controls.Add(this.lst_Orders);
             this.Controls.Add(this.PicBox_TableNumber);
             this.Controls.Add(this.flpnl_Orders);
@@ -75,6 +148,12 @@
             this.Controls.SetChildIndex(this.flpnl_Orders, 0);
             this.Controls.SetChildIndex(this.PicBox_TableNumber, 0);
             this.Controls.SetChildIndex(this.lst_Orders, 0);
+            this.Controls.SetChildIndex(this.lbl_OrderTime, 0);
+            this.Controls.SetChildIndex(this.lbl_OrderStatus, 0);
+            this.Controls.SetChildIndex(this.lbl_SortBy, 0);
+            this.Controls.SetChildIndex(this.btn_SortByRunning, 0);
+            this.Controls.SetChildIndex(this.btn_SortByFinished, 0);
+            this.Controls.SetChildIndex(this.btn_MarkFinished, 0);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -86,5 +165,11 @@
         private System.Windows.Forms.FlowLayoutPanel flpnl_Orders;
         private System.Windows.Forms.PictureBox PicBox_TableNumber;
         private System.Windows.Forms.ListView lst_Orders;
+        private System.Windows.Forms.Label lbl_OrderTime;
+        private System.Windows.Forms.Label lbl_OrderStatus;
+        private System.Windows.Forms.Label lbl_SortBy;
+        private System.Windows.Forms.Button btn_SortByRunning;
+        private System.Windows.Forms.Button btn_SortByFinished;
+        private System.Windows.Forms.Button btn_MarkFinished;
     }
 }

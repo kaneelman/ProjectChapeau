@@ -48,7 +48,6 @@ namespace ChapeauDAL
 
 
 
-
         // Generic method to get orders from the database depending on the status
         public List<Order> BaseGetOrderByStatus(string type, string status)
         {
@@ -119,7 +118,7 @@ namespace ChapeauDAL
 
 
 
-        //methosd to create a special search request from the database based on datetime and ordernumber
+        //method to create a special search request from the database based on datetime and ordernumber
         public List<Order> GetKitchenBeingPreparedSpecialOrdersDB(DateTime time, int orderid)
         {
             string query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE(M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.order_id = @orderid AND C.date_time = @datetime";
@@ -180,6 +179,42 @@ namespace ChapeauDAL
         }
 
 
+        
+        //generic method to alter status in the database based on datetime
+        public void BaseUpdateStatusDB(string type, DateTime time)
+        {
+            string query;
+
+            switch (type)
+            {
+                case "bar":
+                    query = "UPDATE ORDER_CONTENT SET STATUS = 'ReadyToServe' FROM ORDER_CONTENT AS OC JOIN MENU_ITEM AS MI ON MI.id = OC.item_id WHERE date_time = '@time' AND MI.category LIKE 'Dr%'";
+                    break;
+                case "kitchen":
+                    query = "UPDATE ORDER_CONTENT SET STATUS = 'ReadyToServe' FROM ORDER_CONTENT AS OC JOIN MENU_ITEM AS MI ON MI.id = OC.item_id WHERE date_time = '@time' AND (MI.category LIKE 'Lu%' OR MI.category LIKE 'Di%')";
+                    break;
+                default:
+                    throw new Exception("incorrect input for type");
+            }
+
+            SqlParameter[] sqlParameters = (new[]
+{
+                new SqlParameter("@time", time)
+            });
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        //methods to alter status in the database based on datetime
+        public void UpdateBarStatusDB(DateTime time)
+        {
+            BaseUpdateStatusDB("bar", time);
+        }
+
+        public void UpdateKitchenStatusDB(DateTime time)
+        {
+            BaseUpdateStatusDB("kitchen", time);
+        }
 
 
 
