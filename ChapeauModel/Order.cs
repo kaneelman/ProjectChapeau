@@ -30,10 +30,10 @@ namespace ChapeauModel
             content = new List<OrderMenuItem>();
         }
 
-        public Order(Order order)
-        {
+        //public Order(Order order)
+        //{
            
-        }
+        //}
 
         public void AddOrderItem(OrderMenuItem item)
         {
