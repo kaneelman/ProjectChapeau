@@ -143,17 +143,20 @@ namespace ChapeauDAL
             return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
         }
 
-
-
+        
             //Create new Order in the database
             public void InsertOrderDB (Order order)
         {
             //SomeCode
-            string query = "INSERT INTO [ORDER] VALUES (@handled_by, @table)" +
-                "SELECT SCOPE_IDENTITY();";
+            //string query = "INSERT INTO [ORDER] VALUES (@handled_by, @table)" +
+            //    "SELECT SCOPE_IDENTITY();";
+
+            string query = "INSERT INTO [ORDER] VALUES (@id, @handled_by, @table)" +
+             "SELECT SCOPE_IDENTITY();";                                                   //This is the exact sequence of the order colunms  
 
             SqlParameter[] sqlParameters = (new[]
             {
+                new SqlParameter("@id", order.Id ),
                 new SqlParameter("@handled_by", order.HandledBy),
                 new SqlParameter("@table", order.Table)
             });
@@ -166,8 +169,8 @@ namespace ChapeauDAL
             foreach(OrderMenuItem item in order.GetOrderMenuItems())
             {
                 query2 += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status.ToString()}, {item.Comment}) ";
-
             }
+
 
             SqlParameter[] sqlParameters2 = (new[]
             {
