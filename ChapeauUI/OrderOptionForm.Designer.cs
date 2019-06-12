@@ -65,6 +65,7 @@
             this.Btn_Payment.TabIndex = 12;
             this.Btn_Payment.Text = "Payment";
             this.Btn_Payment.UseVisualStyleBackColor = true;
+            this.Btn_Payment.Click += new System.EventHandler(this.Btn_Payment_Click);
             // 
             // lbl_OrderView
             // 
