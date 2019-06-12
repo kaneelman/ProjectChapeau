@@ -16,18 +16,20 @@ namespace ChapeauDAL
         DiningTableDAO diningTableDB = new DiningTableDAO();
         OrderMenuItemDAO orderMenuItemDB = new OrderMenuItemDAO();
 
+        //NEW
         //Get all Orders from the database
         public List<Order> GetAllOrdersDB()
         {
-            string query = "SELECT id, handled_by, [table] FROM [ORDER]";
+            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //NEW
         //Get an Order from database by id
         public Order GetOrderByIdDB(int id)
         {
-            string query = "SELECT id, handled_by, [table] FROM [ORDER] WHERE id = @id";
+            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id WHERE O.id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id)
@@ -35,10 +37,11 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
+        //NEW
         //Get active Order from the database by table
         public Order GetActiveOrderByTableDB(DiningTable table)
         {
-            string query = "SELECT id, handled_by, [table] FROM [ORDER] WHERE [table] = @table AND id NOT IN (SELECT order_id FROM PAYMENT)";
+            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id WHERE D.id = @table AND O.id NOT IN (SELECT order_id FROM PAYMENT)";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@table", table.Id)
@@ -83,7 +86,7 @@ namespace ChapeauDAL
         }
 
 
-
+        //NEW
         // Generic method to get orders from the database depending on the status
         public List<Order> BaseGetOrderByStatus(string type, string status)
         {
@@ -92,10 +95,10 @@ namespace ChapeauDAL
             switch (type)
             {
                 case "bar":
-                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status ORDER BY C.date_time";
+                    query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, D.status AS TableStatus, C.id AS ContentId FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON C.item_id = M.id WHERE M.category LIKE 'Dr%' AND C.[status] = @status ORDER BY C.date_time";
                     break;
                 case "kitchen":
-                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status ORDER BY C.date_time";
+                    query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, D.status AS TableStatus, C.id AS ContentId FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON C.item_id = M.id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status ORDER BY C.date_time";
                     break;
                 default:
                     throw new Exception("incorrect input for type");
@@ -129,8 +132,6 @@ namespace ChapeauDAL
         {
             return BaseGetOrderByStatus("kitchen", "Served");
         }
-
-
 
 
 
@@ -179,8 +180,6 @@ namespace ChapeauDAL
 
             return ReadDateTime(ExecuteSelectQuery(query, sqlParameters));
         }
-
-
 
 
         // methods to get kitchen orders from the database depending on status grouped by datetime
@@ -315,6 +314,7 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+
         //methods to alter status in the database based on datetime
         public void UpdateBarStatusDB(DateTime time)
         {
@@ -327,16 +327,37 @@ namespace ChapeauDAL
         }
 
 
+        //NEW
+        public void RunningOrdersWaiterForBarDB()
+        {
+         //   string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN";
+        }
 
-        //Convert Order information from database to Order objects
-        private List<Order> ReadTables(DataTable dataTable)
+        public void RunningOrdersWaiterForKitchenDB()
+        {
+
+        }
+
+        string query;
+
+
+              //  case "bar":
+                   // query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status ORDER BY C.date_time";
+
+               // case "kitchen":
+                   // query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status ORDER BY C.date_time";
+
+
+    //NEW
+    //Convert Order information from database to Order objects
+    private List<Order> ReadTables(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["id"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
-                order.AddOrderItems(orderMenuItemDB.GetOrderMenuItemsByOrderIdDB((int)dr["id"]));
+                Order order = new Order((int)dr["OrderId"], new Employee((string)dr["EmpId"], (string)dr["EmpName"], (string)dr["position"]), new DiningTable((int)dr["TableId"], (string)dr["status"]));
+                order.AddOrderItems(orderMenuItemDB.GetOrderMenuItemsByOrderIdDB((int)dr["OrderId"]));
                 orders.Add(order);
             }
             return orders;
@@ -354,6 +375,7 @@ namespace ChapeauDAL
             return datetimes;
         }
 
+        // NEW
         //To check order status, a very different query is used, and thus a different read table
         private List<Order> ReadTablesByOrderStatus(DataTable dataTable)
         {
@@ -365,7 +387,7 @@ namespace ChapeauDAL
                 if (!orderTracker.Contains((int)dr["OrderId"]))
                 {
                     orderTracker.Add((int)dr["OrderId"]);
-                    Order order = new Order((int)dr["OrderId"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
+                    Order order = new Order((int)dr["OrderId"], new Employee((string)dr["EmpId"], (string)dr["EmpName"], (string)dr["position"]), new DiningTable((int)dr["TableId"], (string)dr["status"]));
                     orders.Add(order);
                 }
 
