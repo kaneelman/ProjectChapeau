@@ -59,7 +59,7 @@
             // 
             // Btn_Payment
             // 
-            this.Btn_Payment.Location = new System.Drawing.Point(692, 255);
+            this.Btn_Payment.Location = new System.Drawing.Point(692, 224);
             this.Btn_Payment.Name = "Btn_Payment";
             this.Btn_Payment.Size = new System.Drawing.Size(174, 85);
             this.Btn_Payment.TabIndex = 12;
@@ -78,7 +78,7 @@
             // 
             // btn_remove
             // 
-            this.btn_remove.Location = new System.Drawing.Point(692, 407);
+            this.btn_remove.Location = new System.Drawing.Point(692, 352);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(174, 85);
             this.btn_remove.TabIndex = 14;
@@ -117,7 +117,7 @@
             // 
             this.btn_back.Location = new System.Drawing.Point(47, 648);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(90, 44);
+            this.btn_back.Size = new System.Drawing.Size(127, 61);
             this.btn_back.TabIndex = 18;
             this.btn_back.Text = "Back";
             this.btn_back.UseVisualStyleBackColor = true;

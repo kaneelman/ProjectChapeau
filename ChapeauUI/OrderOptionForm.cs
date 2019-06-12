@@ -75,6 +75,7 @@ namespace ChapeauUI
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();//close the form
+            //do i need to call the tableview form here? or nah?
         }
 
         private void Btn_Payment_Click(object sender, EventArgs e)
