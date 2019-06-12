@@ -268,11 +268,11 @@ namespace ChapeauUI
                     break;
                 case TableStatus.Occupied:
                     //Will change to current order overview eventually
-                    PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table));
-                    paymentForm.Show();
+                    OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table)); 
+                    optionForm.Show();
                     break;
                 case TableStatus.Reserved:
-                    //SOME CODE
+                    MessageBox.Show("Table is reserved");
                     break;                 
                 default:
                     throw new Exception("Incorrect table status input");
