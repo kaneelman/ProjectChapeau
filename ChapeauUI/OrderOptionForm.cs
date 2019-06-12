@@ -16,6 +16,8 @@ namespace ChapeauUI
     {
         ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
         ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
+        EmployeeService EmployeeDB = new EmployeeService();
+
 
         Order order;
 
@@ -73,6 +75,12 @@ namespace ChapeauUI
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();//close the form
+        }
+
+        private void Btn_Payment_Click(object sender, EventArgs e)
+        {
+            //PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, );
+            paymentForm.ShowDialog();
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons
