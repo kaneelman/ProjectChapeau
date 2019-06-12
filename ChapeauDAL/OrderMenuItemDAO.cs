@@ -86,6 +86,7 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        //Remove items from an orders. Will decrease or delete the item, depending on the quantity
         public void RemoveOrderMenuItemDB(OrderMenuItem orderMenuItem, int quantity)
         {
             string query = "";
@@ -96,12 +97,20 @@ namespace ChapeauDAL
             } else if ( quantity == orderMenuItem.Quantity)
             {
                 query = "DELETE ORDER_CONTENT WHERE id = @id";
-
             }
             else
             {
                 throw new Exception("bla");
             }
+
+            SqlParameter[] sqlParameters = (new[]
+{
+                new SqlParameter("@id", orderMenuItem.Id),
+                new SqlParameter("@quantity", orderMenuItem.Quantity - quantity)
+            });
+
+            ExecuteEditQuery(query, sqlParameters);
+
         }
 
         //Convert OrderMenuItem information from the database to OrderMenuItem objects
