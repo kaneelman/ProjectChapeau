@@ -112,7 +112,7 @@ namespace ChapeauUI
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, this.loginForm, order);
             optionForm.ShowDialog();
         }

@@ -37,6 +37,11 @@
             this.lbl_price = new System.Windows.Forms.Label();
             this.lbl_TableNr = new System.Windows.Forms.Label();
             this.btn_back = new System.Windows.Forms.Button();
+            this.lbl_quantity = new System.Windows.Forms.Label();
+            this.txt_EditQuantity = new System.Windows.Forms.TextBox();
+            this.lbl_menuSelected = new System.Windows.Forms.Label();
+            this.txt_menuItemName = new System.Windows.Forms.TextBox();
+            this.btn_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lst_CurrentOrder
@@ -50,7 +55,7 @@
             // 
             // Btn_NewOrder
             // 
-            this.Btn_NewOrder.Location = new System.Drawing.Point(692, 105);
+            this.Btn_NewOrder.Location = new System.Drawing.Point(577, 115);
             this.Btn_NewOrder.Name = "Btn_NewOrder";
             this.Btn_NewOrder.Size = new System.Drawing.Size(174, 85);
             this.Btn_NewOrder.TabIndex = 11;
@@ -59,7 +64,7 @@
             // 
             // Btn_Payment
             // 
-            this.Btn_Payment.Location = new System.Drawing.Point(692, 224);
+            this.Btn_Payment.Location = new System.Drawing.Point(788, 115);
             this.Btn_Payment.Name = "Btn_Payment";
             this.Btn_Payment.Size = new System.Drawing.Size(174, 85);
             this.Btn_Payment.TabIndex = 12;
@@ -78,7 +83,7 @@
             // 
             // btn_remove
             // 
-            this.btn_remove.Location = new System.Drawing.Point(692, 352);
+            this.btn_remove.Location = new System.Drawing.Point(577, 453);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(174, 85);
             this.btn_remove.TabIndex = 14;
@@ -123,11 +128,57 @@
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
+            // lbl_quantity
+            // 
+            this.lbl_quantity.AutoSize = true;
+            this.lbl_quantity.Location = new System.Drawing.Point(573, 393);
+            this.lbl_quantity.Name = "lbl_quantity";
+            this.lbl_quantity.Size = new System.Drawing.Size(83, 23);
+            this.lbl_quantity.TabIndex = 19;
+            this.lbl_quantity.Text = "Quantity";
+            // 
+            // txt_EditQuantity
+            // 
+            this.txt_EditQuantity.Location = new System.Drawing.Point(788, 393);
+            this.txt_EditQuantity.Name = "txt_EditQuantity";
+            this.txt_EditQuantity.Size = new System.Drawing.Size(174, 30);
+            this.txt_EditQuantity.TabIndex = 20;
+            // 
+            // lbl_menuSelected
+            // 
+            this.lbl_menuSelected.AutoSize = true;
+            this.lbl_menuSelected.Location = new System.Drawing.Point(573, 325);
+            this.lbl_menuSelected.Name = "lbl_menuSelected";
+            this.lbl_menuSelected.Size = new System.Drawing.Size(180, 23);
+            this.lbl_menuSelected.TabIndex = 21;
+            this.lbl_menuSelected.Text = "MenuItem Selected";
+            // 
+            // txt_menuItemName
+            // 
+            this.txt_menuItemName.Location = new System.Drawing.Point(788, 325);
+            this.txt_menuItemName.Name = "txt_menuItemName";
+            this.txt_menuItemName.Size = new System.Drawing.Size(174, 30);
+            this.txt_menuItemName.TabIndex = 22;
+            // 
+            // btn_Edit
+            // 
+            this.btn_Edit.Location = new System.Drawing.Point(788, 453);
+            this.btn_Edit.Name = "btn_Edit";
+            this.btn_Edit.Size = new System.Drawing.Size(174, 85);
+            this.btn_Edit.TabIndex = 23;
+            this.btn_Edit.Text = "Edit Quantity";
+            this.btn_Edit.UseVisualStyleBackColor = true;
+            // 
             // OrderOptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.btn_Edit);
+            this.Controls.Add(this.txt_menuItemName);
+            this.Controls.Add(this.lbl_menuSelected);
+            this.Controls.Add(this.txt_EditQuantity);
+            this.Controls.Add(this.lbl_quantity);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.lbl_TableNr);
             this.Controls.Add(this.lbl_price);
@@ -150,6 +201,11 @@
             this.Controls.SetChildIndex(this.lbl_TableNr, 0);
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.btn_back, 0);
+            this.Controls.SetChildIndex(this.lbl_quantity, 0);
+            this.Controls.SetChildIndex(this.txt_EditQuantity, 0);
+            this.Controls.SetChildIndex(this.lbl_menuSelected, 0);
+            this.Controls.SetChildIndex(this.txt_menuItemName, 0);
+            this.Controls.SetChildIndex(this.btn_Edit, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +222,10 @@
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.Label lbl_TableNr;
         private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.Label lbl_quantity;
+        private System.Windows.Forms.TextBox txt_EditQuantity;
+        private System.Windows.Forms.Label lbl_menuSelected;
+        private System.Windows.Forms.TextBox txt_menuItemName;
+        private System.Windows.Forms.Button btn_Edit;
     }
 }

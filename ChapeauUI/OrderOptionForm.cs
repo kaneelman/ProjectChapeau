@@ -16,7 +16,7 @@ namespace ChapeauUI
     {
         ChapeauLogic.OrderService payment = new ChapeauLogic.OrderService();
         ChapeauLogic.MenuItemService menuItemDB = new ChapeauLogic.MenuItemService();
-        EmployeeService EmployeeDB = new EmployeeService();
+        //EmployeeService EmployeeDB = new EmployeeService();
 
 
         Order order;
@@ -74,13 +74,14 @@ namespace ChapeauUI
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            this.Hide();//close the form
+            this.Close();//close the form
             //do i need to call the tableview form here? or nah?
         }
 
         private void Btn_Payment_Click(object sender, EventArgs e)
         {
-            this.Hide();
+        
+            this.Close();
             PaymentForm paymentForm = new PaymentForm(LoggedInEmployee,this.loginForm,order);
             paymentForm.ShowDialog();            
         }
