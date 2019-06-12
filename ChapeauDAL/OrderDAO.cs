@@ -20,7 +20,7 @@ namespace ChapeauDAL
         //Get all Orders from the database
         public List<Order> GetAllOrdersDB()
         {
-            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id";
+            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,7 +29,7 @@ namespace ChapeauDAL
         //Get an Order from database by id
         public Order GetOrderByIdDB(int id)
         {
-            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id WHERE O.id = @id";
+            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id WHERE O.id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id)
@@ -41,7 +41,7 @@ namespace ChapeauDAL
         //Get active Order from the database by table
         public Order GetActiveOrderByTableDB(DiningTable table)
         {
-            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.table = D.id WHERE D.id = @table AND O.id NOT IN (SELECT order_id FROM PAYMENT)";
+            string query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, status FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id WHERE D.id = @table AND O.id NOT IN (SELECT order_id FROM PAYMENT)";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@table", table.Id)

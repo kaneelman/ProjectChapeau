@@ -18,7 +18,7 @@ namespace ChapeauDAL
         //Get all OrderMenuItems from the database
         public List<OrderMenuItem> GetAllOrderMenuItemsDB()
         {
-            string query = "SELECT O.id AS ContentId, quantity, date_time, status, comment, I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS I ON C.item_id = I.id JOIN MENU_CATEGORY AS C ON I.category = C.id";
+            string query = "SELECT O.id AS ContentId, quantity, date_time, status, comment, I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS I ON O.item_id = I.id JOIN MENU_CATEGORY AS C ON I.category = C.id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -26,7 +26,7 @@ namespace ChapeauDAL
         //Get a list of OrderMenuItems from the database by the order id
         public List<OrderMenuItem> GetOrderMenuItemsByOrderIdDB(int itemId)
         {
-            string query = "SELECT O.id AS ContentId, quantity, date_time, status, comment, I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS I ON C.item_id = I.id JOIN MENU_CATEGORY AS C ON I.category = C.id WHERE order_id = @id";
+            string query = "SELECT O.id AS ContentId, quantity, date_time, status, comment, I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS I ON O.item_id = I.id JOIN MENU_CATEGORY AS C ON I.category = C.id WHERE order_id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", itemId)
