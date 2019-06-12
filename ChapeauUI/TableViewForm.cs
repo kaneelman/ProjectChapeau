@@ -67,7 +67,7 @@ namespace ChapeauUI
             currentTables = diningTableDB.GetDiningTables();
 
             currentBarOrders = orderDB.GetBarReadyToServeOrders();
-            currentBarOrders.AddRange(orderDB.GetBarReadyToServeOrders());
+            currentBarOrders.AddRange(orderDB.GetBarBeingPreparedOrders());
 
             currentKitchenOrders = orderDB.GetKitchenReadyToServeOrders();
             currentKitchenOrders.AddRange(orderDB.GetBarBeingPreparedOrders());
@@ -191,7 +191,7 @@ namespace ChapeauUI
         private bool AreBarOrdersChanged()
         {
             List<Order> barInDatabase = orderDB.GetBarReadyToServeOrders();
-            barInDatabase.AddRange(orderDB.GetBarReadyToServeOrders());
+            barInDatabase.AddRange(orderDB.GetBarBeingPreparedOrders());
 
             if (barInDatabase.Count != currentBarOrders.Count)
             {

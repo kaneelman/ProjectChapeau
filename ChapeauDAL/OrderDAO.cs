@@ -387,7 +387,7 @@ namespace ChapeauDAL
                 if (!orderTracker.Contains((int)dr["OrderId"]))
                 {
                     orderTracker.Add((int)dr["OrderId"]);
-                    Order order = new Order((int)dr["OrderId"], new Employee((string)dr["EmpId"], (string)dr["EmpName"], (string)dr["position"]), new DiningTable((int)dr["TableId"], (string)dr["status"]));
+                    Order order = new Order((int)dr["OrderId"], new Employee((string)dr["EmpId"], (string)dr["EmpName"], (string)dr["position"]), new DiningTable((int)dr["TableId"], (string)dr["TableStatus"]));
                     orders.Add(order);
                 }
 

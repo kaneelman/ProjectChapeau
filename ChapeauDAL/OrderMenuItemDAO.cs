@@ -36,7 +36,7 @@ namespace ChapeauDAL
 
         public OrderMenuItem GetOrderMenuItemByIdentityDB(int id)
         {
-            string query = "SELECT O.id AS ContentId, quantity, date_time, status, comment, I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS I ON C.item_id = I.id JOIN MENU_CATEGORY AS C ON I.category = C.id WHERE id = @id";
+            string query = "SELECT O.id AS ContentId, quantity, date_time, status, comment, I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM ORDER_CONTENT AS O JOIN MENU_ITEM AS I ON O.item_id = I.id JOIN MENU_CATEGORY AS C ON I.category = C.id WHERE O.id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id)
