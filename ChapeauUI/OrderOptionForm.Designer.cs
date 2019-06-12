@@ -51,6 +51,7 @@
             this.lst_CurrentOrder.TabIndex = 10;
             this.lst_CurrentOrder.UseCompatibleStateImageBehavior = false;
             this.lst_CurrentOrder.SelectedIndexChanged += new System.EventHandler(this.lstview_CurrentOrder_SelectedIndexChanged);
+            this.lst_CurrentOrder.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lst_CurrentOrder_MouseClick);
             // 
             // Btn_NewOrder
             // 
