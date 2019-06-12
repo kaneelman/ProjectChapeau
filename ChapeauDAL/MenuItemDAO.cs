@@ -11,13 +11,10 @@ namespace ChapeauDAL
 {
     public class MenuItemDAO : Base
     {
-        //Create MenuCategoryDAO object, to get MenuCategory information
-        MenuCategoryDAO menuCategoryDB = new MenuCategoryDAO();
-
         //Get all MenuItems from the database
         public List<MenuItem> GetAllMenuItemsDB()
         {
-            string query = "SELECT id, name, price, stock, category FROM MENU_ITEM";
+            string query = "SELECT I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM MENU_ITEM AS I JOIN MENU_CATEGORY AS C ON I.category = C.id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -25,7 +22,7 @@ namespace ChapeauDAL
         //Get a MenuItem from database by id
         public MenuItem GetMenuItemByIdDB(int id)
         {
-            string query = "SELECT id, name, price, stock, category FROM MENU_ITEM WHERE id = @id";
+            string query = "SELECT I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM MENU_ITEM AS I JOIN MENU_CATEGORY AS C ON I.category = C.id WHERE id = @id";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@id", id)
@@ -36,7 +33,7 @@ namespace ChapeauDAL
         //Get MenuItems from database by category
         public List<MenuItem> GetMenuItemsByCategory(MenuCategory category)
         {
-            string query = "SELECT id, name, price, stock, category FROM MENU_ITEM WHERE category = @category";
+            string query = "SELECT I.id AS ItemId, I.name AS ItemName, price, stock, C.id AS CatId, C.name AS CatName, vat FROM MENU_ITEM AS I JOIN MENU_CATEGORY AS C ON I.category = C.id WHERE category = @category";
             SqlParameter[] sqlParameters = (new[]
             {
                 new SqlParameter("@category", category.Id)
@@ -62,7 +59,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                MenuItem menuItem = new MenuItem((int)dr["id"], (string)dr["name"], (decimal)dr["price"], (int)dr["stock"], menuCategoryDB.GetMenuCategoryByIdDB((string)dr["category"]));
+                MenuItem menuItem = new MenuItem((int)dr["ItemId"], (string)dr["ItemName"], (decimal)dr["price"], (int)dr["stock"], new MenuCategory((string)dr["CatId"], (string)dr["CatName"], (decimal)dr["dr"]));
                 menuItems.Add(menuItem);
             }
             return menuItems;
