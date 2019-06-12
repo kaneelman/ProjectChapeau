@@ -113,8 +113,8 @@ namespace ChapeauUI
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //TableViewForm tableViewForm1 = new TableViewForm(LoggedInEmployee,);// or make a new tableview.
-            //tableViewForm1.Show();
+            OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, this.loginForm, order);
+            optionForm.ShowDialog();
         }
 
         private void radBtn_visa_CheckedChanged(object sender, EventArgs e)

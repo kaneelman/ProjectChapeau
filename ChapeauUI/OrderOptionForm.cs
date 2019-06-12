@@ -79,8 +79,9 @@ namespace ChapeauUI
 
         private void Btn_Payment_Click(object sender, EventArgs e)
         {
-            //PaymentForm paymentForm = new PaymentForm(LoggedInEmployee, );
-            paymentForm.ShowDialog();
+            this.Hide();
+            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee,this.loginForm,order);
+            paymentForm.ShowDialog();            
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons
