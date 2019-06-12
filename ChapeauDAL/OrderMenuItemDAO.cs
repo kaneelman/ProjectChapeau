@@ -86,6 +86,24 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void RemoveOrderMenuItemDB(OrderMenuItem orderMenuItem, int quantity)
+        {
+            string query = "";
+
+            if (quantity < orderMenuItem.Quantity)
+            {
+                query = "UPDATE ORDER_CONTENT SET quantity = @quantity WHERE id = @id";
+            } else if ( quantity == orderMenuItem.Quantity)
+            {
+                query = "DELETE ORDER_CONTENT WHERE id = @id";
+
+            }
+            else
+            {
+                throw new Exception("bla");
+            }
+        }
+
         //Convert OrderMenuItem information from the database to OrderMenuItem objects
         private List<OrderMenuItem> ReadTables(DataTable dataTable)
         {

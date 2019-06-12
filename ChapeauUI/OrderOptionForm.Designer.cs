@@ -70,7 +70,7 @@
             this.lbl_OrderView.AutoSize = true;
             this.lbl_OrderView.Location = new System.Drawing.Point(43, 37);
             this.lbl_OrderView.Name = "lbl_OrderView";
-            this.lbl_OrderView.Size = new System.Drawing.Size(254, 23);
+            this.lbl_OrderView.Size = new System.Drawing.Size(308, 27);
             this.lbl_OrderView.TabIndex = 13;
             this.lbl_OrderView.Text = "The Current Order of Table:";
             // 
@@ -82,13 +82,14 @@
             this.btn_remove.TabIndex = 14;
             this.btn_remove.Text = "Remove";
             this.btn_remove.UseVisualStyleBackColor = true;
+            this.btn_remove.Click += new System.EventHandler(this.btn_remove_Click);
             // 
             // lbl_CurrentPrice
             // 
             this.lbl_CurrentPrice.AutoSize = true;
             this.lbl_CurrentPrice.Location = new System.Drawing.Point(43, 594);
             this.lbl_CurrentPrice.Name = "lbl_CurrentPrice";
-            this.lbl_CurrentPrice.Size = new System.Drawing.Size(180, 23);
+            this.lbl_CurrentPrice.Size = new System.Drawing.Size(218, 27);
             this.lbl_CurrentPrice.TabIndex = 15;
             this.lbl_CurrentPrice.Text = "Current Total Price:";
             // 
@@ -97,7 +98,7 @@
             this.lbl_price.AutoSize = true;
             this.lbl_price.Location = new System.Drawing.Point(269, 594);
             this.lbl_price.Name = "lbl_price";
-            this.lbl_price.Size = new System.Drawing.Size(28, 23);
+            this.lbl_price.Size = new System.Drawing.Size(33, 27);
             this.lbl_price.TabIndex = 16;
             this.lbl_price.Text = "...";
             // 
@@ -106,13 +107,13 @@
             this.lbl_TableNr.AutoSize = true;
             this.lbl_TableNr.Location = new System.Drawing.Point(324, 37);
             this.lbl_TableNr.Name = "lbl_TableNr";
-            this.lbl_TableNr.Size = new System.Drawing.Size(28, 23);
+            this.lbl_TableNr.Size = new System.Drawing.Size(33, 27);
             this.lbl_TableNr.TabIndex = 17;
             this.lbl_TableNr.Text = "...";
             // 
             // OrderOptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.lbl_TableNr);

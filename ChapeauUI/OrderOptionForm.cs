@@ -34,7 +34,7 @@ namespace ChapeauUI
 
         private void lstview_CurrentOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void OrderOptionForm_Load(object sender, EventArgs e)
@@ -52,11 +52,22 @@ namespace ChapeauUI
                 li.SubItems.Add(m.GetMenuItem().Name);
                 li.SubItems.Add(m.Quantity.ToString());
                 lst_CurrentOrder.Items.Add(li);
+                li.Tag = m;
             }
             
             //to the show some information such as price and table number
             lbl_CurrentPrice.Text= order.CalculateTotalPrice().ToString("0.00");
             lbl_TableNr.Text = order.Table.Id.ToString();
+        }
+
+        private void btn_remove_Click(object sender, EventArgs e)
+        {
+            if(lst_CurrentOrder.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            OrderMenuItem item = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons
