@@ -56,7 +56,7 @@ namespace ChapeauUI
             }
             
             //to the show some information such as price and table number
-            lbl_CurrentPrice.Text= order.CalculateTotalPrice().ToString("0.00");
+            lbl_price.Text= order.CalculateTotalPrice().ToString("0.00");
             lbl_TableNr.Text = order.Table.Id.ToString();
         }
 
@@ -68,6 +68,11 @@ namespace ChapeauUI
             }
 
             OrderMenuItem item = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            this.Hide();//close the form
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons
