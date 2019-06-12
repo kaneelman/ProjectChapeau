@@ -44,7 +44,43 @@ namespace ChapeauDAL
                 new SqlParameter("@table", table.Id)
             });
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
-        } 
+        }
+
+
+
+        //generic method to get all orders from the database depending on occupation
+        public List<Order> BaseGetAllOrdersByOccupationDB(string type)
+        {
+            string query;
+
+            switch (type)
+            {
+                case "bar":
+                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' ORDER BY C.date_time";
+                    break;
+                case "kitchen":
+                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') ORDER BY C.date_time";
+                    break;
+                default:
+                    throw new Exception("incorrect input for type");
+            }
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+
+        //methods to get bar orders from the database depending on occupation
+        public List<Order> GetAllBarOrdersByOccupationDB()
+        {
+            return BaseGetAllOrdersByOccupationDB("bar");
+        }
+
+        public List<Order> GetAllKitchenOrdersByOccupationDB()
+        {
+            return BaseGetAllOrdersByOccupationDB("kitchen");
+        }
 
 
 
@@ -114,6 +150,77 @@ namespace ChapeauDAL
         public List<Order> GetBarServedOrdersDB()
         {
             return BaseGetOrderByStatus("bar", "Served");
+        }
+
+
+
+        //generic method to get orders from the database depending on the status grouped by datetime
+        public List<DateTime> BaseGetOrderByStatusGroupedByDateTimeDB(string type, string status)
+        {
+            string query;
+
+            switch (type)
+            {
+                case "bar":
+                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status GROUP BY date_time ORDER BY date_time";
+                    break;
+                case "kitchen":
+
+                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status GROUP BY date_time ORDER BY date_time";
+                    break;
+                default:
+                    throw new Exception("incorrect input for type");
+            }
+
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@status", status)
+            });
+
+            return ReadDateTime(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+
+
+        // methods to get kitchen orders from the database depending on status grouped by datetime
+        public List<DateTime> GetKitchenBeingPreparedOrdersGroupedByDateTimeDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "BeingPrepared");
+        }
+
+
+        public List<DateTime> GetKitchenReadyToServeOrdersGroupedByDateTimeDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "ReadyToServe");
+        }
+
+
+        public List<DateTime> GetKitchenServedOrdersGroupedByDateTimeDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "Served");
+        }
+
+
+
+
+
+        // methods to get bar orders from the database depending on status grouped by datetime
+        public List<DateTime> GetBarBeingPreparedOrdersGroupedByDateTimeDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "BeingPrepared");
+        }
+
+
+        public List<DateTime> GetBarReadyToServeOrdersGroupedByDateTimeDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "ReadyToServe");
+        }
+
+
+        public List<DateTime> GetBarServedOrdersGroupedByDateTimeDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "Served");
         }
 
 
@@ -191,10 +298,10 @@ namespace ChapeauDAL
             switch (type)
             {
                 case "bar":
-                    query = "UPDATE ORDER_CONTENT SET STATUS = 'ReadyToServe' FROM ORDER_CONTENT AS OC JOIN MENU_ITEM AS MI ON MI.id = OC.item_id WHERE date_time = '@time' AND MI.category LIKE 'Dr%'";
+                    query = "UPDATE ORDER_CONTENT SET [status] = 'ReadyToServe' FROM ORDER_CONTENT AS OC JOIN MENU_ITEM AS MI ON MI.id = OC.item_id WHERE date_time = @time AND MI.category LIKE 'Dr%'";
                     break;
                 case "kitchen":
-                    query = "UPDATE ORDER_CONTENT SET STATUS = 'ReadyToServe' FROM ORDER_CONTENT AS OC JOIN MENU_ITEM AS MI ON MI.id = OC.item_id WHERE date_time = '@time' AND (MI.category LIKE 'Lu%' OR MI.category LIKE 'Di%')";
+                    query = "UPDATE ORDER_CONTENT SET [status] = 'ReadyToServe' FROM ORDER_CONTENT AS OC JOIN MENU_ITEM AS MI ON MI.id = OC.item_id WHERE date_time = @time AND (MI.category LIKE 'Lu%' OR MI.category LIKE 'Di%')";
                     break;
                 default:
                     throw new Exception("incorrect input for type");
@@ -233,6 +340,18 @@ namespace ChapeauDAL
                 orders.Add(order);
             }
             return orders;
+        }
+
+        //makes list of datetimes sent by query
+        private List<DateTime> ReadDateTime(DataTable dataTable)
+        {
+            List<DateTime> datetimes = new List<DateTime>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                datetimes.Add((DateTime)dr["date_time"]);
+            }
+            return datetimes;
         }
 
         //To check order status, a very different query is used, and thus a different read table

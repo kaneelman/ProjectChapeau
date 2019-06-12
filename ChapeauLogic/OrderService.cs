@@ -35,6 +35,15 @@ namespace ChapeauLogic
             return order;
         }
 
+        public List<Order> GetAllBarOrdersByOccupation()
+        {
+            return orderDB.GetAllBarOrdersByOccupationDB();
+        }
+
+        public List<Order> GetAllKitchenOrdersByOccupation()
+        {
+            return orderDB.GetAllKitchenOrdersByOccupationDB();
+        }
 
         public List<Order> GetKitchenBeingPreparedOrders()
         {
@@ -66,6 +75,31 @@ namespace ChapeauLogic
         public List<Order> GetBarServedOrders()
         {
             return orderDB.GetBarServedOrdersDB();
+        }
+
+        public List<DateTime> GetKitchenBeingPreparedOrdersGroupedByDateTime()
+        {
+            return orderDB.GetKitchenBeingPreparedOrdersGroupedByDateTimeDB();
+        }
+        public List<DateTime> GetKitchenReadyToServeOrdersGroupedByDateTime()
+        {
+            return orderDB.GetKitchenReadyToServeOrdersGroupedByDateTimeDB();
+        }
+        public List<DateTime> GetKitchenServedOrdersGroupedByDateTime()
+        {
+            return orderDB.GetKitchenServedOrdersGroupedByDateTimeDB();
+        }
+        public List<DateTime> GetBarBeingPreparedOrdersGroupedByDateTime()
+        {
+            return orderDB.GetBarBeingPreparedOrdersGroupedByDateTimeDB();
+        }
+        public List<DateTime> GetBarReadyToServeOrdersGroupedByDateTime()
+        {
+            return orderDB.GetBarReadyToServeOrdersGroupedByDateTimeDB();
+        }
+        public List<DateTime> GetBarServedOrdersGroupedByDateTime()
+        {
+            return orderDB.GetBarServedOrdersGroupedByDateTimeDB();
         }
 
         public List<Order> GetKitchenBeingPreparedSpecialOrders(DateTime time, int orderid)

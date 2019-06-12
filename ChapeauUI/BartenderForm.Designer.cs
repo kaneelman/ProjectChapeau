@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flpnl_Orders = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_MarkFinished = new System.Windows.Forms.Button();
             this.btn_SortByFinished = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@
             this.lbl_OrderTime = new System.Windows.Forms.Label();
             this.lbl_OrderStatus = new System.Windows.Forms.Label();
             this.dtp_OrderDate = new System.Windows.Forms.DateTimePicker();
+            this.timer_OrderListView = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +93,7 @@
             this.lbl_SortBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.Location = new System.Drawing.Point(51, 664);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(75, 22);
+            this.lbl_SortBy.Size = new System.Drawing.Size(96, 27);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -126,7 +128,7 @@
             this.lbl_OrderTime.AutoSize = true;
             this.lbl_OrderTime.Location = new System.Drawing.Point(526, 29);
             this.lbl_OrderTime.Name = "lbl_OrderTime";
-            this.lbl_OrderTime.Size = new System.Drawing.Size(108, 18);
+            this.lbl_OrderTime.Size = new System.Drawing.Size(138, 23);
             this.lbl_OrderTime.TabIndex = 13;
             this.lbl_OrderTime.Text = "Time Ordered:";
             // 
@@ -135,7 +137,7 @@
             this.lbl_OrderStatus.AutoSize = true;
             this.lbl_OrderStatus.Location = new System.Drawing.Point(526, 61);
             this.lbl_OrderStatus.Name = "lbl_OrderStatus";
-            this.lbl_OrderStatus.Size = new System.Drawing.Size(56, 18);
+            this.lbl_OrderStatus.Size = new System.Drawing.Size(72, 23);
             this.lbl_OrderStatus.TabIndex = 14;
             this.lbl_OrderStatus.Text = "Status:";
             // 
@@ -143,12 +145,16 @@
             // 
             this.dtp_OrderDate.Location = new System.Drawing.Point(426, 698);
             this.dtp_OrderDate.Name = "dtp_OrderDate";
-            this.dtp_OrderDate.Size = new System.Drawing.Size(526, 26);
+            this.dtp_OrderDate.Size = new System.Drawing.Size(526, 30);
             this.dtp_OrderDate.TabIndex = 15;
+            // 
+            // timer_OrderListView
+            // 
+            this.timer_OrderListView.Interval = 300000;
             // 
             // BartenderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
@@ -196,5 +202,6 @@
         private System.Windows.Forms.Label lbl_OrderTime;
         private System.Windows.Forms.Label lbl_OrderStatus;
         private System.Windows.Forms.DateTimePicker dtp_OrderDate;
+        private System.Windows.Forms.Timer timer_OrderListView;
     }
 }
