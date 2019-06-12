@@ -41,7 +41,6 @@
             this.txt_EditQuantity = new System.Windows.Forms.TextBox();
             this.lbl_menuSelected = new System.Windows.Forms.Label();
             this.txt_menuItemName = new System.Windows.Forms.TextBox();
-            this.btn_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lst_CurrentOrder
@@ -160,21 +159,11 @@
             this.txt_menuItemName.Size = new System.Drawing.Size(174, 30);
             this.txt_menuItemName.TabIndex = 22;
             // 
-            // btn_Edit
-            // 
-            this.btn_Edit.Location = new System.Drawing.Point(788, 453);
-            this.btn_Edit.Name = "btn_Edit";
-            this.btn_Edit.Size = new System.Drawing.Size(174, 85);
-            this.btn_Edit.TabIndex = 23;
-            this.btn_Edit.Text = "Edit Quantity";
-            this.btn_Edit.UseVisualStyleBackColor = true;
-            // 
             // OrderOptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
-            this.Controls.Add(this.btn_Edit);
             this.Controls.Add(this.txt_menuItemName);
             this.Controls.Add(this.lbl_menuSelected);
             this.Controls.Add(this.txt_EditQuantity);
@@ -205,7 +194,6 @@
             this.Controls.SetChildIndex(this.txt_EditQuantity, 0);
             this.Controls.SetChildIndex(this.lbl_menuSelected, 0);
             this.Controls.SetChildIndex(this.txt_menuItemName, 0);
-            this.Controls.SetChildIndex(this.btn_Edit, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +214,5 @@
         private System.Windows.Forms.TextBox txt_EditQuantity;
         private System.Windows.Forms.Label lbl_menuSelected;
         private System.Windows.Forms.TextBox txt_menuItemName;
-        private System.Windows.Forms.Button btn_Edit;
     }
 }
