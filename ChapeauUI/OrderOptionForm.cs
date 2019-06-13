@@ -43,13 +43,7 @@ namespace ChapeauUI
 
         private void OrderOptionForm_Load(object sender, EventArgs e)
         {
-            //the list view design
-            lst_CurrentOrder.GridLines = true;
-            lst_CurrentOrder.View = View.Details;
-            lst_CurrentOrder.FullRowSelect = true;
-            lst_CurrentOrder.Columns.Add("Menu Number", 160, HorizontalAlignment.Left);
-            lst_CurrentOrder.Columns.Add("Name", 170, HorizontalAlignment.Left);
-            lst_CurrentOrder.Columns.Add("Quantity", 160, HorizontalAlignment.Left);
+            ListViewDesignOrderOption();
     
             foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
             {
@@ -65,6 +59,17 @@ namespace ChapeauUI
             lbl_TableNr.Text = order.Table.Id.ToString();
         }
 
+        private void ListViewDesignOrderOption()
+        {
+            //the list view design
+            lst_CurrentOrder.GridLines = true;
+            lst_CurrentOrder.View = View.Details;
+            lst_CurrentOrder.FullRowSelect = true;
+            lst_CurrentOrder.Columns.Add("Menu Number", 160, HorizontalAlignment.Left);
+            lst_CurrentOrder.Columns.Add("Name", 170, HorizontalAlignment.Left);
+            lst_CurrentOrder.Columns.Add("Quantity", 160, HorizontalAlignment.Left);
+        }
+
         private void btn_remove_Click(object sender, EventArgs e)
         {
             if(lst_CurrentOrder.SelectedItems.Count == 0)
@@ -75,6 +80,7 @@ namespace ChapeauUI
             OrderMenuItem item = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
 
             ChapeauLogic.OrderMenuItemService Insert_values = new ChapeauLogic.OrderMenuItemService();
+
 
             
         }
