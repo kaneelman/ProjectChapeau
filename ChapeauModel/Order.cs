@@ -14,6 +14,7 @@ namespace ChapeauModel
 
         public List<OrderMenuItem> content;
 
+        
         public Order(int id, Employee employee, DiningTable table)
         {
             Id = id;

@@ -47,8 +47,8 @@ namespace ChapeauUI
             btn_ConfirmComment.Hide();
 
             lst_NewOrderItems.Clear();
-            //the list view design
-
+            
+            //Creating list view for NewOrderItems
             lst_NewOrderItems.GridLines = true;
 
             lst_NewOrderItems.View = View.Details;
@@ -72,9 +72,12 @@ namespace ChapeauUI
 
         }
 
+
+        //Creating MainCatagory buttons
         private void DisplayMainCatagories()
         {
-            flpnl_MainCatagories.Controls.Clear();
+            //Refreshing the flpnl_mainCatagory
+            flpnl_MainCatagories.Controls.Clear();   
 
             List<string> mainCatagories = new List<string>();
 
@@ -96,6 +99,8 @@ namespace ChapeauUI
             }
          
         }
+
+        //Creating SubCatagory buttons
 
         private void DisplaySubCategories(string mainCategory)
         {
@@ -121,7 +126,7 @@ namespace ChapeauUI
 
             }
 
-            //Button for Lunch SubCatagories
+            //Button for SubCatagories items
             foreach (MenuCategory menuCategory in menuCategories)
             {
                 BaseButton btn_LunchItems = new BaseButton
@@ -140,7 +145,7 @@ namespace ChapeauUI
 
         }
 
-
+        //subcatagory event handler
         private void Catagory_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
