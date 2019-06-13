@@ -14,29 +14,62 @@ namespace ChapeauLogic
 
         public List<MenuCategory> GetAllMenuCategories()
         {
-            return menuCategoryDB.GetAllMenuCategoriesDB();
+            try
+            {
+                return menuCategoryDB.GetAllMenuCategoriesDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public MenuCategory GetMenuCategoryById(string id)
         {
-            return menuCategoryDB.GetMenuCategoryByIdDB(id);
+            try
+            {
+                return menuCategoryDB.GetMenuCategoryByIdDB(id);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public List<MenuCategory> GetDrinkCategories()
         {
-            return menuCategoryDB.GetDrinkCategoriesDB();
+            try
+            {
+                return menuCategoryDB.GetDrinkCategoriesDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public List<MenuCategory> GetLunchCategories()
         {
-            return menuCategoryDB.GetLunchCategoriesDB();
+            try
+            {
+                return menuCategoryDB.GetLunchCategoriesDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public List<MenuCategory> GetDinnerCategories()
         {
-            return menuCategoryDB.GetDinnerCategoriesDB();
+            try
+            {
+                return menuCategoryDB.GetDinnerCategoriesDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
-
-
     }
 }

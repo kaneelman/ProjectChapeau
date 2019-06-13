@@ -17,19 +17,39 @@ namespace ChapeauLogic
 
         public List<Payment> GetAllPayments()
         {
-            return paymentDB.GetAllPaymentsDB();
+            try
+            {
+                return paymentDB.GetAllPaymentsDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }            
         }
 
         public Payment GetPaymentByOrder(Order order)
         {
-            return paymentDB.GetPaymentByOrder(order);
+            try
+            {
+                return paymentDB.GetPaymentByOrder(order);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public void InsertPayment(Payment payment)
         {
-            paymentDB.InsertPaymentDB(payment);
-            tableDB.ChangeDiningTableStatusDB(payment.Order.Table);//changing the table from occupied to free.//japheth gotta see this..
+            try
+            {
+                paymentDB.InsertPaymentDB(payment);
+                tableDB.ChangeDiningTableStatusDB(payment.Order.Table);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }            
         }
-
     }
 }
