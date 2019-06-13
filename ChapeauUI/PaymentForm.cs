@@ -100,7 +100,6 @@ namespace ChapeauUI
             {
                 MessageBox.Show(msg.Message);
             }
-
         }
         private void resetTextBox()
         {
