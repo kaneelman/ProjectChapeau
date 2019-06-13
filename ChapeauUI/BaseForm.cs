@@ -43,6 +43,7 @@ namespace ChapeauUI
             //Showing the loginForm again and hiding current form
             loginForm.Show();
             LoggedInEmployee = null;
+            tableView.Close();
             Close();
             
         }
