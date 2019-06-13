@@ -54,6 +54,7 @@ namespace ChapeauUI
             lst_NewOrderItems.Columns.Add("name", 240, HorizontalAlignment.Left);
             lst_NewOrderItems.Columns.Add("price", 72, HorizontalAlignment.Left);
             lst_NewOrderItems.Columns.Add("stock", 72, HorizontalAlignment.Left);
+        
 
         }
 
@@ -146,87 +147,6 @@ namespace ChapeauUI
 
             DisplaySubCategories(catagory);
 
-            //if (catagory == "Lunch")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagories.Controls.Clear();
-
-            //    List<string> subCatagories = new List<string>();
-
-            //    subCatagories.Add("Lunch Main");
-            //    subCatagories.Add("Lunch Bite");
-            //    subCatagories.Add("Lunch Special");
-
-            //    foreach (string subcatagory in subCatagories)
-            //    {
-            //        BaseButton btn_LunchItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-            //            Text = subcatagory,
-            //            BackColor = Color.FromArgb(157, 105, 163),
-            //            Tag = subcatagory
-            //        };
-            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-            //    }
-            //}
-
-            //else if (catagory == "Diner")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagories.Controls.Clear();
-
-            //    List<string> subCatagories = new List<string>();
-
-            //    subCatagories.Add("Dinner Main");
-            //    subCatagories.Add("Dinner Dessert");
-            //    subCatagories.Add("Dinner Starter");
-
-            //    foreach (string subcatagory in subCatagories)
-            //    {
-            //        BaseButton btn_LunchItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-            //            Text = subcatagory,
-            //            BackColor = Color.FromArgb(157, 105, 163),
-            //            Tag = subcatagory
-            //        };
-            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-            //    }
-            //}
-            //else if (catagory == "Drinks")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagories.Controls.Clear();
-
-            //    List<string> subCatagories = new List<string>();
-
-            //    subCatagories.Add("Beers");
-            //    subCatagories.Add("Hot drinks");
-            //    subCatagories.Add("Soft drinks");
-            //    subCatagories.Add("Wines");
-
-
-            //    foreach (string subcatagory in subCatagories)
-            //    {
-            //        BaseButton btn_LunchItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-            //            Text = subcatagory,
-            //            BackColor = Color.FromArgb(157, 105, 163),
-            //            Tag = subcatagory
-            //        };
-            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-            //    }
-            //}
-
-            ///AddOrderItem(catagory);
-            ///
-
-            //GetMenuItemsByCategory
-
         }
 
         private void SubCatagory_Click(object sender, EventArgs e)
@@ -285,21 +205,11 @@ namespace ChapeauUI
         {
         }
      
-
-        //private void DisplaySubCatogories()
-        //{
-
-        //}
-
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
         }
 
-        //private void OrderForm_Load(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
@@ -367,7 +277,7 @@ namespace ChapeauUI
 
         private void btn_NewOrderItemDelete_Click(object sender, EventArgs e)
         {
-
+            lst_NewOrderItems.SelectedItems[0].Remove();
         }
 
         private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
@@ -387,6 +297,13 @@ namespace ChapeauUI
         private void rtxt_CommentOrder_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_ConfirmComment_Click(object sender, EventArgs e)
+        {
+            OrderMenuItem item = (OrderMenuItem)lst_NewOrderItems.SelectedItems[0].Tag;
+            item.Comment = rtxt_CommentOrder.Text;
+            lst_NewOrderItems.SelectedItems[0].Tag = item;
         }
     }
 }
