@@ -112,6 +112,7 @@ namespace ChapeauUI
             txt_Tip.ResetText();
             txt_TotalAmount.ResetText();
             txt_TVAT.ResetText();
+            rtxt_FeedBack.ResetText();
         }
         //when things are selected.
         private void listView_Payment_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,17 +160,19 @@ namespace ChapeauUI
         private void txt_Tip_TextChanged(object sender, EventArgs e)
         {
             int i;
-
-            if (!int.TryParse(txt_Tip.Text, out i))
+            if (txt_Tip.Text != "")
             {
-                DialogResult errorTip = MessageBox.Show("Wrong Input");
-            }
-            else
-            {
-                //converting input tip to value to add to total amount
-                tip = int.Parse(txt_Tip.Text);
+                if (!int.TryParse(txt_Tip.Text, out i))
+                {
+                    DialogResult errorTip = MessageBox.Show("Wrong Input");
+                }
+                else
+                {
+                    //converting input tip to value to add to total amount
+                    tip = int.Parse(txt_Tip.Text);
 
-                txt_TotalAmount.Text = (order.CalculateTotalAmount() + tip).ToString("0.00");
+                    txt_TotalAmount.Text = (order.CalculateTotalAmount() + tip).ToString("0.00");
+                }
             }
         }
 
