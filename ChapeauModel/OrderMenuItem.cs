@@ -52,6 +52,14 @@ namespace ChapeauModel
             }
         }
 
+        // Constructor for creating new items
+        public OrderMenuItem(MenuItem item)
+        {
+            this.item = item;
+            Comment = "";
+
+        }
+
         public MenuItem GetMenuItem()
         {
             return item;
