@@ -16,9 +16,9 @@ namespace ChapeauUI
     {
         public LoginForm loginForm;
         protected Employee LoggedInEmployee;
-        //public static Employee LoggedInEmployee; //just to check the payment
+        public TableViewForm tableView;
 
-        
+        //public static Employee LoggedInEmployee; //just to check the payment
 
         public BaseForm()
         {
