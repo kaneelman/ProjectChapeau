@@ -52,7 +52,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 21.8F);
             this.label1.Location = new System.Drawing.Point(349, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(307, 50);
+            this.label1.Size = new System.Drawing.Size(260, 42);
             this.label1.TabIndex = 8;
             this.label1.Text = "ORDER VIEW";
             // 
@@ -98,7 +98,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(28, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 32);
+            this.label2.Size = new System.Drawing.Size(170, 27);
             this.label2.TabIndex = 13;
             this.label2.Text = "Selected items";
             // 
@@ -155,7 +155,7 @@
             // 
             // btn_CommentOrder
             // 
-            this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 10F);
+            this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 12F);
             this.btn_CommentOrder.Location = new System.Drawing.Point(343, 621);
             this.btn_CommentOrder.Name = "btn_CommentOrder";
             this.btn_CommentOrder.Size = new System.Drawing.Size(87, 60);
@@ -169,7 +169,7 @@
             this.lbl_Comment.AutoSize = true;
             this.lbl_Comment.Location = new System.Drawing.Point(440, 457);
             this.lbl_Comment.Name = "lbl_Comment";
-            this.lbl_Comment.Size = new System.Drawing.Size(170, 27);
+            this.lbl_Comment.Size = new System.Drawing.Size(139, 23);
             this.lbl_Comment.TabIndex = 20;
             this.lbl_Comment.Text = "Type comment";
             // 
@@ -187,7 +187,7 @@
             // 
             this.btn_ConfirmComment.Location = new System.Drawing.Point(470, 622);
             this.btn_ConfirmComment.Name = "btn_ConfirmComment";
-            this.btn_ConfirmComment.Size = new System.Drawing.Size(140, 78);
+            this.btn_ConfirmComment.Size = new System.Drawing.Size(184, 59);
             this.btn_ConfirmComment.TabIndex = 22;
             this.btn_ConfirmComment.Text = "Confirm Comment";
             this.btn_ConfirmComment.UseVisualStyleBackColor = true;
@@ -195,7 +195,7 @@
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.btn_ConfirmComment);
