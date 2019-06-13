@@ -155,7 +155,7 @@
             // 
             // btn_CommentOrder
             // 
-            this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 12F);
+            this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 10F);
             this.btn_CommentOrder.Location = new System.Drawing.Point(343, 621);
             this.btn_CommentOrder.Name = "btn_CommentOrder";
             this.btn_CommentOrder.Size = new System.Drawing.Size(87, 60);
