@@ -69,7 +69,7 @@ namespace ChapeauDAL
             }
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTableData(ExecuteSelectQuery(query, sqlParameters));
         }
 
 
@@ -234,7 +234,7 @@ namespace ChapeauDAL
                 new SqlParameter("@datetime", time)
             });
 
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTableData(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<Order> GetBarBeingPreparedSpecialOrdersDB(DateTime time, int orderid)
@@ -246,7 +246,7 @@ namespace ChapeauDAL
                 new SqlParameter("@datetime", time)
             });
 
-            return ReadTablesByOrderStatus(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTableData(ExecuteSelectQuery(query, sqlParameters));
         }
 
         
@@ -400,6 +400,34 @@ namespace ChapeauDAL
                     }
                 }              
             }
+            return orders;
+        }
+
+        //OLD
+        private List<Order> ReadTableData(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+            List<int> orderTracker = new List<int>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                if (!orderTracker.Contains((int)dr["OrderId"]))
+                {
+                    orderTracker.Add((int)dr["OrderID"]);
+                    Order order = new Order((int)dr["OrderId"], employeeDB.GetEmployeeByIdDB((string)dr["handled_by"]), diningTableDB.GetDiningTableByIdDB((int)dr["table"]));
+                    orders.Add(order);
+                }
+
+                foreach (Order order in orders)
+                {
+                    if (order.Id == (int)dr["OrderId"])
+                    {
+                        order.AddOrderItem(orderMenuItemDB.GetOrderMenuItemByIdentityDB((int)dr["ContentId"]));
+                        break;
+                    }
+                }
+            }
+
             return orders;
         }
     }

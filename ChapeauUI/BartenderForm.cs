@@ -16,16 +16,16 @@ namespace ChapeauUI
 {
     public partial class BartenderForm : BaseForm
     {
+        //calling required services
+        ChapeauLogic.OrderService Orders = new ChapeauLogic.OrderService();
+
         //constants
         const int SIZE = 100;
 
         //fields
         bool sorting = true;
         int tablenum = 0, orderid = 0;
-        string status = null, ordertext = null;
-
-        //calling required services
-        ChapeauLogic.OrderService Orders = new ChapeauLogic.OrderService();
+        string status = null, ordertext = null, waiter = null;
 
         //creating lists
         List<DateTime> OrdersTimeList = new List<DateTime>();
@@ -40,11 +40,9 @@ namespace ChapeauUI
             this.loginForm = loginForm;
 
             //prep
-            TableImages = CreateTableImagesList();
-            lbl_OrderStatus.Hide();
-            lbl_OrderTime.Hide();
             dtp_OrderDate.Hide();
-            btn_MarkFinished.Hide();
+            TableImages = CreateTableImagesList();
+            EmptyAdditionalData();
 
             DisplayOrders();
         }
@@ -109,7 +107,7 @@ namespace ChapeauUI
             foreach (DateTime time in OrdersTimeList)
             {
                 //grabbing all neccesary data
-                UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status);
+                UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status, ref waiter);
 
                 if (status == "Served" | status == "ReadyToServe")
                 {
@@ -138,7 +136,7 @@ namespace ChapeauUI
             DateTime time = (DateTime)((Button)sender).Tag;
 
             //grabbing all necessary data
-            UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status);
+            UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status, ref waiter);
 
             //hiding the mark as ready button if it's ready or served
             if (status == "Served" | status == "ReadyToServe")
@@ -153,10 +151,9 @@ namespace ChapeauUI
             //inputting and displaying additional info
             PicBox_TableNumber.SizeMode = PictureBoxSizeMode.StretchImage;
             PicBox_TableNumber.Image = TableImages[tablenum];
-            lbl_OrderTime.Show();
             lbl_OrderTime.Text = "Time Ordered: " + time.ToString("HH:mm:ss");
-            lbl_OrderStatus.Show();
             lbl_OrderStatus.Text = "Status: " + StatusTextConverter(status);
+            lbl_OrderHandledBy.Text = "Handled by: " + waiter;
             dtp_OrderDate.Value = time;
 
             //clearing list view
@@ -208,10 +205,12 @@ namespace ChapeauUI
         {
             DateTime time = dtp_OrderDate.Value;
             Orders.UpdateBarStatus(time);
+            EmptyAdditionalData();
+            DisplayOrders();
         }
 
         //updating field datas for current method
-        private void UpdateDataByReference(DateTime time, ref int tablenum, ref int orderid, ref string ordertext, ref string status)
+        private void UpdateDataByReference(DateTime time, ref int tablenum, ref int orderid, ref string ordertext, ref string status, ref string waiter)
         {
             //prep
             List<Order> allorders = Orders.GetAllBarOrdersByOccupation();
@@ -224,6 +223,7 @@ namespace ChapeauUI
                 {
                     if (time == item.TimeStamp)
                     {
+                        waiter = order.HandledBy.Name;
                         tablenum = order.Table.Id;
                         orderid = order.Id;
                         status = item.Status.ToString();
@@ -279,6 +279,7 @@ namespace ChapeauUI
             orderid = 0;
             status = null;
             ordertext = null;
+            waiter = null;
         }
 
         //converts the status for the order list view
@@ -299,7 +300,9 @@ namespace ChapeauUI
             PicBox_TableNumber.Image = null;
             lbl_OrderTime.Text = null;
             lbl_OrderStatus.Text = null;
+            lbl_OrderHandledBy.Text = null;
             lst_Orders.Clear();
+            btn_MarkFinished.Hide();
         }
 
         //refreshing order list view every 5 min for slow database calling duration reasons

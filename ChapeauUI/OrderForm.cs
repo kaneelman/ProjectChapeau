@@ -17,7 +17,6 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
-        int Id;
         DiningTable table;
 
         ChapeauLogic.OrderService orderDB = new ChapeauLogic.OrderService();
@@ -44,6 +43,7 @@ namespace ChapeauUI
         {
             lbl_Comment.Hide();
             rtxt_CommentOrder.Hide();
+            btn_ConfirmComment.Hide();
 
             lst_NewOrderItems.Clear();
             //the list view design
@@ -214,23 +214,6 @@ namespace ChapeauUI
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
            
-
-            //try
-            //{
-                //string comment;
-                //if (rtxt_CommentOrder.Text == "")
-                //{
-                //    comment = "NULL";
-                //}
-                //else
-                //{
-                //    comment = rtxt_CommentOrder.Text;
-                //}
-
-                //////add menuItems to the inserOrderMenuItem
-                ////ChapeauLogic.OrderMenuItemService AddOrderMenuItemService = new OrderMenuItemService();
-                ////AddOrderMenuItemService.InsertOrderMenuItem(new List<OrderMenuItem> orderMenuItem, ChapeauModel.Order order);
-                ///
                 List<ChapeauModel.MenuItem> itemsAdded = new List<ChapeauModel.MenuItem>();
 
                 Order order = new Order(LoggedInEmployee, table);
@@ -244,18 +227,15 @@ namespace ChapeauUI
                         order.IncrementQuantityMenuItem(item.GetMenuItem());
                     } else
                     {
+                        itemsAdded.Add(item.GetMenuItem());
                         item.Quantity = 1;
                         item.Status = OrderStatus.BeingPrepared;
                         item.TimeStamp = DateTime.Now;
-                    }
+                        order.content.Add(item);
+                }
                     order.content.Add(item);
                 }
                 orderDB.InsertOrder(order);
-            //}
-            //catch (Exception msg)
-            //{
-            //    MessageBox.Show(msg.Message);
-            //}
 
             tableView.Show();
             Close();
@@ -271,6 +251,7 @@ namespace ChapeauUI
 
         private void btn_CommentOrder_Click(object sender, EventArgs e)
         {
+            btn_ConfirmComment.Show();
             lbl_Comment.Show();
             rtxt_CommentOrder.Show();
         }
@@ -304,6 +285,12 @@ namespace ChapeauUI
             OrderMenuItem item = (OrderMenuItem)lst_NewOrderItems.SelectedItems[0].Tag;
             item.Comment = rtxt_CommentOrder.Text;
             lst_NewOrderItems.SelectedItems[0].Tag = item;
+
+            btn_ConfirmComment.Hide();
+            lbl_Comment.Hide();
+            rtxt_CommentOrder.Hide();
+
+
         }
     }
 }
