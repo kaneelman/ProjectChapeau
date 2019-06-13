@@ -106,7 +106,7 @@
             this.btn_NewOrderClearItems.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_NewOrderClearItems.Location = new System.Drawing.Point(240, 621);
             this.btn_NewOrderClearItems.Name = "btn_NewOrderClearItems";
-            this.btn_NewOrderClearItems.Size = new System.Drawing.Size(92, 60);
+            this.btn_NewOrderClearItems.Size = new System.Drawing.Size(81, 60);
             this.btn_NewOrderClearItems.TabIndex = 14;
             this.btn_NewOrderClearItems.Text = "Clear";
             this.btn_NewOrderClearItems.UseVisualStyleBackColor = true;
@@ -115,9 +115,9 @@
             // btn_NewOrderItemDelete
             // 
             this.btn_NewOrderItemDelete.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(139, 622);
+            this.btn_NewOrderItemDelete.Location = new System.Drawing.Point(143, 622);
             this.btn_NewOrderItemDelete.Name = "btn_NewOrderItemDelete";
-            this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(95, 59);
+            this.btn_NewOrderItemDelete.Size = new System.Drawing.Size(78, 59);
             this.btn_NewOrderItemDelete.TabIndex = 15;
             this.btn_NewOrderItemDelete.Text = "Delete";
             this.btn_NewOrderItemDelete.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             this.btn_NewOrderBack.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_NewOrderBack.Location = new System.Drawing.Point(33, 622);
             this.btn_NewOrderBack.Name = "btn_NewOrderBack";
-            this.btn_NewOrderBack.Size = new System.Drawing.Size(100, 59);
+            this.btn_NewOrderBack.Size = new System.Drawing.Size(84, 59);
             this.btn_NewOrderBack.TabIndex = 16;
             this.btn_NewOrderBack.Text = "Back";
             this.btn_NewOrderBack.UseVisualStyleBackColor = true;
@@ -155,9 +155,9 @@
             // btn_CommentOrder
             // 
             this.btn_CommentOrder.Font = new System.Drawing.Font("Arial", 10F);
-            this.btn_CommentOrder.Location = new System.Drawing.Point(338, 621);
+            this.btn_CommentOrder.Location = new System.Drawing.Point(343, 621);
             this.btn_CommentOrder.Name = "btn_CommentOrder";
-            this.btn_CommentOrder.Size = new System.Drawing.Size(91, 60);
+            this.btn_CommentOrder.Size = new System.Drawing.Size(87, 60);
             this.btn_CommentOrder.TabIndex = 19;
             this.btn_CommentOrder.Text = "Add Comment";
             this.btn_CommentOrder.UseVisualStyleBackColor = true;
