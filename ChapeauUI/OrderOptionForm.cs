@@ -36,7 +36,8 @@ namespace ChapeauUI
 
         private void lstview_CurrentOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            //txt_menuItemName.Text = lst_CurrentOrder.SelectedItems[0].SubItems[1].Text;//this is for the name of the menu
+            //txt_EditQuantity.Text = lst_CurrentOrder.SelectedItems[0].SubItems[2].Text;//quantity of the menu
         }
 
         private void OrderOptionForm_Load(object sender, EventArgs e)
@@ -78,22 +79,21 @@ namespace ChapeauUI
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            this.Close();//close the form
+            this.Hide();//close the form
             //do i need to call the tableview form here? or nah?
         }
 
         private void Btn_Payment_Click(object sender, EventArgs e)
         {
-        
-            this.Close();
+            this.Hide();
             PaymentForm paymentForm = new PaymentForm(LoggedInEmployee,this.loginForm,order);
-            paymentForm.ShowDialog();            
+            paymentForm.ShowDialog();
         }
 
         private void lst_CurrentOrder_MouseClick(object sender, MouseEventArgs e)
         {
-            txt_menuItemName.Text = lst_CurrentOrder.SelectedItems[0].SubItems[0].Text;//this is for the name of the menu
-            txt_EditQuantity.Text = lst_CurrentOrder.SelectedItems[0].SubItems[1].Text;//quantity of the menu
+            txt_menuItemName.Text = lst_CurrentOrder.SelectedItems[0].SubItems[1].Text;//this is for the name of the menu
+            txt_EditQuantity.Text = lst_CurrentOrder.SelectedItems[0].SubItems[2].Text;//quantity of the menu
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons
