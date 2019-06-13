@@ -37,8 +37,7 @@ namespace ChapeauUI
 
         private void lstview_CurrentOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //txt_menuItemName.Text = lst_CurrentOrder.SelectedItems[0].SubItems[1].Text;//this is for the name of the menu
-            //txt_EditQuantity.Text = lst_CurrentOrder.SelectedItems[0].SubItems[2].Text;//quantity of the menu
+        
         }
 
         private void OrderOptionForm_Load(object sender, EventArgs e)
@@ -73,7 +72,6 @@ namespace ChapeauUI
                 lst_CurrentOrder.Items.Add(li);
                 li.Tag = m;
             }
-
         }
 
         private void btn_remove_Click(object sender, EventArgs e)
@@ -98,8 +96,6 @@ namespace ChapeauUI
             {
                 MessageBox.Show(msg.Message);
             }
-
-
         }
 
         private void btn_back_Click(object sender, EventArgs e)
