@@ -277,7 +277,7 @@ namespace ChapeauUI
 
         private void btn_NewOrderItemDelete_Click(object sender, EventArgs e)
         {
-
+            lst_NewOrderItems.SelectedItems[0].Remove();
         }
 
         private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
@@ -297,6 +297,13 @@ namespace ChapeauUI
         private void rtxt_CommentOrder_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_ConfirmComment_Click(object sender, EventArgs e)
+        {
+            OrderMenuItem item = (OrderMenuItem)lst_NewOrderItems.SelectedItems[0].Tag;
+            item.Comment = rtxt_CommentOrder.Text;
+            lst_NewOrderItems.SelectedItems[0].Tag = item;
         }
     }
 }
