@@ -122,16 +122,10 @@ namespace ChapeauUI
         }
 
         private void Btn_NewOrder_Click(object sender, EventArgs e)
-        {
-            
+        {            
             OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm, tableView);
             orderForm.ShowDialog();
             Close();
         }
-        //make a code thhat allows us to select an item from the list view.
-        //code the buttons
-        //new order buttons goes to order interface 
-        //payment button goes to payment interace.
-        //delete buttons delete the item selected from the list view ask japheth about this how are we going to choose what gets deleted.
     }
 }

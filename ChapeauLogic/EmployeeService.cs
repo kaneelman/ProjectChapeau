@@ -14,22 +14,52 @@ namespace ChapeauLogic
 
         public List<Employee> GetEmployees()
         {
-            return EmployeeDB.GetAllEmployeesDB();
+            try
+            {
+                return EmployeeDB.GetAllEmployeesDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public Employee GetEmployee(string id)
         {
-            return EmployeeDB.GetEmployeeByIdDB(id);
+            try
+            {
+                return EmployeeDB.GetEmployeeByIdDB(id);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public bool CheckUsername(string id)
         {
-            return EmployeeDB.CheckUsernameDB(id);
+            try
+            {
+                return EmployeeDB.CheckUsernameDB(id);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
+
         }
 
         public bool CheckPassword(string id, string password)
         {
-            return EmployeeDB.CheckPasswordDB(id, password);
+            try
+            {
+                return EmployeeDB.CheckPasswordDB(id, password);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
+
         }
     }
 }

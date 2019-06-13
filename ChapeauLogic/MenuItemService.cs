@@ -15,22 +15,50 @@ namespace ChapeauLogic
 
         public List<MenuItem> GetAllMenuItems()
         {
-            return menuItemDB.GetAllMenuItemsDB();
+            try
+            {
+                return menuItemDB.GetAllMenuItemsDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public MenuItem GetMenuItemById(int id)
         {
-            return menuItemDB.GetMenuItemByIdDB(id);
+            try
+            {
+                return menuItemDB.GetMenuItemByIdDB(id);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
-        public List<MenuItem> GetMenuItemsByCategory (MenuCategory category)
+        public List<MenuItem> GetMenuItemsByCategory(MenuCategory category)
         {
-            return menuItemDB.GetMenuItemsByCategory(category);
+            try
+            {
+                return menuItemDB.GetMenuItemsByCategory(category);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public void ChangeStock(MenuItem MenuItem)
         {
-            menuItemDB.ChangeStockDB(MenuItem);
+            try
+            {
+                menuItemDB.ChangeStockDB(MenuItem);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
     }
 }

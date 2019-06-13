@@ -126,7 +126,5 @@ namespace ChapeauLogic
         {
             orderDB.InsertOrderDB(order);
         }
-
-
     }
 }
