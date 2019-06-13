@@ -77,10 +77,12 @@ namespace ChapeauUI
                 return;
             }
 
-            OrderMenuItem item = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
+            OrderMenuItem food = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
+            List<OrderMenuItem> items = new List<OrderMenuItem>();
+            items.Add(food);
 
-            ChapeauLogic.OrderMenuItemService Insert_values = new ChapeauLogic.OrderMenuItemService();
-
+            ChapeauLogic.OrderMenuItemService Insert_Values = new ChapeauLogic.OrderMenuItemService();
+            Insert_Values.InsertOrderMenuItem(items,order);
 
             
         }
