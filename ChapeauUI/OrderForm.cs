@@ -467,9 +467,8 @@ namespace ChapeauUI
 
         private void btn_NewOrderBack_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //this.Close();
-            this.Dispose();
+            
+            Dispose();
         }
 
         private void rtxt_CommentOrder_TextChanged(object sender, EventArgs e)

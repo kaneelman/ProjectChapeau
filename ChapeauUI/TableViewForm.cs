@@ -271,14 +271,15 @@ namespace ChapeauUI
                     //Brings waiter to the table view
                     OrderForm orderForm = new OrderForm(LoggedInEmployee, loginForm);
                     orderForm.Show();
+                    Hide();
                     break;
                 case TableStatus.Occupied:
                     //Will change to current order overview eventually
-                    OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table)); 
-                    optionForm.Show();
+                    OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table));
+                    Hide();
                     break;
                 case TableStatus.Reserved:
-                    MessageBox.Show("Table is reserved");
+                    MessageBox.Show("Table is reserved"); // Some other code
                     break;                 
                 default:
                     throw new Exception("Incorrect table status input");
