@@ -157,7 +157,7 @@ namespace ChapeauUI
 
             if (!int.TryParse(txt_Tip.Text, out i))
             {
-                DialogResult errorTip = MessageBox.Show("Wrong input");
+                DialogResult errorTip = MessageBox.Show("Wrong Input");
             }
             else
             {
