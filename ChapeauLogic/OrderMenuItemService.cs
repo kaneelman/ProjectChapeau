@@ -32,6 +32,10 @@ namespace ChapeauLogic
         {
             orderMenuItemDB.ChangeOrderMenuItemStatusDB(orderMenuItems, status);
         }
+        public void EditQuantityItem(OrderMenuItem orderMenuItem, int quantity)
+        {
+            orderMenuItemDB.RemoveOrderMenuItemDB(orderMenuItem, quantity);
+        }
 
     }
 }

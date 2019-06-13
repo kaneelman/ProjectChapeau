@@ -44,15 +44,8 @@ namespace ChapeauUI
         private void OrderOptionForm_Load(object sender, EventArgs e)
         {
             ListViewDesignOrderOption();
-    
-            foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
-            {
-                ListViewItem li = new ListViewItem(m.GetMenuItem().Id.ToString());
-                li.SubItems.Add(m.GetMenuItem().Name);
-                li.SubItems.Add(m.Quantity.ToString());
-                lst_CurrentOrder.Items.Add(li);
-                li.Tag = m;
-            }
+
+            FillListView();
             
             //to the show some information such as price and table number
             lbl_price.Text= order.CalculateTotalPrice().ToString("0.00");
@@ -70,19 +63,42 @@ namespace ChapeauUI
             lst_CurrentOrder.Columns.Add("Quantity", 160, HorizontalAlignment.Left);
         }
 
-        private void btn_remove_Click(object sender, EventArgs e)
+        private void FillListView()
         {
-            if(lst_CurrentOrder.SelectedItems.Count == 0)
+            foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
             {
-                return;
+                ListViewItem li = new ListViewItem(m.GetMenuItem().Id.ToString());
+                li.SubItems.Add(m.GetMenuItem().Name);
+                li.SubItems.Add(m.Quantity.ToString());
+                lst_CurrentOrder.Items.Add(li);
+                li.Tag = m;
             }
 
-            OrderMenuItem item = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
+        }
 
-            ChapeauLogic.OrderMenuItemService Insert_values = new ChapeauLogic.OrderMenuItemService();
+        private void btn_remove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lst_CurrentOrder.SelectedItems.Count == 0)
+                {
+                    return;
+                }
 
+                OrderMenuItem food = (OrderMenuItem)lst_CurrentOrder.SelectedItems[0].Tag;
 
-            
+                ChapeauLogic.OrderMenuItemService Insert_Values = new ChapeauLogic.OrderMenuItemService();
+                Insert_Values.EditQuantityItem(food, int.Parse(txt_EditQuantity.Text));
+
+                lst_CurrentOrder.Clear();
+                ListViewDesignOrderOption();
+                FillListView();//to update the listview when quantity change.. 
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.Message);
+            }
+
         }
 
         private void btn_back_Click(object sender, EventArgs e)
