@@ -45,9 +45,10 @@ namespace ChapeauUI
             //the list view design
             lst_CurrentOrder.GridLines = true;
             lst_CurrentOrder.View = View.Details;
-            lst_CurrentOrder.Columns.Add("Menu Number", 150, HorizontalAlignment.Left);
-            lst_CurrentOrder.Columns.Add("Name", 150, HorizontalAlignment.Left);
-            lst_CurrentOrder.Columns.Add("Quantity", 100, HorizontalAlignment.Left);
+            lst_CurrentOrder.FullRowSelect = true;
+            lst_CurrentOrder.Columns.Add("Menu Number", 160, HorizontalAlignment.Left);
+            lst_CurrentOrder.Columns.Add("Name", 170, HorizontalAlignment.Left);
+            lst_CurrentOrder.Columns.Add("Quantity", 160, HorizontalAlignment.Left);
     
             foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
             {
@@ -93,7 +94,15 @@ namespace ChapeauUI
         private void lst_CurrentOrder_MouseClick(object sender, MouseEventArgs e)
         {
             txt_menuItemName.Text = lst_CurrentOrder.SelectedItems[0].SubItems[1].Text;//this is for the name of the menu
+            txt_menuItemName.Enabled = false;
             txt_EditQuantity.Text = lst_CurrentOrder.SelectedItems[0].SubItems[2].Text;//quantity of the menu
+        }
+
+        private void Btn_NewOrder_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm);
+            orderForm.ShowDialog();
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons

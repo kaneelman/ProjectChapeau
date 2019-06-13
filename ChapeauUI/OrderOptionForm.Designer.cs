@@ -41,6 +41,7 @@
             this.txt_EditQuantity = new System.Windows.Forms.TextBox();
             this.lbl_menuSelected = new System.Windows.Forms.Label();
             this.txt_menuItemName = new System.Windows.Forms.TextBox();
+            this.lbl_euro = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lst_CurrentOrder
@@ -61,6 +62,7 @@
             this.Btn_NewOrder.TabIndex = 11;
             this.Btn_NewOrder.Text = "New Order";
             this.Btn_NewOrder.UseVisualStyleBackColor = true;
+            this.Btn_NewOrder.Click += new System.EventHandler(this.Btn_NewOrder_Click);
             // 
             // Btn_Payment
             // 
@@ -103,7 +105,7 @@
             // lbl_price
             // 
             this.lbl_price.AutoSize = true;
-            this.lbl_price.Location = new System.Drawing.Point(269, 594);
+            this.lbl_price.Location = new System.Drawing.Point(340, 594);
             this.lbl_price.Name = "lbl_price";
             this.lbl_price.Size = new System.Drawing.Size(28, 23);
             this.lbl_price.TabIndex = 16;
@@ -131,7 +133,7 @@
             // lbl_quantity
             // 
             this.lbl_quantity.AutoSize = true;
-            this.lbl_quantity.Location = new System.Drawing.Point(573, 393);
+            this.lbl_quantity.Location = new System.Drawing.Point(582, 393);
             this.lbl_quantity.Name = "lbl_quantity";
             this.lbl_quantity.Size = new System.Drawing.Size(83, 23);
             this.lbl_quantity.TabIndex = 19;
@@ -147,7 +149,7 @@
             // lbl_menuSelected
             // 
             this.lbl_menuSelected.AutoSize = true;
-            this.lbl_menuSelected.Location = new System.Drawing.Point(573, 325);
+            this.lbl_menuSelected.Location = new System.Drawing.Point(582, 325);
             this.lbl_menuSelected.Name = "lbl_menuSelected";
             this.lbl_menuSelected.Size = new System.Drawing.Size(180, 23);
             this.lbl_menuSelected.TabIndex = 21;
@@ -155,16 +157,26 @@
             // 
             // txt_menuItemName
             // 
-            this.txt_menuItemName.Location = new System.Drawing.Point(788, 325);
+            this.txt_menuItemName.Location = new System.Drawing.Point(788, 318);
             this.txt_menuItemName.Name = "txt_menuItemName";
             this.txt_menuItemName.Size = new System.Drawing.Size(174, 30);
             this.txt_menuItemName.TabIndex = 22;
+            // 
+            // lbl_euro
+            // 
+            this.lbl_euro.AutoSize = true;
+            this.lbl_euro.Location = new System.Drawing.Point(261, 594);
+            this.lbl_euro.Name = "lbl_euro";
+            this.lbl_euro.Size = new System.Drawing.Size(21, 23);
+            this.lbl_euro.TabIndex = 23;
+            this.lbl_euro.Text = "€";
             // 
             // OrderOptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.lbl_euro);
             this.Controls.Add(this.txt_menuItemName);
             this.Controls.Add(this.lbl_menuSelected);
             this.Controls.Add(this.txt_EditQuantity);
@@ -195,6 +207,7 @@
             this.Controls.SetChildIndex(this.txt_EditQuantity, 0);
             this.Controls.SetChildIndex(this.lbl_menuSelected, 0);
             this.Controls.SetChildIndex(this.txt_menuItemName, 0);
+            this.Controls.SetChildIndex(this.lbl_euro, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +228,6 @@
         private System.Windows.Forms.TextBox txt_EditQuantity;
         private System.Windows.Forms.Label lbl_menuSelected;
         private System.Windows.Forms.TextBox txt_menuItemName;
+        private System.Windows.Forms.Label lbl_euro;
     }
 }

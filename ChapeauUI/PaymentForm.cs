@@ -64,6 +64,10 @@ namespace ChapeauUI
             //information for the textboxes
             txt_Price.Text = order.CalculateTotalPrice().ToString("0.00");
             txt_TVAT.Text = order.CalculateTotalVAT().ToString("0.00");
+            //to avoid input on the text
+            txt_Price.Enabled = false;
+            txt_TVAT.Enabled = false;
+            txt_TotalAmount.Enabled = false;
 
             //this is for the total amount witout added tip
             txt_TotalAmount.Text = order.CalculateTotalAmount().ToString("0.00");
@@ -130,6 +134,7 @@ namespace ChapeauUI
             //hide the tip info when cash is clicked
             txt_Tip.Hide();
             lbl_Tip.Hide();
+            lbl_euro3.Hide();
         }
 
         private void radBtn_PIN_CheckedChanged(object sender, EventArgs e)
@@ -143,6 +148,7 @@ namespace ChapeauUI
         {
             txt_Tip.Show();
             lbl_Tip.Show();
+            lbl_euro3.Show();
         }
 
         private void txt_Tip_TextChanged(object sender, EventArgs e)
