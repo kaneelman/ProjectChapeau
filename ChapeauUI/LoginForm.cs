@@ -25,6 +25,12 @@ namespace ChapeauUI
             
         }
 
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btn_Login_Click(object sender, EventArgs e)
         {
             if (EmployeeDB.CheckUsername(txt_LoginUsername.Text))
@@ -72,9 +78,5 @@ namespace ChapeauUI
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

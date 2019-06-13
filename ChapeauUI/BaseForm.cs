@@ -43,7 +43,7 @@ namespace ChapeauUI
             //Showing the loginForm again and hiding current form
             loginForm.Show();
             LoggedInEmployee = null;
-            this.Close();
+            Close();
             
         }
 
@@ -54,7 +54,7 @@ namespace ChapeauUI
 
         private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Maybe some info on closing?
+           
         }
 
         private void lbl_LoggedUser_Click(object sender, EventArgs e)
