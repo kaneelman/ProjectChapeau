@@ -269,13 +269,13 @@ namespace ChapeauUI
             {
                 case TableStatus.Free:
                     //Brings waiter to the table view
-                    OrderForm orderForm = new OrderForm(LoggedInEmployee, loginForm);
+                    OrderForm orderForm = new OrderForm(LoggedInEmployee, loginForm, this);
                     orderForm.Show();
                     Hide();
                     break;
                 case TableStatus.Occupied:
                     //Will change to current order overview eventually
-                    OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table));
+                    OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table), this);
                     Hide();
                     break;
                 case TableStatus.Reserved:
