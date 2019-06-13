@@ -17,7 +17,6 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
-        int Id;
         DiningTable table;
 
         ChapeauLogic.OrderService orderDB = new ChapeauLogic.OrderService();
@@ -228,10 +227,12 @@ namespace ChapeauUI
                         order.IncrementQuantityMenuItem(item.GetMenuItem());
                     } else
                     {
+                        itemsAdded.Add(item.GetMenuItem());
                         item.Quantity = 1;
                         item.Status = OrderStatus.BeingPrepared;
                         item.TimeStamp = DateTime.Now;
-                    }
+                        order.content.Add(item);
+                }
                     order.content.Add(item);
                 }
                 orderDB.InsertOrder(order);
