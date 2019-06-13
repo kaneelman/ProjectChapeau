@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Btn_LogOut = new System.Windows.Forms.Button();
             this.lbl_LoggedUser = new System.Windows.Forms.Label();
             this.lbl_User = new System.Windows.Forms.Label();
+            this.lbl_Clock = new System.Windows.Forms.Label();
+            this.clock = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Btn_LogOut
@@ -66,11 +69,27 @@
             this.lbl_User.TabIndex = 9;
             this.lbl_User.Text = "User:";
             // 
+            // lbl_Clock
+            // 
+            this.lbl_Clock.AutoSize = true;
+            this.lbl_Clock.Location = new System.Drawing.Point(892, 82);
+            this.lbl_Clock.Name = "lbl_Clock";
+            this.lbl_Clock.Size = new System.Drawing.Size(74, 27);
+            this.lbl_Clock.TabIndex = 10;
+            this.lbl_Clock.Text = "--:--:--";
+            // 
+            // clock
+            // 
+            this.clock.Enabled = true;
+            this.clock.Interval = 1;
+            this.clock.Tick += new System.EventHandler(this.clock_Tick);
+            // 
             // BaseForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.lbl_Clock);
             this.Controls.Add(this.lbl_User);
             this.Controls.Add(this.lbl_LoggedUser);
             this.Controls.Add(this.Btn_LogOut);
@@ -91,5 +110,7 @@
         protected System.Windows.Forms.Button Btn_LogOut;
         private System.Windows.Forms.Label lbl_LoggedUser;
         private System.Windows.Forms.Label lbl_User;
+        private System.Windows.Forms.Label lbl_Clock;
+        private System.Windows.Forms.Timer clock;
     }
 }

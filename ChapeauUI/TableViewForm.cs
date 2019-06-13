@@ -70,7 +70,7 @@ namespace ChapeauUI
             currentBarOrders.AddRange(orderDB.GetBarBeingPreparedOrders());
 
             currentKitchenOrders = orderDB.GetKitchenReadyToServeOrders();
-            currentKitchenOrders.AddRange(orderDB.GetBarBeingPreparedOrders());
+            currentKitchenOrders.AddRange(orderDB.GetKitchenBeingPreparedOrders());
 
             //Run code to display tables
             DisplayTables();
@@ -118,13 +118,19 @@ namespace ChapeauUI
             lst_OrdersWaiter.Columns.Add("Table", 80);
             lst_OrdersWaiter.Columns.Add("Status",200);
             lst_OrdersWaiter.Columns.Add("# Items", 100);
-            lst_OrdersWaiter.Columns.Add("Time",120);
+            lst_OrdersWaiter.Columns.Add("Time ordered",120);
 
             foreach (Order order in orders)
             {
                 ListViewItem li = new ListViewItem(order.Table.Id.ToString());
                 li.Tag = order;
-
+                if (order.content[0].Status == OrderStatus.ReadyToServe)
+                {
+                    li.ForeColor = Color.Green;
+                } else
+                {
+                    li.ForeColor = Color.Red;
+                }
                 //Getting first item in the list to get extra information
                 OrderMenuItem item = order.content[0];
 
@@ -215,7 +221,7 @@ namespace ChapeauUI
         private bool AreKitchenOrdersChanged()
         {
             List<Order> kitchenInDatabase = orderDB.GetKitchenReadyToServeOrders();
-            kitchenInDatabase.AddRange(orderDB.GetBarBeingPreparedOrders());
+            kitchenInDatabase.AddRange(orderDB.GetKitchenBeingPreparedOrders());
 
             if (kitchenInDatabase.Count != currentKitchenOrders.Count)
             {

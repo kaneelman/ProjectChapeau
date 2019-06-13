@@ -49,11 +49,7 @@ namespace ChapeauUI
 
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Also closing Login form on close
-            if(loginForm != null)
-            {
-                loginForm.Close();
-            }
+
         }
 
         private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,6 +60,11 @@ namespace ChapeauUI
         private void lbl_LoggedUser_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clock_Tick(object sender, EventArgs e)
+        {
+            lbl_Clock.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }
