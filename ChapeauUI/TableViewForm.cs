@@ -285,7 +285,9 @@ namespace ChapeauUI
                     Hide();
                     break;
                 case TableStatus.Reserved:
-                    MessageBox.Show("Table is reserved"); // Some other code
+                    MessageBox.Show("Table is reserved has the right guest arrived?"); // Some other code
+                    OrderForm orderForm1 = new OrderForm(LoggedInEmployee, loginForm, this, table);
+                    orderForm1.Show();
                     break;                 
                 default:
                     throw new Exception("Incorrect table status input");
