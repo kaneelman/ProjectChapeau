@@ -25,13 +25,14 @@ namespace ChapeauUI
         //for the type of payment
         string paymentType;
 
-        public PaymentForm(Employee LoggedUser, LoginForm loginForm, Order order)
+        public PaymentForm(Employee LoggedUser, LoginForm loginForm, Order order, TableViewForm tableView)
         {
             InitializeComponent();
 
             //Saving the user that is logged in and passing the login form, have it's reference
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
+            this.tableView = tableView;
 
             //Passing the order along that will be payed
             this.order = order;

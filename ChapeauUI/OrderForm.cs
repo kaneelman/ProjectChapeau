@@ -28,13 +28,14 @@ namespace ChapeauUI
         MenuItemService menuItemDB = new MenuItemService();
 
 
-        public OrderForm(Employee LoggedUser, LoginForm loginForm)
+        public OrderForm(Employee LoggedUser, LoginForm loginForm, TableViewForm tableView)
         {
             InitializeComponent();
 
             //Saving the user that is logged in and passing the login form, have it's reference
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
+            this.tableView = tableView;
 
 
             DisplayMainCatagories();
