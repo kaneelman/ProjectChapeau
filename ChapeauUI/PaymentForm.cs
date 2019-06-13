@@ -41,13 +41,7 @@ namespace ChapeauUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            //the list view design
-            lst_Payment.GridLines = true;
-            lst_Payment.View = View.Details;
-            lst_Payment.Columns.Add("Menu Number", 150, HorizontalAlignment.Left);
-            lst_Payment.Columns.Add("Name",150,HorizontalAlignment.Left);
-            lst_Payment.Columns.Add("Quantity",100,HorizontalAlignment.Left); 
-            lst_Payment.Columns.Add("Price", 100, HorizontalAlignment.Left);
+            ListViewDesign();
 
             foreach (ChapeauModel.OrderMenuItem m in order.GetOrderMenuItems())
             {
@@ -65,6 +59,7 @@ namespace ChapeauUI
             //information for the textboxes
             txt_Price.Text = order.CalculateTotalPrice().ToString("0.00");
             txt_TVAT.Text = order.CalculateTotalVAT().ToString("0.00");
+
             //to avoid input on the text
             txt_Price.Enabled = false;
             txt_TVAT.Enabled = false;
@@ -72,7 +67,16 @@ namespace ChapeauUI
 
             //this is for the total amount witout added tip
             txt_TotalAmount.Text = order.CalculateTotalAmount().ToString("0.00");
-
+        }
+        private void ListViewDesign()
+        {
+            //the list view design
+            lst_Payment.GridLines = true;
+            lst_Payment.View = View.Details;
+            lst_Payment.Columns.Add("Menu Number", 150, HorizontalAlignment.Left);
+            lst_Payment.Columns.Add("Name", 150, HorizontalAlignment.Left);
+            lst_Payment.Columns.Add("Quantity", 100, HorizontalAlignment.Left);
+            lst_Payment.Columns.Add("Price", 100, HorizontalAlignment.Left);
         }
 
         private void btn_Pay_Click(object sender, EventArgs e)
@@ -100,6 +104,8 @@ namespace ChapeauUI
             {
                 MessageBox.Show(msg.Message);
             }
+
+            this.Hide();
         }
         private void resetTextBox()
         {

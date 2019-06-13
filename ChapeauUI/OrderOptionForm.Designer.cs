@@ -87,9 +87,9 @@
             // 
             this.btn_remove.Location = new System.Drawing.Point(577, 453);
             this.btn_remove.Name = "btn_remove";
-            this.btn_remove.Size = new System.Drawing.Size(174, 85);
+            this.btn_remove.Size = new System.Drawing.Size(224, 85);
             this.btn_remove.TabIndex = 14;
-            this.btn_remove.Text = "Remove";
+            this.btn_remove.Text = "Change Quantity";
             this.btn_remove.UseVisualStyleBackColor = true;
             this.btn_remove.Click += new System.EventHandler(this.btn_remove_Click);
             // 
