@@ -72,7 +72,6 @@ namespace ChapeauUI
                 lst_CurrentOrder.Items.Add(li);
                 li.Tag = m;
             }
-
         }
 
         private void btn_remove_Click(object sender, EventArgs e)
@@ -97,8 +96,6 @@ namespace ChapeauUI
             {
                 MessageBox.Show(msg.Message);
             }
-
-
         }
 
         private void btn_back_Click(object sender, EventArgs e)
