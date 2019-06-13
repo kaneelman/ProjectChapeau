@@ -384,12 +384,10 @@ namespace ChapeauUI
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
-            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm, tableView);
-            o1.Close();
+            
 
-            TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
-            t1.Show();
-
+            tableView.Show();
+            Close();
 
             try
             {
@@ -468,7 +466,7 @@ namespace ChapeauUI
 
         private void btn_NewOrderBack_Click(object sender, EventArgs e)
         {
-            
+            tableView.Show();
             Dispose();
         }
 
