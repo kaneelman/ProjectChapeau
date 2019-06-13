@@ -94,7 +94,7 @@ namespace ChapeauUI
         private void Btn_Payment_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee,this.loginForm,order);
+            PaymentForm paymentForm = new PaymentForm(LoggedInEmployee,this.loginForm,order, tableView);
             paymentForm.ShowDialog();
         }
 
@@ -108,7 +108,7 @@ namespace ChapeauUI
         private void Btn_NewOrder_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm);
+            OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm, tableView);
             orderForm.ShowDialog();
         }
         //make a code thhat allows us to select an item from the list view.

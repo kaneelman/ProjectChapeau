@@ -28,13 +28,14 @@ namespace ChapeauUI
         MenuItemService menuItemDB = new MenuItemService();
 
 
-        public OrderForm(Employee LoggedUser, LoginForm loginForm)
+        public OrderForm(Employee LoggedUser, LoginForm loginForm, TableViewForm tableView)
         {
             InitializeComponent();
 
             //Saving the user that is logged in and passing the login form, have it's reference
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
+            this.tableView = tableView;
 
 
             DisplayMainCatagories();
@@ -383,7 +384,7 @@ namespace ChapeauUI
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
-            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm);
+            OrderForm o1 = new OrderForm(LoggedInEmployee, loginForm, tableView);
             o1.Close();
 
             TableViewForm t1 = new TableViewForm(LoggedInEmployee, loginForm);
