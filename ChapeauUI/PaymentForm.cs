@@ -99,8 +99,10 @@ namespace ChapeauUI
                 DialogResult dialogBox = MessageBox.Show("Payment complete");
 
                 resetTextBox();
+                Close();
+                tableView.Show();
             }
-            catch(Exception msg)
+            catch (Exception msg)
             {
                 MessageBox.Show(msg.Message);
             }
