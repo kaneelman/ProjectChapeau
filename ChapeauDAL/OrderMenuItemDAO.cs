@@ -52,8 +52,7 @@ namespace ChapeauDAL
 
             foreach (OrderMenuItem item in orderMenuItems)
             {
-                query += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, {item.Status}, {item.Comment}) ";
-
+                query += $"INSERT INTO [ORDER_CONTENT] VALUES (@order_id, {item.GetMenuItem().Id}, {item.Quantity}, @date_time, '{item.Status}', '{item.Comment}') ";               
             }
 
             SqlParameter[] sqlParameters = (new[]
@@ -94,13 +93,14 @@ namespace ChapeauDAL
             if (quantity < orderMenuItem.Quantity)
             {
                 query = "UPDATE ORDER_CONTENT SET quantity = @quantity WHERE id = @id";
-            } else if ( quantity == orderMenuItem.Quantity)
+            }
+            else if ( quantity == orderMenuItem.Quantity)
             {
                 query = "DELETE ORDER_CONTENT WHERE id = @id";
             }
             else
             {
-                throw new Exception("bla");
+                throw new Exception("Problem with Database");
             }
 
             SqlParameter[] sqlParameters = (new[]
