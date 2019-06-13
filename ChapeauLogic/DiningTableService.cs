@@ -14,17 +14,38 @@ namespace ChapeauLogic
 
         public List<DiningTable> GetDiningTables()
         {
-            return diningTableDB.GetAllDiningTablesDB();
+            try
+            {
+                return diningTableDB.GetAllDiningTablesDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public DiningTable GetDiningTable(int id)
         {
-            return diningTableDB.GetDiningTableByIdDB(id);
+            try
+            {
+                return diningTableDB.GetDiningTableByIdDB(id);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public void ChangeDiningTableStatus(DiningTable diningTable)
         {
-            diningTableDB.ChangeDiningTableStatusDB(diningTable);
+            try
+            {
+                diningTableDB.ChangeDiningTableStatusDB(diningTable);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
     }
 }

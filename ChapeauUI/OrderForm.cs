@@ -17,18 +17,15 @@ namespace ChapeauUI
     {
         const int SIZE = 110;
 
-        int Id;
-        Employee HandledBy;
-        DiningTable Table;
-        Order order;
+        DiningTable table;
 
-        ChapeauLogic.OrderService Order1 = new ChapeauLogic.OrderService();
+        ChapeauLogic.OrderService orderDB = new ChapeauLogic.OrderService();
 
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
         MenuItemService menuItemDB = new MenuItemService();
 
 
-        public OrderForm(Employee LoggedUser, LoginForm loginForm, TableViewForm tableView)
+        public OrderForm(Employee LoggedUser, LoginForm loginForm, TableViewForm tableView, DiningTable diningTable)
         {
             InitializeComponent();
 
@@ -37,7 +34,7 @@ namespace ChapeauUI
             this.loginForm = loginForm;
             this.tableView = tableView;
 
-
+            table = diningTable;
             DisplayMainCatagories();
         }
 
@@ -46,6 +43,7 @@ namespace ChapeauUI
         {
             lbl_Comment.Hide();
             rtxt_CommentOrder.Hide();
+            btn_ConfirmComment.Hide();
 
             lst_NewOrderItems.Clear();
             //the list view design
@@ -56,6 +54,7 @@ namespace ChapeauUI
             lst_NewOrderItems.Columns.Add("name", 240, HorizontalAlignment.Left);
             lst_NewOrderItems.Columns.Add("price", 72, HorizontalAlignment.Left);
             lst_NewOrderItems.Columns.Add("stock", 72, HorizontalAlignment.Left);
+        
 
         }
 
@@ -148,87 +147,6 @@ namespace ChapeauUI
 
             DisplaySubCategories(catagory);
 
-            //if (catagory == "Lunch")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagories.Controls.Clear();
-
-            //    List<string> subCatagories = new List<string>();
-
-            //    subCatagories.Add("Lunch Main");
-            //    subCatagories.Add("Lunch Bite");
-            //    subCatagories.Add("Lunch Special");
-
-            //    foreach (string subcatagory in subCatagories)
-            //    {
-            //        BaseButton btn_LunchItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-            //            Text = subcatagory,
-            //            BackColor = Color.FromArgb(157, 105, 163),
-            //            Tag = subcatagory
-            //        };
-            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-            //    }
-            //}
-
-            //else if (catagory == "Diner")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagories.Controls.Clear();
-
-            //    List<string> subCatagories = new List<string>();
-
-            //    subCatagories.Add("Dinner Main");
-            //    subCatagories.Add("Dinner Dessert");
-            //    subCatagories.Add("Dinner Starter");
-
-            //    foreach (string subcatagory in subCatagories)
-            //    {
-            //        BaseButton btn_LunchItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-            //            Text = subcatagory,
-            //            BackColor = Color.FromArgb(157, 105, 163),
-            //            Tag = subcatagory
-            //        };
-            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-            //    }
-            //}
-            //else if (catagory == "Drinks")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagories.Controls.Clear();
-
-            //    List<string> subCatagories = new List<string>();
-
-            //    subCatagories.Add("Beers");
-            //    subCatagories.Add("Hot drinks");
-            //    subCatagories.Add("Soft drinks");
-            //    subCatagories.Add("Wines");
-
-
-            //    foreach (string subcatagory in subCatagories)
-            //    {
-            //        BaseButton btn_LunchItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1.1 * SIZE), (int)(0.6 * SIZE)),
-            //            Text = subcatagory,
-            //            BackColor = Color.FromArgb(157, 105, 163),
-            //            Tag = subcatagory
-            //        };
-            //        btn_LunchItems.Click += new EventHandler(SubCatagory_Click);
-            //        flpnl_SubCatagories.Controls.Add(btn_LunchItems);
-            //    }
-            //}
-
-            ///AddOrderItem(catagory);
-            ///
-
-            //GetMenuItemsByCategory
-
         }
 
         private void SubCatagory_Click(object sender, EventArgs e)
@@ -237,87 +155,6 @@ namespace ChapeauUI
             MenuCategory Subcatagory = (MenuCategory)button.Tag;
 
             DisplaySubCatogoriesItems(Subcatagory);
-            //if (LunchSubcatagoryItem == "Lunch Main")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagoryItems.Controls.Clear();
-
-            //    List<string> LunchMainSubcatagoryItems = new List<string>();
-
-            //    LunchMainSubcatagoryItems.Add("Lasagne");
-            //    LunchMainSubcatagoryItems.Add("Pizza");
-            //    LunchMainSubcatagoryItems.Add("Biryani");
-            //    LunchMainSubcatagoryItems.Add("Macaroni");
-
-            //    foreach (string LuchMainSubCatagoryItem in LunchMainSubcatagoryItems)
-            //    {
-            //        BaseButton btn_LunchMainItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-            //            Text = LuchMainSubCatagoryItem,
-            //            BackColor = Color.FromArgb(144, 238, 144),
-            //            Tag = LuchMainSubCatagoryItem
-            //        };
-            //        btn_LunchMainItems.Click += new EventHandler(btn_LunchMainItems_Click);
-            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchMainItems);
-            //    }
-
-
-            //}
-
-
-            //else if (LunchSubcatagoryItem == "Lunch Bite")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagoryItems.Controls.Clear();
-
-            //    List<string> LuchBiteSubCatagoryItems = new List<string>();
-
-            //    LuchBiteSubCatagoryItems.Add("frits");
-            //    LuchBiteSubCatagoryItems.Add("patatoes");
-            //    LuchBiteSubCatagoryItems.Add("Salmon");
-            //    LuchBiteSubCatagoryItems.Add("Bread");
-
-            //    foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
-            //    {
-            //        BaseButton btn_LunchBiteItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-            //            Text = LuchBiteSubCatagoryItem,
-            //            BackColor = Color.FromArgb(144, 238, 144),
-            //            Tag = LuchBiteSubCatagoryItem
-            //        };
-            //        btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
-            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
-            //    }
-            //}
-
-            //else if (LunchSubcatagoryItem == "Lunch Special")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagoryItems.Controls.Clear();
-
-            //    List<string> LuchSpecialSubCatagoryItems = new List<string>();
-
-            //    LuchSpecialSubCatagoryItems.Add("salade");
-            //    LuchSpecialSubCatagoryItems.Add("chicken wings");
-            //    LuchSpecialSubCatagoryItems.Add("fish");
-            //    LuchSpecialSubCatagoryItems.Add("Turkey");
-
-            //    foreach (string LuchSpecialSubCatagoryItem in LuchSpecialSubCatagoryItems)
-            //    {
-            //        BaseButton btn_LunchSpecialItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-            //            Text = LuchSpecialSubCatagoryItem,
-            //            BackColor = Color.FromArgb(144, 238, 144),
-            //            Tag = LuchSpecialSubCatagoryItem
-            //        };
-            //        btn_LunchSpecialItems.Click += new EventHandler(btn_LunchSpecialItems_Click);
-            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchSpecialItems);
-            //    }
-            //}
-
         }
 
         private void DisplaySubCatogoriesItems(MenuCategory menuCategory)
@@ -351,7 +188,9 @@ namespace ChapeauUI
 
             ListViewItem li = new ListViewItem(menuItem.Name);//needs to fix this because stock quantity is taken rather than order quantity
 
-            li.Tag = menuItem;  //linking menuItem to the entry of the list
+            OrderMenuItem orderMenuItem = new OrderMenuItem(menuItem);
+
+            li.Tag = orderMenuItem;  //linking menuItem to the entry of the list
 
             li.SubItems.Add(menuItem.Price.ToString("0.00"));
             li.SubItems.Add(menuItem.Stock.ToString());
@@ -366,75 +205,40 @@ namespace ChapeauUI
         {
         }
      
-
-        //private void DisplaySubCatogories()
-        //{
-
-        //}
-
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
         }
 
-        //private void OrderForm_Load(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
-            
+           
+                List<ChapeauModel.MenuItem> itemsAdded = new List<ChapeauModel.MenuItem>();
+
+                Order order = new Order(LoggedInEmployee, table);
+
+                foreach(ListViewItem li in lst_NewOrderItems.Items)
+                {
+                    OrderMenuItem item = (OrderMenuItem)li.Tag;
+
+                    if (itemsAdded.Contains(item.GetMenuItem()))
+                    {
+                        order.IncrementQuantityMenuItem(item.GetMenuItem());
+                    } else
+                    {
+                        itemsAdded.Add(item.GetMenuItem());
+                        item.Quantity = 1;
+                        item.Status = OrderStatus.BeingPrepared;
+                        item.TimeStamp = DateTime.Now;
+                        order.content.Add(item);
+                }
+                    order.content.Add(item);
+                }
+                orderDB.InsertOrder(order);
 
             tableView.Show();
             Close();
-
-            try
-            {
-                string comment;
-                if (rtxt_CommentOrder.Text == "")
-                {
-                    comment = "NULL";
-                }
-                else
-                {
-                    comment = rtxt_CommentOrder.Text;
-                }
-
-                //////add menuItems to the inserOrderMenuItem
-                ////ChapeauLogic.OrderMenuItemService AddOrderMenuItemService = new OrderMenuItemService();
-                ////AddOrderMenuItemService.InsertOrderMenuItem(new List<OrderMenuItem> orderMenuItem, ChapeauModel.Order order);
-
-
-                ChapeauLogic.OrderService AddOrder = new ChapeauLogic.OrderService();
-                //AddOrder.InsertOrder(new Order(order.Id, order.HandledBy, order.Table));
-                AddOrder.InsertOrder(new Order(order.Id , order.HandledBy, order.Table));
-                AddOrder.InsertOrder(order);
-
-                DialogResult dialogBox = MessageBox.Show("Order not complete!");
-
-                while (true)
-                {
-                    if (lst_NewOrderItems.SelectedItems.Count == 0)
-                        return;
-
-                    ListViewItem item = lst_NewOrderItems.SelectedItems[0];
-                    //fill the text boxes
-                    lst_NewOrderItems.Text = item.Text;
-                    lst_NewOrderItems.Text = item.SubItems[0].Text;
-                    lst_NewOrderItems.Text = item.SubItems[1].Text;
-                    lst_NewOrderItems.Text = item.SubItems[2].Text;
-
-                }
-
-                /*      public int Id { get; set; }
-        public Employee HandledBy { get; set; }
-        public DiningTable Table { get; set; }*/
-            }
-            catch (Exception msg)
-            {
-                MessageBox.Show(msg.Message);
-            }
 
         }
 
@@ -447,13 +251,14 @@ namespace ChapeauUI
 
         private void btn_CommentOrder_Click(object sender, EventArgs e)
         {
+            btn_ConfirmComment.Show();
             lbl_Comment.Show();
             rtxt_CommentOrder.Show();
         }
 
         private void btn_NewOrderItemDelete_Click(object sender, EventArgs e)
         {
-
+            lst_NewOrderItems.SelectedItems[0].Remove();
         }
 
         private void btn_NewOrderClearItems_Click(object sender, EventArgs e)
@@ -472,6 +277,19 @@ namespace ChapeauUI
 
         private void rtxt_CommentOrder_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btn_ConfirmComment_Click(object sender, EventArgs e)
+        {
+            OrderMenuItem item = (OrderMenuItem)lst_NewOrderItems.SelectedItems[0].Tag;
+            item.Comment = rtxt_CommentOrder.Text;
+            lst_NewOrderItems.SelectedItems[0].Tag = item;
+
+            btn_ConfirmComment.Hide();
+            lbl_Comment.Hide();
+            rtxt_CommentOrder.Hide();
+
 
         }
     }

@@ -43,6 +43,7 @@
             this.btn_CommentOrder = new ChapeauUI.BaseButton();
             this.lbl_Comment = new System.Windows.Forms.Label();
             this.rtxt_CommentOrder = new System.Windows.Forms.RichTextBox();
+            this.btn_ConfirmComment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -166,7 +167,7 @@
             // lbl_Comment
             // 
             this.lbl_Comment.AutoSize = true;
-            this.lbl_Comment.Location = new System.Drawing.Point(447, 430);
+            this.lbl_Comment.Location = new System.Drawing.Point(440, 457);
             this.lbl_Comment.Name = "lbl_Comment";
             this.lbl_Comment.Size = new System.Drawing.Size(139, 23);
             this.lbl_Comment.TabIndex = 20;
@@ -175,18 +176,29 @@
             // rtxt_CommentOrder
             // 
             this.rtxt_CommentOrder.BackColor = System.Drawing.SystemColors.Info;
-            this.rtxt_CommentOrder.Location = new System.Drawing.Point(451, 456);
+            this.rtxt_CommentOrder.Location = new System.Drawing.Point(445, 502);
             this.rtxt_CommentOrder.Name = "rtxt_CommentOrder";
-            this.rtxt_CommentOrder.Size = new System.Drawing.Size(361, 225);
+            this.rtxt_CommentOrder.Size = new System.Drawing.Size(361, 98);
             this.rtxt_CommentOrder.TabIndex = 21;
             this.rtxt_CommentOrder.Text = "";
             this.rtxt_CommentOrder.TextChanged += new System.EventHandler(this.rtxt_CommentOrder_TextChanged);
+            // 
+            // btn_ConfirmComment
+            // 
+            this.btn_ConfirmComment.Location = new System.Drawing.Point(470, 622);
+            this.btn_ConfirmComment.Name = "btn_ConfirmComment";
+            this.btn_ConfirmComment.Size = new System.Drawing.Size(184, 59);
+            this.btn_ConfirmComment.TabIndex = 22;
+            this.btn_ConfirmComment.Text = "Confirm Comment";
+            this.btn_ConfirmComment.UseVisualStyleBackColor = true;
+            this.btn_ConfirmComment.Click += new System.EventHandler(this.btn_ConfirmComment_Click);
             // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.btn_ConfirmComment);
             this.Controls.Add(this.rtxt_CommentOrder);
             this.Controls.Add(this.lbl_Comment);
             this.Controls.Add(this.btn_CommentOrder);
@@ -218,6 +230,7 @@
             this.Controls.SetChildIndex(this.btn_CommentOrder, 0);
             this.Controls.SetChildIndex(this.lbl_Comment, 0);
             this.Controls.SetChildIndex(this.rtxt_CommentOrder, 0);
+            this.Controls.SetChildIndex(this.btn_ConfirmComment, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,5 +252,6 @@
         private BaseButton btn_CommentOrder;
         private System.Windows.Forms.Label lbl_Comment;
         private System.Windows.Forms.RichTextBox rtxt_CommentOrder;
+        private System.Windows.Forms.Button btn_ConfirmComment;
     }
 }

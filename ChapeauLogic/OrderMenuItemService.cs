@@ -15,26 +15,62 @@ namespace ChapeauLogic
 
         public List<OrderMenuItem> GetAllOrderMenuItem()
         {
-            return orderMenuItemDB.GetAllOrderMenuItemsDB();
+            try
+            {
+                return orderMenuItemDB.GetAllOrderMenuItemsDB();
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public List<OrderMenuItem> GetOrderMenuItemsByOrder(int orderId)
         {
-            return orderMenuItemDB.GetOrderMenuItemsByOrderIdDB(orderId);
+            try
+            {
+                return orderMenuItemDB.GetOrderMenuItemsByOrderIdDB(orderId);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public void InsertOrderMenuItem(List<OrderMenuItem> orderMenuItem, Order order)
         {
-            orderMenuItemDB.InsertOrderMenuItemsForOrderDB(orderMenuItem, order);
+            try
+            {
+                orderMenuItemDB.InsertOrderMenuItemsForOrderDB(orderMenuItem, order);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
         public void ChangeOrderMenuItemStatus(List<OrderMenuItem> orderMenuItems, OrderStatus status)
         {
-            orderMenuItemDB.ChangeOrderMenuItemStatusDB(orderMenuItems, status);
+            try
+            {
+                orderMenuItemDB.ChangeOrderMenuItemStatusDB(orderMenuItems, status);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
+
         public void EditQuantityItem(OrderMenuItem orderMenuItem, int quantity)
         {
-            orderMenuItemDB.RemoveOrderMenuItemDB(orderMenuItem, quantity);
+            try
+            {
+                orderMenuItemDB.RemoveOrderMenuItemDB(orderMenuItem, quantity);
+            }
+            catch
+            {
+                throw new Exception("Couldn't connect to the database");
+            }
         }
 
     }
