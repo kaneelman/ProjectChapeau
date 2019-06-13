@@ -163,11 +163,11 @@ namespace ChapeauDAL
             switch (type)
             {
                 case "bar":
-                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status GROUP BY date_time ORDER BY date_time";
+                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status GROUP BY date_time ORDER BY date_time DESC";
                     break;
                 case "kitchen":
 
-                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status GROUP BY date_time ORDER BY date_time";
+                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status GROUP BY date_time ORDER BY date_time DESC";
                     break;
                 default:
                     throw new Exception("incorrect input for type");

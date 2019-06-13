@@ -41,9 +41,11 @@ namespace ChapeauUI
 
             //prep
             dtp_OrderDate.Hide();
+            btn_ViewDefaultOrders.Hide();
             TableImages = CreateTableImagesList();
             EmptyAdditionalData();
 
+            //start
             DisplayOrders();
         }
 
@@ -60,7 +62,6 @@ namespace ChapeauUI
             //grabbing lists of running, ready, and served orders
             List<DateTime> beingpreparedorders = Orders.GetBarBeingPreparedOrdersGroupedByDateTime();
             List<DateTime> readytoserveorders = Orders.GetBarReadyToServeOrdersGroupedByDateTime();
-            List<DateTime> servedorders = Orders.GetBarServedOrdersGroupedByDateTime();
 
             if (sorting == true)
             {
@@ -95,12 +96,6 @@ namespace ChapeauUI
             {
                 MessageBox.Show("Oopsie something went wrong\nSorting it by default which is 'running'");
                 Btn_SortByRunning_Click(null, EventArgs.Empty);
-            }
-
-            //adding orders to the order listview with served as condition
-            foreach (DateTime time in servedorders)
-            {
-                OrdersTimeList.Add(time);
             }
 
             //adding buttons based on datetime ordering
@@ -303,6 +298,66 @@ namespace ChapeauUI
             lbl_OrderHandledBy.Text = null;
             lst_Orders.Clear();
             btn_MarkFinished.Hide();
+        }
+
+        private void Btn_ViewServedList_Click(object sender, EventArgs e)
+        {
+            //removing old data for new data
+            ClearAllTempData();
+            EmptyAdditionalData();
+            btn_SortByFinished.Hide();
+            btn_SortByRunning.Hide();
+            lbl_SortBy.Hide();
+            btn_ViewDefaultOrders.Show();
+            btn_ViewServedList.Hide();
+
+            //grabbing lists of running, ready, and served orders
+            List<DateTime> servedorders = Orders.GetBarServedOrdersGroupedByDateTime();
+
+            //adding orders to the order listview with served as condition
+            foreach (DateTime time in servedorders)
+            {
+                OrdersTimeList.Add(time);
+            }
+
+            //adding buttons based on datetime ordering
+            foreach (DateTime time in OrdersTimeList)
+            {
+                //grabbing all neccesary data
+                UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status, ref waiter);
+
+                if (status == "Served" | status == "ReadyToServe")
+                {
+                    ordertext = StatusTextConverter(status);
+                }
+
+                BaseButton button = new BaseButton
+                {
+                    Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
+                    Image = new Bitmap(TableImages[tablenum], new Size(100, 100)),
+                    ImageAlign = ContentAlignment.MiddleLeft,
+                    BackColor = ButtonColorPicker(status),
+                    Tag = time,
+                    Padding = new Padding(0, 0, 25, 0),
+                    Text = ordertext,
+                    TextAlign = ContentAlignment.MiddleRight,
+                };
+                button.Click += new EventHandler(Order_Click);
+                flpnl_Orders.Controls.Add(button);
+            }
+        }
+
+        private void Btn_ViewDefaultOrders_Click(object sender, EventArgs e)
+        {
+            ClearAllTempData();
+            EmptyAdditionalData();
+            btn_SortByFinished.Show();
+            btn_SortByRunning.Show();
+            lbl_SortBy.Show();
+            btn_ViewServedList.Show();
+            btn_ViewDefaultOrders.Hide();
+
+            DisplayOrders();
         }
 
         //refreshing order list view every 5 min for slow database calling duration reasons

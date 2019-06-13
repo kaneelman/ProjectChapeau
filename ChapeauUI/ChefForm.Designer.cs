@@ -41,6 +41,8 @@
             this.dtp_OrderDate = new System.Windows.Forms.DateTimePicker();
             this.timer_OrderListView = new System.Windows.Forms.Timer(this.components);
             this.lbl_OrderHandledBy = new System.Windows.Forms.Label();
+            this.btn_ViewServedList = new System.Windows.Forms.Button();
+            this.btn_ViewDefaultOrders = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +92,7 @@
             // 
             this.lbl_SortBy.AutoSize = true;
             this.lbl_SortBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_SortBy.Location = new System.Drawing.Point(51, 664);
+            this.lbl_SortBy.Location = new System.Drawing.Point(51, 656);
             this.lbl_SortBy.Name = "lbl_SortBy";
             this.lbl_SortBy.Size = new System.Drawing.Size(75, 22);
             this.lbl_SortBy.TabIndex = 17;
@@ -99,7 +101,7 @@
             // btn_SortByRunning
             // 
             this.btn_SortByRunning.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SortByRunning.Location = new System.Drawing.Point(132, 652);
+            this.btn_SortByRunning.Location = new System.Drawing.Point(132, 645);
             this.btn_SortByRunning.Name = "btn_SortByRunning";
             this.btn_SortByRunning.Size = new System.Drawing.Size(100, 40);
             this.btn_SortByRunning.TabIndex = 18;
@@ -110,7 +112,7 @@
             // btn_SortByFinished
             // 
             this.btn_SortByFinished.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SortByFinished.Location = new System.Drawing.Point(238, 652);
+            this.btn_SortByFinished.Location = new System.Drawing.Point(238, 645);
             this.btn_SortByFinished.Name = "btn_SortByFinished";
             this.btn_SortByFinished.Size = new System.Drawing.Size(100, 40);
             this.btn_SortByFinished.TabIndex = 19;
@@ -149,12 +151,34 @@
             this.lbl_OrderHandledBy.TabIndex = 22;
             this.lbl_OrderHandledBy.Text = "Handled by: ";
             // 
+            // btn_ViewServedList
+            // 
+            this.btn_ViewServedList.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ViewServedList.Location = new System.Drawing.Point(132, 691);
+            this.btn_ViewServedList.Name = "btn_ViewServedList";
+            this.btn_ViewServedList.Size = new System.Drawing.Size(206, 30);
+            this.btn_ViewServedList.TabIndex = 23;
+            this.btn_ViewServedList.Text = "View Served Orders";
+            this.btn_ViewServedList.UseVisualStyleBackColor = true;
+            // 
+            // btn_ViewDefaultOrders
+            // 
+            this.btn_ViewDefaultOrders.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ViewDefaultOrders.Location = new System.Drawing.Point(132, 662);
+            this.btn_ViewDefaultOrders.Name = "btn_ViewDefaultOrders";
+            this.btn_ViewDefaultOrders.Size = new System.Drawing.Size(206, 30);
+            this.btn_ViewDefaultOrders.TabIndex = 24;
+            this.btn_ViewDefaultOrders.Text = "View Default Orders";
+            this.btn_ViewDefaultOrders.UseVisualStyleBackColor = true;
+            // 
             // ChefForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btn_ViewDefaultOrders);
+            this.Controls.Add(this.btn_ViewServedList);
             this.Controls.Add(this.lbl_OrderHandledBy);
             this.Controls.Add(this.dtp_OrderDate);
             this.Controls.Add(this.btn_MarkFinished);
@@ -182,6 +206,8 @@
             this.Controls.SetChildIndex(this.btn_MarkFinished, 0);
             this.Controls.SetChildIndex(this.dtp_OrderDate, 0);
             this.Controls.SetChildIndex(this.lbl_OrderHandledBy, 0);
+            this.Controls.SetChildIndex(this.btn_ViewServedList, 0);
+            this.Controls.SetChildIndex(this.btn_ViewDefaultOrders, 0);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,5 +228,7 @@
         private System.Windows.Forms.DateTimePicker dtp_OrderDate;
         private System.Windows.Forms.Timer timer_OrderListView;
         private System.Windows.Forms.Label lbl_OrderHandledBy;
+        private System.Windows.Forms.Button btn_ViewServedList;
+        private System.Windows.Forms.Button btn_ViewDefaultOrders;
     }
 }
