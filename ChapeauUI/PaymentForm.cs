@@ -105,7 +105,6 @@ namespace ChapeauUI
                 MessageBox.Show(msg.Message);
             }
 
-            this.Hide();
         }
         private void resetTextBox()
         {
