@@ -20,6 +20,7 @@ namespace ChapeauUI
         DiningTable table;
 
         ChapeauLogic.OrderService orderDB = new ChapeauLogic.OrderService();
+        DiningTableService tableDB = new DiningTableService();
 
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
         MenuItemService menuItemDB = new MenuItemService();
@@ -236,7 +237,10 @@ namespace ChapeauUI
                     order.content.Add(item);
                 }
                 orderDB.InsertOrder(order);
+            table.Status = TableStatus.Occupied;
 
+            tableDB.ChangeDiningTableStatus(table);
+            tableView.RefreshTable();
             tableView.Show();
             Close();
 

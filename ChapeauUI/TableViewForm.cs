@@ -83,6 +83,11 @@ namespace ChapeauUI
             //
         }
 
+        public void RefreshTable()
+        {
+            DisplayTables();
+        }
+
         private void DisplayTables()
         {
 

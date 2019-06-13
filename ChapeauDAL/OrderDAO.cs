@@ -338,8 +338,6 @@ namespace ChapeauDAL
 
         }
 
-        string query;
-
 
               //  case "bar":
                    // query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status ORDER BY C.date_time";
