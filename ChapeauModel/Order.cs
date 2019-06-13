@@ -48,6 +48,17 @@ namespace ChapeauModel
             return this.content;
         }
 
+        public void IncrementQuantityMenuItem(MenuItem menuItem)
+        {
+            foreach(OrderMenuItem orderMenuItem in content){
+                if (orderMenuItem.GetMenuItem().Id == menuItem.Id)
+                {
+                    orderMenuItem.Quantity++;
+                    break;
+                }
+            }
+        }
+
         public decimal CalculateTotalPrice()
         {
             decimal totalprice=0;

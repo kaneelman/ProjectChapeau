@@ -108,7 +108,7 @@ namespace ChapeauUI
         private void Btn_NewOrder_Click(object sender, EventArgs e)
         {
             
-            OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm, tableView);
+            OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm, tableView, order.Table);
             orderForm.ShowDialog();
             Close();
         }

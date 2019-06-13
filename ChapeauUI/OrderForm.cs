@@ -18,17 +18,15 @@ namespace ChapeauUI
         const int SIZE = 110;
 
         int Id;
-        Employee HandledBy;
-        DiningTable Table;
-        Order order;
+        DiningTable table;
 
-        ChapeauLogic.OrderService Order1 = new ChapeauLogic.OrderService();
+        ChapeauLogic.OrderService orderDB = new ChapeauLogic.OrderService();
 
         MenuCategoryService menuCategoryDB = new MenuCategoryService();
         MenuItemService menuItemDB = new MenuItemService();
 
 
-        public OrderForm(Employee LoggedUser, LoginForm loginForm, TableViewForm tableView)
+        public OrderForm(Employee LoggedUser, LoginForm loginForm, TableViewForm tableView, DiningTable diningTable)
         {
             InitializeComponent();
 
@@ -37,7 +35,7 @@ namespace ChapeauUI
             this.loginForm = loginForm;
             this.tableView = tableView;
 
-
+            table = diningTable;
             DisplayMainCatagories();
         }
 
@@ -237,87 +235,6 @@ namespace ChapeauUI
             MenuCategory Subcatagory = (MenuCategory)button.Tag;
 
             DisplaySubCatogoriesItems(Subcatagory);
-            //if (LunchSubcatagoryItem == "Lunch Main")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagoryItems.Controls.Clear();
-
-            //    List<string> LunchMainSubcatagoryItems = new List<string>();
-
-            //    LunchMainSubcatagoryItems.Add("Lasagne");
-            //    LunchMainSubcatagoryItems.Add("Pizza");
-            //    LunchMainSubcatagoryItems.Add("Biryani");
-            //    LunchMainSubcatagoryItems.Add("Macaroni");
-
-            //    foreach (string LuchMainSubCatagoryItem in LunchMainSubcatagoryItems)
-            //    {
-            //        BaseButton btn_LunchMainItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-            //            Text = LuchMainSubCatagoryItem,
-            //            BackColor = Color.FromArgb(144, 238, 144),
-            //            Tag = LuchMainSubCatagoryItem
-            //        };
-            //        btn_LunchMainItems.Click += new EventHandler(btn_LunchMainItems_Click);
-            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchMainItems);
-            //    }
-
-
-            //}
-
-
-            //else if (LunchSubcatagoryItem == "Lunch Bite")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagoryItems.Controls.Clear();
-
-            //    List<string> LuchBiteSubCatagoryItems = new List<string>();
-
-            //    LuchBiteSubCatagoryItems.Add("frits");
-            //    LuchBiteSubCatagoryItems.Add("patatoes");
-            //    LuchBiteSubCatagoryItems.Add("Salmon");
-            //    LuchBiteSubCatagoryItems.Add("Bread");
-
-            //    foreach (string LuchBiteSubCatagoryItem in LuchBiteSubCatagoryItems)
-            //    {
-            //        BaseButton btn_LunchBiteItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-            //            Text = LuchBiteSubCatagoryItem,
-            //            BackColor = Color.FromArgb(144, 238, 144),
-            //            Tag = LuchBiteSubCatagoryItem
-            //        };
-            //        btn_LunchBiteItems.Click += new EventHandler(btn_LunchBiteItems_Click);
-            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchBiteItems);
-            //    }
-            //}
-
-            //else if (LunchSubcatagoryItem == "Lunch Special")
-            //{
-            //    //flpnl_SubCatagories
-            //    flpnl_SubCatagoryItems.Controls.Clear();
-
-            //    List<string> LuchSpecialSubCatagoryItems = new List<string>();
-
-            //    LuchSpecialSubCatagoryItems.Add("salade");
-            //    LuchSpecialSubCatagoryItems.Add("chicken wings");
-            //    LuchSpecialSubCatagoryItems.Add("fish");
-            //    LuchSpecialSubCatagoryItems.Add("Turkey");
-
-            //    foreach (string LuchSpecialSubCatagoryItem in LuchSpecialSubCatagoryItems)
-            //    {
-            //        BaseButton btn_LunchSpecialItems = new BaseButton
-            //        {
-            //            Size = new Size((int)(1 * SIZE), (int)(0.4 * SIZE)),
-            //            Text = LuchSpecialSubCatagoryItem,
-            //            BackColor = Color.FromArgb(144, 238, 144),
-            //            Tag = LuchSpecialSubCatagoryItem
-            //        };
-            //        btn_LunchSpecialItems.Click += new EventHandler(btn_LunchSpecialItems_Click);
-            //        flpnl_SubCatagoryItems.Controls.Add(btn_LunchSpecialItems);
-            //    }
-            //}
-
         }
 
         private void DisplaySubCatogoriesItems(MenuCategory menuCategory)
@@ -351,7 +268,9 @@ namespace ChapeauUI
 
             ListViewItem li = new ListViewItem(menuItem.Name);//needs to fix this because stock quantity is taken rather than order quantity
 
-            li.Tag = menuItem;  //linking menuItem to the entry of the list
+            OrderMenuItem orderMenuItem = new OrderMenuItem(menuItem);
+
+            li.Tag = orderMenuItem;  //linking menuItem to the entry of the list
 
             li.SubItems.Add(menuItem.Price.ToString("0.00"));
             li.SubItems.Add(menuItem.Stock.ToString());
@@ -384,57 +303,52 @@ namespace ChapeauUI
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
-            
+           
 
-            tableView.Show();
-            Close();
-
-            try
-            {
-                string comment;
-                if (rtxt_CommentOrder.Text == "")
-                {
-                    comment = "NULL";
-                }
-                else
-                {
-                    comment = rtxt_CommentOrder.Text;
-                }
+            //try
+            //{
+                //string comment;
+                //if (rtxt_CommentOrder.Text == "")
+                //{
+                //    comment = "NULL";
+                //}
+                //else
+                //{
+                //    comment = rtxt_CommentOrder.Text;
+                //}
 
                 //////add menuItems to the inserOrderMenuItem
                 ////ChapeauLogic.OrderMenuItemService AddOrderMenuItemService = new OrderMenuItemService();
                 ////AddOrderMenuItemService.InsertOrderMenuItem(new List<OrderMenuItem> orderMenuItem, ChapeauModel.Order order);
+                ///
+                List<ChapeauModel.MenuItem> itemsAdded = new List<ChapeauModel.MenuItem>();
 
+                Order order = new Order(LoggedInEmployee, table);
 
-                ChapeauLogic.OrderService AddOrder = new ChapeauLogic.OrderService();
-                //AddOrder.InsertOrder(new Order(order.Id, order.HandledBy, order.Table));
-                AddOrder.InsertOrder(new Order(order.Id , order.HandledBy, order.Table));
-                AddOrder.InsertOrder(order);
-
-                DialogResult dialogBox = MessageBox.Show("Order not complete!");
-
-                while (true)
+                foreach(ListViewItem li in lst_NewOrderItems.Items)
                 {
-                    if (lst_NewOrderItems.SelectedItems.Count == 0)
-                        return;
+                    OrderMenuItem item = (OrderMenuItem)li.Tag;
 
-                    ListViewItem item = lst_NewOrderItems.SelectedItems[0];
-                    //fill the text boxes
-                    lst_NewOrderItems.Text = item.Text;
-                    lst_NewOrderItems.Text = item.SubItems[0].Text;
-                    lst_NewOrderItems.Text = item.SubItems[1].Text;
-                    lst_NewOrderItems.Text = item.SubItems[2].Text;
-
+                    if (itemsAdded.Contains(item.GetMenuItem()))
+                    {
+                        order.IncrementQuantityMenuItem(item.GetMenuItem());
+                    } else
+                    {
+                        item.Quantity = 1;
+                        item.Status = OrderStatus.BeingPrepared;
+                        item.TimeStamp = DateTime.Now;
+                    }
+                    order.content.Add(item);
                 }
+                orderDB.InsertOrder(order);
+            //}
+            //catch (Exception msg)
+            //{
+            //    MessageBox.Show(msg.Message);
+            //}
 
-                /*      public int Id { get; set; }
-        public Employee HandledBy { get; set; }
-        public DiningTable Table { get; set; }*/
-            }
-            catch (Exception msg)
-            {
-                MessageBox.Show(msg.Message);
-            }
+            tableView.Show();
+            Close();
 
         }
 
