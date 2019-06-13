@@ -276,6 +276,7 @@ namespace ChapeauUI
                 case TableStatus.Occupied:
                     //Will change to current order overview eventually
                     OrderOptionForm optionForm = new OrderOptionForm(LoggedInEmployee, loginForm, orderDB.GetCompleteActiveOrderByTable(table), this);
+                    optionForm.Show();
                     Hide();
                     break;
                 case TableStatus.Reserved:

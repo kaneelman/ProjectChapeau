@@ -59,7 +59,7 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                MenuItem menuItem = new MenuItem((int)dr["ItemId"], (string)dr["ItemName"], (decimal)dr["price"], (int)dr["stock"], new MenuCategory((string)dr["CatId"], (string)dr["CatName"], (decimal)dr["dr"]));
+                MenuItem menuItem = new MenuItem((int)dr["ItemId"], (string)dr["ItemName"], (decimal)dr["price"], (int)dr["stock"], new MenuCategory((string)dr["CatId"], (string)dr["CatName"], (decimal)dr["vat"]));
                 menuItems.Add(menuItem);
             }
             return menuItems;

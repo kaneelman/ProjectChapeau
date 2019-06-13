@@ -89,15 +89,15 @@ namespace ChapeauUI
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            this.Hide();//close the form
-            //do i need to call the tableview form here? or nah?
+            tableView.Show();
+            Close();//close the form
         }
 
         private void Btn_Payment_Click(object sender, EventArgs e)
         {
-            this.Hide();
             PaymentForm paymentForm = new PaymentForm(LoggedInEmployee,this.loginForm,order, tableView);
             paymentForm.ShowDialog();
+            Close();
         }
 
         private void lst_CurrentOrder_MouseClick(object sender, MouseEventArgs e)
@@ -109,9 +109,10 @@ namespace ChapeauUI
 
         private void Btn_NewOrder_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
             OrderForm orderForm = new OrderForm(LoggedInEmployee, this.loginForm, tableView);
             orderForm.ShowDialog();
+            Close();
         }
         //make a code thhat allows us to select an item from the list view.
         //code the buttons
