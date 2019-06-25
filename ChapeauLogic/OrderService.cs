@@ -44,6 +44,16 @@ namespace ChapeauLogic
             return orderDB.GetAllKitchenOrdersByOccupationDB();
         }
 
+        public List<Order> GetAllBarOrdersByDateTime(DateTime time)
+        {
+            return orderDB.GetAllBarOrdersByDateTimeDB(time);
+        }
+
+        public List<Order> GetAllKitchenOrdersByDateTime(DateTime time)
+        {
+            return orderDB.GetAllKitchenOrdersByDateTimeDB(time);
+        }
+
         public List<Order> GetKitchenBeingPreparedOrders()
         {
             return orderDB.GetKitchenBeingPreparedOrdersDB();

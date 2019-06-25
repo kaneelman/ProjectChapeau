@@ -86,6 +86,46 @@ namespace ChapeauDAL
         }
 
 
+
+        //NEW NEW
+        //Generic method to get orders from the database depending on datetime
+        public List<Order> BaseGetAllOrdersByDateTimeDB(string type, DateTime time)
+        {
+            string query;
+
+            switch (type)
+            {
+                case "bar":
+                    query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, D.status AS TableStatus, C.id AS ContentId FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON C.item_id = M.id WHERE M.category LIKE 'Dr%' AND C.[status] = @status ORDER BY C.date_time";
+                    break;
+                case "kitchen":
+                    query = "SELECT O.id AS OrderId, E.id AS EmpId, E.name AS EmpName, position, D.id AS TableId, D.status AS TableStatus, C.id AS ContentId FROM [ORDER] AS O JOIN EMPLOYEE AS E ON O.handled_by = E.id JOIN DINING_TABLE AS D ON O.[table] = D.id JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON C.item_id = M.id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status ORDER BY C.date_time";
+                    break;
+                default:
+                    throw new Exception("incorrect input for type");
+            }
+
+            SqlParameter[] sqlParameters = (new[]
+            {
+                new SqlParameter("@time", time)
+            });
+
+            return ReadTableData(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        //methods to get bar orders from the database depending on datetime
+        public List<Order> GetAllBarOrdersByDateTimeDB(DateTime time)
+        {
+            return BaseGetAllOrdersByDateTimeDB("bar", time);
+        }
+
+        public List<Order> GetAllKitchenOrdersByDateTimeDB(DateTime time)
+        {
+            return BaseGetAllOrdersByDateTimeDB("kitchen", time);
+        }
+
+
         //NEW
         // Generic method to get orders from the database depending on the status
         public List<Order> BaseGetOrderByStatus(string type, string status)
