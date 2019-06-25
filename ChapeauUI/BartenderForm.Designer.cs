@@ -39,7 +39,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_OrderTime = new System.Windows.Forms.Label();
             this.lbl_OrderStatus = new System.Windows.Forms.Label();
-            this.dtp_OrderDate = new System.Windows.Forms.DateTimePicker();
             this.timer_OrderListView = new System.Windows.Forms.Timer(this.components);
             this.lbl_OrderHandledBy = new System.Windows.Forms.Label();
             this.btn_ViewServedList = new System.Windows.Forms.Button();
@@ -144,13 +143,6 @@
             this.lbl_OrderStatus.TabIndex = 14;
             this.lbl_OrderStatus.Text = "Status:";
             // 
-            // dtp_OrderDate
-            // 
-            this.dtp_OrderDate.Location = new System.Drawing.Point(426, 698);
-            this.dtp_OrderDate.Name = "dtp_OrderDate";
-            this.dtp_OrderDate.Size = new System.Drawing.Size(526, 30);
-            this.dtp_OrderDate.TabIndex = 15;
-            // 
             // timer_OrderListView
             // 
             this.timer_OrderListView.Enabled = true;
@@ -197,7 +189,6 @@
             this.Controls.Add(this.btn_ViewDefaultOrders);
             this.Controls.Add(this.btn_ViewServedList);
             this.Controls.Add(this.lbl_OrderHandledBy);
-            this.Controls.Add(this.dtp_OrderDate);
             this.Controls.Add(this.lbl_OrderStatus);
             this.Controls.Add(this.lbl_OrderTime);
             this.Controls.Add(this.PicBox_TableNumber);
@@ -221,7 +212,6 @@
             this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.lbl_OrderTime, 0);
             this.Controls.SetChildIndex(this.lbl_OrderStatus, 0);
-            this.Controls.SetChildIndex(this.dtp_OrderDate, 0);
             this.Controls.SetChildIndex(this.lbl_OrderHandledBy, 0);
             this.Controls.SetChildIndex(this.btn_ViewServedList, 0);
             this.Controls.SetChildIndex(this.btn_ViewDefaultOrders, 0);
@@ -243,7 +233,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_OrderTime;
         private System.Windows.Forms.Label lbl_OrderStatus;
-        private System.Windows.Forms.DateTimePicker dtp_OrderDate;
         private System.Windows.Forms.Timer timer_OrderListView;
         private System.Windows.Forms.Label lbl_OrderHandledBy;
         private System.Windows.Forms.Button btn_ViewServedList;

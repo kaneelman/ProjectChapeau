@@ -59,10 +59,10 @@ namespace ChapeauDAL
             switch (type)
             {
                 case "bar":
-                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' ORDER BY C.date_time";
+                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' ORDER BY C.date_time DESC";
                     break;
                 case "kitchen":
-                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') ORDER BY C.date_time";
+                    query = "SELECT O.id AS OrderId, C.date_time as [DateTime], handled_by, [table], C.id AS ContentId FROM[ORDER] AS O JOIN ORDER_CONTENT AS C ON O.id = C.order_id JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') ORDER BY C.date_time DESC";
                     break;
                 default:
                     throw new Exception("incorrect input for type");
@@ -196,18 +196,17 @@ namespace ChapeauDAL
 
 
         //generic method to get orders from the database depending on the status grouped by datetime
-        public List<DateTime> BaseGetOrderByStatusGroupedByDateTimeDB(string type, string status)
+        public List<DateTime> BaseGetOrderByStatusGroupedByDateTimeDB(string type, string status, string orderby)
         {
             string query;
 
             switch (type)
             {
                 case "bar":
-                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status GROUP BY date_time ORDER BY date_time DESC";
+                    query = $"SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE M.category LIKE 'Dr%' AND C.[status] = @status GROUP BY date_time ORDER BY date_time {orderby}";
                     break;
                 case "kitchen":
-
-                    query = "SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status GROUP BY date_time ORDER BY date_time DESC";
+                    query = $"SELECT C.date_time FROM ORDER_CONTENT AS C JOIN MENU_ITEM AS M ON M.id = C.item_id WHERE (M.category LIKE 'Lu%' OR M.category LIKE 'Di%') AND C.[status] = @status GROUP BY date_time ORDER BY date_time {orderby}";
                     break;
                 default:
                     throw new Exception("incorrect input for type");
@@ -215,7 +214,7 @@ namespace ChapeauDAL
 
             SqlParameter[] sqlParameters = (new[]
             {
-                new SqlParameter("@status", status)
+                new SqlParameter("@status", status),
             });
 
             return ReadDateTime(ExecuteSelectQuery(query, sqlParameters));
@@ -225,19 +224,31 @@ namespace ChapeauDAL
         // methods to get kitchen orders from the database depending on status grouped by datetime
         public List<DateTime> GetKitchenBeingPreparedOrdersGroupedByDateTimeDB()
         {
-            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "BeingPrepared");
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "BeingPrepared", "ASC");
         }
 
 
         public List<DateTime> GetKitchenReadyToServeOrdersGroupedByDateTimeDB()
         {
-            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "ReadyToServe");
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "ReadyToServe", "ASC");
+        }
+
+
+        public List<DateTime> GetKitchenReadyToServeOrdersGroupedByDateTimeDescDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "ReadyToServe", "DESC");
         }
 
 
         public List<DateTime> GetKitchenServedOrdersGroupedByDateTimeDB()
         {
-            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "Served");
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "Served", "ASC");
+        }
+
+
+        public List<DateTime> GetKitchenServedOrdersGroupedByDateTimeDescDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("kitchen", "Served", "DESC");
         }
 
 
@@ -247,19 +258,29 @@ namespace ChapeauDAL
         // methods to get bar orders from the database depending on status grouped by datetime
         public List<DateTime> GetBarBeingPreparedOrdersGroupedByDateTimeDB()
         {
-            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "BeingPrepared");
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "BeingPrepared", "ASC");
         }
 
 
         public List<DateTime> GetBarReadyToServeOrdersGroupedByDateTimeDB()
         {
-            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "ReadyToServe");
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "ReadyToServe", "ASC");
+        }
+
+        public List<DateTime> GetBarReadyToServeOrdersGroupedByDateTimeDescDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "ReadyToServe", "DESC");
         }
 
 
         public List<DateTime> GetBarServedOrdersGroupedByDateTimeDB()
         {
-            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "Served");
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "Served", "ASC");
+        }
+
+        public List<DateTime> GetBarServedOrdersGroupedByDateTimeDescDB()
+        {
+            return BaseGetOrderByStatusGroupedByDateTimeDB("bar", "Served", "DESC");
         }
 
 

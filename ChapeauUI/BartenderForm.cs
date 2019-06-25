@@ -24,6 +24,7 @@ namespace ChapeauUI
 
         //fields
         bool sortbyrunning = true;
+        DateTime time;
 
         //lists
         List<Image> TableImages;
@@ -37,7 +38,6 @@ namespace ChapeauUI
             this.loginForm = loginForm;
 
             //prep
-            dtp_OrderDate.Hide();
             btn_ViewDefaultOrders.Hide();
             TableImages = CreateTableImagesList();
             EmptyAdditionalData();
@@ -67,7 +67,7 @@ namespace ChapeauUI
         {
             List<DateTime> orderslist = new List<DateTime>();
             List<DateTime> beingpreparedorders = Orders.GetBarBeingPreparedOrdersGroupedByDateTime();
-            List<DateTime> readytoserveorders = Orders.GetBarReadyToServeOrdersGroupedByDateTime();
+            List<DateTime> readytoserveorders = Orders.GetBarReadyToServeOrdersGroupedByDateTimeDesc();
 
             if (sortbyrunning == true)
             {
@@ -97,7 +97,7 @@ namespace ChapeauUI
 
         private List<DateTime> GetServedOrders()
         {
-            List<DateTime> servedorders = Orders.GetBarServedOrdersGroupedByDateTime();
+            List<DateTime> servedorders = Orders.GetBarServedOrdersGroupedByDateTimeDesc();
             return servedorders;
         }
 
@@ -146,7 +146,7 @@ namespace ChapeauUI
             DisplayOrderContentList(order);
 
             //grabbing time for marking order as finished
-            dtp_OrderDate.Value = order.content[0].TimeStamp;
+            time = order.content[0].TimeStamp;
         }
 
         private void DisplayAdditionalInfo(Order order)
@@ -203,7 +203,6 @@ namespace ChapeauUI
         //updating order as ready
         private void Btn_MarkFinished_Click(object sender, EventArgs e)
         {
-            DateTime time = dtp_OrderDate.Value;
             Orders.UpdateBarStatus(time);
             EmptyAdditionalData();
 

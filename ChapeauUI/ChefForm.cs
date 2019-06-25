@@ -21,12 +21,10 @@ namespace ChapeauUI
         const int SIZE = 100;
 
         //fields
-        bool sorting = true;
-        int tablenum = 0, orderid = 0;
-        string status = null, ordertext = null, waiter = null;
+        bool sortbyrunning = true;
+        DateTime time;
 
-        //creating lists
-        List<DateTime> OrdersTimeList = new List<DateTime>();
+        //lists
         List<Image> TableImages;
 
         public ChefForm(Employee LoggedUser, LoginForm loginForm)
@@ -38,7 +36,6 @@ namespace ChapeauUI
             this.loginForm = loginForm;
 
             //prep
-            dtp_OrderDate.Hide();
             btn_ViewDefaultOrders.Hide();
             TableImages = CreateTableImagesList();
             EmptyAdditionalData();
@@ -49,73 +46,76 @@ namespace ChapeauUI
 
         private void ChefForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void DisplayOrders()
         {
-            //removing old data for new data
-            ClearAllTempData();
+            //clearing the buttons
+            flpnl_Orders.Controls.Clear();
 
-            //grabbing lists of running, ready, and served orders
-            List<DateTime> beingpreparedorders = Orders.GetKitchenBeingPreparedOrdersGroupedByDateTime();
-            List<DateTime> readytoserveorders = Orders.GetKitchenReadyToServeOrdersGroupedByDateTime();
-
-            if (sorting == true)
-            {
-                //adding orders to the order listview with beingprepared as condition
-                foreach (DateTime time in beingpreparedorders)
-                {
-                    OrdersTimeList.Add(time);
-                }
-
-                //adding orders to the order listview with readytoserve as condition
-                foreach (DateTime time in readytoserveorders)
-                {
-                    OrdersTimeList.Add(time);
-                }
-
-            }
-            else if (sorting == false)
-            {
-                //adding orders to the order listview with readytoserve as condition
-                foreach (DateTime time in readytoserveorders)
-                {
-                    OrdersTimeList.Add(time);
-                }
-
-                //adding orders to the order listview with beingprepared as condition
-                foreach (DateTime time in beingpreparedorders)
-                {
-                    OrdersTimeList.Add(time);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Oopsie something went wrong\nSorting it by default which is 'running'");
-                Btn_SortByRunning_Click(null, EventArgs.Empty);
-            }
+            //grabbing list of orders
+            List<DateTime> OrdersTimeList = GetSortedOrders();
 
             //adding buttons based on datetime ordering
-            foreach (DateTime time in OrdersTimeList)
-            {
-                //grabbing all neccesary data
-                UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status, ref waiter);
+            AddOrderButtons(OrdersTimeList);
+        }
 
-                if (status == "Served" | status == "ReadyToServe")
+        private List<DateTime> GetSortedOrders()
+        {
+            List<DateTime> orderslist = new List<DateTime>();
+            List<DateTime> beingpreparedorders = Orders.GetKitchenBeingPreparedOrdersGroupedByDateTime();
+            List<DateTime> readytoserveorders = Orders.GetKitchenReadyToServeOrdersGroupedByDateTimeDesc();
+
+            if (sortbyrunning == true)
+            {
+                //adding orders sorted by running
+                foreach (DateTime time in beingpreparedorders)
                 {
-                    ordertext = StatusTextConverter(status);
+                    orderslist.Add(time);
                 }
+                foreach (DateTime time in readytoserveorders)
+                {
+                    orderslist.Add(time);
+                }
+            }
+            else if (sortbyrunning == false)
+            {
+                //adding orders sorted by ready
+                foreach (DateTime time in readytoserveorders)
+                {
+                    orderslist.Add(time);
+                }
+                foreach (DateTime time in beingpreparedorders)
+                {
+                    orderslist.Add(time);
+                }
+            }
+            return orderslist;
+        }
+
+        private List<DateTime> GetServedOrders()
+        {
+            List<DateTime> servedorders = Orders.GetKitchenServedOrdersGroupedByDateTimeDesc();
+            return servedorders;
+        }
+
+        private void AddOrderButtons(List<DateTime> OrdersTimeList)
+        {
+            List<Order> Orders = GetOrders(OrdersTimeList);
+
+            foreach (Order order in Orders)
+            {
+                string status = order.content[0].Status.ToString();
 
                 BaseButton button = new BaseButton
                 {
                     Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
-                    Image = new Bitmap(TableImages[tablenum], new Size(100, 100)),
+                    Image = new Bitmap(TableImages[order.Table.Id], new Size(100, 100)),
                     ImageAlign = ContentAlignment.MiddleLeft,
                     BackColor = ButtonColorPicker(status),
-                    Tag = time,
+                    Tag = order,
                     Padding = new Padding(0, 0, 25, 0),
-                    Text = ordertext,
                     TextAlign = ContentAlignment.MiddleRight,
                 };
                 button.Click += new EventHandler(Order_Click);
@@ -126,12 +126,11 @@ namespace ChapeauUI
         private void Order_Click(object sender, EventArgs e)
         {
             //grabbing the object tag
-            DateTime time = (DateTime)((Button)sender).Tag;
-
-            //grabbing all necessary data
-            UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status, ref waiter);
+            Order order = (Order)((Button)sender).Tag;
 
             //hiding the mark as ready button if it's ready or served
+            string status = order.content[0].Status.ToString();
+
             if (status == "Served" | status == "ReadyToServe")
             {
                 btn_MarkFinished.Hide();
@@ -141,14 +140,25 @@ namespace ChapeauUI
                 btn_MarkFinished.Show();
             }
 
-            //inputting and displaying additional info
-            PicBox_TableNumber.SizeMode = PictureBoxSizeMode.StretchImage;
-            PicBox_TableNumber.Image = TableImages[tablenum];
-            lbl_OrderTime.Text = "Time Ordered: " + time.ToString("HH:mm:ss");
-            lbl_OrderStatus.Text = "Status: " + StatusTextConverter(status);
-            lbl_OrderHandledBy.Text = "Handled by: " + waiter;
-            dtp_OrderDate.Value = time;
+            //displaying all features
+            DisplayAdditionalInfo(order);
+            DisplayOrderContentList(order);
 
+            //grabbing time for marking order as finished
+            time = order.content[0].TimeStamp;
+        }
+
+        private void DisplayAdditionalInfo(Order order)
+        {
+            PicBox_TableNumber.SizeMode = PictureBoxSizeMode.StretchImage;
+            PicBox_TableNumber.Image = TableImages[order.Table.Id];
+            lbl_OrderTime.Text = "Time Ordered: " + order.content[0].TimeStamp.ToString("HH:mm:ss");
+            lbl_OrderStatus.Text = "Status: " + StatusTextConverter(order.content[0].Status.ToString());
+            lbl_OrderHandledBy.Text = "Handled by: " + order.HandledBy.Name;
+        }
+
+        private void DisplayOrderContentList(Order order)
+        {
             //clearing list view
             lst_Orders.Clear();
 
@@ -160,34 +170,30 @@ namespace ChapeauUI
             lst_Orders.Columns.Add("Order", 150, HorizontalAlignment.Left);
             lst_Orders.Columns.Add("Comment", 600, HorizontalAlignment.Left);
 
-            foreach (ChapeauModel.Order order in Orders.GetKitchenBeingPreparedSpecialOrders(time, orderid))
+            foreach (OrderMenuItem item in order.content)
             {
-                foreach (OrderMenuItem item in order.content)
-                {
-                    ListViewItem li = new ListViewItem(item.Quantity.ToString());
-                    li.SubItems.Add(item.GetMenuItem().Name);
-                    li.SubItems.Add(item.Comment);
-                    lst_Orders.Items.Add(li);
-                }
+                ListViewItem li = new ListViewItem(item.Quantity.ToString());
+                li.SubItems.Add(item.GetMenuItem().Name);
+                li.SubItems.Add(item.Comment);
+                lst_Orders.Items.Add(li);
             }
         }
 
-        ////sorting stuff
-        //sort by running
+        //sort by running click
         private void Btn_SortByRunning_Click(object sender, EventArgs e)
         {
             //prepping the sorting method
-            sorting = true;
+            sortbyrunning = true;
             EmptyAdditionalData();
 
             DisplayOrders();
         }
 
-        //sort by ready
+        //sort by ready click
         private void Btn_SortByFinished_Click(object sender, EventArgs e)
         {
             //setting the sorting method bool
-            sorting = false;
+            sortbyrunning = false;
             EmptyAdditionalData();
 
             DisplayOrders();
@@ -196,36 +202,33 @@ namespace ChapeauUI
         //updating order as ready
         private void Btn_MarkFinished_Click(object sender, EventArgs e)
         {
-            DateTime time = dtp_OrderDate.Value;
             Orders.UpdateKitchenStatus(time);
             EmptyAdditionalData();
 
             DisplayOrders();
         }
 
-        //updating field datas for current method
-        private void UpdateDataByReference(DateTime time, ref int tablenum, ref int orderid, ref string ordertext, ref string status, ref string waiter)
+        private List<Order> GetOrders(List<DateTime> Time)
         {
-            //prep
             List<Order> allorders = Orders.GetAllKitchenOrdersByOccupation();
-            DateTime currenttime = DateTime.Now;
-            TimeSpan timedifference = (currenttime - time);
+            List<Order> selectedorders = new List<Order>();
 
-            foreach (ChapeauModel.Order order in allorders)
+            foreach (DateTime time in Time)
             {
-                foreach (OrderMenuItem item in order.content)
+                foreach (ChapeauModel.Order order in allorders)
                 {
-                    if (time == item.TimeStamp)
+                    foreach (OrderMenuItem item in order.content)
                     {
-                        waiter = order.HandledBy.Name;
-                        tablenum = order.Table.Id;
-                        orderid = order.Id;
-                        status = item.Status.ToString();
-                        ordertext = ($"{timedifference.Hours:00}:{timedifference.Minutes:00}:{timedifference.Seconds:00}\n{StatusTextConverter(status)}");
-                        return;
+                        if (time == item.TimeStamp)
+                        {
+                            selectedorders.Add(order);
+                            break;
+                        }
                     }
                 }
             }
+
+            return selectedorders;
         }
 
         //creates a list of images
@@ -264,18 +267,6 @@ namespace ChapeauUI
             return color;
         }
 
-        //refreshes info for receiving up to date data for order list view
-        private void ClearAllTempData()
-        {
-            OrdersTimeList.Clear();
-            flpnl_Orders.Controls.Clear();
-            tablenum = 0;
-            orderid = 0;
-            status = null;
-            ordertext = null;
-            waiter = null;
-        }
-
         //converts the status for the order list view
         private string StatusTextConverter(string status)
         {
@@ -301,81 +292,64 @@ namespace ChapeauUI
 
         private void Btn_ViewServedList_Click(object sender, EventArgs e)
         {
-            //removing old data for new data
-            ClearAllTempData();
-            EmptyAdditionalData();
-            btn_SortByFinished.Hide();
-            btn_SortByRunning.Hide();
-            lbl_SortBy.Hide();
-            btn_ViewDefaultOrders.Show();
-            btn_ViewServedList.Hide();
+            ShowServedOrdersButtons();
 
-            //grabbing lists of running, ready, and served orders
-            List<DateTime> servedorders = Orders.GetBarServedOrdersGroupedByDateTime();
-
-            //adding orders to the order listview with served as condition
-            foreach (DateTime time in servedorders)
-            {
-                OrdersTimeList.Add(time);
-            }
+            //grabbing list of orders
+            List<DateTime> OrdersTimeList = GetServedOrders();
 
             //adding buttons based on datetime ordering
-            foreach (DateTime time in OrdersTimeList)
-            {
-                //grabbing all neccesary data
-                UpdateDataByReference(time, ref tablenum, ref orderid, ref ordertext, ref status, ref waiter);
-
-                if (status == "Served" | status == "ReadyToServe")
-                {
-                    ordertext = StatusTextConverter(status);
-                }
-
-                BaseButton button = new BaseButton
-                {
-                    Size = new Size((int)(SIZE * 2.65), (int)(SIZE * 1)),
-                    Image = new Bitmap(TableImages[tablenum], new Size(100, 100)),
-                    ImageAlign = ContentAlignment.MiddleLeft,
-                    BackColor = ButtonColorPicker(status),
-                    Tag = time,
-                    Padding = new Padding(0, 0, 25, 0),
-                    Text = ordertext,
-                    TextAlign = ContentAlignment.MiddleRight,
-                };
-                button.Click += new EventHandler(Order_Click);
-                flpnl_Orders.Controls.Add(button);
-            }
+            AddOrderButtons(OrdersTimeList);
         }
 
         private void Btn_ViewDefaultOrders_Click(object sender, EventArgs e)
         {
-            ClearAllTempData();
+            ShowDefaultOrdersButtons();
+            DisplayOrders();
+        }
+
+        private void ShowServedOrdersButtons()
+        {
+            flpnl_Orders.Controls.Clear();
+            EmptyAdditionalData();
+            btn_SortByFinished.Hide();
+            btn_SortByRunning.Hide();
+            lbl_SortBy.Hide();
+            btn_ViewServedList.Hide();
+            btn_ViewDefaultOrders.Show();
+        }
+
+        private void ShowDefaultOrdersButtons()
+        {
+            flpnl_Orders.Controls.Clear();
             EmptyAdditionalData();
             btn_SortByFinished.Show();
             btn_SortByRunning.Show();
             lbl_SortBy.Show();
             btn_ViewServedList.Show();
             btn_ViewDefaultOrders.Hide();
-
-            DisplayOrders();
         }
 
-        //refreshing order list view every 5 min for slow database calling duration reasons
-        //disabled temporarily
+        //updating statuses
         private void Timer_OrderListView_Tick(object sender, EventArgs e)
         {
-            //if (sorting == true)
-            //{
-            //    SortByRunning_Run();
-            //}
-            //else if (sorting == false)
-            //{
-            //    SortByReady_Run();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Oopsie something went wrong\nSorting it by default which is 'running'");
-            //    SortByRunning_Run();
-            //}
+            DateTime currenttime = DateTime.Now;
+            Order order;
+
+            foreach (Control ctrl in flpnl_Orders.Controls)
+            {
+                order = (Order)ctrl.Tag;
+                string status = order.content[0].Status.ToString();
+
+                if (status == "Served" | status == "ReadyToServe")
+                {
+                    ctrl.Text = StatusTextConverter(status);
+                }
+                else
+                {
+                    TimeSpan timedifference = (currenttime - order.content[0].TimeStamp);
+                    ctrl.Text = ($"{timedifference.TotalMinutes:00} min\nRunning");
+                }
+            }
         }
     }
 }
