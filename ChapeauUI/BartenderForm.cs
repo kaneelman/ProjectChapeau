@@ -335,33 +335,24 @@ namespace ChapeauUI
             btn_ViewDefaultOrders.Hide();
         }
 
-        //refreshing order list view every 5 min for slow database calling duration reasons
-        //disabled temporarily
+        //updating running time
         private void Timer_OrderListView_Tick(object sender, EventArgs e)
         {
-            //if (sorting == true)
-            //{
-            //    SortByRunning_Run();
-            //}
-            //else if (sorting == false)
-            //{
-            //    SortByReady_Run();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Oopsie something went wrong\nSorting it by default which is 'running'");
-            //    SortByRunning_Run();
-            //}
+            DateTime currenttime = DateTime.Now;
+            Order order;
 
             foreach (Control ctrl in flpnl_Orders.Controls)
             {
-                if (Text == "Served" | Text == "ReadyToServe")
+                order = (Order)ctrl.Tag;
+
+                if (ctrl.Text == "Finished" | ctrl.Text == "Ready")
                 {
                     continue;
                 }
                 else
                 {
-                    Text = "Running" + 
+                    TimeSpan timedifference = (currenttime - order.content[0].TimeStamp);
+                    ctrl.Text = ($"{timedifference.TotalMinutes:00} min\nRunning");
                 }
             }
         }

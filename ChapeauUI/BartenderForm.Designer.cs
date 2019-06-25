@@ -96,7 +96,7 @@
             this.lbl_SortBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.Location = new System.Drawing.Point(51, 656);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(75, 22);
+            this.lbl_SortBy.Size = new System.Drawing.Size(96, 27);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -131,7 +131,7 @@
             this.lbl_OrderTime.AutoSize = true;
             this.lbl_OrderTime.Location = new System.Drawing.Point(526, 20);
             this.lbl_OrderTime.Name = "lbl_OrderTime";
-            this.lbl_OrderTime.Size = new System.Drawing.Size(108, 18);
+            this.lbl_OrderTime.Size = new System.Drawing.Size(138, 23);
             this.lbl_OrderTime.TabIndex = 13;
             this.lbl_OrderTime.Text = "Time Ordered:";
             // 
@@ -140,7 +140,7 @@
             this.lbl_OrderStatus.AutoSize = true;
             this.lbl_OrderStatus.Location = new System.Drawing.Point(526, 45);
             this.lbl_OrderStatus.Name = "lbl_OrderStatus";
-            this.lbl_OrderStatus.Size = new System.Drawing.Size(56, 18);
+            this.lbl_OrderStatus.Size = new System.Drawing.Size(72, 23);
             this.lbl_OrderStatus.TabIndex = 14;
             this.lbl_OrderStatus.Text = "Status:";
             // 
@@ -148,19 +148,21 @@
             // 
             this.dtp_OrderDate.Location = new System.Drawing.Point(426, 698);
             this.dtp_OrderDate.Name = "dtp_OrderDate";
-            this.dtp_OrderDate.Size = new System.Drawing.Size(526, 26);
+            this.dtp_OrderDate.Size = new System.Drawing.Size(526, 30);
             this.dtp_OrderDate.TabIndex = 15;
             // 
             // timer_OrderListView
             // 
-            this.timer_OrderListView.Interval = 300000;
+            this.timer_OrderListView.Enabled = true;
+            this.timer_OrderListView.Interval = 1000;
+            this.timer_OrderListView.Tick += new System.EventHandler(this.Timer_OrderListView_Tick);
             // 
             // lbl_OrderHandledBy
             // 
             this.lbl_OrderHandledBy.AutoSize = true;
             this.lbl_OrderHandledBy.Location = new System.Drawing.Point(526, 70);
             this.lbl_OrderHandledBy.Name = "lbl_OrderHandledBy";
-            this.lbl_OrderHandledBy.Size = new System.Drawing.Size(94, 18);
+            this.lbl_OrderHandledBy.Size = new System.Drawing.Size(120, 23);
             this.lbl_OrderHandledBy.TabIndex = 16;
             this.lbl_OrderHandledBy.Text = "Handled by: ";
             // 
@@ -188,7 +190,7 @@
             // 
             // BartenderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
