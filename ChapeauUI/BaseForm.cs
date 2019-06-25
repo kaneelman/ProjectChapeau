@@ -41,11 +41,16 @@ namespace ChapeauUI
         private void Btn_LogOut_Click(object sender, EventArgs e)
         {
             //Showing the loginForm again and hiding current form
+            loginForm.EmptyUserInput();
             loginForm.Show();
+
+            if (LoggedInEmployee.Position != EmployeePosition.Bartender & LoggedInEmployee.Position != EmployeePosition.Chef)
+            {
+                tableView.Close();
+            }
+
             LoggedInEmployee = null;
-            tableView.Close();
             Close();
-            
         }
 
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)

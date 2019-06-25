@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.flpnl_Orders = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_MarkFinished = new System.Windows.Forms.Button();
             this.btn_SortByFinished = new System.Windows.Forms.Button();
             this.btn_SortByRunning = new System.Windows.Forms.Button();
@@ -43,18 +42,10 @@
             this.lbl_OrderHandledBy = new System.Windows.Forms.Label();
             this.btn_ViewServedList = new System.Windows.Forms.Button();
             this.btn_ViewDefaultOrders = new System.Windows.Forms.Button();
+            this.flpnl_Orders = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // flpnl_Orders
-            // 
-            this.flpnl_Orders.AutoScroll = true;
-            this.flpnl_Orders.Location = new System.Drawing.Point(54, 17);
-            this.flpnl_Orders.Name = "flpnl_Orders";
-            this.flpnl_Orders.Size = new System.Drawing.Size(290, 618);
-            this.flpnl_Orders.TabIndex = 0;
-            this.flpnl_Orders.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnl_Orders_Paint);
             // 
             // btn_MarkFinished
             // 
@@ -146,7 +137,7 @@
             // timer_OrderListView
             // 
             this.timer_OrderListView.Enabled = true;
-            this.timer_OrderListView.Interval = 1000;
+            this.timer_OrderListView.Interval = 10000;
             this.timer_OrderListView.Tick += new System.EventHandler(this.Timer_OrderListView_Tick);
             // 
             // lbl_OrderHandledBy
@@ -180,12 +171,21 @@
             this.btn_ViewDefaultOrders.UseVisualStyleBackColor = true;
             this.btn_ViewDefaultOrders.Click += new System.EventHandler(this.Btn_ViewDefaultOrders_Click);
             // 
+            // flpnl_Orders
+            // 
+            this.flpnl_Orders.AutoScroll = true;
+            this.flpnl_Orders.Location = new System.Drawing.Point(54, 17);
+            this.flpnl_Orders.Name = "flpnl_Orders";
+            this.flpnl_Orders.Size = new System.Drawing.Size(290, 618);
+            this.flpnl_Orders.TabIndex = 19;
+            // 
             // BartenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.flpnl_Orders);
             this.Controls.Add(this.btn_ViewDefaultOrders);
             this.Controls.Add(this.btn_ViewServedList);
             this.Controls.Add(this.lbl_OrderHandledBy);
@@ -197,24 +197,24 @@
             this.Controls.Add(this.btn_SortByRunning);
             this.Controls.Add(this.btn_SortByFinished);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.flpnl_Orders);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BartenderForm";
             this.Text = "BartenderForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BartenderForm_FormClosing);
             this.Load += new System.EventHandler(this.BartenderForm_Load);
-            this.Controls.SetChildIndex(this.flpnl_Orders, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.btn_SortByFinished, 0);
             this.Controls.SetChildIndex(this.btn_SortByRunning, 0);
             this.Controls.SetChildIndex(this.lbl_SortBy, 0);
             this.Controls.SetChildIndex(this.btn_MarkFinished, 0);
             this.Controls.SetChildIndex(this.PicBox_TableNumber, 0);
-            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
             this.Controls.SetChildIndex(this.lbl_OrderTime, 0);
             this.Controls.SetChildIndex(this.lbl_OrderStatus, 0);
             this.Controls.SetChildIndex(this.lbl_OrderHandledBy, 0);
             this.Controls.SetChildIndex(this.btn_ViewServedList, 0);
             this.Controls.SetChildIndex(this.btn_ViewDefaultOrders, 0);
+            this.Controls.SetChildIndex(this.Btn_LogOut, 0);
+            this.Controls.SetChildIndex(this.flpnl_Orders, 0);
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_TableNumber)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -223,7 +223,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flpnl_Orders;
         private System.Windows.Forms.Button btn_SortByFinished;
         private System.Windows.Forms.Button btn_SortByRunning;
         private System.Windows.Forms.Label lbl_SortBy;
@@ -237,5 +236,6 @@
         private System.Windows.Forms.Label lbl_OrderHandledBy;
         private System.Windows.Forms.Button btn_ViewServedList;
         private System.Windows.Forms.Button btn_ViewDefaultOrders;
+        private System.Windows.Forms.FlowLayoutPanel flpnl_Orders;
     }
 }

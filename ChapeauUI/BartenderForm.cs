@@ -17,7 +17,13 @@ namespace ChapeauUI
     public partial class BartenderForm : BaseForm
     {
         //calling required services
-        ChapeauLogic.OrderService Orders = new ChapeauLogic.OrderService();
+        ChapeauLogic.OrderService OrderService = new ChapeauLogic.OrderService();
+
+        //order service                  //checked
+        //one form                       //
+        //status update initial          //done
+        //foreach foreach foreach        //couldn't be dealt with
+        //scroll thingy                  //
 
         //constants
         const int SIZE = 100;
@@ -25,6 +31,7 @@ namespace ChapeauUI
         //fields
         bool sortbyrunning = true;
         DateTime time;
+        int scrollposition = 0;
 
         //lists
         List<Image> TableImages;
@@ -61,13 +68,16 @@ namespace ChapeauUI
 
             //adding buttons based on datetime ordering
             AddOrderButtons(OrdersTimeList);
+
+            //dispaying statuses
+            timer_OrderListView.Start();
         }
 
         private List<DateTime> GetSortedOrders()
         {
             List<DateTime> orderslist = new List<DateTime>();
-            List<DateTime> beingpreparedorders = Orders.GetBarBeingPreparedOrdersGroupedByDateTime();
-            List<DateTime> readytoserveorders = Orders.GetBarReadyToServeOrdersGroupedByDateTimeDesc();
+            List<DateTime> beingpreparedorders = OrderService.GetBarBeingPreparedOrdersGroupedByDateTime();
+            List<DateTime> readytoserveorders = OrderService.GetBarReadyToServeOrdersGroupedByDateTimeDesc();
 
             if (sortbyrunning == true)
             {
@@ -81,7 +91,7 @@ namespace ChapeauUI
                     orderslist.Add(time);
                 }
             }
-            else if (sortbyrunning == false)
+            else
             {
                 //adding orders sorted by ready
                 foreach (DateTime time in readytoserveorders)
@@ -97,7 +107,7 @@ namespace ChapeauUI
 
         private List<DateTime> GetServedOrders()
         {
-            List<DateTime> servedorders = Orders.GetBarServedOrdersGroupedByDateTimeDesc();
+            List<DateTime> servedorders = OrderService.GetBarServedOrdersGroupedByDateTimeDesc();
             return servedorders;
         }
 
@@ -203,16 +213,18 @@ namespace ChapeauUI
         //updating order as ready
         private void Btn_MarkFinished_Click(object sender, EventArgs e)
         {
-            Orders.UpdateBarStatus(time);
+            OrderService.UpdateBarStatus(time);
             EmptyAdditionalData();
 
             DisplayOrders();
         }
 
+        //gets the requested orders and returns a list of segmented orders from all orders
         private List<Order> GetOrders(List<DateTime> Time)
         {
-            List<Order> allorders = Orders.GetAllBarOrdersByOccupation();
+            List<Order> allorders = OrderService.GetAllBarOrdersByOccupation();
             List<Order> selectedorders = new List<Order>();
+            List<OrderMenuItem> menuitems = new List<OrderMenuItem>();
 
             foreach (DateTime time in Time)
             {
@@ -222,9 +234,16 @@ namespace ChapeauUI
                     {
                         if (time == item.TimeStamp)
                         {
-                            selectedorders.Add(order);
-                            break;
+                            menuitems.Add(item);
                         }
+                    }
+
+                    if (menuitems.Any())
+                    {
+                        selectedorders.Add(new Order(order.Id, order.HandledBy, order.Table));
+                        selectedorders[selectedorders.Count - 1].AddOrderItems(menuitems);
+                        menuitems.Clear();
+                        break;
                     }
                 }
             }
@@ -333,6 +352,9 @@ namespace ChapeauUI
         //updating statuses
         private void Timer_OrderListView_Tick(object sender, EventArgs e)
         {
+            // 1/2 this is for fixing a bug where the scroll position keeps getting set to 0 for every timer tick
+            scrollposition = flpnl_Orders.VerticalScroll.Value;
+
             DateTime currenttime = DateTime.Now;
             Order order;
 
@@ -351,6 +373,14 @@ namespace ChapeauUI
                     ctrl.Text = ($"{timedifference.TotalMinutes:00} min\nRunning");
                 }
             }
+
+            // 2/2 this is for fixing a bug where the scroll position keeps getting set to 0 for every timer tick
+            flpnl_Orders.AutoScrollPosition = new Point(0, scrollposition);
+        }
+
+        private void BartenderForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
 
         private void flpnl_Orders_Paint(object sender, PaintEventArgs e)
@@ -362,5 +392,6 @@ namespace ChapeauUI
         {
 
         }
+
     }
 }

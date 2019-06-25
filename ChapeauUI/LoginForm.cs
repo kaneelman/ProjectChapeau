@@ -72,5 +72,10 @@ namespace ChapeauUI
             }
         }
 
+        public void EmptyUserInput()
+        {
+            txt_LoginUsername.Text = null;
+            txt_LoginPassword.Text = null;
+        }
     }
 }
