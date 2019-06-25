@@ -20,10 +20,10 @@ namespace ChapeauUI
         ChapeauLogic.OrderService OrderService = new ChapeauLogic.OrderService();
 
         //order service                  //checked
-        //one form                       //
+        //one form                       //under construction//
         //status update initial          //done
         //foreach foreach foreach        //couldn't be dealt with
-        //scroll thingy                  //
+        //scroll thingy                  //pesky thingy
 
         //constants
         const int SIZE = 100;
