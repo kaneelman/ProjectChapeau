@@ -104,16 +104,10 @@ namespace ChapeauUI
         private void AddOrderButtons(List<DateTime> OrdersTimeList)
         {
             List<Order> Orders = GetOrders(OrdersTimeList);
-            string status = null, ordertext = null;
 
             foreach (Order order in Orders)
             {
-                status = order.content[0].Status.ToString();
-
-                if (status == "Served" | status == "ReadyToServe")
-                {
-                    ordertext = StatusTextConverter(status);
-                }
+                string status = order.content[0].Status.ToString();
 
                 BaseButton button = new BaseButton
                 {
@@ -123,7 +117,6 @@ namespace ChapeauUI
                     BackColor = ButtonColorPicker(status),
                     Tag = order,
                     Padding = new Padding(0, 0, 25, 0),
-                    Text = ordertext,
                     TextAlign = ContentAlignment.MiddleRight,
                 };
                 button.Click += new EventHandler(Order_Click);
@@ -222,14 +215,17 @@ namespace ChapeauUI
             List<Order> allorders = Orders.GetAllBarOrdersByOccupation();
             List<Order> selectedorders = new List<Order>();
 
-            foreach (ChapeauModel.Order order in allorders)
+            foreach (DateTime time in Time)
             {
-                foreach (OrderMenuItem item in order.content)
+                foreach (ChapeauModel.Order order in allorders)
                 {
-                    if (Time.Contains(item.TimeStamp))
+                    foreach (OrderMenuItem item in order.content)
                     {
-                        selectedorders.Add(order);
-                        break;
+                        if (time == item.TimeStamp)
+                        {
+                            selectedorders.Add(order);
+                            break;
+                        }
                     }
                 }
             }
@@ -335,7 +331,7 @@ namespace ChapeauUI
             btn_ViewDefaultOrders.Hide();
         }
 
-        //updating running time
+        //updating statuses
         private void Timer_OrderListView_Tick(object sender, EventArgs e)
         {
             DateTime currenttime = DateTime.Now;
@@ -344,10 +340,11 @@ namespace ChapeauUI
             foreach (Control ctrl in flpnl_Orders.Controls)
             {
                 order = (Order)ctrl.Tag;
+                string status = order.content[0].Status.ToString();
 
-                if (ctrl.Text == "Finished" | ctrl.Text == "Ready")
+                if (status == "Served" | status == "ReadyToServe")
                 {
-                    continue;
+                    ctrl.Text = StatusTextConverter(status);
                 }
                 else
                 {
