@@ -19,18 +19,13 @@ namespace ChapeauUI
         //calling required services
         ChapeauLogic.OrderService OrderService = new ChapeauLogic.OrderService();
 
-        //order service                  //checked
-        //one form                       //yupyup//
-        //status update initial          //done
-        //foreach foreach foreach        //couldn't be dealt with
-        //scroll thingy                  //pesky thingy
-
         //constants
         const int SIZE = 100;
 
         //fields
         EmployeePosition occupation;
         bool sortbyrunning = true;
+        bool defaultsorting = true;
         DateTime time;
         int scrollposition = 0;
 
@@ -62,11 +57,18 @@ namespace ChapeauUI
 
         private void DisplayOrders()
         {
-            //clearing the buttons
-            flpnl_Orders.Controls.Clear();
+            //preparation
+            List<DateTime> OrdersTimeList = new List<DateTime>();
 
-            //grabbing list of orders
-            List<DateTime> OrdersTimeList = GetSortedOrders();
+            //grabbing list of orders based on type
+            if (defaultsorting == true)
+            {
+                OrdersTimeList = GetDefaultOrders();
+            }
+            else
+            {
+                OrdersTimeList = GetServedOrders();
+            }
 
             //adding buttons based on datetime ordering
             AddOrderButtons(OrdersTimeList);
@@ -75,7 +77,7 @@ namespace ChapeauUI
             timer_OrderListView.Start();
         }
 
-        private List<DateTime> GetSortedOrders()
+        private List<DateTime> GetDefaultOrders()
         {
             List<DateTime> orderslist = new List<DateTime>();
             List<DateTime> beingpreparedorders = GetBeingPreparedOrdersGroupedByDateTime();
@@ -312,23 +314,25 @@ namespace ChapeauUI
             btn_MarkFinished.Hide();
         }
 
+        //shows the served orders
         private void Btn_ViewServedList_Click(object sender, EventArgs e)
         {
             ShowServedOrdersButtons();
+            defaultsorting = false;
 
-            //grabbing list of orders
-            List<DateTime> OrdersTimeList = GetServedOrders();
-
-            //adding buttons based on datetime ordering
-            AddOrderButtons(OrdersTimeList);
-        }
-
-        private void Btn_ViewDefaultOrders_Click(object sender, EventArgs e)
-        {
-            ShowDefaultOrdersButtons();
             DisplayOrders();
         }
 
+        //shows the default orders
+        private void Btn_ViewDefaultOrders_Click(object sender, EventArgs e)
+        {
+            ShowDefaultOrdersButtons();
+            defaultsorting = true;
+
+            DisplayOrders();
+        }
+
+        //shows the served sorting buttons
         private void ShowServedOrdersButtons()
         {
             flpnl_Orders.Controls.Clear();
@@ -340,6 +344,7 @@ namespace ChapeauUI
             btn_ViewDefaultOrders.Show();
         }
 
+        //shows the default sorting buttons
         private void ShowDefaultOrdersButtons()
         {
             flpnl_Orders.Controls.Clear();
