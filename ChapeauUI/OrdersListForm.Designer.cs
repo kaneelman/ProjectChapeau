@@ -1,6 +1,6 @@
 ﻿namespace ChapeauUI
 {
-    partial class BartenderForm
+    partial class OrdersListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -179,7 +179,7 @@
             this.flpnl_Orders.Size = new System.Drawing.Size(290, 618);
             this.flpnl_Orders.TabIndex = 19;
             // 
-            // BartenderForm
+            // OrdersListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -198,10 +198,10 @@
             this.Controls.Add(this.btn_SortByFinished);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "BartenderForm";
-            this.Text = "BartenderForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BartenderForm_FormClosing);
-            this.Load += new System.EventHandler(this.BartenderForm_Load);
+            this.Name = "OrdersListForm";
+            this.Text = "[Occupation]Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrdersListForm_FormClosing);
+            this.Load += new System.EventHandler(this.OrdersListForm_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.btn_SortByFinished, 0);
             this.Controls.SetChildIndex(this.btn_SortByRunning, 0);

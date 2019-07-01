@@ -14,7 +14,7 @@ using ChapeauModel;
 
 namespace ChapeauUI
 {
-    public partial class BartenderForm : BaseForm
+    public partial class OrdersListForm : BaseForm
     {
         //calling required services
         ChapeauLogic.OrderService OrderService = new ChapeauLogic.OrderService();
@@ -29,6 +29,7 @@ namespace ChapeauUI
         const int SIZE = 100;
 
         //fields
+        EmployeePosition occupation;
         bool sortbyrunning = true;
         DateTime time;
         int scrollposition = 0;
@@ -36,7 +37,7 @@ namespace ChapeauUI
         //lists
         List<Image> TableImages;
 
-        public BartenderForm(Employee LoggedUser, LoginForm loginForm)
+        public OrdersListForm(Employee LoggedUser, LoginForm loginForm)
         {
             InitializeComponent();
 
@@ -44,8 +45,9 @@ namespace ChapeauUI
             LoggedInEmployee = LoggedUser;
             this.loginForm = loginForm;
 
-            //prep
-            btn_ViewDefaultOrders.Hide();
+            //preparation
+            occupation = LoggedInEmployee.Position;
+            ShowDefaultOrdersButtons();
             TableImages = CreateTableImagesList();
             EmptyAdditionalData();
 
@@ -53,7 +55,7 @@ namespace ChapeauUI
             DisplayOrders();
         }
 
-        private void BartenderForm_Load(object sender, EventArgs e)
+        private void OrdersListForm_Load(object sender, EventArgs e)
         {
 
         }
@@ -76,8 +78,8 @@ namespace ChapeauUI
         private List<DateTime> GetSortedOrders()
         {
             List<DateTime> orderslist = new List<DateTime>();
-            List<DateTime> beingpreparedorders = OrderService.GetBarBeingPreparedOrdersGroupedByDateTime();
-            List<DateTime> readytoserveorders = OrderService.GetBarReadyToServeOrdersGroupedByDateTimeDesc();
+            List<DateTime> beingpreparedorders = GetBeingPreparedOrdersGroupedByDateTime();
+            List<DateTime> readytoserveorders = GetReadyToServeOrdersGroupedByDateTimeDesc();
 
             if (sortbyrunning == true)
             {
@@ -107,7 +109,7 @@ namespace ChapeauUI
 
         private List<DateTime> GetServedOrders()
         {
-            List<DateTime> servedorders = OrderService.GetBarServedOrdersGroupedByDateTimeDesc();
+            List<DateTime> servedorders = GetServedOrdersGroupedByDateTimeDesc();
             return servedorders;
         }
 
@@ -213,7 +215,7 @@ namespace ChapeauUI
         //updating order as ready
         private void Btn_MarkFinished_Click(object sender, EventArgs e)
         {
-            OrderService.UpdateBarStatus(time);
+            UpdateOrderStatus();
             EmptyAdditionalData();
 
             DisplayOrders();
@@ -222,7 +224,7 @@ namespace ChapeauUI
         //gets the requested orders and returns a list of segmented orders from all orders
         private List<Order> GetOrders(List<DateTime> Time)
         {
-            List<Order> allorders = OrderService.GetAllBarOrdersByOccupation();
+            List<Order> allorders = GetAllOrdersByOccupation();
             List<Order> selectedorders = new List<Order>();
             List<OrderMenuItem> menuitems = new List<OrderMenuItem>();
 
@@ -378,7 +380,74 @@ namespace ChapeauUI
             flpnl_Orders.AutoScrollPosition = new Point(0, scrollposition);
         }
 
-        private void BartenderForm_FormClosing(object sender, FormClosingEventArgs e)
+        //methods for getting data from the database depending on current occupation
+        private List<DateTime> GetBeingPreparedOrdersGroupedByDateTime()
+        {
+            if (occupation == EmployeePosition.Bartender)
+            {
+                return OrderService.GetBarBeingPreparedOrdersGroupedByDateTime();
+            }
+            else
+            {
+                return OrderService.GetKitchenBeingPreparedOrdersGroupedByDateTime();
+            }
+        }
+
+        private List<DateTime> GetReadyToServeOrdersGroupedByDateTimeDesc()
+        {
+            if (occupation == EmployeePosition.Bartender)
+            {
+                return OrderService.GetBarReadyToServeOrdersGroupedByDateTimeDesc();
+            }
+            else
+            {
+                return OrderService.GetKitchenReadyToServeOrdersGroupedByDateTimeDesc();
+            }
+        }
+
+        private List<DateTime> GetServedOrdersGroupedByDateTimeDesc()
+        {
+            if (occupation == EmployeePosition.Bartender)
+            {
+                return OrderService.GetBarServedOrdersGroupedByDateTimeDesc();
+            }
+            else
+            {
+                return OrderService.GetKitchenServedOrdersGroupedByDateTimeDesc();
+            }
+        }
+
+
+        private List<Order> GetAllOrdersByOccupation()
+        {
+            if (occupation == EmployeePosition.Bartender)
+            {
+                return OrderService.GetAllBarOrdersByOccupation();
+            }
+            else
+            {
+                return OrderService.GetAllKitchenOrdersByOccupation();
+            }
+        }
+
+        private void UpdateOrderStatus()
+        {
+            if (occupation == EmployeePosition.Bartender)
+            {
+                OrderService.UpdateBarStatus(time);
+            }
+            else
+            {
+                OrderService.UpdateKitchenStatus(time);
+            }
+        }
+
+
+
+
+
+        //unused methods
+        private void OrdersListForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
         }
