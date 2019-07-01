@@ -45,10 +45,6 @@ namespace ChapeauUI
                             OrdersListForm orderlistForm = new OrdersListForm(LoggedInEmployee, this);
                             orderlistForm.Show();
                             break;
-                        //case EmployeePosition.Chef:
-                        //    OrdersListForm chefForm = new OrdersListForm(LoggedInEmployee, this);
-                        //    chefForm.Show();
-                        //    break;
                         case EmployeePosition.Waiter:
                             TableViewForm tableViewForm = new TableViewForm(LoggedInEmployee, this);
                             tableViewForm.Show();
