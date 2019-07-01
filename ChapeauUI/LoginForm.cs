@@ -41,7 +41,7 @@ namespace ChapeauUI
 
                     switch (LoggedInEmployee.Position)
                     {
-                        case EmployeePosition.Bartender & EmployeePosition.Chef:
+                        case EmployeePosition.Bartender: case EmployeePosition.Chef:
                             OrdersListForm orderlistForm = new OrdersListForm(LoggedInEmployee, this);
                             orderlistForm.Show();
                             break;
